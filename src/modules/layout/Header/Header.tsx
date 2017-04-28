@@ -7,7 +7,7 @@ class Header extends React.Component<any,any> {
         return (
           <div>
             <NoticeBar marqueeProps={{ loop: true, style: { padding: '0 0.15rem' } }}>
-              % СКИДКИ ТОЛЬКО ДО ДНЯ РОЖДЕНИЯ ДЕТЕЙ %
+              % СКИДКИ ТОЛЬКО ДО ДНЯ ЗАЩИТНИКА ДЕТЕЙ %
             </NoticeBar>
           </div>            
         )

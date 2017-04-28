@@ -11,11 +11,8 @@ class Layout extends React.Component<any,any> {
         <Header/>
 
         <WingBlank>
-          Pages:
           <List>
           <List.Item><Link to="/">Home</Link></List.Item>
-          <List.Item><Link to="/catalog">Catalog</Link></List.Item>
-          <List.Item><Link to="/product">Product</Link></List.Item>
           </List>
         </WingBlank>
 
