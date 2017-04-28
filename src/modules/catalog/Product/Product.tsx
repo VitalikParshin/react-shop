@@ -1,4 +1,4 @@
-import * as React from "React";
+import * as React from "react";
 import { Card } from "antd-mobile";
 import { Images } from "../../product/index";
 import { Link } from "react-router-dom";
