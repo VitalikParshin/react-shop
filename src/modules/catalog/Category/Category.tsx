@@ -1,7 +1,7 @@
 import * as React from "react";
 import { gql, compose, graphql } from "react-apollo";
 import { connect } from "react-redux";
-import { Drawer, List, NavBar, Icon, WingBlank, Carousel, Flex, Card } from "antd-mobile";
+import { Drawer, List, NavBar, Icon, WingBlank, Carousel, Flex, Card, WhiteSpace } from "antd-mobile";
 import { Link } from "react-router-dom";
 import { Products, Product } from "../index";
 import { CATEGORY_QUERY } from "../model";
@@ -27,9 +27,17 @@ class Category extends React.Component<any,any> {
     return (
       <div>
         <h1>{category.name}</h1>
+        <Product {...products[0]}/>
+        <WhiteSpace/>
+        <Product {...products[0]}/>
+        <WhiteSpace/>
+        <Product {...products[0]}/>
+        <WhiteSpace/>
+{/*        
         {products.map(product => (
           <Product {...product}/> 
         ))}
+*/}      
       </div>
     )
   }
