@@ -39,5 +39,5 @@ const mapStateToProps: any = (state) => ({})
 
 export default compose(
     connect<any, {}, any>(mapStateToProps),
-    // graphql(CATEGORY_QUERY, options),
+    graphql(CATEGORY_QUERY, options),
 )(Category);

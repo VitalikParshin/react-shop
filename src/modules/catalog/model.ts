@@ -5,6 +5,7 @@ export const CATEGORY_QUERY = gql`
   query allCategories($filter: CategoryFilter) {
     allCategories(filter:$filter) {
       products {
+        id
         shortName
         brand {
           id

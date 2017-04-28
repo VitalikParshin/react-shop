@@ -1,7 +1,17 @@
 import * as React from "React";
+import { Card } from "antd-mobile";
+import { Images } from "../../product/index";
+import { Link } from "react-router-dom";
 
 const Product = (props) => {
-  return <div>{props.shortName}</div>
+  const { id, shortName, images, subProducts } = props;
+  const subproduct = subProducts[0];
+  return <Card>
+    <Images images={images}/>
+    <Link to={`/product/${subproduct.id}`}>
+      {props.shortName}
+    </Link>
+  </Card>
 }
 
 export default Product;
