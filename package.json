@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "scripts": {
     "start": "NODE_ENV=development webpack-dev-server --host 0.0.0.0 --port 3000",
-    "build": "webpack -p"
+    "build": "NODE_ENV=production webpack -p"
   },
   "license": "ISC",
   "dependencies": {
