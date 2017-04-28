@@ -1,9 +1,9 @@
-import CatalogPage from "./CatalogPage/CatalogPage";
+import CategoryPage from "./CategoryPage/CategoryPage";
 import HomePage from "./HomePage/HomePage";
 import ProductPage from "./ProductPage/ProductPage";
 
 export {
-  CatalogPage,
+  CategoryPage,
   HomePage,
   ProductPage,
 }

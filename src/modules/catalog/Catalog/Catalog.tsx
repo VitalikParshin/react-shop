@@ -2,7 +2,7 @@ import * as React from "react";
 import { gql, compose, graphql } from "react-apollo";
 import { connect } from "react-redux";
 import { Drawer, List, NavBar, Icon, WingBlank, Carousel, Flex, Card } from "antd-mobile";
-
+import { Link } from "react-router-dom";
 
 function chunk (arr, len=1) {
   var chunks: any = [],
@@ -50,7 +50,7 @@ class CatalogRow extends React.Component<any,any> {
             <Flex>
               {cats.map(cat => (
                 <Flex.Item>
-                  <a href="http://www.baidu.com">
+                  <Link to={`/category/${cat.id}`}>
                     <img
                       src={cat.image ? cat.image.url : ""}
                       onLoad={() => {
@@ -62,7 +62,7 @@ class CatalogRow extends React.Component<any,any> {
                       }}
                     />
                     <div>{cat.name}</div>
-                  </a>
+                  </Link>
                 </Flex.Item>
               ))}
             </Flex>

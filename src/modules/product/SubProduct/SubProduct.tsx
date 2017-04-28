@@ -2,6 +2,7 @@ import * as React from "react";
 import { gql, compose, graphql } from "react-apollo";
 import { connect } from "react-redux";
 import { Images } from "../index";
+import { SUB_PRODUCT_QUERY } from "../../catalog/model";
 
 interface ConnectedSubProductProps {
   data?: any;
@@ -9,40 +10,6 @@ interface ConnectedSubProductProps {
 
 interface SubProductProps {
 };
-
-export const SUB_PRODUCT_QUERY = gql`
-  query allSubProducts($filter: SubProductFilter) {
-    allSubProducts(filter: $filter) {
-      id
-      sku
-      price
-      priceOld
-      discount      
-      product {
-        shortName
-        brand {
-          id
-          name
-        }
-        category {
-          id
-          name
-        }        
-        images {
-          id
-          url
-        }        
-        subProducts {
-          id
-          sku
-          price
-          priceOld
-          discount
-        }
-      }
-    }
-  }
-`;
 
 const options = {
   options: props => ({
