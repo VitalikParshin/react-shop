@@ -82,7 +82,6 @@ class SubProduct extends React.Component<ConnectedSubProductProps, SubProductPro
 const mapStateToProps: any = (state) => ({
 })
 
-
 export default compose(
     connect<ConnectedSubProductProps, {}, SubProductProps>(mapStateToProps),
     graphql(SUB_PRODUCT_QUERY, options),

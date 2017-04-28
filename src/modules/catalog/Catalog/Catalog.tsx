@@ -1,7 +1,7 @@
 import * as React from "react";
-import {gql, compose, graphql} from "react-apollo";
-import {connect} from "react-redux";
-import {Drawer, List, NavBar, Icon} from "antd-mobile";
+import { gql, compose, graphql } from "react-apollo";
+import { connect } from "react-redux";
+import { Drawer, List, NavBar, Icon } from "antd-mobile";
 
 export const CATALOG_QUERY = gql`
   query allCategories {

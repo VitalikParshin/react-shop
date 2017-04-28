@@ -1,7 +1,6 @@
 import * as React from "react";
 import { Carousel, WhiteSpace, WingBlank } from "antd-mobile";
 
-
 class Images extends React.Component<any, any> {
   
   state = {
