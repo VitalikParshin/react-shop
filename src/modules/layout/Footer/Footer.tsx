@@ -1,6 +1,6 @@
 import * as React from "react";
-import {Button} from "antd-mobile";
-import {Link} from "react-router-dom";
+import { Button } from "antd-mobile";
+import { Link } from "react-router-dom";
 
 class Footer extends React.Component<any,any> {
     render() {

@@ -1,5 +1,5 @@
 import * as React from "react";
-import SubProduct from "../../modules/product/SubProduct/SubProduct";
+import { SubProduct } from "../../modules/product/index";
 
 class SubProductPage extends React.Component<any,any> {
     render() {

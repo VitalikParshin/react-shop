@@ -1,7 +1,7 @@
 import * as React from "react";
-import {gql, compose, graphql} from "react-apollo";
-import {connect} from "react-redux";
-import Images from "../Images/Images";
+import { gql, compose, graphql } from "react-apollo";
+import { connect } from "react-redux";
+import { Images } from "../index";
 
 interface ConnectedSubProductProps {
   data?: any;

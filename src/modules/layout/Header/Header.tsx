@@ -1,6 +1,6 @@
 import * as React from "react";
-import {Button, NoticeBar} from "antd-mobile";
-import {Link} from "react-router-dom";
+import { Button, NoticeBar } from "antd-mobile";
+import { Link } from "react-router-dom";
 
 class Header extends React.Component<any,any> {
     render() {

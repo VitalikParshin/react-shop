@@ -1,9 +1,8 @@
 import * as React from "react";
-import {Button} from "antd-mobile";
-import {Link} from "react-router-dom";
-import Header from "../Header/Header";
-import Footer from "../Footer/Footer";
-import {WingBlank, List} from "antd-mobile";
+import { WingBlank, List } from "antd-mobile";
+import { Link } from "react-router-dom";
+import { Header, Footer } from "../index";
+
 
 class Layout extends React.Component<any,any> {
   render() {

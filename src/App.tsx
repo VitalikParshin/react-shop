@@ -6,10 +6,8 @@ import { Router, Route } from "react-router";
 import client from "./graphqlClient";
 import store from "./store";
 import history from "./history"
-import HomePage from "./pages/HomePage/HomePage";
-import ProductPage from "./pages/ProductPage/ProductPage";
-import CatalogPage from "./pages/CatalogPage/CatalogPage";
-import Layout from "./modules/layout/Layout/Layout";
+import { Layout } from "./modules/layout/index";
+import { HomePage, ProductPage, CatalogPage } from "./pages/index";
 
 const App = () => {
   return (

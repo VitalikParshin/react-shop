@@ -1,5 +1,5 @@
 import * as React from "react";
-import {Flex, Button} from "antd-mobile";
+import { Flex, Button } from "antd-mobile";
 
 const HomePage = () => {
     return (

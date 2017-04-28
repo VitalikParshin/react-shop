@@ -42,7 +42,6 @@ class Catalog extends React.Component<any,any> {
 
 const mapStateToProps: any = (state) => ({})
 
-
 export default compose(
     connect<any, {}, any>(mapStateToProps),
     graphql(CATALOG_QUERY),
