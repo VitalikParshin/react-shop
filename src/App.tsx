@@ -7,7 +7,7 @@ import client from "./graphqlClient";
 import store from "./store";
 import history from "./history"
 import { Layout } from "./modules/layout/index";
-import { HomePage, ProductPage, CatalogPage } from "./pages/index";
+import { HomePage, ProductPage, CategoryPage } from "./pages/index";
 
 const App = () => {
   return (
@@ -16,7 +16,7 @@ const App = () => {
         <Layout>
           <Route exact path="/" component={HomePage} />
           <Route exact path="/product" component={ProductPage} />
-          <Route exact path="/catalog" component={CatalogPage} />
+          <Route exact path="/category/:id" component={CategoryPage} />
         </Layout>
       </ConnectedRouter>
     </ApolloProvider>
