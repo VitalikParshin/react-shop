@@ -5,10 +5,9 @@ import { Catalog } from "../../modules/catalog/index";
 const HomePage = () => {
     return (
         <div>
-            HELLO
+            <Catalog/>
         </div>
     )
 }
-            // <Catalog/>
 
 export default HomePage;
