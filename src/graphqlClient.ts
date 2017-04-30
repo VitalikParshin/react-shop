@@ -1,6 +1,6 @@
 import ApolloClient, { createNetworkInterface } from "apollo-client";
 
-export const GRAPHQL_URI = "http://buybag.com.ua/graphql";
+export const GRAPHQL_URI = process.env.DUBEG ? "http://localhost:8000/graphql" : "http://buybag.com.ua/graphql";
 
 const client = new ApolloClient({
   networkInterface: createNetworkInterface({ uri: GRAPHQL_URI }),
