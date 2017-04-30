@@ -15,7 +15,7 @@ const options = {
   options: props => ({
     variables: {
       filter: {
-        id: "cj1xnfwfsvbol0144j67y60a6"
+        id: props.id
       }
     }
   })
@@ -33,12 +33,12 @@ class SubProduct extends React.Component<ConnectedSubProductProps, SubProductPro
     return (
       <div>
         <Images images={images}/>
-        <h2>{product.shortName} {brand.name} {sProduct.sku}</h2>
+        <h2>{product.name} {brand.name} {sProduct.article}</h2>
         <div>
           {sProduct.price} грн
           <br/>
           <div style={{textDecoration: "line-through"}}>
-            {sProduct.priceOld} грн
+            {sProduct.oldPrice} грн
           </div>
         </div>
       </div>

@@ -2,11 +2,13 @@ import { gql } from "react-apollo/lib";
 
 
 export const CATEGORY_QUERY = gql`
-  query allCategories($filter: CategoryFilter) {
-    allCategories(filter:$filter) {
+  query categories($id: Int) {
+    categories(id: $id) {
       products {
         id
-        shortName
+        name
+        shortDescription
+        description
         brand {
           id
           name
@@ -17,15 +19,46 @@ export const CATEGORY_QUERY = gql`
         }        
         images {
           id
-          url
+          image
         }        
         subProducts {
           id
-          sku
+          article
           price
-          priceOld
+          oldPrice
           discount
         }
+      }
+    }
+  }
+`;
+
+
+export const PRODUCT_QUERY = gql`
+  query products($categoryId: Int) {
+    products(categoryId: $categoryId) {
+      id
+      name
+      shortDescription
+      description
+      brand {
+        id
+        name
+      }
+      category {
+        id
+        name
+      }        
+      images {
+        id
+        image
+      }        
+      subProducts {
+        id
+        article
+        price
+        oldPrice
+        discount
       }
     }
   }
@@ -36,12 +69,14 @@ export const SUB_PRODUCT_QUERY = gql`
   query allSubProducts($filter: SubProductFilter) {
     allSubProducts(filter: $filter) {
       id
-      sku
+      article
       price
-      priceOld
+      oldPrice
       discount      
       product {
-        shortName
+        name
+        shortDescription
+        description
         brand {
           id
           name
@@ -52,13 +87,13 @@ export const SUB_PRODUCT_QUERY = gql`
         }        
         images {
           id
-          url
+          image
         }        
         subProducts {
           id
-          sku
+          article
           price
-          priceOld
+          oldPrice
           discount
         }
       }

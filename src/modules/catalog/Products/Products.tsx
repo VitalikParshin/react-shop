@@ -3,9 +3,8 @@ import { gql, compose, graphql } from "react-apollo";
 import { connect } from "react-redux";
 import { Drawer, List, NavBar, Icon, WingBlank, Carousel, Flex, Card } from "antd-mobile";
 import { Link } from "react-router-dom";
-import { SUB_PRODUCT_QUERY } from "../model";
-
-import { Item } from "./Item";
+import { PRODUCT_QUERY } from "../model";
+import { Product } from "../index";
 
 const options = {
   options: props => ({
@@ -19,17 +18,17 @@ const options = {
   })
 };
 
-class SubProducts extends React.Component<any,any> {
+class Products extends React.Component<any,any> {
   render() {
-    const { loading, allSubProducts } = this.props.data;
+    const { loading, products } = this.props.data;
     if (loading == true) {
       return <div>Loading...</div>
     }
 
     return (
       <div>
-        {allSubProducts.map(subProduct => (
-          <Item {...subProduct} /> 
+        {products.map(product => (
+          <Product {...product} /> 
         ))}
       </div>
     )
@@ -41,5 +40,5 @@ const mapStateToProps: any = (state) => ({})
 
 export default compose(
     connect<any, {}, any>(mapStateToProps),
-    graphql(SUB_PRODUCT_QUERY, options),
-)(SubProducts);
+    graphql(PRODUCT_QUERY, options),
+)(Products);

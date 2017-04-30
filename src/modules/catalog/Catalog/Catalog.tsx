@@ -16,17 +16,15 @@ function chunk (arr, len=1) {
 
 
 export const CATALOG_QUERY = gql`
-  query allCategories {
-    allCategories {
+  query categories {
+    categories {
       name
       id
       alias
       parent {
         id
       }
-      image {
-        url
-      }
+      image
     }
   }
 `;
@@ -52,7 +50,7 @@ class CatalogRow extends React.Component<any,any> {
                 <Flex.Item>
                   <Link to={`/category/${cat.id}`}>
                     <img
-                      src={cat.image ? cat.image.url : ""}
+                      src={`http://buybag.com.ua/media/${cat.image}` || ""}
                       onLoad={() => {
                         // fire window resize event to change height
                         window.dispatchEvent(new Event('resize'));
@@ -76,14 +74,14 @@ class CatalogRow extends React.Component<any,any> {
 
 class Catalog extends React.Component<any,any> {
   render() {
-    const { loading, allCategories } = this.props.data;
+    const { loading, categories } = this.props.data;
     if (loading == true) {
       return <div>Loading...</div>
     }
 
     const startCats: any = [];
     const childrenMap: any = {};
-    for (let cat of allCategories) {
+    for (let cat of categories) {
       if (cat.parent) {
         const key = cat.parent.id;
         if (!(key in childrenMap)) {

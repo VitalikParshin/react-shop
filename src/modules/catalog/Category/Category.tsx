@@ -9,39 +9,28 @@ import { CATEGORY_QUERY } from "../model";
 const options = {
   options: props => ({
     variables: {
-      filter: {
-        id: props.id
-      }
+      id: props.id
     }
   })
 };
 
 class Category extends React.Component<any,any> {
   render() {
-    const { loading, allCategories } = this.props.data;
+    const { loading, categories } = this.props.data;
     if (loading == true) {
       return <div>Loading...</div>
     }
-    const category = allCategories[0]
-    const { products } = category;
+    const category = categories[0];
     return (
       <div>
         <h1>{category.name}</h1>
-        <Product {...products[0]}/>
-        <WhiteSpace/>
-        <Product {...products[0]}/>
-        <WhiteSpace/>
-        <Product {...products[0]}/>
-        <WhiteSpace/>
-{/*        
-        {products.map(product => (
-          <Product {...product}/> 
-        ))}
-*/}      
+        <Products categoryId={category.id}/>
       </div>
     )
   }
 }
+
+        // <Products categoryId={category.id}/>
 
 const mapStateToProps: any = (state) => ({})
 

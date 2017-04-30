@@ -1,6 +1,10 @@
 import * as React from "react";
 import { Carousel, WhiteSpace, WingBlank } from "antd-mobile";
 
+const imageUrl = (image) => {
+  return `http://buybag.com.ua/media/${image.image}`;
+}
+
 class Images extends React.Component<any, any> {
   
   state = {
@@ -22,7 +26,7 @@ class Images extends React.Component<any, any> {
         >    
           {this.props.images.map(image => (
             <img 
-              src={image.url} 
+              src={imageUrl(image)}
               onLoad={() => {
                 window.dispatchEvent(new Event('resize'));
                 this.setState({
