@@ -8,6 +8,7 @@ import { CATEGORY_QUERY } from "../model";
 
 const options = {
   options: props => ({
+    skip: true,
     variables: {
       id: props.id
     }
@@ -16,14 +17,18 @@ const options = {
 
 class Category extends React.Component<any,any> {
   render() {
-    const { loading, id, category } = this.props.data;
-    if (loading == true) {
-      return <div>Loading...</div>
-    }
+    const { 
+      id, 
+      // loading, 
+      // category 
+    } = this.props;
+    // if (loading == true) {
+    //   return <div>Loading...</div>
+    // }
+        // <h1>{category.name} - {category.id}</h1>
     return (
       <div>
-        <h1>{category.name} - {category.id}</h1>
-        <Products categoryId={category.id}/>
+        <Products categoryId={id}/>
       </div>
     )
   }

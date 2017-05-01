@@ -2,7 +2,7 @@ import * as React from "react";
 import { Carousel, WhiteSpace, WingBlank } from "antd-mobile";
 
 const imageUrl = (image) => {
-  return `http://buybag.com.ua/media/${image.image}`;
+  return `${image.image}`;
 }
 
 class Images extends React.Component<any, any> {
@@ -16,7 +16,7 @@ class Images extends React.Component<any, any> {
     return (
       <WingBlank>
         <Carousel
-          className="my-carousel" autoplay={false} infinite selectedIndex={1}
+          className="my-carousel" autoplay={false} infinite selectedIndex={0}
           beforeChange={(from, to) => console.log(`slide from ${from} to ${to}`)}
           afterChange={index => console.log('slide to', index)}
           style={{

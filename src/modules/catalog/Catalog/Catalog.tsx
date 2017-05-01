@@ -14,7 +14,6 @@ function chunk (arr, len=1) {
   return chunks;
 }
 
-
 export const CATALOG_QUERY = gql`
   query categories {
     categories {
@@ -50,7 +49,7 @@ class CatalogRow extends React.Component<any,any> {
                 <Flex.Item>
                   <Link to={`/category/${cat.id}`}>
                     <img
-                      src={`http://buybag.com.ua/media/${cat.image}` || ""}
+                      src={cat.image || ""}
                       onLoad={() => {
                         // fire window resize event to change height
                         window.dispatchEvent(new Event('resize'));
