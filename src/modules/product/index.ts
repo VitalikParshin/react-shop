@@ -1,7 +1,7 @@
 import Images from "./Images/Images";
-import SubProduct from "./SubProduct/SubProduct";
+import Product from "./Product/Product";
 
 export {
+  Product,
   Images,
-  SubProduct,
 }

@@ -3,17 +3,13 @@ import { gql, compose, graphql } from "react-apollo";
 import { connect } from "react-redux";
 import { Drawer, List, NavBar, Icon, WingBlank, Carousel, Flex, Card } from "antd-mobile";
 import { Link } from "react-router-dom";
-import { PRODUCT_QUERY } from "../model";
+import { PRODUCTS_QUERY } from "../model";
 import { Product } from "../index";
 
 const options = {
   options: props => ({
     variables: {
-      filter: {
-        category: {
-          id: props.categoryId
-        }
-      }
+      categoryId: props.categoryId
     }
   })
 };
@@ -40,5 +36,5 @@ const mapStateToProps: any = (state) => ({})
 
 export default compose(
     connect<any, {}, any>(mapStateToProps),
-    graphql(PRODUCT_QUERY, options),
+    graphql(PRODUCTS_QUERY, options),
 )(Products);

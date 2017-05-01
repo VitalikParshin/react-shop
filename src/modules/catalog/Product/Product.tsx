@@ -4,11 +4,10 @@ import { Images } from "../../product/index";
 import { Link } from "react-router-dom";
 
 const Product = (props) => {
-  const { id, name, images, subProducts } = props;
-  const subproduct = subProducts[0];
+  const { id, name, images } = props;
   return <Card>
     <Images images={images}/>
-    <Link to={`/product/${subproduct.id}`}>
+    <Link to={`/product/${id}`}>
       {props.name}
     </Link>
   </Card>

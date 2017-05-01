@@ -16,14 +16,13 @@ const options = {
 
 class Category extends React.Component<any,any> {
   render() {
-    const { loading, categories } = this.props.data;
+    const { loading, id, category } = this.props.data;
     if (loading == true) {
       return <div>Loading...</div>
     }
-    const category = categories[0];
     return (
       <div>
-        <h1>{category.name}</h1>
+        <h1>{category.name} - {category.id}</h1>
         <Products categoryId={category.id}/>
       </div>
     )

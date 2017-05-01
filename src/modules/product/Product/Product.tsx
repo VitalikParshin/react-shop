@@ -2,34 +2,32 @@ import * as React from "react";
 import { gql, compose, graphql } from "react-apollo";
 import { connect } from "react-redux";
 import { Images } from "../index";
-import { SUB_PRODUCT_QUERY } from "../../catalog/model";
+import { PRODUCT_QUERY } from "../../catalog/model";
 
-interface ConnectedSubProductProps {
+interface ConnectedProductProps {
   data?: any;
 };
 
-interface SubProductProps {
+interface ProductProps {
+  id: Number;
 };
 
 const options = {
   options: props => ({
     variables: {
-      filter: {
-        id: props.id
-      }
+      id: props.id
     }
   })
 };
 
-class SubProduct extends React.Component<ConnectedSubProductProps, SubProductProps> {
+class Product extends React.Component<ConnectedProductProps, ProductProps> {
   render() {
-    const { loading, allSubProducts } = this.props.data;
+    const { loading, product } = this.props.data;
     if (loading == true) {
       return <div>Loading...</div>
     }
-    const sProduct = allSubProducts[0];
-    const { product } = sProduct;
-    const { brand, images } = product;
+    const { brand, images, subProducts } = product;
+    const sProduct = subProducts[0];
     return (
       <div>
         <Images images={images}/>
@@ -50,6 +48,6 @@ const mapStateToProps: any = (state) => ({
 })
 
 export default compose(
-    connect<ConnectedSubProductProps, {}, SubProductProps>(mapStateToProps),
-    graphql(SUB_PRODUCT_QUERY, options),
-)(SubProduct);
+    connect<ConnectedProductProps, {}, ProductProps>(mapStateToProps),
+    graphql(PRODUCT_QUERY, options),
+)(Product);

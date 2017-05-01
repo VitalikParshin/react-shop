@@ -1,12 +1,13 @@
 import * as React from "react";
-import { SubProduct } from "../../modules/product/index";
+import { Product } from "../../modules/product/index";
 
-class SubProductPage extends React.Component<any,any> {
+class ProductPage extends React.Component<any,any> {
     render() {
+        const {match} = this.props
         return (
-            <div><SubProduct/></div>
+            <div><Product id={match.params.id}/></div>
         )
     }
 }
 
-export default SubProductPage;
+export default ProductPage;
