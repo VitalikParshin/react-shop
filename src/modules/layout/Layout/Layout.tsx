@@ -16,9 +16,7 @@ class Layout extends React.Component<any,any> {
           </List>
         </WingBlank>
 
-        <WingBlank>
-          {this.props.children}
-        </WingBlank>
+        {this.props.children}
 
         <Footer/>
       </div>

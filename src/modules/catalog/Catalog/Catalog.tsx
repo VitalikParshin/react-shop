@@ -50,7 +50,7 @@ class CatalogRow extends React.Component<any,any> {
               justify="between" 
             >
               {cats.map(cat => (
-                <Flex.Item>
+                <Flex.Item style={{textAlign: "center"}}>
                   <Link to={`/category/${cat.id}`}>
                     <img
                       src={cat.image || ""}
