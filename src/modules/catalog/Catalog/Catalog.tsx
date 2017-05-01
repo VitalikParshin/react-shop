@@ -36,15 +36,19 @@ class CatalogRow extends React.Component<any,any> {
     const hProp = this.state.initialHeight ? { height: this.state.initialHeight } : {};
     const { parent, children } = this.props;
     return (
-      <WingBlank>
+      <div>
         <h2 className="sub-title">{parent.name}</h2>
+        {/*
         <Carousel
           autoplay={false} infinite selectedIndex={0}
           beforeChange={(from, to) => console.log(`slide from ${from} to ${to}`)}
           afterChange={index => console.log('slide to', index)}
         >
+        */}
           {chunk(children, 2).map(cats => (
-            <Flex>
+            <Flex 
+              justify="between" 
+            >
               {cats.map(cat => (
                 <Flex.Item>
                   <Link to={`/category/${cat.id}`}>
@@ -64,8 +68,10 @@ class CatalogRow extends React.Component<any,any> {
               ))}
             </Flex>
           ))}
+          {/*
         </Carousel>
-      </WingBlank>
+        */}
+      </div>
     );
   }
 }

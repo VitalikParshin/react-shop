@@ -3,6 +3,7 @@ import { gql, compose, graphql } from "react-apollo";
 import { connect } from "react-redux";
 import { Images } from "../index";
 import { PRODUCT_QUERY } from "../../catalog/model";
+import {Button, Flex} from "antd-mobile";
 
 interface ConnectedProductProps {
   data?: any;
@@ -39,6 +40,14 @@ class Product extends React.Component<ConnectedProductProps, ProductProps> {
             {sProduct.oldPrice} грн
           </div>
         </div>
+        <Flex>
+          <Flex.Item>
+            <Button><a href="tel: +380661983831">Позвонить</a></Button>
+          </Flex.Item>
+          <Flex.Item>
+            <Button>Купить</Button>
+          </Flex.Item>
+        </Flex>
       </div>
     )
   }

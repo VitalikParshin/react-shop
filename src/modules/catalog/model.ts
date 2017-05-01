@@ -115,10 +115,10 @@ export const PRODUCTS_QUERY = gql`
         id
         name
       }        
-      images {
+      titleImage {
         id
         image
-      }        
+      }   
       subProducts {
         id
         article
