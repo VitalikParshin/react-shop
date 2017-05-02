@@ -101,8 +101,8 @@ export const PRODUCT_QUERY = gql`
 `;
 
 export const PRODUCTS_QUERY = gql`
-  query products($categoryId: Int) {
-    products(categoryId: $categoryId) {
+  query products($categoryId: Int, $offset: Int, $limit: Int) {
+    products(categoryId: $categoryId, offset: $offset, limit: $limit) {
       id
       name
       shortDescription

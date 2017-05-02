@@ -18,7 +18,6 @@ class Layout extends React.Component<any,any> {
 
         {this.props.children}
 
-        <Footer/>
       </div>
     )
   }
