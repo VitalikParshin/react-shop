@@ -4,6 +4,7 @@ import Footer from "./Footer/Footer";
 import Loading from "./Loading/Loading";
 import SidebarCatalog from "./SidebarCatalog/SidebarCatalog";
 import Catalog from "./Catalog/Catalog";
+import CatalogTrigger from "./CatalogTrigger/CatalogTrigger";
 import SubCatalog from "./SubCatalog/SubCatalog";
 import reducer from "./reducer";
 
@@ -12,6 +13,7 @@ export {
   Layout,
   Footer,
   Loading,
+  CatalogTrigger,
   Catalog,
   SubCatalog,
   SidebarCatalog,

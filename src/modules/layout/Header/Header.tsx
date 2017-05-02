@@ -1,6 +1,9 @@
 import * as React from "react";
 import { List, WingBlank, Flex, Button, NoticeBar, NavBar, Icon, Card } from "antd-mobile";
 import { Link } from  "react-router-dom";
+import {CatalogTrigger} from "../index";
+
+          // <Flex.Item><Icon style={{color:"white"}} type="ellipsis"/></Flex.Item>
 
 class Header extends React.Component<any,any> {
   render() {
@@ -14,8 +17,7 @@ class Header extends React.Component<any,any> {
         zIndex: 100,
       }}>
         <Flex justify="between">
-          <Flex.Item><Link to="/"><span style={{color: "white"}}>Home</span></Link></Flex.Item>
-          <Flex.Item><Icon style={{color:"white"}} type="ellipsis"/></Flex.Item>
+          <Flex.Item><CatalogTrigger/></Flex.Item>
         </Flex>
       </div>
     )
