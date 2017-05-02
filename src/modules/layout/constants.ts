@@ -1,1 +1,2 @@
 export const ACTION_TOOTLE_FILTERS = "layout.TOOTLE_FILTERS";
+export const ACTION_TOOTLE_CATALOG = "layout.TOOTLE_CATALOG";

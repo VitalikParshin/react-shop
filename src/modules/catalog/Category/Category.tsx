@@ -16,7 +16,7 @@ import {
 import { Link } from "react-router-dom";
 import {Products, Product, Filters, FilterTrigger} from "../index";
 import {CATEGORY_QUERY} from "../model";
-import { ACTION_TOOTLE_FILTERS } from "../../layout/constants";
+import {ACTION_TOOTLE_FILTERS, ACTION_TOOTLE_CATALOG} from "../../layout/constants";
 import Sidebar from "react-sidebar";
 
 const options = {
@@ -57,7 +57,11 @@ class Category extends React.Component<any,any> {
       >
         <div style={{paddingTop: 80, margin: "0 10px"}}>
           <Flex>
-            <Flex.Item><Button>КАТАЛОГ</Button></Flex.Item>
+            <Flex.Item>
+              <Button onClick={() => dispatch({type:ACTION_TOOTLE_CATALOG})}>
+                КАТАЛОГ
+              </Button>
+            </Flex.Item>
             <Flex.Item><FilterTrigger /></Flex.Item>
           </Flex>
           <Products categoryId={id}/>
@@ -66,8 +70,6 @@ class Category extends React.Component<any,any> {
     )
   }
 }
-
-        // <Products categoryId={category.id}/>
 
 const mapStateToProps: any = (state) => ({
   layout: state.layout,
