@@ -17,7 +17,7 @@ const Product = (props) => {
               <Flex justify="center" style={{ height: 320 }}>
                 <img style={{ maxWidth: 250, maxHeight: 300 }} src={titleImage.image}/>
               </Flex>
-            </Link>            
+            </Link>
 
             <Link to={url} style={{fontSize: "0.2rem"}}>
               {props.name} { subProduct.article }

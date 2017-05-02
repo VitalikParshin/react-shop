@@ -15,6 +15,7 @@ import {
 import {Link} from "react-router-dom";
 import { PRODUCTS_QUERY } from "../model";
 import { Product } from "../index";
+import {Loading} from "../../layout/index";
 
 const LIMIT = 20;
 
@@ -45,14 +46,14 @@ const options = {
         });
       },
     };
-  }  
+  }
 };
 
 class Products extends React.Component<any,any> {
   render() {
     const { loading, products, fetchMore } = this.props;
     if (loading == true) {
-      return <div>Loading...</div>
+      return <Loading/>
     }
 
     return (
@@ -66,8 +67,8 @@ class Products extends React.Component<any,any> {
           {products.length % LIMIT == 0 ? (
             <Button disabled={loading} loading={loading} type="primary" onClick={fetchMore}>
               ЕЩЕ ТОВАРОВ
-            </Button>    
-          ) : ""} 
+            </Button>
+          ) : ""}
         </div>
       </div>
     )

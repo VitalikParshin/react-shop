@@ -17,15 +17,7 @@ const options = {
 
 class Category extends React.Component<any,any> {
   render() {
-    const { 
-      id, 
-      // loading, 
-      // category 
-    } = this.props;
-    // if (loading == true) {
-    //   return <div>Loading...</div>
-    // }
-        // <h1>{category.name} - {category.id}</h1>
+    const { id } = this.props;
     return (
       <div>
         <Products categoryId={id}/>

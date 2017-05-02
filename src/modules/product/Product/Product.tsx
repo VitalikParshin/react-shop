@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import { Images } from "../index";
 import { PRODUCT_QUERY } from "../../catalog/model";
 import {Button, Flex} from "antd-mobile";
+import {Loading} from "../../layout/index";
 
 interface ConnectedProductProps {
   data?: any;
@@ -25,7 +26,7 @@ class Product extends React.Component<ConnectedProductProps, ProductProps> {
   render() {
     const { loading, product } = this.props.data;
     if (loading == true) {
-      return <div>Loading...</div>
+      return <Loading/>
     }
     const { brand, images, subProducts } = product;
     const sProduct = subProducts[0];

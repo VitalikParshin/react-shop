@@ -8,15 +8,9 @@ class Layout extends React.Component<any,any> {
     return (
       <div>
         <Header/>
-
-        <WingBlank>
-          <List>
-          <List.Item><Link to="/">Home</Link></List.Item>
-          </List>
-        </WingBlank>
-
-        {this.props.children}
-
+        <div style={{paddingTop: 68}}>
+          {this.props.children}
+        </div>
       </div>
     )
   }

@@ -1,0 +1,30 @@
+{
+    "version": "0.1.0",
+    "configurations": [
+
+        {
+            "name": "Attach",
+            "type": "node",
+            "request": "attach",
+            "port": 9222,
+            "sourceMaps": true,
+            "smartStep": true
+        },
+	    {
+            "name": "Launch",
+            "type": "chrome",
+            "request": "launch",
+            "webRoot": "${workspaceRoot}",
+            "url": "http://localhost:3000",
+            "userDataDir": "${workspaceRoot}/.vscode/chrome",
+            "sourceMaps": true,
+            "preLaunchTask": "development",
+            "smartStep": true,
+            "internalConsoleOptions": "openOnSessionStart",
+            "skipFiles": [
+                "node_modules/**"
+            ],
+            "port": 9222
+        }
+    ]
+}

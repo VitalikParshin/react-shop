@@ -13,8 +13,9 @@ import {
   Grid
 } from "antd-mobile";
 import {Link} from "react-router-dom";
+import {Loading} from "../../layout/index";
 
-function chunk (arr, len=1) {
+function chunk(arr, len = 1) {
   var chunks: any = [],
       i = 0,
       n = arr.length;
@@ -45,7 +46,7 @@ class CatalogRow extends React.Component<any,any> {
   render() {
     const hProp = this.state.initialHeight ? { height: this.state.initialHeight } : {};
     const { parent, children } = this.props;
-    
+
     return (
       <div>
         <h2 className="sub-title">{parent.name}</h2>
@@ -96,7 +97,7 @@ class Catalog extends React.Component<any,any> {
   render() {
     const { loading, categories } = this.props.data;
     if (loading == true) {
-      return <div>Loading...</div>
+      return <Loading/>
     }
 
     const startCats: any = [];
@@ -116,10 +117,10 @@ class Catalog extends React.Component<any,any> {
     return (
       <div>
         {startCats.map(parent => (
-          <CatalogRow 
-            parent={parent} 
-            children={childrenMap[parent.id]} 
-          /> 
+          <CatalogRow
+            parent={parent}
+            children={childrenMap[parent.id]}
+          />
         ))}
       </div>
     )
