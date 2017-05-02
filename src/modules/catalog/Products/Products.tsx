@@ -16,12 +16,14 @@ import {Link} from "react-router-dom";
 import { PRODUCTS_QUERY } from "../model";
 import { Product } from "../index";
 
+const LIMIT = 20;
+
 const options = {
   options: props => ({
     variables: {
       categoryId: props.categoryId,
       offset: 0,
-      limit: 10,
+      limit: LIMIT,
     },
     fetchPolicy: "network-only",
   }),
@@ -61,9 +63,11 @@ class Products extends React.Component<any,any> {
           ))}
         </div>
         <div style={{clear: "both"}}>
-          <Button disabled={loading} loading={loading} type="primary" onClick={fetchMore}>
-            ЕЩЕ ТОВАРОВ
-          </Button>    
+          {products.length % LIMIT == 0 ? (
+            <Button disabled={loading} loading={loading} type="primary" onClick={fetchMore}>
+              ЕЩЕ ТОВАРОВ
+            </Button>    
+          ) : ""} 
         </div>
       </div>
     )
