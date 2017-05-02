@@ -49,12 +49,14 @@ class Category extends React.Component<any,any> {
     return (
       <Sidebar
         pullRight
+        touch
+        touchHandleWidth={50}
         sidebar={<Filters/>}
         open={layout.openFilters}
         onSetOpen={this.onSetSidebarOpen as any}
       >
-        <div style={{marginTop: 80}}>
-          <Flex >
+        <div style={{paddingTop: 80}}>
+          <Flex>
             <Flex.Item><Button>КАТАЛОГ</Button></Flex.Item>
             <Flex.Item><FilterTrigger /></Flex.Item>
           </Flex>

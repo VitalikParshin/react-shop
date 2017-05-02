@@ -12,11 +12,12 @@ class Layout extends React.Component<any,any> {
     return (
       <div>
         <Header/>
-        {this.props.children}
+        <div style={{paddingTop: 90}}>
+          {this.props.children}
+        </div>
       </div>
     )
   }
 }
-
 
 export default Layout;

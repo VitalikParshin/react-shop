@@ -7,6 +7,7 @@ class Header extends React.Component<any,any> {
   render() {
     return (
       <div style={{
+        top: 0,
         background: "#08c",
         position: "fixed",
         width: "100%",
