@@ -65,7 +65,7 @@ class CatalogRow extends React.Component<any,any> {
                   {cats.map(cat => (
                     <Flex.Item style={{
                         textAlign: "center",
-                        height: 200
+                        height: 190
                     }}>
                       <Link to={`/category/${cat.id}`}>
                         <img

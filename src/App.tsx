@@ -14,9 +14,9 @@ const App = () => {
     <ApolloProvider store={store} client={client}>
       <ConnectedRouter history={history}>
         <Layout>
-            <Route exact path="/" component={HomePage} />
-            <Route exact path="/category/:id" component={CategoryPage} />
-            <Route exact path="/product/:id" component={ProductPage} />
+          <Route exact path="/" component={HomePage} />
+          <Route exact path="/category/:id" component={CategoryPage} />
+          <Route exact path="/product/:id" component={ProductPage} />
         </Layout>
       </ConnectedRouter>
     </ApolloProvider>

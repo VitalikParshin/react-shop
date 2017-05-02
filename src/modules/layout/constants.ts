@@ -1,0 +1,1 @@
+export const ACTION_TOOTLE_FILTERS = "layout.TOOTLE_FILTERS";
