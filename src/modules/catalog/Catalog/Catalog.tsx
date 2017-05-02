@@ -1,8 +1,18 @@
 import * as React from "react";
 import { gql, compose, graphql } from "react-apollo";
 import { connect } from "react-redux";
-import { Drawer, List, NavBar, Icon, WingBlank, Carousel, Flex, Card } from "antd-mobile";
-import { Link } from "react-router-dom";
+import {
+  Drawer,
+  List,
+  NavBar,
+  Icon,
+  WingBlank,
+  Carousel,
+  Flex,
+  Card,
+  Grid
+} from "antd-mobile";
+import {Link} from "react-router-dom";
 
 function chunk (arr, len=1) {
   var chunks: any = [],
@@ -35,6 +45,7 @@ class CatalogRow extends React.Component<any,any> {
   render() {
     const hProp = this.state.initialHeight ? { height: this.state.initialHeight } : {};
     const { parent, children } = this.props;
+    
     return (
       <div>
         <h2 className="sub-title">{parent.name}</h2>
@@ -45,32 +56,36 @@ class CatalogRow extends React.Component<any,any> {
           afterChange={index => console.log('slide to', index)}
         >
         */}
-          {chunk(children, 2).map(cats => (
-            <Flex 
-              justify="between" 
-            >
-              {cats.map(cat => (
-                <Flex.Item style={{textAlign: "center"}}>
-                  <Link to={`/category/${cat.id}`}>
-                    <img
-                      src={cat.image || ""}
-                      onLoad={() => {
-                        // fire window resize event to change height
-                        window.dispatchEvent(new Event('resize'));
-                        this.setState({
-                          initialHeight: null,
-                        });
-                      }}
-                    />
-                    <div>{cat.name}</div>
-                  </Link>
-                </Flex.Item>
+        <Card full>
+          <Card.Body styles={{}}>
+            <div>
+              {chunk(children, 2).map(cats => (
+                <Flex>
+                  {cats.map(cat => (
+                    <Flex.Item style={{
+                        textAlign: "center",
+                        height: 200
+                    }}>
+                      <Link to={`/category/${cat.id}`}>
+                        <img
+                          src={cat.image || ""}
+                          onLoad={() => {
+                            // fire window resize event to change height
+                            window.dispatchEvent(new Event('resize'));
+                            this.setState({
+                              initialHeight: null,
+                            });
+                          }}
+                        />
+                        <div>{cat.name}</div>
+                      </Link>
+                    </Flex.Item>
+                  ))}
+                </Flex>
               ))}
-            </Flex>
-          ))}
-          {/*
-        </Carousel>
-        */}
+            </div>
+          </Card.Body>
+        </Card>
       </div>
     );
   }

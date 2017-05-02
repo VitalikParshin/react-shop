@@ -42,7 +42,7 @@ class Product extends React.Component<ConnectedProductProps, ProductProps> {
         </div>
         <Flex>
           <Flex.Item>
-            <Button><a href="tel: +380661983831">Позвонить</a></Button>
+            <Button><a href="tel:+380661983831;+380662343234">Позвонить</a></Button>
           </Flex.Item>
           <Flex.Item>
             <Button>Купить</Button>

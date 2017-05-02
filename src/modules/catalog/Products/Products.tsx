@@ -22,9 +22,12 @@ class Products extends React.Component<any,any> {
     }
 
     return (
+      // <Flex wrap="wrap" align="center">
       <div>
         {products.map(product => (
-          <Product {...product} /> 
+          // <Flex.Item style={{width:"50%"}}>
+            <Product {...product} />
+          // </Flex.Item>
         ))}
       </div>
     )
