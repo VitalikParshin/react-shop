@@ -1,7 +1,6 @@
 import * as React from "react";
 import { List, WingBlank, Flex, Button, NoticeBar, NavBar, Icon, Card } from "antd-mobile";
 import { Link } from  "react-router-dom";
-import Sidebar from 'react-sidebar';
 
 class Header extends React.Component<any,any> {
   render() {

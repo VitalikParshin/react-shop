@@ -11,7 +11,6 @@ import {
 } from "antd-mobile";
 import {Images} from "../../product/index";
 import { Link } from "react-router-dom";
-import Sidebar from "react-sidebar";
 import { compose } from "react-apollo";
 import { connect } from "react-redux";
 
