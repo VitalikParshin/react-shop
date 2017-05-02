@@ -1,8 +1,7 @@
 import * as React from "react";
-import { WingBlank, List } from "antd-mobile";
+import { Icon, WingBlank, List, Button } from "antd-mobile";
 import { Link } from "react-router-dom";
 import { Header, Footer } from "../index";
-
 
 class Layout extends React.Component<any,any> {
   render() {

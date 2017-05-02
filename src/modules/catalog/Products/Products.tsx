@@ -62,7 +62,7 @@ class Products extends React.Component<any,any> {
             <Product {...product} />
           ))}
         </div>
-        <div style={{clear: "both"}}>
+        <div style={{ clear: "both", padding: 5 }}>
           {products.length % LIMIT == 0 ? (
             <Button disabled={loading} loading={loading} type="primary" onClick={fetchMore}>
               ЕЩЕ ТОВАРОВ
