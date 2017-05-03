@@ -29,21 +29,22 @@ module.exports = {
 
   module: {
     loaders: [
-      { 
-        test: /\.tsx?$/, 
+      {
+        test: /\.tsx?$/,
         loader: "babel-loader!awesome-typescript-loader",
       },
       { test: /\.less$/, loader: ExtractTextPlugin.extract("css?sourceMap!postcss-loader!less?sourceMap") },
       { test: /\.css$/, loader: ExtractTextPlugin.extract("css?sourceMap!postcss-loader") },
-      { test: /\.(jpg|png)$/, loader: "url?limit=8192" }, 
+      { test: /\.(jpg|png)$/, loader: "url?limit=8192" },
       {
         test: /\.(svg)$/i,
         loader: 'svg-sprite',
         include: [
-          require.resolve('antd-mobile').replace(/warn\.js$/, ''),  // 1. 属于 antd-mobile 内置 svg 文件
+          require.resolve('antd-mobile').replace(/warn\.js$/, ''),
           // path.resolve(__dirname, 'src/my-project-svg-foler'),  // 2. 自己私人的 svg 存放目录
-        ],  // 把 svgDirs 路径下的所有 svg 文件交给 svg-sprite-loader 插件处理
-      },            // { test: /\.less$/i, loader: ExtractTextPlugin.extract('style', 'css!postcss!less') },
+
+        ],
+      },
 
     ],
     preLoaders: [
@@ -64,11 +65,11 @@ module.exports = {
   },
 
   plugins: [
-    // new SpriteLoaderPlugin(),    
+    // new SpriteLoaderPlugin(),
     new webpack.DefinePlugin({
       "process.env.NODE_ENV": JSON.stringify(process.env.NODE_ENV),
       "process.env.DEBUG": process.env.NODE_ENV == "development",
-    }),    
+    }),
     new webpack.optimize.CommonsChunkPlugin("common", "common.js"),
     // new webpack.optimize.CommonsChunkPlugin('shared.js'),
     new ExtractTextPlugin("bundle.css", { disable: false, allChunks: true }),
