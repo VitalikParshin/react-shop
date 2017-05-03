@@ -9,19 +9,20 @@ import { ShoppingCartTrigger } from "../../shoppingCart/index";
 class Header extends React.Component<any,any> {
   render() {
     return (
-      <div style={{
-        top: 0,
-        background: "#08c",
-        position: "fixed",
-        width: "100%",
-        padding: 10,
-        zIndex: 100,
-      }}>
-        <Flex justify="between">
-          <Flex.Item><CatalogTrigger/></Flex.Item>
-          <Flex.Item><ShoppingCartTrigger/></Flex.Item>
-        </Flex>
-      </div>
+      <Flex
+        justify="between"
+        style={{
+          top: 0,
+          background: "#08c",
+          position: "fixed",
+          width: "100%",
+          padding: 10,
+          zIndex: 100,
+        }}
+      >
+        <Flex.Item><CatalogTrigger/></Flex.Item>
+        <Flex.Item style={{maxWidth: 80}}><ShoppingCartTrigger/></Flex.Item>
+      </Flex>
     )
   }
 }

@@ -10,6 +10,7 @@ class FilterTrigger extends React.Component<any,any> {
     this.props.dispatch({type: ACTION_TOOTLE_CATALOG})
   }
 
+
   render() {
     return (
       <Icon type={require("!svg-sprite!./menu.svg")} onClick={this.onClick} />
