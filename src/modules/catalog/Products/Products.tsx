@@ -127,13 +127,8 @@ class Products extends React.Component<any,any> {
   render() {
     const { loading, products, fetchMore } = this.props;
     if (loading == true) {
-      return <MasonryLayout
-          sizes={[{ columns: 2, gutter: 10 }]}
-          id="items"
-          infiniteScrollLoading={true}
-      >{this.state.items.map(item => <div></div>)}</MasonryLayout>
+      return <Loading/>
     }
-    this.setState({loading: false})
     return (
       <div>
         <MasonryLayout

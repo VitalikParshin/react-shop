@@ -29,7 +29,7 @@ const Product = (props) => {
       borderRadius: 3,
       background: "white",
     }}>
-      <div style={{padding: 10}}>
+      <div style={{padding: 12}}>
         <Link to={url} style={{display: "block", textAlign: "center"}}>
           <img
             height={scaleImageSize(titleImage.width, titleImage.height, screen.width * 2 / 2.5).height}
