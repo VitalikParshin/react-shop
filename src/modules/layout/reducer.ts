@@ -1,3 +1,5 @@
+import update from "immutability-helper";
+
 import {
   ACTION_TOOTLE_FILTERS,
   ACTION_TOOTLE_CATALOG,
@@ -11,13 +13,13 @@ const DEFAULT_LAYOUT = {
 const layout = (state = DEFAULT_LAYOUT, action) => {
   switch (action.type) {
     case ACTION_TOOTLE_FILTERS:
-      return {
-        openFilters: !state.openFilters
-      };
+      return update(DEFAULT_LAYOUT, {
+        openFilters: {$set: !state.openFilters}
+      });
     case ACTION_TOOTLE_CATALOG:
-      return {
-        openCatalog: !state.openCatalog
-      };
+      return update(DEFAULT_LAYOUT, {
+        openCatalog: {$set: !state.openCatalog}
+      });
     default:
       return state;
   }

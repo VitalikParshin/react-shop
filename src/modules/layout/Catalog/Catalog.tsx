@@ -57,7 +57,7 @@ class Catalog extends React.Component<any,any> {
     if (isDrawer === true) {
       style["width"] = 500;
       style["background"] = "aliceblue";
-      style["padding-top"] = 65;
+      style["padding"] = "65px 10px 10px 10px";
     }
 
     return (
@@ -69,6 +69,7 @@ class Catalog extends React.Component<any,any> {
             }}>{parent.name}</h2>
             <SubCatalog
               children={childrenMap[parent.id]}
+              isDrawer={isDrawer}
             />
           </div>
         ))}

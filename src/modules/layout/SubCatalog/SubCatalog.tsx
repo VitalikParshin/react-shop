@@ -32,7 +32,7 @@ class SubCatalog extends React.Component<any,any> {
                 style={{textAlign: "center", margin: 5}
             }>
                 <Card>
-                  <div style={{paddingTop: 30, height: 190}}>
+                  <div style={{paddingTop: 30, height: 190}} onClick={(event) => {dispatch({type: ACTION_TOOTLE_CATALOG})}}>
                     <Link
                       // onClick={()=>dispatch({type: ACTION_TOOTLE_CATALOG})}
                       to={`/category/${cat.id}`}

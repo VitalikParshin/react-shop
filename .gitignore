@@ -23,3 +23,4 @@ npm-debug.log
 dist
 dump.rdb
 steam.dmg
+yarn.lock
