@@ -112,18 +112,6 @@ const defaultItems = [undefined, undefined, undefined, undefined, undefined, und
 
 
 class Products extends React.Component<any,any> {
-
-  static defaultProps = {
-    maxCount: 5,
-    perPage: 10,
-  }
-
-  state = {
-    count: 0,
-    isLoading: true,
-    items: [undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined]
-  }
-
   render() {
     const { loading, products, fetchMore } = this.props;
     if (loading == true) {
@@ -134,6 +122,8 @@ class Products extends React.Component<any,any> {
         <MasonryLayout
           sizes={[{ columns: 2, gutter: 10 }]}
           id="items"
+          infiniteScroll={fetchMore}
+          infiniteScrollLoading={loading}
         >
           {products.map((product, i) => {
             return <Product key={i} {...product}/>
