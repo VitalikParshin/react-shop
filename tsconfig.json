@@ -15,12 +15,12 @@
         ],
         "noImplicitAny": false,
         "pretty": true,
-        "allowJs": false,  
+        "allowJs": false,
         "removeComments": true,
         "strictNullChecks": true,
         "types": [
             "node"
-        ]        
+        ]
     },
     "exclude": [
       "node_modules"

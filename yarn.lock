@@ -1127,6 +1127,12 @@ braces@^1.8.2:
     preserve "^0.2.0"
     repeat-element "^1.1.2"
 
+bricks.js@^1.1.2:
+  version "1.8.0"
+  resolved "https://registry.yarnpkg.com/bricks.js/-/bricks.js-1.8.0.tgz#8fdeb3c0226af251f4d5727a7df7f9ac0092b4b2"
+  dependencies:
+    knot.js "^1.1.5"
+
 browserify-aes@0.4.0:
   version "0.4.0"
   resolved "https://registry.yarnpkg.com/browserify-aes/-/browserify-aes-0.4.0.tgz#067149b668df31c4b58533e02d01e806d8608e2c"
@@ -2424,6 +2430,10 @@ kind-of@^3.0.2:
   dependencies:
     is-buffer "^1.0.2"
 
+knot.js@^1.1.5:
+  version "1.1.5"
+  resolved "https://registry.yarnpkg.com/knot.js/-/knot.js-1.1.5.tgz#28e72522f703f50fe98812fde224dd72728fef5d"
+
 kw-react-tween-state@^0.1.5:
   version "0.1.5"
   resolved "https://registry.yarnpkg.com/kw-react-tween-state/-/kw-react-tween-state-0.1.5.tgz#744088988d35f14ccc2ca36af96bc09ece7ab78b"
@@ -3535,6 +3545,12 @@ react-hot-loader@3.0.0-beta.6:
     react-proxy "^3.0.0-alpha.0"
     redbox-react "^1.2.5"
     source-map "^0.4.4"
+
+react-masonry-layout@^0.2.3:
+  version "0.2.3"
+  resolved "https://registry.yarnpkg.com/react-masonry-layout/-/react-masonry-layout-0.2.3.tgz#3f931ceb1ac71bfa01373d1ad2ffe8f738bec56d"
+  dependencies:
+    bricks.js "^1.1.2"
 
 react-mixin@^3.0.5:
   version "3.0.5"

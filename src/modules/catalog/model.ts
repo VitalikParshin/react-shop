@@ -19,11 +19,11 @@ export const CATEGORY_QUERY = gql`
         category {
           id
           name
-        }        
+        }
         images {
           id
           image
-        }        
+        }
         subProducts {
           id
           article
@@ -52,11 +52,11 @@ export const CATEGORIES_QUERY = gql`
         category {
           id
           name
-        }        
+        }
         images {
           id
           image
-        }        
+        }
         subProducts {
           id
           article
@@ -84,11 +84,11 @@ export const PRODUCT_QUERY = gql`
       category {
         id
         name
-      }        
+      }
       images {
         id
         image
-      }        
+      }
       subProducts {
         id
         article
@@ -114,11 +114,13 @@ export const PRODUCTS_QUERY = gql`
       category {
         id
         name
-      }        
+      }
       titleImage {
         id
         image
-      }   
+        width
+        height
+      }
       subProducts {
         id
         article
