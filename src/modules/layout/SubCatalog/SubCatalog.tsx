@@ -20,7 +20,7 @@ class SubCatalog extends React.Component<any,any> {
     initialHeight: 400,
   }
   render() {
-    const { dispatch, children } = this.props;
+    const { dispatch, children, isDrawer } = this.props;
 
     return (
       <div>
@@ -32,7 +32,17 @@ class SubCatalog extends React.Component<any,any> {
                 style={{textAlign: "center", margin: 5}
             }>
                 <Card>
-                  <div style={{paddingTop: 30, height: 190}} onClick={(event) => {dispatch({type: ACTION_TOOTLE_CATALOG})}}>
+                  <div
+                    style={{
+                      paddingTop: 30,
+                      height: 190,
+                    }}
+                    onClick={
+                      isDrawer
+                      ? (event) => {dispatch({type: ACTION_TOOTLE_CATALOG})}
+                      : void null
+                    }
+                  >
                     <Link
                       // onClick={()=>dispatch({type: ACTION_TOOTLE_CATALOG})}
                       to={`/category/${cat.id}`}

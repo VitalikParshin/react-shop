@@ -18,7 +18,7 @@ import { Product } from "../index";
 import {Loading} from "../../layout/index";
 import MasonryLayout from "react-masonry-layout";
 
-const LIMIT = 20;
+const LIMIT = 10;
 
 const options = {
   options: props => ({
