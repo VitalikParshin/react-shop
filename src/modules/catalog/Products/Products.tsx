@@ -25,7 +25,7 @@ const options = {
     variables: {
       categoryId: props.categoryId,
       offset: 0,
-      limit: LIMIT,
+      first: LIMIT,
     },
     fetchPolicy: "network-only",
   }),
@@ -50,66 +50,6 @@ const options = {
   }
 };
 
-const defaultItems = [undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined];
-
-
-// class Products extends React.Component<any,any> {
-
-//   static defaultProps = {
-//     maxCount: 5,
-//     perPage: 20
-//   }
-
-//   state = {
-//     count: 0,
-//     isLoading: false,
-//     items: defaultItems,
-//   }
-
-
-//   getItems() {
-//     if (this.state.count >= this.props.maxCount) return
-//     this.setState(Object.assign(
-//       {},
-//       this.state,
-//       { isLoading: true }
-//     ), () => {
-//       setTimeout(() => {
-//         this.setState(Object.assign(
-//           {},
-//           this.state,
-//           {
-//             isLoading: false,
-//             items: this.state.items.concat(
-//               defaultItems,
-//             )
-//           }
-//         ))
-//       })
-//     })
-//   }
-
-//   render() {
-//     return (
-//       <MasonryLayout
-//         id="items"
-//         infiniteScroll={this.getItems}
-//         infiniteScrollLoading={this.state.isLoading} >
-
-//         {this.state.items.map((v, i) => <div
-//           key={i}
-//           style={{
-//             width: '236px',
-//             height: `${i % 2 === 0 ? 4 * 50 : 50 }px`,
-//             display: 'block',
-//             background: 'rgba(0,0,0,0.7)'
-//           }}
-//           />)}
-//       </MasonryLayout>
-//     )
-//   }
-// }
-
 
 class Products extends React.Component<any,any> {
   render() {
@@ -121,9 +61,7 @@ class Products extends React.Component<any,any> {
       <div>
         <MasonryLayout
           sizes={[{ columns: 2, gutter: 10 }]}
-          id="items"
-          infiniteScroll={fetchMore}
-          infiniteScrollLoading={loading}
+          id="products"
         >
           {products.map((product, i) => {
             return <Product key={i} {...product}/>
