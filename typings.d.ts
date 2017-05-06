@@ -1,3 +1,3 @@
-declare module "react-masonry-layout" {
-    var MasonryLayout: any;
+declare module "react-masonry-infinite" {
+    var MasonryInfiniteScroller: any;
 }

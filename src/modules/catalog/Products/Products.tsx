@@ -12,11 +12,11 @@ import {
   Card,
   Button
 } from "antd-mobile";
-import {Link} from "react-router-dom";
+import MasonryInfiniteScroller from "react-masonry-infinite";
+import { Link } from "react-router-dom";
 import { PRODUCTS_QUERY } from "../model";
 import { Product } from "../index";
-import {Loading} from "../../layout/index";
-import MasonryLayout from "react-masonry-layout";
+import { Loading } from "../../layout/index";
 
 const LIMIT = 10;
 
@@ -59,25 +59,23 @@ class Products extends React.Component<any,any> {
     }
     return (
       <div>
-        <MasonryLayout
+        <MasonryInfiniteScroller
           sizes={[{ columns: 2, gutter: 10 }]}
-          id="products"
+          hasMore={products.length % LIMIT == 0}
+          loadMore={fetchMore}
+          threshold={100}
+          useWindow={false}
         >
           {products.map((product, i) => {
             return <Product key={i} {...product}/>
           })}
-        </MasonryLayout>
-        <div style={{ clear: "both", padding: 5 }}>
-          {products.length === 0 || products.length % LIMIT == 0 ? (
-            <Button disabled={loading} loading={loading} type="primary" onClick={fetchMore}>
-              ЕЩЕ ТОВАРОВ
-            </Button>
-          ) : ""}
-        </div>
+        </MasonryInfiniteScroller>
       </div>
     )
   }
 }
+
+
 
 
 
