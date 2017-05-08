@@ -54,7 +54,7 @@ class Products extends React.Component<any,any> {
 
   ref;
   bottomHeight;
-  threshold = 500;
+  threshold = 800;
 
   componentDidUpdate = (prevProps, prevState) => {
     const { loading, products } = this.props;
