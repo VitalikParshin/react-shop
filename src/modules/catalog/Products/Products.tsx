@@ -50,21 +50,42 @@ const options = {
   }
 };
 
-
 class Products extends React.Component<any,any> {
+
+  ref;
+  bottomHeight;
+  threshold = 500;
+
+  componentDidUpdate = (prevProps, prevState) => {
+    const { loading, products } = this.props;
+    if (loading === false && products.length % LIMIT == 0) {
+      window.addEventListener('scroll', this.handleScroll, true);
+      this.bottomHeight = (
+        this.ref.clientHeight
+        + this.ref.offsetTop
+        - window.innerHeight
+        - this.threshold
+      );
+    }
+  }
+
+  handleScroll = (event) => {
+    const { fetchMore } = this.props;
+    if (event.srcElement.scrollTop > this.bottomHeight) {
+      window.removeEventListener('scroll', this.handleScroll, true);
+      fetchMore();
+    }
+  }
+
   render() {
     const { loading, products, fetchMore } = this.props;
     if (loading == true) {
       return <Loading/>
     }
     return (
-      <div>
+      <div ref={element => this.ref = element}>
         <MasonryInfiniteScroller
           sizes={[{ columns: 2, gutter: 10 }]}
-          hasMore={products.length % LIMIT == 0}
-          loadMore={fetchMore}
-          threshold={100}
-          useWindow={false}
         >
           {products.map((product, i) => {
             return <Product key={i} {...product}/>
@@ -74,10 +95,6 @@ class Products extends React.Component<any,any> {
     )
   }
 }
-
-
-
-
 
 const mapStateToProps: any = (state) => ({})
 
