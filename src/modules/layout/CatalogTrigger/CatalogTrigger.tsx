@@ -2,14 +2,17 @@ import * as React from "react";
 import { Button, Icon } from "antd-mobile";
 import { compose } from "react-apollo";
 import { connect } from "react-redux";
-import { ACTION_TOOTLE_CATALOG } from "../../layout/constants";
+import {
+  ACTION_ENABLE_CATALOG,
+  ACTION_DISABLE_CATALOG,
+} from "../../layout/constants";
 
 class FilterTrigger extends React.Component<any,any> {
 
-  onClick = () => {
-    this.props.dispatch({type: ACTION_TOOTLE_CATALOG})
+  onClick = (e) => {
+    e.preventDefault();
+    this.props.dispatch({type: ACTION_ENABLE_CATALOG});
   }
-
 
   render() {
     return (
