@@ -1,8 +1,9 @@
 import * as React from "react";
-import { Card, Button, Flex } from "antd-mobile";
+
+import { Button, Card, Flex } from "antd-mobile";
+
 import {Images} from "../../product/index";
 import { Link } from "react-router-dom";
-
 
 const scaleImageSize = (width, height, maxWidth) => {
   const ratio = maxWidth / width;
@@ -12,11 +13,22 @@ const scaleImageSize = (width, height, maxWidth) => {
   }
 }
 
+const getMinOfArray = (numArray) => {
+  return Math.min.apply(null, numArray);
+}
+
 // <Images images={images}/>
 const Product = (props) => {
-  const { id, name, titleImage, subProducts, i } = props;
+  const { id, name, titleImage, subProducts, brand, i } = props;
   const subProduct = subProducts[0];
   const url = `/product/${id}`;
+  // console.log("subproduct price :", subProducts.map((el) => el.price));
+  // console.log("typeof subproduct price :", subProducts.map((el) => typeof(el.price)));
+  const prices = subProducts.map(el => el.price);
+  const onePrice = prices.length === 1;
+  const minPrice = getMinOfArray(prices);
+
+  console.log("brand : ", brand.name ) ;
 
   return (
     <div style={{
@@ -35,13 +47,18 @@ const Product = (props) => {
             src={titleImage.image}
           />
         </Link>
-        <div>
-          <Link to={url} style={{fontSize: "0.2rem"}}>
-            {props.name} { subProduct.article }
-          </Link>
-        </div>
-        <div style={{fontWeight: "bold", fontSize: "0.3rem"}}>
-          { subProduct.price } грн
+        <Link to={url} style={{fontSize: "0.2rem"}}>
+            <div style={{ color: "#08c", display: "flex", flexDirection: "row", justifyContent: "space-between", alignItems: "center"}} >
+              <div style={{width: "50%" }}>{brand.name}</div>
+              <div style={{width: "50%", textAlign: "right" }}>{subProduct.article}</div>
+            </div>
+        </Link>
+        <div style={{fontWeight: "bold", fontSize: "0.3rem", color: "#468847"}} >
+          { onePrice ?
+            <div>{minPrice} грн</div>
+              :
+            <div>от {minPrice} грн</div>
+          }
         </div>
       </div>
     </div>
