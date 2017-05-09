@@ -22,14 +22,9 @@ const Product = (props) => {
   const { id, name, titleImage, subProducts, brand, i } = props;
   const subProduct = subProducts[0];
   const url = `/product/${id}`;
-  // console.log("subproduct price :", subProducts.map((el) => el.price));
-  // console.log("typeof subproduct price :", subProducts.map((el) => typeof(el.price)));
   const prices = subProducts.map(el => el.price);
   const onePrice = prices.length === 1;
   const minPrice = getMinOfArray(prices);
-
-  console.log("brand : ", brand.name ) ;
-
   return (
     <div style={{
       dispalay: "block",

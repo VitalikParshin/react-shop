@@ -1,3 +1,5 @@
+require("dotenv").config();
+
 const path = require("path");
 const webpack = require("webpack");
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
@@ -68,7 +70,9 @@ module.exports = {
     // new SpriteLoaderPlugin(),
     new webpack.DefinePlugin({
       "process.env.NODE_ENV": JSON.stringify(process.env.NODE_ENV),
+      "process.env.NODE_ENV": JSON.stringify(process.env.NODE_ENV),
       "process.env.DEBUG": process.env.NODE_ENV == "development",
+      "process.env.DEBUG_GRAPHQL": process.env.DEBUG_GRAPHQL,
     }),
     new webpack.optimize.CommonsChunkPlugin("common", "common.js"),
     // new webpack.optimize.CommonsChunkPlugin('shared.js'),

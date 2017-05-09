@@ -2,6 +2,7 @@
 .idea/
 .ipr
 .iws
+.env
 *~
 ~*
 *.diff
@@ -24,5 +25,4 @@ dist
 yarn.lock
 dump.rdb
 steam.dmg
-yarn.lock
 .history/
