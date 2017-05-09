@@ -56,6 +56,18 @@ class Products extends React.Component<any,any> {
   bottomHeight;
   threshold = 800;
 
+  state = {
+    haveMoreProducts: true,
+  }
+
+  handleScroll = (event) => {
+    const { fetchMore } = this.props;
+    if (event.srcElement.scrollTop > this.bottomHeight) {
+      window.removeEventListener('scroll', this.handleScroll, true);
+      fetchMore();
+    }
+  }
+
   componentDidUpdate = (prevProps, prevState) => {
     const { loading, products } = this.props;
     if (loading === false && products.length % LIMIT == 0) {
@@ -69,11 +81,12 @@ class Products extends React.Component<any,any> {
     }
   }
 
-  handleScroll = (event) => {
-    const { fetchMore } = this.props;
-    if (event.srcElement.scrollTop > this.bottomHeight) {
-      window.removeEventListener('scroll', this.handleScroll, true);
-      fetchMore();
+  componentWillReceiveProps = (nextProps) => {
+    const { loading, products } = nextProps;
+    if (loading === false && products.length % LIMIT != 0) {
+      this.setState({
+        haveMoreProducts: false
+      });
     }
   }
 
@@ -86,11 +99,20 @@ class Products extends React.Component<any,any> {
       <div ref={element => this.ref = element}>
         <MasonryInfiniteScroller
           sizes={[{ columns: 2, gutter: 10 }]}
+
         >
           {products.map((product, i) => {
             return <Product key={i} {...product}/>
           })}
         </MasonryInfiniteScroller>
+        <div
+          style={{
+            visibility: this.state.haveMoreProducts ? "visible" : "hidden",
+            textAlign: "center",
+          }}
+        >
+          <Icon style={{padding: 40}}type="loading" size="lg"/>
+        </div>
       </div>
     )
   }
