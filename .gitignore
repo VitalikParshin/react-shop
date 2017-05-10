@@ -25,3 +25,4 @@ dist
 dump.rdb
 steam.dmg
 .history/
+.vscode/temp.sql
