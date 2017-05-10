@@ -2,6 +2,7 @@
 .idea/
 .ipr
 .iws
+.env
 *~
 ~*
 *.diff
@@ -21,8 +22,11 @@ npm-debug.log
 .module-cache
 .*.sw*
 dist
-yarn.lock
 dump.rdb
 steam.dmg
-yarn.lock
 .history/
+
+.vscode/
+!.vscode/launch.json
+!.vscode/tasks.json
+!.vscode/settings.json

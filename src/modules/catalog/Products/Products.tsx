@@ -14,9 +14,10 @@ import {
 } from "antd-mobile";
 import MasonryInfiniteScroller from "react-masonry-infinite";
 import { Link } from "react-router-dom";
-import { PRODUCTS_QUERY } from "../model";
-import { Product } from "../index";
+import { ALL_PRODUCTS_QUERY } from "../model";
+import { Product, ProductsCounter } from "../index";
 import { Loading } from "../../layout/index";
+import update from "immutability-helper";
 
 const LIMIT = 10;
 
@@ -29,19 +30,23 @@ const options = {
     },
     fetchPolicy: "network-only",
   }),
-  props({ data: { loading, products, fetchMore } }) {
+  props({ data: { loading, allProducts, fetchMore } }) {
     return {
       loading,
-      products,
+      allProducts,
       fetchMore() {
         return fetchMore({
           variables: {
-            offset: products.length,
+            offset: allProducts.products.length,
           },
           updateQuery: (prev, { fetchMoreResult }) => {
-            if (!fetchMoreResult.products) { return prev; }
-            return Object.assign({}, prev, {
-              products: [...prev.products, ...fetchMoreResult.products],
+            if (!fetchMoreResult.allProducts) { return prev };
+            return update(prev, {
+              allProducts: {
+                products: {
+                  $push: fetchMoreResult.allProducts.products,
+                },
+              }
             });
           },
         });
@@ -56,17 +61,8 @@ class Products extends React.Component<any,any> {
   bottomHeight;
   threshold = 800;
 
-  componentDidUpdate = (prevProps, prevState) => {
-    const { loading, products } = this.props;
-    if (loading === false && products.length % LIMIT == 0) {
-      window.addEventListener('scroll', this.handleScroll, true);
-      this.bottomHeight = (
-        this.ref.clientHeight
-        + this.ref.offsetTop
-        - window.innerHeight
-        - this.threshold
-      );
-    }
+  state = {
+    haveMoreProducts: true,
   }
 
   handleScroll = (event) => {
@@ -77,13 +73,37 @@ class Products extends React.Component<any,any> {
     }
   }
 
+  componentDidUpdate = (prevProps, prevState) => {
+    const { loading, allProducts } = this.props;
+    if (loading === false && allProducts.products.length % LIMIT == 0) {
+      window.addEventListener('scroll', this.handleScroll, true);
+      this.bottomHeight = (
+        this.ref.offsetTop + this.ref.clientHeight
+        - window.innerHeight - this.threshold
+      );
+    }
+  }
+
+  componentWillReceiveProps = (nextProps) => {
+    const { loading, allProducts } = nextProps;
+    if (loading === false ) {
+      const { products, total } = allProducts;
+      if (products.length >= total) {
+        this.setState({
+          haveMoreProducts: false
+        });
+      }
+    }
+  }
+
   render() {
-    const { loading, products, fetchMore } = this.props;
+    const { loading, allProducts, fetchMore } = this.props;
     if (loading == true) {
       return <Loading/>
     }
+    const { products, total } = allProducts;
     return (
-      <div ref={element => this.ref = element}>
+      <div style={{padding: "20px 0"}} ref={element => this.ref = element}>
         <MasonryInfiniteScroller
           sizes={[{ columns: 2, gutter: 10 }]}
         >
@@ -91,6 +111,18 @@ class Products extends React.Component<any,any> {
             return <Product key={i} {...product}/>
           })}
         </MasonryInfiniteScroller>
+
+        <div
+          style={{
+            display: this.state.haveMoreProducts ? "block" : "none",
+            textAlign: "center",
+            paddingTop: 30,
+          }}
+        >
+          <Icon type="loading" size="lg"/>
+        </div>
+
+        <ProductsCounter current={products.length} total={total}/>
       </div>
     )
   }
@@ -100,7 +132,7 @@ const mapStateToProps: any = (state) => ({})
 
 export default compose(
     connect<any, {}, any>(mapStateToProps),
-    graphql(PRODUCTS_QUERY, options),
+    graphql(ALL_PRODUCTS_QUERY, options),
 )(Products);
 
 

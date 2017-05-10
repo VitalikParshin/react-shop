@@ -16,7 +16,7 @@ class FilterTrigger extends React.Component<any,any> {
 
   render() {
     return (
-      <Icon type={require("!svg-sprite!./menu.svg")} onClick={this.onClick} />
+      <Icon style={{padding: 10}} type={require("!svg-sprite!./menu.svg")} onClick={this.onClick} />
     )
   }
 }

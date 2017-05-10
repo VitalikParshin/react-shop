@@ -100,33 +100,36 @@ export const PRODUCT_QUERY = gql`
   }
 `;
 
-export const PRODUCTS_QUERY = gql`
-  query products($categoryId: Int, $offset: Int, $limit: Int) {
-    products(categoryId: $categoryId, offset: $offset, limit: $limit) {
-      id
-      name
-      shortDescription
-      description
-      brand {
+export const ALL_PRODUCTS_QUERY = gql`
+  query allProducts($categoryId: Int, $offset: Int, $first: Int) {
+    allProducts(categoryId: $categoryId, offset: $offset, first: $first) {
+      total
+      products {
         id
         name
-      }
-      category {
-        id
-        name
-      }
-      titleImage {
-        id
-        image
-        width
-        height
-      }
-      subProducts {
-        id
-        article
-        price
-        oldPrice
-        discount
+        shortDescription
+        description
+        brand {
+          id
+          name
+        }
+        category {
+          id
+          name
+        }
+        titleImage {
+          id
+          image
+          width
+          height
+        }
+        subProducts {
+          id
+          article
+          price
+          oldPrice
+          discount
+        }
       }
     }
   }

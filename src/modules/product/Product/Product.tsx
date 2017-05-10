@@ -1,4 +1,5 @@
 import * as React from "react";
+<<<<<<< HEAD
 
 import {Button, Flex} from "antd-mobile";
 import { compose, gql, graphql } from "react-apollo";
@@ -7,6 +8,14 @@ import { Images } from "../index";
 import {Loading} from "../../layout/index";
 import { PRODUCT_QUERY } from "../../catalog/model";
 import { connect } from "react-redux";
+=======
+import { gql, compose, graphql } from "react-apollo";
+import { connect } from "react-redux";
+import { Images } from "../index";
+import { PRODUCT_QUERY } from "../../catalog/model";
+import { Button, Flex } from "antd-mobile";
+import { Loading } from "../../layout/index";
+>>>>>>> f31e8d0b11ee6e6a4f4be9b58d22ead9ff91a649
 
 interface ConnectedProductProps {
   data?: any;

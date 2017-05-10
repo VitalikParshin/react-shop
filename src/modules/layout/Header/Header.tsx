@@ -4,8 +4,6 @@ import { Link } from  "react-router-dom";
 import { CatalogTrigger } from "../index";
 import { ShoppingCartTrigger } from "../../shoppingCart/index";
 
-// <Flex.Item><Icon style={{color:"white"}} type="ellipsis"/></Flex.Item>
-
 class Header extends React.Component<any,any> {
   render() {
     return (
@@ -16,12 +14,11 @@ class Header extends React.Component<any,any> {
           background: "#08c",
           position: "fixed",
           width: "100%",
-          padding: 10,
           zIndex: 100,
         }}
       >
         <Flex.Item><CatalogTrigger/></Flex.Item>
-        <Flex.Item><Link to="/">Home</Link></Flex.Item>
+        <Flex.Item><Link to="/" style={{padding: 10}}>Home</Link></Flex.Item>
         <Flex.Item style={{maxWidth: 80}}><ShoppingCartTrigger/></Flex.Item>
       </Flex>
     )
