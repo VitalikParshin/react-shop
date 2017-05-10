@@ -54,7 +54,7 @@ class SubCatalog extends React.Component<any,any> {
                         });
                       }}
                     />
-                    <div style={{maxWidth: "70%", margin: "auto"}}>
+                    <div style={{maxWidth: "80%", margin: "auto"}}>
                       {cat.name}
                     </div>
                   </Link>
