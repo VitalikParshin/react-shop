@@ -15,7 +15,7 @@ class FiltersTrigger extends React.Component<any,any> {
     return (
       <Button
         icon={require("!svg-sprite!./filter.svg")}
-        type="primary"
+        type="warning"
         onClick={this.onClick}
         size="small"
       >

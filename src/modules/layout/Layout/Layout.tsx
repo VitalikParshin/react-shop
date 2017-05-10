@@ -14,7 +14,7 @@ class Layout extends React.Component<any,any> {
       <div>
         <Header/>
         <SidebarCatalog>
-          <div style={{paddingTop: 90}}>
+          <div style={{paddingTop: 110}}>
             {this.props.children}
           </div>
         </SidebarCatalog>

@@ -15,7 +15,7 @@ class CatalogTrigger extends React.Component<any,any> {
 
   render() {
     return (
-      <Icon style={{padding: 10}} type={require("!svg-sprite!./menu.svg")} onClick={this.onClick} />
+      <Icon style={{padding: 15}} type={require("!svg-sprite!./menu.svg")} onClick={this.onClick} />
     )
   }
 }
