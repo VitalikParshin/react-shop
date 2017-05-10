@@ -25,4 +25,8 @@ dist
 dump.rdb
 steam.dmg
 .history/
-.vscode/temp.sql
+
+.vscode/
+!.vscode/launch.json
+!.vscode/tasks.json
+!.vscode/settings.json

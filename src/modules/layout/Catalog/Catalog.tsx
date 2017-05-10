@@ -12,9 +12,10 @@ import {
   Card,
   Grid
 } from "antd-mobile";
-import {Link} from "react-router-dom";
-import {Loading, SubCatalog} from "../../layout/index";
-import {ACTION_TOOTLE_CATALOG} from "../../layout/constants";
+import { StickyContainer, Sticky } from "react-sticky";
+import { Link } from "react-router-dom";
+import { Loading, SubCatalog } from "../../layout/index";
+import { ACTION_TOOTLE_CATALOG } from "../../layout/constants";
 
 export const CATALOG_QUERY = gql`
   query categories {
@@ -30,8 +31,11 @@ export const CATALOG_QUERY = gql`
   }
 `;
 
-
 class Catalog extends React.Component<any,any> {
+  onStickyStateChange = (isSticky) => {
+    console.log(`Am I sticky?: ${ isSticky ? 'Yep!' : 'Nope!'}`);
+  }
+
   render() {
     const { isDrawer, data } = this.props;
     const { loading, categories } = data;
@@ -55,23 +59,25 @@ class Catalog extends React.Component<any,any> {
 
     let style = {}
     if (isDrawer === true) {
-      style["width"] = 500;
+      style["width"] = "100%";
       style["background"] = "aliceblue";
       style["padding"] = "65px 10px 10px 10px";
     }
 
     return (
       <div style={style}>
-        {startCats.map(parent => (
-          <div>
-            <h2 style={{
-              textAlign: "center",
-            }}>{parent.name}</h2>
+        {startCats.map((parent, i) => (
+          <StickyContainer>
+            <Sticky onStickyStateChange={this.onStickyStateChange}>
+              <header>
+                <h2 style={{textAlign:"center"}}>{parent.name}</h2>
+              </header>
+            </Sticky>
             <SubCatalog
-              children={childrenMap[parent.id]}
+              categories={childrenMap[parent.id]}
               isDrawer={isDrawer}
             />
-          </div>
+          </StickyContainer>
         ))}
       </div>
     )
