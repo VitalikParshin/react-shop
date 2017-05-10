@@ -8,6 +8,15 @@ import CatalogTrigger from "./CatalogTrigger/CatalogTrigger";
 import SubCatalog from "./SubCatalog/SubCatalog";
 import reducer from "./reducer";
 
+const isSafariBrowser = () => {
+  // From `react-browser-detection` npm package
+  return Object.prototype.toString.call((window as any).HTMLElement).indexOf('Constructor') > 0
+}
+
+const swipeEnabled = () => {
+  return isSafariBrowser() == false;
+}
+
 export {
   Header,
   Layout,
@@ -17,4 +26,6 @@ export {
   Catalog,
   SubCatalog,
   SidebarCatalog,
+  isSafariBrowser,
+  swipeEnabled,
 }
