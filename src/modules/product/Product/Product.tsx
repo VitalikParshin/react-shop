@@ -3,8 +3,8 @@ import { gql, compose, graphql } from "react-apollo";
 import { connect } from "react-redux";
 import { Images } from "../index";
 import { PRODUCT_QUERY } from "../../catalog/model";
-import {Button, Flex} from "antd-mobile";
-import {Loading} from "../../layout/index";
+import { Button, Flex } from "antd-mobile";
+import { Loading } from "../../layout/index";
 
 interface ConnectedProductProps {
   data?: any;

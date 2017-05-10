@@ -22,7 +22,6 @@ npm-debug.log
 .module-cache
 .*.sw*
 dist
-yarn.lock
 dump.rdb
 steam.dmg
 .history/
