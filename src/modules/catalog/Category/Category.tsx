@@ -50,8 +50,8 @@ class Category extends React.Component<any,any> {
     return (
       <Sidebar
         pullRight
-        touch={swipeEnabled()}
-        touchHandleWidth={50}
+        touch
+        touchHandleWidth={ swipeEnabled() ? 50 : 0 }
         sidebar={<Filters/>}
         open={layout.openFilters}
         onSetOpen={this.onSetSidebarOpen as any}
