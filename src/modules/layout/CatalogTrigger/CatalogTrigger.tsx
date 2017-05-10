@@ -3,15 +3,14 @@ import { Button, Icon } from "antd-mobile";
 import { compose } from "react-apollo";
 import { connect } from "react-redux";
 import {
-  ACTION_ENABLE_CATALOG,
-  ACTION_DISABLE_CATALOG,
+  ACTION_TOOTLE_CATALOG,
 } from "../../layout/constants";
 
-class FilterTrigger extends React.Component<any,any> {
+class CatalogTrigger extends React.Component<any,any> {
 
   onClick = (e) => {
     e.preventDefault();
-    this.props.dispatch({type: ACTION_ENABLE_CATALOG});
+    this.props.dispatch({type: ACTION_TOOTLE_CATALOG});
   }
 
   render() {
@@ -26,4 +25,4 @@ const mapStateToProps: any = (state) => ({
 
 export default compose(
     connect<any, {}, any>(mapStateToProps),
-)(FilterTrigger);
+)(CatalogTrigger);
