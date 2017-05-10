@@ -11,12 +11,14 @@ import Sidebar from "react-sidebar";
 class Layout extends React.Component<any,any> {
   render() {
     return (
-      <SidebarCatalog>
+      <div>
         <Header/>
-        <div style={{paddingTop: 90}}>
-          {this.props.children}
-        </div>
-      </SidebarCatalog>
+        <SidebarCatalog>
+          <div style={{paddingTop: 110}}>
+            {this.props.children}
+          </div>
+        </SidebarCatalog>
+      </div>
     )
   }
 }

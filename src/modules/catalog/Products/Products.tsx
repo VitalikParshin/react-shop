@@ -103,7 +103,7 @@ class Products extends React.Component<any,any> {
     }
     const { products, total } = allProducts;
     return (
-      <div style={{padding: "20px 0"}} ref={element => this.ref = element}>
+      <div style={{padding: "10px 0"}} ref={element => this.ref = element}>
         <MasonryInfiniteScroller
           sizes={[{ columns: 2, gutter: 10 }]}
         >

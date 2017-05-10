@@ -46,7 +46,11 @@ class Filters extends React.Component<any, any> {
 
     return (
 
-      <div style={{zIndex: 2000, background:"white", width: 500, height: "100%"}}>
+      <div style={{
+        background:"white",
+        width: 500,
+        height: "100%",
+      }}>
         <List
           renderHeader={() => '表单开关项'}
         >

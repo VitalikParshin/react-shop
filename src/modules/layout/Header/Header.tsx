@@ -18,8 +18,8 @@ class Header extends React.Component<any,any> {
         }}
       >
         <Flex.Item><CatalogTrigger/></Flex.Item>
-        <Flex.Item><Link to="/" style={{padding: 10}}>Home</Link></Flex.Item>
-        <Flex.Item style={{maxWidth: 80}}><ShoppingCartTrigger/></Flex.Item>
+        <Flex.Item style={{ padding: 15, color: "white" }}><Link to="/">Home</Link></Flex.Item>
+        <Flex.Item style={{ maxWidth: 80 }}><ShoppingCartTrigger/></Flex.Item>
       </Flex>
     )
   }

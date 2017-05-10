@@ -6,7 +6,8 @@ import {ACTION_TOOTLE_FILTERS} from "../../layout/constants";
 
 class FiltersTrigger extends React.Component<any,any> {
 
-  onClick = () => {
+  onClick = (e) => {
+    e.preventDefault();
     this.props.dispatch({type: ACTION_TOOTLE_FILTERS})
   }
 
@@ -14,7 +15,7 @@ class FiltersTrigger extends React.Component<any,any> {
     return (
       <Button
         icon={require("!svg-sprite!./filter.svg")}
-        type="primary"
+        type="warning"
         onClick={this.onClick}
         size="small"
       >
