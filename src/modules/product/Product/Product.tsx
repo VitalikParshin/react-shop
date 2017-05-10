@@ -1,10 +1,12 @@
 import * as React from "react";
-import { gql, compose, graphql } from "react-apollo";
-import { connect } from "react-redux";
-import { Images } from "../index";
-import { PRODUCT_QUERY } from "../../catalog/model";
+
 import {Button, Flex} from "antd-mobile";
+import { compose, gql, graphql } from "react-apollo";
+
+import { Images } from "../index";
 import {Loading} from "../../layout/index";
+import { PRODUCT_QUERY } from "../../catalog/model";
+import { connect } from "react-redux";
 
 interface ConnectedProductProps {
   data?: any;
@@ -30,6 +32,9 @@ class Product extends React.Component<ConnectedProductProps, ProductProps> {
     }
     const { brand, images, subProducts } = product;
     const sProduct = subProducts[0];
+    const ArticleSubProduct = subProducts.map(el => el.article);
+    console.log("subProduct", ArticleSubProduct.map(el => el));
+
     return (
       <div>
         <Images images={images}/>
