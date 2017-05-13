@@ -27,7 +27,6 @@ function createMarkup(html) {
   return {__html: html};
 }
 
-
 class FlatPages extends React.Component<any, any> {
 
   state = {
