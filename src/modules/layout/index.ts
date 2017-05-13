@@ -6,6 +6,8 @@ import SidebarCatalog from "./SidebarCatalog/SidebarCatalog";
 import Catalog from "./Catalog/Catalog";
 import CatalogTrigger from "./CatalogTrigger/CatalogTrigger";
 import SubCatalog from "./SubCatalog/SubCatalog";
+import FlatPages from "./FlatPages/FlatPages";
+
 import reducer from "./reducer";
 
 const isSafariBrowser = () => {
@@ -26,6 +28,7 @@ export {
   Catalog,
   SubCatalog,
   SidebarCatalog,
+  FlatPages,
   isSafariBrowser,
   swipeEnabled,
 }
