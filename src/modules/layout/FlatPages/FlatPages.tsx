@@ -65,6 +65,7 @@ class FlatPages extends React.Component<any, any> {
         <List>
           {flatPages.map(page => (
             <List.Item
+              wrap
               arrow="horizontal"
               thumb="https://zos.alipayobjects.com/rmsportal/dNuvNrtqUztHCwM.png"
               onClick={(e) => this.showModal(e, page) }

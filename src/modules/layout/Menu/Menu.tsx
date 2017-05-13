@@ -24,7 +24,13 @@ class Menu extends React.Component<any,any> {
         height: "100%",
       }}>
         <Flex justify="center" align="center">
-          <img src="http://static1.buybag.com.ua/static/img/logo.png"/>
+          <img
+            style={{
+              paddingTop: 100,
+              width: "80%",
+            }}
+            src="http://static1.buybag.com.ua/static/img/logo.png"
+          />
         </Flex>
         <WhiteSpace size="lg" />
         <FlatPages/>
