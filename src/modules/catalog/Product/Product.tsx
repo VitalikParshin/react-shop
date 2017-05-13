@@ -42,18 +42,15 @@ const Product = (props) => {
             src={titleImage.image}
           />
         </Link>
-        <Link to={url} style={{fontSize: "0.2rem"}}>
-            <div style={{ color: "#08c", display: "flex", flexDirection: "row", justifyContent: "space-between", alignItems: "center"}} >
-              <div style={{width: "50%" }}>{brand.name}</div>
-              <div style={{width: "50%", textAlign: "right" }}>{subProduct.article}</div>
-            </div>
-        </Link>
-        <div style={{fontWeight: "bold", fontSize: "0.3rem", color: "#468847"}} >
-          { onePrice ?
-            <div>{minPrice} грн</div>
-              :
-            <div>от {minPrice} грн</div>
-          }
+        <div style={{lineHeight: "0.25rem", fontSize: "0.25rem", marginTop: 10}}>
+          <Link to={url}>
+            {name}
+            <br/>
+            {brand.name} {subProduct.article}
+          </Link>
+        </div>
+        <div style={{fontWeight: "bold", fontSize: "0.3rem", color: "#468847", marginTop: 10}} >
+          <div>{ onePrice ? "от " : "" }{parseInt(minPrice)} грн</div>
         </div>
       </div>
     </div>
