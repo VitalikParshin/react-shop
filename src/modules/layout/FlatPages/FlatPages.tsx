@@ -86,7 +86,7 @@ class FlatPages extends React.Component<any, any> {
         >
           <div
             dangerouslySetInnerHTML={createMarkup(this.state.page.content)}
-            style={{ textAlign: "left", margin: "30px 20px" }}
+            style={{ textAlign: "left" }}
           />
         </Modal>
       </div>
