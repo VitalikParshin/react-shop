@@ -1,8 +1,8 @@
 import * as React from "react";
 import { List, WingBlank, Flex, Button, NoticeBar, NavBar, Icon, Card } from "antd-mobile";
 import { Link } from  "react-router-dom";
-import { CatalogTrigger } from "../index";
-import { ShoppingCartTrigger } from "../../shoppingCart/index";
+import {CatalogTrigger, MenuTrigger} from "../index";
+import {ShoppingCartTrigger} from "../../shoppingCart/index";
 
 class Header extends React.Component<any,any> {
   render() {
@@ -17,8 +17,13 @@ class Header extends React.Component<any,any> {
           zIndex: 100,
         }}
       >
+        <Flex.Item><MenuTrigger/></Flex.Item>
         <Flex.Item><CatalogTrigger/></Flex.Item>
-        <Flex.Item style={{ padding: 15, color: "white" }}><Link to="/">Home</Link></Flex.Item>
+        <Flex.Item>
+          <Link to="/">
+            <span  style={{ padding: 15, color: "white" }}>HOME</span>
+          </Link>
+        </Flex.Item>
         <Flex.Item style={{ maxWidth: 80 }}><ShoppingCartTrigger/></Flex.Item>
       </Flex>
     )
