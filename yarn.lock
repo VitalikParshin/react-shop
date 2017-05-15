@@ -4201,9 +4201,9 @@ supports-color@^3.1.0, supports-color@^3.1.1, supports-color@^3.2.3:
   dependencies:
     has-flag "^1.0.0"
 
-svg-sprite-loader@^0.2.0:
-  version "0.2.2"
-  resolved "https://registry.yarnpkg.com/svg-sprite-loader/-/svg-sprite-loader-0.2.2.tgz#56d52081290a1fd5ca3f18dc2c73d450a8e45bf6"
+svg-sprite-loader@0.3.1:
+  version "0.3.1"
+  resolved "https://registry.yarnpkg.com/svg-sprite-loader/-/svg-sprite-loader-0.3.1.tgz#44b22c7724bc77256c306b1796257ae6efee515a"
   dependencies:
     cheerio "^0.22.0"
     extend "^3.0.0"

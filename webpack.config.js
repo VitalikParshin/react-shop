@@ -39,7 +39,7 @@ module.exports = {
       { test: /\.css$/, loader: ExtractTextPlugin.extract("css?sourceMap!postcss-loader") },
       { test: /\.(jpg|png)$/, loader: "url?limit=8192" },
       {
-        test: /\.(svg)$/i,
+        test: /\.(svg)$/,
         loader: 'svg-sprite',
         include: [
           require.resolve('antd-mobile').replace(/warn\.js$/, ''),

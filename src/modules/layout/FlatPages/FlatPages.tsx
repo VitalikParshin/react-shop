@@ -2,8 +2,15 @@ import * as React from "react";
 
 import { compose, gql, graphql } from "react-apollo";
 
-import { List, WhiteSpace, WingBlank, Button, Modal } from "antd-mobile";
-import { Loading } from "../index";
+import {
+  List,
+  WhiteSpace,
+  WingBlank,
+  Button,
+  Modal,
+  Icon
+} from "antd-mobile";
+import {Loading} from "../index";
 
 const FLATPAGES_QUERY = gql `
   query flatpages{
@@ -52,6 +59,18 @@ class FlatPages extends React.Component<any, any> {
     });
   }
 
+  getIcon = (id) => {
+    const _id = parseInt(id)
+    switch(_id) {
+      case 2: {
+        return require("!svg-sprite!./menu.svg");
+      }
+      default: {
+        return require("!svg-sprite!./transport.svg");
+      }
+    }
+  }
+
   render() {
     const { data }  = this.props;
     const { loading, flatPages } = data;
@@ -67,10 +86,10 @@ class FlatPages extends React.Component<any, any> {
             <List.Item
               wrap
               arrow="horizontal"
-              thumb="https://zos.alipayobjects.com/rmsportal/dNuvNrtqUztHCwM.png"
+              thumb={<Icon type={this.getIcon(page.id)} style={{fill: "black"}} size="md"/>}
               onClick={(e) => this.showModal(e, page) }
             >
-              {page.name}
+              {page.id} {page.name}
             </List.Item>
           ))}
         </List>
