@@ -1,6 +1,7 @@
 import * as React from "react";
 import { List, WingBlank, Flex, Button, NoticeBar, NavBar, Icon, Card } from "antd-mobile";
 import { Link } from  "react-router-dom";
+import Ripples from "react-ripples";
 import {CatalogTrigger, MenuTrigger} from "../index";
 import {ShoppingCartTrigger} from "../../shoppingCart/index";
 
@@ -9,6 +10,7 @@ class Header extends React.Component<any,any> {
     return (
       <Flex
         justify="between"
+        align="center"
         style={{
           top: 0,
           background: "#08c",
@@ -17,14 +19,16 @@ class Header extends React.Component<any,any> {
           zIndex: 100,
         }}
       >
-        <Flex.Item><MenuTrigger/></Flex.Item>
-        <Flex.Item><CatalogTrigger/></Flex.Item>
-        <Flex.Item>
+        <Ripples style={{padding: 15}}><MenuTrigger/></Ripples>
+        <Ripples style={{padding: 20}}><CatalogTrigger/></Ripples>
+        <Ripples style={{padding: 20}}>
           <Link to="/">
-            <span  style={{ padding: 15, color: "white" }}>HOME</span>
+            <span  style={{ color: "white" }}>HOME</span>
           </Link>
-        </Flex.Item>
-        <Flex.Item style={{ maxWidth: 80 }}><ShoppingCartTrigger/></Flex.Item>
+        </Ripples>
+        <Ripples style={{padding: 15}}>
+          <ShoppingCartTrigger/>
+        </Ripples>
       </Flex>
     )
   }

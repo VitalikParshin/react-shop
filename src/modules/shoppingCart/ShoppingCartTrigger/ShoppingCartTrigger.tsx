@@ -12,9 +12,7 @@ class ShoppingCartTrigger extends React.Component<any,any> {
 
   render() {
     return (
-      <div>
-        <Icon style={{padding: 15}} type={require("!svg-sprite!./cart.svg")}/>
-      </div>
+      <Icon type={require("!svg-sprite!./cart.svg")}/>
     )
   }
 }
