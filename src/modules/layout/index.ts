@@ -14,15 +14,7 @@ import FlatPages from "./FlatPages/FlatPages";
 import MenuTrigger from "./MenuTrigger/MenuTrigger";
 import Menu from "./Menu/Menu";
 import HomeTrigger from "./HomeTrigger/HomeTrigger";
-
-const isSafariBrowser = () => {
-  // From `react-browser-detection` npm package
-  return Object.prototype.toString.call((window as any).HTMLElement).indexOf('Constructor') > 0
-}
-
-const swipeEnabled = () => {
-  return isSafariBrowser() == false;
-}
+import {swipeEnabled} from "./utils";
 
 export {
   Header,
