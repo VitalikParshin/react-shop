@@ -12,8 +12,9 @@ import Ripples from "react-ripples";
 import {Link} from "react-router-dom";
 
 interface MenuTriggerProps {
-  router: any,
-  dispatch: any,
+  router: any;
+  dispatch: any;
+  height: number;
 }
 
 class MenuTrigger extends React.Component<MenuTriggerProps,any> {
@@ -24,13 +25,11 @@ class MenuTrigger extends React.Component<MenuTriggerProps,any> {
   }
 
   render() {
-    const { router } = this.props;
+    const { router, height } = this.props;
     return (
-      <Ripples
-        onClick={this.onClick}
-      >
+      <Ripples onClick={this.onClick}>
         <Link to="/">
-          <Flex align="center" style={{height: "0.8rem", color: "white", padding: "0 30px"}}>
+          <Flex align="center" style={{color: "white", padding: `0 ${height/2}px`, height: height}}>
             BUY
             <Icon
               type={require("!svg-sprite!./packet_filled.svg")}

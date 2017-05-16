@@ -7,6 +7,7 @@ import {ShoppingCartTrigger} from "../../shoppingCart/index";
 
 class Header extends React.Component<any,any> {
   render() {
+    const height = 150;
     return (
       <Flex
         justify="between"
@@ -17,12 +18,13 @@ class Header extends React.Component<any,any> {
           position: "fixed",
           width: "100%",
           zIndex: 100,
+          height: height,
         }}
       >
-        <HomeTrigger/>
-        <MenuTrigger/>
-        <CatalogTrigger/>
-        <ShoppingCartTrigger/>
+        <HomeTrigger height={height}/>
+        <MenuTrigger height={height}/>
+        <CatalogTrigger height={height}/>
+        <ShoppingCartTrigger height={height}/>
       </Flex>
     )
   }
