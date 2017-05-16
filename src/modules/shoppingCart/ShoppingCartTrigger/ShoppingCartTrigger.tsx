@@ -28,7 +28,7 @@ class ShoppingCartTrigger extends React.Component<ShoppingCartTriggerProps,any> 
           onClick={this.onClick}
           style={{
             fill: layout.openShoppingCart ? "orange" : "white",
-            padding: 15,
+            padding: 20,
           }}
         />
       </Ripples>

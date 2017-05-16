@@ -5,7 +5,8 @@ import { gql, compose, graphql } from "react-apollo";
 import { connect } from "react-redux";
 import {Menu} from "../index";
 
-class SidebarMenu extends React.Component<any,any> {
+class SidebarMenu extends React.Component < any,
+any > {
 
   onSetSidebarOpen = () => {
     const { dispatch } = this.props;

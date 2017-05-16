@@ -30,7 +30,7 @@ class CatalogTrigger extends React.Component<CatalogTriggerProps,any> {
           onClick={this.onClick}
           style={{
             fill: layout.openCatalog ? "orange" : "white",
-            padding: 15,
+            padding: 20,
           }}
         />
       </Ripples>

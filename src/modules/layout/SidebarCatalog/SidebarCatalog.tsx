@@ -3,8 +3,7 @@ import { ACTION_TOOTLE_CATALOG } from "../constants";
 import Sidebar from "react-sidebar";
 import { gql, compose, graphql } from "react-apollo";
 import { connect } from "react-redux";
-import { Catalog } from "../index";
-import {swipeEnabled} from "../index";
+import { Catalog, utils } from "../index";
 
 class SidebarCatalog extends React.Component<any,any> {
 
@@ -17,7 +16,7 @@ class SidebarCatalog extends React.Component<any,any> {
     const { layout } = this.props;
 
     return <Sidebar
-      touch={swipeEnabled()}
+      touch={utils.swipeEnabled()}
       touchHandleWidth={50}
       sidebar={<Catalog isDrawer={true}/>}
       open={layout.openCatalog}
