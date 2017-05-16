@@ -32,7 +32,7 @@ class MenuTrigger extends React.Component<MenuTriggerProps,any> {
           style={{
             fill: layout.openMenu === true ? "orange" : "white",
             height: height,
-            padding: `0 ${height/2}px`
+            padding: `0 ${height/3}px`
           }}
         />
       </Ripples>

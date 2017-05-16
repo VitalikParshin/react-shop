@@ -30,7 +30,7 @@ class ShoppingCartTrigger extends React.Component<ShoppingCartTriggerProps,any> 
           style={{
             fill: layout.openShoppingCart ? "orange" : "white",
             height: height,
-            padding: `0 ${height/2}px`
+            padding: `0 ${height/3}px`
           }}
         />
       </Ripples>

@@ -1,13 +1,15 @@
+# HELLO
+
 ## Install & Start
 
 ### Run project locally
+
 1. Clone the project git repository
 1. Copy `.env.default` file to `.env`. This will be your local settings.
 1. Install `yarn` globally
 1. Install packages by running in project root `yarn`
 1. Run TypeScript => JS compiler `yarn run tsc_watch` or `cmd`+`F9` in VSCode
 1. Open in Chrome `http://localhost:3000/`
-
 
 ## Google Chrome DevTools
 
@@ -25,7 +27,6 @@
 
 1. In Chrome install [Apollo DevTools extension](https://chrome.google.com/webstore/detail/apollo-client-developer-t/jdkknkkbebbapilgoeccciglkfbmbnfm)
 1. After that you will have "Apollo" tag in Debug Toolbar.
-
 
 ## UI
 

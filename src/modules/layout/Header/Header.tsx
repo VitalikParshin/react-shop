@@ -5,9 +5,10 @@ import Ripples from "react-ripples";
 import {CatalogTrigger, MenuTrigger, HomeTrigger} from "../index";
 import {ShoppingCartTrigger} from "../../shoppingCart/index";
 
+export const HEIGHT = 80;
+
 class Header extends React.Component<any,any> {
   render() {
-    const height = 150;
     return (
       <Flex
         justify="between"
@@ -18,13 +19,13 @@ class Header extends React.Component<any,any> {
           position: "fixed",
           width: "100%",
           zIndex: 100,
-          height: height,
+          height: HEIGHT,
         }}
       >
-        <HomeTrigger height={height}/>
-        <MenuTrigger height={height}/>
-        <CatalogTrigger height={height}/>
-        <ShoppingCartTrigger height={height}/>
+        <HomeTrigger height={HEIGHT}/>
+        <MenuTrigger height={HEIGHT}/>
+        <CatalogTrigger height={HEIGHT}/>
+        <ShoppingCartTrigger height={HEIGHT}/>
       </Flex>
     )
   }

@@ -29,14 +29,14 @@ class MenuTrigger extends React.Component<MenuTriggerProps,any> {
     return (
       <Ripples onClick={this.onClick}>
         <Link to="/">
-          <Flex align="center" style={{color: "white", padding: `0 ${height/2}px`, height: height}}>
+          <Flex align="center" style={{color: "white", padding: `0 ${height/3}px`, height: height}}>
             BUY
             <Icon
               type={require("!svg-sprite!./packet_filled.svg")}
               size="md"
               style={{
                 fill: router.location.pathname === "/" ? "orange" : "white",
-                margin: "0px 10px 22px 10px",
+                margin: "0px 10px 15px 10px",
               }}
             />
             BAG

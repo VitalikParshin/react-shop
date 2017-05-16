@@ -6,20 +6,21 @@ import {compose, graphql} from "react-apollo";
 import { connect } from "react-redux";
 import { ACTION_TOOTLE_CATALOG } from "../constants";
 import Sidebar from "react-sidebar";
-
+import {HEIGHT} from "../Header/Header";
 
 class Layout extends React.Component<any,any> {
   render() {
+        // <SidebarMenu>
+        //   <SidebarCatalog>
+        //     {this.props.children}
+        //   </SidebarCatalog>
+        // </SidebarMenu>
+
+
     return (
       <div>
         <Header/>
-        <SidebarMenu>
-          <SidebarCatalog>
-            <div style={{paddingTop: 110}}>
-              {this.props.children}
-            </div>
-          </SidebarCatalog>
-        </SidebarMenu>
+        <div style={{marginTop: HEIGHT + 15 }}>{this.props.children}</div>
       </div>
     )
   }

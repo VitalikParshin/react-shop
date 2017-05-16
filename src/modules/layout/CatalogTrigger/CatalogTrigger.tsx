@@ -32,7 +32,7 @@ class CatalogTrigger extends React.Component<CatalogTriggerProps,any> {
           style={{
             fill: layout.openCatalog ? "orange" : "white",
             height: height,
-            padding: `0 ${height/2}px`
+            padding: `0 ${height/3}px`
           }}
         />
       </Ripples>
