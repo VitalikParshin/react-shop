@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import { compose, gql, graphql } from "react-apollo";
 import {ILayout} from "../model";
 import Ripples from "react-ripples";
+import { utils } from "../../layout/index";
 
 import {
   List,
@@ -149,7 +150,10 @@ class FlatPages extends React.Component<any, any> {
         >
           <div
             dangerouslySetInnerHTML={createMarkup(this.state.page.content)}
-            style={{ padding: 20, textAlign: "left" }}
+            style={{
+              padding: utils.isSafariBrowser() ? 0 : 20,
+              textAlign: "left",
+            }}
           />
           <Ripples>
             <Icon
