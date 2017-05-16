@@ -18,7 +18,7 @@ import {Products, Product, Filters, FiltersTrigger} from "../index";
 import {CATEGORY_QUERY} from "../model";
 import {ACTION_TOOTLE_FILTERS, ACTION_TOOTLE_CATALOG} from "../../layout/constants";
 import Sidebar from "react-sidebar";
-import {utils} from "../../layout/index";
+import {swipeEnabled} from "../../layout/utils";
 
 const options = {
   options: props => ({
@@ -51,7 +51,7 @@ class Category extends React.Component<any,any> {
       <Sidebar
         pullRight
         touch
-        touchHandleWidth={ utils.swipeEnabled() ? 50 : 0 }
+        touchHandleWidth={ swipeEnabled() ? 50 : 0 }
         sidebar={<Filters/>}
         open={layout.openFilters}
         onSetOpen={this.onSetSidebarOpen as any}
