@@ -1,6 +1,8 @@
 import * as React from "react";
+import { connect } from "react-redux";
 
 import { compose, gql, graphql } from "react-apollo";
+import {ILayout} from "../model";
 
 import {
   List,
@@ -73,8 +75,11 @@ class FlatPages extends React.Component<any, any> {
 
   render() {
     const { data }  = this.props;
-    const { loading, flatPages } = data;
+    if (!data) {
+      return <div></div>
+    }
 
+    const { loading, flatPages } = data;
     if (loading === true) {
       return <Loading/>;
     }
@@ -113,4 +118,19 @@ class FlatPages extends React.Component<any, any> {
   }
 }
 
-export default graphql(FLATPAGES_QUERY)(FlatPages);
+const mapStateToProps: any = (state) => ({
+  layout: state.layout,
+  router: state.router,
+})
+
+export default compose(
+  connect<any, {}, any>(mapStateToProps),
+  graphql(FLATPAGES_QUERY, {
+    options: ({ layout, router }) => ({
+      skip: !(
+        router.location.pathname == "/"
+        || layout.openMenu
+      ),
+    }),
+  })
+)(FlatPages);
