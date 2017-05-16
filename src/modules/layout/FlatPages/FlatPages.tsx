@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 
 import { compose, gql, graphql } from "react-apollo";
 import {ILayout} from "../model";
+import Ripples from "react-ripples";
 
 import {
   List,
@@ -100,18 +101,27 @@ class FlatPages extends React.Component<any, any> {
         </List>
 
         <Modal
-          closable
-          maskClosable
-          transparent
+          transparent={false}
           title={this.state.page.name}
           visible={this.state.showModal}
           animationType="fade"
-          onClose={this.closeModal}
         >
           <div
             dangerouslySetInnerHTML={createMarkup(this.state.page.content)}
-            style={{ textAlign: "left" }}
+            style={{ padding: 20, textAlign: "left" }}
           />
+          <Ripples>
+            <Icon
+              type={require("!svg-sprite!./round_close_fill.svg")}
+              size="lg"
+              style={{
+                position: "fixed",
+                top: 10,
+                right: 10,
+              }}
+              onClick={this.closeModal}
+            />
+          </Ripples>
         </Modal>
       </div>
     )

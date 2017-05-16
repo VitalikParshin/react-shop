@@ -18,7 +18,7 @@ import {Products, Product, Filters, FiltersTrigger} from "../index";
 import {CATEGORY_QUERY} from "../model";
 import {ACTION_TOOTLE_FILTERS, ACTION_TOOTLE_CATALOG} from "../../layout/constants";
 import Sidebar from "react-sidebar";
-import {swipeEnabled} from "../../layout/utils";
+import {swipeEnabled} from "../../layout/index";
 
 const options = {
   options: props => ({

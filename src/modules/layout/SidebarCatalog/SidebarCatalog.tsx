@@ -4,10 +4,9 @@ import Sidebar from "react-sidebar";
 import { gql, compose, graphql } from "react-apollo";
 import { connect } from "react-redux";
 import { Catalog } from "../index";
-import {swipeEnabled} from "../utils";
+import {swipeEnabled} from "../index";
 
-class SidebarCatalog extends React.Component < any,
-any > {
+class SidebarCatalog extends React.Component<any,any> {
 
   onSetSidebarOpen = () => {
     const { dispatch } = this.props;

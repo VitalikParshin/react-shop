@@ -1,3 +1,6 @@
+import reducer from "./reducer";
+import * as model from "./model";
+
 import Header from "./Header/Header";
 import Layout from "./Layout/Layout";
 import Footer from "./Footer/Footer";
@@ -9,12 +12,17 @@ import CatalogTrigger from "./CatalogTrigger/CatalogTrigger";
 import SubCatalog from "./SubCatalog/SubCatalog";
 import FlatPages from "./FlatPages/FlatPages";
 import MenuTrigger from "./MenuTrigger/MenuTrigger";
-import HomeTrigger from "./HomeTrigger/HomeTrigger";
 import Menu from "./Menu/Menu";
+import HomeTrigger from "./HomeTrigger/HomeTrigger";
 
-import reducer from "./reducer";
-import * as model from "./model";
-import * as utils from "./utils";
+const isSafariBrowser = () => {
+  // From `react-browser-detection` npm package
+  return Object.prototype.toString.call((window as any).HTMLElement).indexOf('Constructor') > 0
+}
+
+const swipeEnabled = () => {
+  return isSafariBrowser() == false;
+}
 
 export {
   Header,
@@ -33,5 +41,5 @@ export {
 
   model,
   reducer,
-  utils,
+  swipeEnabled,
 }
