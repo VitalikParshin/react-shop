@@ -2,7 +2,7 @@ import {Card, Flex} from "antd-mobile";
 import * as React from "react";
 import { gql, compose, graphql } from "react-apollo";
 import { connect } from "react-redux";
-import { Link } from "react-router-dom";
+import {Link} from "react-router-dom";
 import { ACTION_DISABLE_CATALOG } from "../constants";
 
 function chunk(arr, len = 1) {

@@ -19,7 +19,7 @@
     "react-ripples": "^0.4.0",
     "react-router": "^4.1.1",
     "react-router-dom": "^4.1.1",
-    "react-router-redux": "5.0.0",
+    "react-router-redux": "^5.0.0",
     "react-sidebar": "^2.3.2",
     "react-sticky": "^5.0.2",
     "react-virtualized": "^9.7.5",
