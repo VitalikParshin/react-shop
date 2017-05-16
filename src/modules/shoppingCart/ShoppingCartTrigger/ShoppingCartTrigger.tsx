@@ -7,8 +7,9 @@ import Ripples from "react-ripples";
 import {ILayout} from "../../layout/model";
 
 interface ShoppingCartTriggerProps {
-  layout: ILayout,
-  dispatch: any,
+  layout: ILayout;
+  dispatch: any;
+  height: number;
 }
 
 
@@ -19,7 +20,7 @@ class ShoppingCartTrigger extends React.Component<ShoppingCartTriggerProps,any> 
   }
 
   render() {
-    const { layout } = this.props;
+    const { layout, height } = this.props;
     return (
       <Ripples>
         <Icon
@@ -28,7 +29,8 @@ class ShoppingCartTrigger extends React.Component<ShoppingCartTriggerProps,any> 
           onClick={this.onClick}
           style={{
             fill: layout.openShoppingCart ? "orange" : "white",
-            padding: 15,
+            height: height,
+            padding: `0 ${height/2}px`
           }}
         />
       </Ripples>

@@ -22,7 +22,7 @@
 			{
 				"taskName": "tsc -w",
 				"args": [
-					"tsc -w"
+					"node_modules/typescript/bin/tsc -w"
 				],
 				"isBuildCommand": true,
 				"showOutput": "always",

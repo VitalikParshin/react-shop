@@ -9,8 +9,9 @@ import {ILayout} from "../model";
 import Ripples from "react-ripples";
 
 interface CatalogTriggerProps {
-  layout: ILayout,
-  dispatch: any,
+  layout: ILayout;
+  dispatch: any;
+  height: number;
 }
 
 class CatalogTrigger extends React.Component<CatalogTriggerProps,any> {
@@ -21,7 +22,7 @@ class CatalogTrigger extends React.Component<CatalogTriggerProps,any> {
   }
 
   render() {
-    const { layout } = this.props;
+    const { layout, height } = this.props;
     return (
       <Ripples>
         <Icon
@@ -30,7 +31,8 @@ class CatalogTrigger extends React.Component<CatalogTriggerProps,any> {
           onClick={this.onClick}
           style={{
             fill: layout.openCatalog ? "orange" : "white",
-            padding: 15,
+            height: height,
+            padding: `0 ${height/2}px`
           }}
         />
       </Ripples>

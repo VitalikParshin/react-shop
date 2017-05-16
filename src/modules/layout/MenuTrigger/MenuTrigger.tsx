@@ -9,8 +9,9 @@ import {ILayout} from "../model";
 import Ripples from "react-ripples";
 
 interface MenuTriggerProps {
-  layout: ILayout,
-  dispatch: any,
+  layout: ILayout;
+  dispatch: any;
+  height: number;
 }
 
 class MenuTrigger extends React.Component<MenuTriggerProps,any> {
@@ -21,7 +22,7 @@ class MenuTrigger extends React.Component<MenuTriggerProps,any> {
   }
 
   render() {
-    const { layout } = this.props;
+    const { layout, height } = this.props;
     return (
       <Ripples>
         <Icon
@@ -30,7 +31,8 @@ class MenuTrigger extends React.Component<MenuTriggerProps,any> {
           onClick={this.onClick}
           style={{
             fill: layout.openMenu === true ? "orange" : "white",
-            padding: 15,
+            height: height,
+            padding: `0 ${height/2}px`
           }}
         />
       </Ripples>

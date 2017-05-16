@@ -1,6 +1,9 @@
 import * as React from "react";
+import { connect } from "react-redux";
 
 import { compose, gql, graphql } from "react-apollo";
+import {ILayout} from "../model";
+import Ripples from "react-ripples";
 
 import {
   List,
@@ -114,8 +117,11 @@ class FlatPages extends React.Component<any, any> {
 
   render() {
     const { data }  = this.props;
-    const { loading, flatPages } = data;
+    if (!data) {
+      return <div></div>
+    }
 
+    const { loading, flatPages } = data;
     if (loading === true) {
       return <Loading/>;
     }
@@ -136,22 +142,47 @@ class FlatPages extends React.Component<any, any> {
         </List>
 
         <Modal
-          closable
-          maskClosable
-          transparent
+          transparent={false}
           title={this.state.page.name}
           visible={this.state.showModal}
           animationType="fade"
-          onClose={this.closeModal}
         >
           <div
             dangerouslySetInnerHTML={createMarkup(this.state.page.content)}
-            style={{ textAlign: "left" }}
+            style={{ padding: 20, textAlign: "left" }}
           />
+          <Ripples>
+            <Icon
+              type={require("!svg-sprite!./round_close_fill.svg")}
+              size="lg"
+              style={{
+                fill: "orange",
+                position: "fixed",
+                top: 15,
+                right: 15,
+              }}
+              onClick={this.closeModal}
+            />
+          </Ripples>
         </Modal>
       </div>
     )
   }
 }
 
-export default graphql(FLATPAGES_QUERY)(FlatPages);
+const mapStateToProps: any = (state) => ({
+  layout: state.layout,
+  router: state.router,
+})
+
+export default compose(
+  connect<any, {}, any>(mapStateToProps),
+  graphql(FLATPAGES_QUERY, {
+    options: ({ layout, router }) => ({
+      skip: !(
+        router.location.pathname == "/"
+        || layout.openMenu
+      ),
+    }),
+  })
+)(FlatPages);

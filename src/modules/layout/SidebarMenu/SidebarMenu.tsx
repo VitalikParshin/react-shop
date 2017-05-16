@@ -3,9 +3,10 @@ import {ACTION_TOOTLE_CATALOG, ACTION_TOOTLE_MENU} from "../constants";
 import Sidebar from "react-sidebar";
 import { gql, compose, graphql } from "react-apollo";
 import { connect } from "react-redux";
-import {Catalog, Menu} from "../index";
+import {Menu} from "../index";
 
-class SidebarMenu extends React.Component<any,any> {
+class SidebarMenu extends React.Component < any,
+any > {
 
   onSetSidebarOpen = () => {
     const { dispatch } = this.props;
