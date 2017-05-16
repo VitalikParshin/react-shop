@@ -62,7 +62,7 @@ class Catalog extends React.Component<any,any> {
     if (isDrawer === true) {
       style["width"] = window.innerWidth * 0.9;
       style["background"] = "aliceblue";
-      style["padding"] = "65px 10px 10px 10px";
+      style["padding"] = "20px 10px 10px 10px";
     }
 
     return (

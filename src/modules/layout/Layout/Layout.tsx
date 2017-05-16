@@ -10,17 +10,14 @@ import {HEIGHT} from "../Header/Header";
 
 class Layout extends React.Component<any,any> {
   render() {
-        // <SidebarMenu>
-        //   <SidebarCatalog>
-        //     {this.props.children}
-        //   </SidebarCatalog>
-        // </SidebarMenu>
-
-
     return (
       <div>
         <Header/>
-        <div style={{marginTop: HEIGHT + 15 }}>{this.props.children}</div>
+        <SidebarMenu>
+          <SidebarCatalog>
+            {this.props.children}
+          </SidebarCatalog>
+        </SidebarMenu>
       </div>
     )
   }

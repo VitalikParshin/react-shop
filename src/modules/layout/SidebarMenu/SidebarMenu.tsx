@@ -21,6 +21,8 @@ any > {
       sidebar={<Menu/>}
       open={layout.openMenu}
       onSetOpen={this.onSetSidebarOpen as any}
+      // rootClassName="sidebar"
+      contentClassName="sidebar"
     >
       {this.props.children}
     </Sidebar>

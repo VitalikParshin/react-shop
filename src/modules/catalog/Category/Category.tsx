@@ -13,11 +13,11 @@ import {
   WhiteSpace,
   Button
 } from "antd-mobile";
+import Sidebar from "react-sidebar";
 import { Link } from "react-router-dom";
 import {Products, Product, Filters, FiltersTrigger} from "../index";
 import {CATEGORY_QUERY} from "../model";
 import {ACTION_TOOTLE_FILTERS, ACTION_TOOTLE_CATALOG} from "../../layout/constants";
-import Sidebar from "@types/react-sidebar";
 import {utils} from "../../layout/index";
 import {HEIGHT} from "../../layout/Header/Header";
 
@@ -46,24 +46,26 @@ class Category extends React.Component<any,any> {
   }
 
   render() {
-      // <Sidebar
-      //   pullRight
-      //   touch
-      //   touchHandleWidth={ utils.swipeEnabled() ? 50 : 0 }
-      //   sidebar={<Filters/>}
-      //   open={layout.openFilters}
-      //   onSetOpen={this.onSetSidebarOpen as any}
-      // >
+
 
     const { id, dispatch, layout } = this.props;
 
     return (
-      <div style={{margin: "20px 10px"}}>
-        <Flex>
-          <Flex.Item><FiltersTrigger /></Flex.Item>
-        </Flex>
-        <Products categoryId={id}/>
-      </div>
+      <Sidebar
+        touch
+        pullRight
+        touchHandleWidth={ utils.swipeEnabled() ? 50 : 0 }
+        sidebar={<Filters/>}
+        open={layout.openFilters}
+        onSetOpen={this.onSetSidebarOpen as any}
+      >
+        <div style={{margin: "20px 10px"}}>
+          <Flex>
+            <Flex.Item><FiltersTrigger /></Flex.Item>
+          </Flex>
+          <Products categoryId={id}/>
+        </div>
+      </Sidebar>
     )
   }
 }
