@@ -116,8 +116,8 @@ class FlatPages extends React.Component<any, any> {
               size="lg"
               style={{
                 position: "fixed",
-                top: 10,
-                right: 10,
+                top: 15,
+                right: 15,
               }}
               onClick={this.closeModal}
             />
