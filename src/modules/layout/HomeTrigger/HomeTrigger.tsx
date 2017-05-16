@@ -30,7 +30,7 @@ class MenuTrigger extends React.Component<MenuTriggerProps,any> {
         onClick={this.onClick}
       >
         <Link to="/">
-          <Flex align="center" style={{height: "1rem", color: "white", padding: "0 20px"}}>
+          <Flex align="center" style={{height: "0.8rem", color: "white", padding: "0 20px"}}>
             BUY
             <Icon
               type={require("!svg-sprite!./packet_filled.svg")}
