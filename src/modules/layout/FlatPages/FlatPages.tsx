@@ -115,6 +115,7 @@ class FlatPages extends React.Component<any, any> {
               type={require("!svg-sprite!./round_close_fill.svg")}
               size="lg"
               style={{
+                fill: "orage",
                 position: "fixed",
                 top: 15,
                 right: 15,
