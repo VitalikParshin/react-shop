@@ -39,6 +39,7 @@
 1. You can find 1M+ icons here `http://iconfont.cn/`
 1. Put the icon to you component folder
 1. Use JSX syntax like this
+
 ```JSX
 import { Icon, List } from "antd-mobile";
 ...
