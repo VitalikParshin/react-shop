@@ -9,18 +9,12 @@ import CatalogTrigger from "./CatalogTrigger/CatalogTrigger";
 import SubCatalog from "./SubCatalog/SubCatalog";
 import FlatPages from "./FlatPages/FlatPages";
 import MenuTrigger from "./MenuTrigger/MenuTrigger";
+import HomeTrigger from "./HomeTrigger/HomeTrigger";
 import Menu from "./Menu/Menu";
 
 import reducer from "./reducer";
-
-const isSafariBrowser = () => {
-  // From `react-browser-detection` npm package
-  return Object.prototype.toString.call((window as any).HTMLElement).indexOf('Constructor') > 0
-}
-
-const swipeEnabled = () => {
-  return isSafariBrowser() == false;
-}
+import * as model from "./model";
+import * as utils from "./utils";
 
 export {
   Header,
@@ -35,7 +29,9 @@ export {
   MenuTrigger,
   Menu,
   SidebarMenu,
+  HomeTrigger,
 
-  isSafariBrowser,
-  swipeEnabled,
+  model,
+  reducer,
+  utils,
 }

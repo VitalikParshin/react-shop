@@ -13,11 +13,14 @@ import {
 
   ACTION_RESET,
 } from "./constants";
+import {ILayout} from "./model";
 
-const DEFAULT_LAYOUT = {
+
+const DEFAULT_LAYOUT: ILayout = {
   openFilters: false,
   openCatalog: false,
   openMenu: false,
+  openShoppingCart: false,
 };
 
 const layout = (state = DEFAULT_LAYOUT, action) => {

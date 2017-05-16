@@ -3,9 +3,11 @@ import { ACTION_TOOTLE_CATALOG } from "../constants";
 import Sidebar from "react-sidebar";
 import { gql, compose, graphql } from "react-apollo";
 import { connect } from "react-redux";
-import { Catalog, swipeEnabled } from "../index";
+import { Catalog } from "../index";
+import {swipeEnabled} from "../utils";
 
-class SidebarCatalog extends React.Component<any,any> {
+class SidebarCatalog extends React.Component < any,
+any > {
 
   onSetSidebarOpen = () => {
     const { dispatch } = this.props;

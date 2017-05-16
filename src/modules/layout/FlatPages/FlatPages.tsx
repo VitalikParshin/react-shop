@@ -97,7 +97,7 @@ class FlatPages extends React.Component<any, any> {
         <Modal
           closable
           maskClosable
-          transparent={false}
+          transparent
           title={this.state.page.name}
           visible={this.state.showModal}
           animationType="fade"

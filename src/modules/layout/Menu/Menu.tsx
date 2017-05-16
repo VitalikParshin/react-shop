@@ -18,16 +18,18 @@ import Sidebar from "react-sidebar";
 
 class Menu extends React.Component<any,any> {
   render() {
+    const width = window.innerWidth * 0.9
     return (
       <div style={{
         background: "white",
         height: "100%",
+        width: width,
       }}>
         <Flex justify="center" align="center">
           <img
             style={{
               paddingTop: 100,
-              width: "80%",
+              width: "90%",
             }}
             src="http://static1.buybag.com.ua/static/img/logo.png"
           />

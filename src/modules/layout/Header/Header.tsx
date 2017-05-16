@@ -2,7 +2,7 @@ import * as React from "react";
 import { List, WingBlank, Flex, Button, NoticeBar, NavBar, Icon, Card } from "antd-mobile";
 import { Link } from  "react-router-dom";
 import Ripples from "react-ripples";
-import {CatalogTrigger, MenuTrigger} from "../index";
+import {CatalogTrigger, MenuTrigger, HomeTrigger} from "../index";
 import {ShoppingCartTrigger} from "../../shoppingCart/index";
 
 class Header extends React.Component<any,any> {
@@ -19,19 +19,15 @@ class Header extends React.Component<any,any> {
           zIndex: 100,
         }}
       >
-        <Ripples style={{padding: 15}}><MenuTrigger/></Ripples>
-        <Ripples style={{padding: 20}}><CatalogTrigger/></Ripples>
-        <Ripples style={{padding: 20}}>
-          <Link to="/">
-            <span  style={{ color: "white" }}>HOME</span>
-          </Link>
-        </Ripples>
-        <Ripples style={{padding: 15}}>
-          <ShoppingCartTrigger/>
-        </Ripples>
+        <MenuTrigger/>
+        <CatalogTrigger/>
+        <HomeTrigger/>
+        <ShoppingCartTrigger/>
       </Flex>
     )
   }
 }
+
+
 
 export default Header;

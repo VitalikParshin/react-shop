@@ -31,6 +31,7 @@ export const CATALOG_QUERY = gql`
   }
 `;
 
+
 class Catalog extends React.Component<any,any> {
   onStickyStateChange = (isSticky) => {
     console.log(`Am I sticky?: ${ isSticky ? 'Yep!' : 'Nope!'}`);
@@ -59,7 +60,7 @@ class Catalog extends React.Component<any,any> {
 
     let style = {}
     if (isDrawer === true) {
-      style["width"] = 550;
+      style["width"] = window.innerWidth * 0.9;
       style["background"] = "aliceblue";
       style["padding"] = "65px 10px 10px 10px";
     }

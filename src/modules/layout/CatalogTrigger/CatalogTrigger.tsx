@@ -5,8 +5,15 @@ import { connect } from "react-redux";
 import {
   ACTION_TOOTLE_CATALOG,
 } from "../../layout/constants";
+import {ILayout} from "../model";
+import Ripples from "react-ripples";
 
-class CatalogTrigger extends React.Component<any,any> {
+interface CatalogTriggerProps {
+  layout: ILayout,
+  dispatch: any,
+}
+
+class CatalogTrigger extends React.Component<CatalogTriggerProps,any> {
 
   onClick = (e) => {
     e.preventDefault();
@@ -14,16 +21,25 @@ class CatalogTrigger extends React.Component<any,any> {
   }
 
   render() {
+    const { layout } = this.props;
     return (
-      <div
-        onClick={this.onClick}
-        style={{color: "white"}}
-      >КАТАЛОГ</div>
+      <Ripples>
+        <Icon
+          type={require("!svg-sprite!./catalog.svg")}
+          size="md"
+          onClick={this.onClick}
+          style={{
+            fill: layout.openCatalog ? "orange" : "white",
+            padding: 15,
+          }}
+        />
+      </Ripples>
     )
   }
 }
 
 const mapStateToProps: any = (state) => ({
+  layout: state.layout,
 })
 
 export default compose(
