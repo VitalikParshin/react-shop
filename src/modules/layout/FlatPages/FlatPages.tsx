@@ -95,7 +95,7 @@ class FlatPages extends React.Component<any, any> {
               thumb={<Icon type={this.getIcon(page.id)} style={{fill: "black"}} size="md"/>}
               onClick={(e) => this.showModal(e, page) }
             >
-              {page.id} {page.name}
+              {page.name}
             </List.Item>
           ))}
         </List>

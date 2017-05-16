@@ -30,7 +30,7 @@ class MenuTrigger extends React.Component<MenuTriggerProps,any> {
           onClick={this.onClick}
           style={{
             fill: layout.openMenu === true ? "orange" : "white",
-            padding: 15,
+            padding: 20,
           }}
         />
       </Ripples>
