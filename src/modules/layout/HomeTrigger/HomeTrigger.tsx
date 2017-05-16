@@ -36,7 +36,7 @@ class MenuTrigger extends React.Component<MenuTriggerProps,any> {
               size="md"
               style={{
                 fill: router.location.pathname === "/" ? "orange" : "white",
-                margin: "0 5px 10px 5px",
+                margin: "0px 10px 22px 10px",
               }}
             />
             BAG
