@@ -1,6 +1,6 @@
 import * as React from "react";
-import { Button, Icon } from "antd-mobile";
-import { compose } from "react-apollo";
+import {Button, Icon, Flex} from "antd-mobile";
+import {compose} from "react-apollo";
 import { connect } from "react-redux";
 import {
 ACTION_TOOTLE_MENU,
@@ -30,14 +30,18 @@ class MenuTrigger extends React.Component<MenuTriggerProps,any> {
         onClick={this.onClick}
       >
         <Link to="/">
-          <Icon
-            type={require("!svg-sprite!./home.svg")}
-            size="md"
-            style={{
-              fill: router.location.pathname === "/" ? "orange" : "white",
-              padding: 15,
-            }}
-          />
+          <Flex align="center" style={{height: "1rem", color: "white", padding: "0 20px"}}>
+            BUY
+            <Icon
+              type={require("!svg-sprite!./packet_filled.svg")}
+              size="md"
+              style={{
+                fill: router.location.pathname === "/" ? "orange" : "white",
+                margin: "0 5px 10px 5px",
+              }}
+            />
+            BAG
+          </Flex>
         </Link>
       </Ripples>
     )

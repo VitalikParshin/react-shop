@@ -19,9 +19,9 @@ class Header extends React.Component<any,any> {
           zIndex: 100,
         }}
       >
+        <HomeTrigger/>
         <MenuTrigger/>
         <CatalogTrigger/>
-        <HomeTrigger/>
         <ShoppingCartTrigger/>
       </Flex>
     )
