@@ -25,8 +25,8 @@ class MenuTrigger extends React.Component<MenuTriggerProps,any> {
     return (
       <Ripples>
         <Icon
-          type={require("!svg-sprite!./menu.svg")}
-          size="md"
+          type={layout.openMenu === true ? require("!svg-sprite!./revert.svg") : require("!svg-sprite!./icon_menu.svg") }
+          size="xs"
           onClick={this.onClick}
           style={{
             fill: layout.openMenu === true ? "orange" : "white",

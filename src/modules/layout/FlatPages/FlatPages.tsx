@@ -62,8 +62,49 @@ class FlatPages extends React.Component<any, any> {
   getIcon = (id) => {
     const _id = parseInt(id)
     switch(_id) {
+      //info
+      case 4: {
+        return require("!svg-sprite!./about.svg");
+      }
+      //contacts
+      case 5: {
+        return require("!svg-sprite!./contacts.svg");
+      }
+      //exchange and return
+      case 8: {
+        return require("!svg-sprite!./exchange.svg");
+      }
+      //make order
+      case 7: {
+        return require("!svg-sprite!./order.svg");
+      }
+      //buyers
+      case 10: {
+        return require("!svg-sprite!./buyers.svg");
+      }
+      //discount card
+      case 6: {
+        return require("!svg-sprite!./discount.svg");
+      }
+      //schedule of work
+      case 14: {
+        return require("!svg-sprite!./schedule.svg");
+      }
+      //shipping and payment
       case 2: {
-        return require("!svg-sprite!./menu.svg");
+        return require("!svg-sprite!./shipping.svg");
+      }
+      // rozygrish
+      case 15: {
+        return require("!svg-sprite!./roulette.svg");
+      }
+      //suppliers
+      case 11: {
+        return require("!svg-sprite!./info.svg");
+      }
+      //guarantee
+      case 3: {
+        return require("!svg-sprite!./guarantee.svg");
       }
       default: {
         return require("!svg-sprite!./transport.svg");
@@ -89,7 +130,7 @@ class FlatPages extends React.Component<any, any> {
               thumb={<Icon type={this.getIcon(page.id)} style={{fill: "black"}} size="md"/>}
               onClick={(e) => this.showModal(e, page) }
             >
-              {page.id} {page.name}
+              {page.name}
             </List.Item>
           ))}
         </List>
