@@ -34,6 +34,10 @@ export const CATALOG_QUERY = gql`
 
 
 class Catalog extends React.Component<any,any> {
+  onStickyStateChange = (isSticky) => {
+    console.log(`Am I sticky?: ${ isSticky ? 'Yep!' : 'Nope!'}`);
+  }
+
   render() {
     const { isDrawer, data } = this.props;
     const { loading, categories } = data;
@@ -69,9 +73,10 @@ class Catalog extends React.Component<any,any> {
             <Sticky
               topOffset={HEIGHT * 5}
               stickyStyle={{top: HEIGHT, background: "#f5f5f9", zIndex: 10000}}
+              // onStickyStateChange={this.onStickyStateChange}
             >
               <header>
-                <h2 style={{ textAlign:"center" }}>
+                <h2 style={{ textAlign:"center"}}>
                   {parent.name}
                 </h2>
               </header>
