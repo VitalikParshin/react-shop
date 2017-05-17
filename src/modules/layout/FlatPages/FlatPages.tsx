@@ -156,6 +156,8 @@ class FlatPages extends React.Component<any, any> {
               style={{
                 position: "fixed",
                 top: 0,
+                left: 0,
+                right: 0,
                 backgroundColor: "rgb(0, 136, 204)",
                 width: "100%",
                 color: "white",
