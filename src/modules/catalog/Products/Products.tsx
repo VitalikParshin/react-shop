@@ -31,6 +31,13 @@ const options = {
     fetchPolicy: "network-only",
   }),
   props({ data: { loading, allProducts, fetchMore } }) {
+    if (!loading) {
+      allProducts = update(allProducts, {
+        products: {
+          $set: allProducts.products.filter(p => p.subProducts.length != 0)
+        }
+      })
+    }
     return {
       loading,
       allProducts,
@@ -121,6 +128,9 @@ class Products extends React.Component<any,any> {
       <div style={{padding: padding}} ref={element => this.ref = element}>
         <MasonryInfiniteScroller
           sizes={[{ columns: 2, gutter: gutter }]}
+          style={{
+            marginBottom: 30,
+          }}
         >
           {products.map((product, i) => {
             return <Product key={i} {...product}/>
