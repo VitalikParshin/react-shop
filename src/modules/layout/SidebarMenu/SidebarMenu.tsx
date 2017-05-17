@@ -16,16 +16,17 @@ any > {
   render() {
     const { layout } = this.props;
 
-    return <Sidebar
-      touch={false}
-      sidebar={<Menu/>}
-      open={layout.openMenu}
-      onSetOpen={this.onSetSidebarOpen as any}
-      // rootClassName="sidebar"
-      contentClassName="sidebar"
-    >
-      {this.props.children}
-    </Sidebar>
+    return (
+      <Sidebar
+        touch={false}
+        sidebar={<Menu/>}
+        open={layout.openMenu}
+        onSetOpen={this.onSetSidebarOpen as any}
+        contentClassName="sidebar"
+      >
+        {this.props.children}
+      </Sidebar>
+    )
   }
 }
 

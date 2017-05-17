@@ -155,19 +155,18 @@ class FlatPages extends React.Component<any, any> {
               textAlign: "left",
             }}
           />
-          <Ripples>
-            <Icon
-              type={require("!svg-sprite!./round_close_fill.svg")}
-              size="lg"
-              style={{
-                fill: "orange",
-                position: "fixed",
-                top: 15,
-                right: 15,
-              }}
-              onClick={this.closeModal}
-            />
-          </Ripples>
+          <Icon
+            type={require("!svg-sprite!./round_close_fill.svg")}
+            size="lg"
+            style={{
+              fill: "orange",
+              position: "fixed",
+              top: 15,
+              right: 15,
+              zIndex: 1000,
+            }}
+            onClick={this.closeModal}
+          />
         </Modal>
       </div>
     )

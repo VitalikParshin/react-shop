@@ -14,16 +14,17 @@ class SidebarCatalog extends React.Component<any,any> {
 
   render() {
     const { layout } = this.props;
-
-    return <Sidebar
-      touch={utils.swipeEnabled()}
-      touchHandleWidth={50}
-      sidebar={<Catalog isDrawer={true}/>}
-      open={layout.openCatalog}
-      onSetOpen={this.onSetSidebarOpen as any}
-    >
-      {this.props.children}
-    </Sidebar>
+    return (
+      <Sidebar
+        touch={utils.swipeEnabled()}
+        touchHandleWidth={50}
+        sidebar={<Catalog isDrawer={true}/>}
+        open={layout.openCatalog}
+        onSetOpen={this.onSetSidebarOpen as any}
+      >
+        {this.props.children}
+      </Sidebar>
+    )
   }
 }
 
