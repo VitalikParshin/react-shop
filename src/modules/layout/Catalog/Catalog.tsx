@@ -71,13 +71,12 @@ class Catalog extends React.Component<any,any> {
         {startCats.map((parent, i) => (
           <StickyContainer>
             <Sticky
-              topOffset={HEIGHT * 1.5}
+              topOffset={HEIGHT * 3}
               stickyStyle={{top: HEIGHT}}
-              style={{top: HEIGHT}}
               onStickyStateChange={this.onStickyStateChange}
             >
               <header>
-                <h2 style={{textAlign:"center"}}>{parent.name}</h2>
+                <h2 style={{textAlign:"center", background: "parent", zIndex: 10000}}>{parent.name}</h2>
               </header>
             </Sticky>
             <SubCatalog
