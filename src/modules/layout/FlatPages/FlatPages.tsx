@@ -12,9 +12,11 @@ import {
   WingBlank,
   Button,
   Modal,
-  Icon
+Icon,
+Flex
 } from "antd-mobile";
 import {Loading} from "../index";
+import {HEIGHT} from "../Header/Header";
 
 const FLATPAGES_QUERY = gql `
   query flatpages{
@@ -43,6 +45,7 @@ class FlatPages extends React.Component<any, any> {
   state = {
     showModal: false,
     page: {
+      id: "",
       name: "",
       content: "",
     }
@@ -144,28 +147,43 @@ class FlatPages extends React.Component<any, any> {
 
         <Modal
           transparent={false}
-          title={this.state.page.name}
           visible={this.state.showModal}
           animationType="fade"
         >
+          <Flex
+              justify="start"
+              align="center"
+              style={{
+                position: "fixed",
+                top: 0,
+                backgroundColor: "rgb(0, 136, 204)",
+                width: "100%",
+                color: "white",
+              }}
+          >
+            <Ripples during={200}>
+              <Icon
+                type={require("!svg-sprite!./back.svg")}
+                size="md"
+                style={{
+                  fill: "white",
+                  height: HEIGHT,
+                  padding: "0 20px",
+                }}
+                onClick={this.closeModal}
+              />
+            </Ripples>
+            <h3 style={{margin: 0, textAlign:"center", width:"80%"}}>
+              {this.state.page.name}
+            </h3>
+          </Flex>
           <div
             dangerouslySetInnerHTML={createMarkup(this.state.page.content)}
             style={{
-              padding: utils.isSafariBrowser() ? 0 : 20,
+              padding: utils.isSafariBrowser() ? 20 : 0,
               textAlign: "left",
+              marginTop: 100,
             }}
-          />
-          <Icon
-            type={require("!svg-sprite!./round_close_fill.svg")}
-            size="lg"
-            style={{
-              fill: "orange",
-              position: "fixed",
-              top: 15,
-              right: 15,
-              zIndex: 1000,
-            }}
-            onClick={this.closeModal}
           />
         </Modal>
       </div>
