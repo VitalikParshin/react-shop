@@ -46,9 +46,10 @@ class Category extends React.Component<any,any> {
   }
 
   render() {
-
-
     const { id, dispatch, layout } = this.props;
+    // <Flex>
+    //   <Flex.Item><FiltersTrigger /></Flex.Item>
+    // </Flex>
 
     return (
       <Sidebar
@@ -60,9 +61,6 @@ class Category extends React.Component<any,any> {
         onSetOpen={this.onSetSidebarOpen as any}
       >
         <div style={{margin: "20px 10px"}}>
-          <Flex>
-            <Flex.Item><FiltersTrigger /></Flex.Item>
-          </Flex>
           <Products categoryId={id}/>
         </div>
       </Sidebar>

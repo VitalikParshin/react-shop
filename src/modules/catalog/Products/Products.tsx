@@ -102,10 +102,25 @@ class Products extends React.Component<any,any> {
       return <Loading/>
     }
     const { products, total } = allProducts;
+
+    let padding: number;
+    let gutter: number;
+    if (window.innerWidth <= 640) {
+      padding = 4;
+      gutter = 15
+    } else if (window.innerWidth <= 750) {
+      padding = 8;
+      gutter = 17;
+    } else {
+      padding = 10;
+      gutter = 20;
+    }
+
+
     return (
-      <div style={{padding: "10px 0"}} ref={element => this.ref = element}>
+      <div style={{padding: padding}} ref={element => this.ref = element}>
         <MasonryInfiniteScroller
-          sizes={[{ columns: 2, gutter: 10 }]}
+          sizes={[{ columns: 2, gutter: gutter }]}
         >
           {products.map((product, i) => {
             return <Product key={i} {...product}/>
