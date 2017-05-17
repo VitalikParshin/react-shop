@@ -108,7 +108,6 @@ export const ALL_PRODUCTS_QUERY = gql`
         id
         name
         shortDescription
-        description
         brand {
           id
           name
