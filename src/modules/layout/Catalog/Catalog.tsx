@@ -34,9 +34,6 @@ export const CATALOG_QUERY = gql`
 
 
 class Catalog extends React.Component<any,any> {
-  onStickyStateChange = (isSticky) => {
-    console.log(`Am I sticky?: ${ isSticky ? 'Yep!' : 'Nope!'}`);
-  }
 
   render() {
     const { isDrawer, data } = this.props;
@@ -62,10 +59,11 @@ class Catalog extends React.Component<any,any> {
     let style = {
       textAlign: "center",
       backgroundColor: "#f5f5f9",
+      paddingTop: 10,
     };
     if (isDrawer === true) {
       style["width"] = window.innerWidth * 0.9;
-      style["padding"] = "20px 10px 10px 10px";
+      style["padding"] = 10;
     }
 
     return (
@@ -81,6 +79,10 @@ class Catalog extends React.Component<any,any> {
         ))}
       </div>
     )
+
+    // onStickyStateChange = (isSticky) => {
+    //   console.log(`Am I sticky?: ${ isSticky ? 'Yep!' : 'Nope!'}`);
+    // }
 
     // return (
     //   <div style={style}>
