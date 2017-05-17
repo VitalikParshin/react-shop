@@ -16,6 +16,7 @@ import { StickyContainer, Sticky } from "react-sticky";
 import { Link } from "react-router-dom";
 import { Loading, SubCatalog } from "../../layout/index";
 import { ACTION_TOOTLE_CATALOG } from "../../layout/constants";
+import { HEIGHT } from "../../layout/Header/Header";
 
 export const CATALOG_QUERY = gql`
   query categories {
@@ -69,7 +70,10 @@ class Catalog extends React.Component<any,any> {
       <div style={style}>
         {startCats.map((parent, i) => (
           <StickyContainer>
-            <Sticky onStickyStateChange={this.onStickyStateChange}>
+            <Sticky
+              topOffset={HEIGHT}
+              onStickyStateChange={this.onStickyStateChange}
+            >
               <header>
                 <h2 style={{textAlign:"center"}}>{parent.name}</h2>
               </header>
