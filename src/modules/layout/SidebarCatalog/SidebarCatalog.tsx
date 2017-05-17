@@ -17,7 +17,7 @@ class SidebarCatalog extends React.Component<any,any> {
     return (
       <Sidebar
         touch={utils.swipeEnabled()}
-        touchHandleWidth={50}
+        touchHandleWidth={utils.swipeEnabled() ? 50 : undefined}
         sidebar={<Catalog isDrawer={true}/>}
         open={layout.openCatalog}
         onSetOpen={this.onSetSidebarOpen as any}

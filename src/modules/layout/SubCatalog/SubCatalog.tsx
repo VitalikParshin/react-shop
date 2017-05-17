@@ -3,7 +3,10 @@ import * as React from "react";
 import { gql, compose, graphql } from "react-apollo";
 import { connect } from "react-redux";
 import {Link} from "react-router-dom";
-import { ACTION_DISABLE_CATALOG } from "../constants";
+import { push } from "react-router-redux";
+
+import {ACTION_DISABLE_CATALOG, ACTION_RESET} from "../constants";
+import {SidebarCatalog} from "../index";
 
 function chunk(arr, len = 1) {
   var chunks: any = [],
@@ -19,6 +22,17 @@ class SubCatalog extends React.Component<any,any> {
   state = {
     initialHeight: 400,
   }
+
+  onClick = (event, cat) => {
+    const {dispatch} = this.props;
+    Promise.resolve(
+      dispatch({type: ACTION_DISABLE_CATALOG})
+    )
+    .then(response => {
+      dispatch(push(`/category/${cat.id}`));
+    })
+  }
+
   render() {
     const { dispatch, categories, isDrawer } = this.props;
 
@@ -32,17 +46,12 @@ class SubCatalog extends React.Component<any,any> {
                 style={{textAlign: "center", margin: 5}
               }>
                 <Card>
-                  <Link
-                    to={`/category/${cat.id}`}
+                  <div
                     style={{
                       paddingTop: 30,
                       height: 190,
                     }}
-                    onClick={
-                      isDrawer
-                      ? (event) => {dispatch({type: ACTION_DISABLE_CATALOG})}
-                      : void null
-                    }
+                    onClick={(e) => this.onClick(e, cat)}
                   >
                     <img
                       src={cat.image || ""}
@@ -57,7 +66,7 @@ class SubCatalog extends React.Component<any,any> {
                     <div style={{maxWidth: "80%", margin: "auto"}}>
                       {cat.name}
                     </div>
-                  </Link>
+                  </div>
                 </Card>
               </Flex.Item>
             ))}

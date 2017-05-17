@@ -1,10 +1,9 @@
 const isSafariBrowser = () => {
-  // From `react-browser-detection` npm package
-  return Object.prototype.toString.call((window as any).HTMLElement).indexOf('Constructor') > 0
+  return /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
 }
 
 const swipeEnabled = () => {
-  return isSafariBrowser() == false;
+  return !isSafariBrowser();
 }
 
 export {
