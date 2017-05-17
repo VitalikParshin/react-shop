@@ -59,7 +59,7 @@ class Catalog extends React.Component<any,any> {
       }
     }
 
-    let style = {}
+    let style = {textAlign: "center"};
     if (isDrawer === true) {
       style["width"] = window.innerWidth * 0.9;
       style["background"] = "aliceblue";
@@ -69,26 +69,40 @@ class Catalog extends React.Component<any,any> {
     return (
       <div style={style}>
         {startCats.map((parent, i) => (
-          <StickyContainer>
-            <Sticky
-              topOffset={-HEIGHT * 1.5}
-              stickyStyle={{top: HEIGHT}}
-              // onStickyStateChange={this.onStickyStateChange}
-            >
-              <header>
-                <h2 style={{ textAlign:"center", background: "#f5f5f9", zIndex: 10000}}>
-                  {parent.name}
-                </h2>
-              </header>
-            </Sticky>
+          <div>
+            <h2>{parent.name}</h2>
             <SubCatalog
               categories={childrenMap[parent.id]}
               isDrawer={isDrawer}
             />
-          </StickyContainer>
+          </div>
         ))}
       </div>
     )
+
+    // return (
+    //   <div style={style}>
+    //     {startCats.map((parent, i) => (
+    //       <StickyContainer>
+    //         <Sticky
+    //           topOffset={-HEIGHT * 1.5}
+    //           stickyStyle={{top: HEIGHT}}
+    //           // onStickyStateChange={this.onStickyStateChange}
+    //         >
+    //           <header>
+    //             <h2 style={{ textAlign:"center", background: "#f5f5f9", zIndex: 10000}}>
+    //               {parent.name}
+    //             </h2>
+    //           </header>
+    //         </Sticky>
+    //         <SubCatalog
+    //           categories={childrenMap[parent.id]}
+    //           isDrawer={isDrawer}
+    //         />
+    //       </StickyContainer>
+    //     ))}
+    //   </div>
+    // )
 
   }
 }
