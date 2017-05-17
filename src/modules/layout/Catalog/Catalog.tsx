@@ -71,7 +71,7 @@ class Catalog extends React.Component<any,any> {
         {startCats.map((parent, i) => (
           <StickyContainer>
             <Sticky
-              topOffset={-HEIGHT * 2}
+              topOffset={-HEIGHT}
               stickyStyle={{top: HEIGHT, background: "#f5f5f9", zIndex: 10000}}
               // onStickyStateChange={this.onStickyStateChange}
             >
