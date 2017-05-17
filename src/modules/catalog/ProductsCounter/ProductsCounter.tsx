@@ -11,7 +11,7 @@ class ProductsCounter extends React.Component<any,any> {
           position: "fixed",
           right: 20,
           bottom: 10,
-          color: "rgb(0, 136, 204)",
+          color: "gray",
         }}>
           {current}/{total}
         </div>
@@ -27,6 +27,7 @@ class ProductsCounter extends React.Component<any,any> {
             right: 0,
             bottom: 0,
             width: "100%",
+            borderColor: "orange",
           }}
         />
       </div>
