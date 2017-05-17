@@ -59,10 +59,12 @@ class Catalog extends React.Component<any,any> {
       }
     }
 
-    let style = {textAlign: "center"};
+    let style = {
+      textAlign: "center",
+      backgroundColor: "#f5f5f9",
+    };
     if (isDrawer === true) {
       style["width"] = window.innerWidth * 0.9;
-      style["background"] = "aliceblue";
       style["padding"] = "20px 10px 10px 10px";
     }
 
