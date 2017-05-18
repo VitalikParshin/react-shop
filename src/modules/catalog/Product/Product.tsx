@@ -3,21 +3,14 @@ import * as React from "react";
 import { Button, Card, Flex } from "antd-mobile";
 
 import { Link } from "react-router-dom";
-
-const scaleImageSize = (width, height) => {
-  const ratio = window.innerWidth / 2.4 / 360;
-  return {
-    width: width * ratio,
-    height: height * ratio,
-  }
-}
+import {Images} from "../../product/index";
 
 const getMinOfArray = (numArray) => {
   return Math.min.apply(null, numArray);
 }
 
 const Product = (props) => {
-  const { id, name, titleImage, subProducts, brand, i } = props;
+  const { id, name, titleImage, subProducts, brand, images } = props;
   const subProduct = subProducts[0];
   const url = `/product/${id}`;
   const prices = subProducts.map(el => el.price);
@@ -41,6 +34,13 @@ const Product = (props) => {
     cardWidth -= 32;
   }
 
+        // <Link to={url} style={{display: "block", textAlign: "center"}}>
+        //   <img
+        //     height={scaleImageSize(titleImage.width, titleImage.height).height}
+        //     src={titleImage.src}
+        //   />
+        // </Link>
+
   return (
     <div style={{
       dispalay: "block",
@@ -52,12 +52,7 @@ const Product = (props) => {
       background: "white",
     }}>
       <div style={{padding: cardPadding}}>
-        <Link to={url} style={{display: "block", textAlign: "center"}}>
-          <img
-            height={scaleImageSize(titleImage.width, titleImage.height).height}
-            src={titleImage.image}
-          />
-        </Link>
+        {/*<Images images={images} />*/}
         <div style={{lineHeight: "0.25rem", fontSize: "0.25rem", marginTop: cardPadding}}>
           <Link to={url}>
             {id}

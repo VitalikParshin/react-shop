@@ -52,18 +52,21 @@ class Category extends React.Component<any,any> {
     // </Flex>
 
     return (
-      <Sidebar
-        touch
-        pullRight
-        touchHandleWidth={ utils.swipeEnabled() ? 50 : 0 }
-        sidebar={<Filters/>}
-        open={layout.openFilters}
-        onSetOpen={this.onSetSidebarOpen as any}
-      >
-        <div style={{margin: "20px 10px"}}>
-          <Products categoryId={id}/>
-        </div>
-      </Sidebar>
+      <div style={{margin: "20px 10px"}}>
+        <Products categoryId={id}/>
+      </div>
+      // <Sidebar
+      //   touch
+      //   pullRight
+      //   touchHandleWidth={ utils.swipeEnabled() ? 50 : 0 }
+      //   sidebar={<Filters/>}
+      //   open={layout.openFilters}
+      //   onSetOpen={this.onSetSidebarOpen as any}
+      // >
+      //   <div style={{margin: "20px 10px"}}>
+      //     <Products categoryId={id}/>
+      //   </div>
+      // </Sidebar>
     )
   }
 }
