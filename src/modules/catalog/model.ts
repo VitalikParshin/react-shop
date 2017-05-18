@@ -91,6 +91,7 @@ export const PRODUCT_QUERY = gql`
         width
         height
         color
+        isTitle
       }
       subProducts {
         id
@@ -119,19 +120,13 @@ export const ALL_PRODUCTS_QUERY = gql`
           id
           name
         }
-        titleImage {
-          id
-          src
-          width
-          height
-          color
-        }
         images {
           id
           src
           width
           height
           color
+          isTitle
         }
         subProducts {
           id

@@ -4,18 +4,20 @@ import { Button, Card, Flex } from "antd-mobile";
 
 import { Link } from "react-router-dom";
 import {Images} from "../../product/index";
+import {scaleImageSize} from "../../product/Images/Images";
 
 const getMinOfArray = (numArray) => {
   return Math.min.apply(null, numArray);
 }
 
 const Product = (props) => {
-  const { id, name, titleImage, subProducts, brand, images } = props;
+  const { id, name, subProducts, brand, images } = props;
   const subProduct = subProducts[0];
   const url = `/product/${id}`;
   const prices = subProducts.map(el => el.price);
   const isSinglePrice = prices.length === 1;
   const minPrice = getMinOfArray(prices);
+  const titleImage = images.filter(img => img.isTitle)[0] || images[0];
 
   let cardPadding: number;
   let borderRadius: number;
@@ -34,13 +36,6 @@ const Product = (props) => {
     cardWidth -= 32;
   }
 
-        // <Link to={url} style={{display: "block", textAlign: "center"}}>
-        //   <img
-        //     height={scaleImageSize(titleImage.width, titleImage.height).height}
-        //     src={titleImage.src}
-        //   />
-        // </Link>
-
   return (
     <div style={{
       dispalay: "block",
@@ -52,6 +47,12 @@ const Product = (props) => {
       background: "white",
     }}>
       <div style={{padding: cardPadding}}>
+        <Link to={url} style={{display: "block", textAlign: "center"}}>
+          <img
+            height={scaleImageSize(titleImage.width, titleImage.height).height}
+            src={titleImage.src}
+          />
+        </Link>
         {/*<Images images={images} />*/}
         <div style={{lineHeight: "0.25rem", fontSize: "0.25rem", marginTop: cardPadding}}>
           <Link to={url}>

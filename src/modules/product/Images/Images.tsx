@@ -21,15 +21,22 @@ class Images extends React.Component<ImagesProps, any> {
   }
 
   render() {
+    const { images } = this.props;
+    const maxImageHeight = Math.max(
+      ...images.map(img => scaleImageSize(img.width, img.height).height)
+    );
+
     return (
       <WingBlank>
         <Carousel
-          className="my-carousel" autoplay={false} infinite selectedIndex={0}
+          className="my-carousel"
+          autoplay={false}
+          infinite selectedIndex={0}
           beforeChange={(from, to) => console.log(`slide from ${from} to ${to}`)}
           afterChange={index => console.log('slide to', index)}
           style={{
             background: "white",
-            // padding:"1rem",
+            height: maxImageHeight,
           }}
         >
           {this.props.images.map(image => (
