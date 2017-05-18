@@ -1,10 +1,10 @@
 import * as React from "react";
 
-import { Button, Card, Flex } from "antd-mobile";
+import {Button, Card, Flex, Icon, WingBlank} from "antd-mobile";
 
 import { Link } from "react-router-dom";
-import {Images} from "../../product/index";
-import {scaleImageSize} from "../../product/Images/Images";
+import {Images, Image} from "../../product/index";
+import {scaleImageSize} from "../../product/Image/Image";
 
 const getMinOfArray = (numArray) => {
   return Math.min.apply(null, numArray);
@@ -36,6 +36,15 @@ const Product = (props) => {
     cardWidth -= 32;
   }
 
+  let _colorsSet: string[] = [];
+  let imageSet: any[] = [];
+  for (let image of images) {
+    if (_colorsSet.indexOf(image.color) === -1) {
+      _colorsSet.push(image.color);
+      imageSet.push(image);
+    }
+  }
+
   return (
     <div style={{
       dispalay: "block",
@@ -46,13 +55,26 @@ const Product = (props) => {
       borderRadius: borderRadius,
       background: "white",
     }}>
+      <WingBlank size="lg" />
       <div style={{padding: cardPadding}}>
         <Link to={url} style={{display: "block", textAlign: "center"}}>
-          <img
-            height={scaleImageSize(titleImage.width, titleImage.height).height}
-            src={titleImage.src}
-          />
+          <Image {...titleImage} />
         </Link>
+
+        {imageSet.length > 1 ?
+          (
+            <Flex justify="center" wrap="wrap">
+              {imageSet.map(image => (
+                <Icon
+                  type={require("!svg-sprite!./dot.svg")}
+                  size="md"
+                  style={{fill: image.color}}
+                />
+              ))}
+            </Flex>
+          ) : ""
+        }
+
         {/*<Images images={images} />*/}
         <div style={{lineHeight: "0.25rem", fontSize: "0.25rem", marginTop: cardPadding}}>
           <Link to={url}>
@@ -66,6 +88,7 @@ const Product = (props) => {
           <div>{ isSinglePrice ? "от " : "" }{parseInt(minPrice)} грн</div>
         </div>
       </div>
+      <WingBlank size="lg" />
     </div>
   )
 }

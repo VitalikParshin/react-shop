@@ -1,13 +1,6 @@
 import * as React from "react";
 import { Carousel, WhiteSpace, WingBlank } from "antd-mobile";
-
-export const scaleImageSize = (width, height) => {
-  const ratio = window.innerWidth / 2.4 / 360;
-  return {
-    width: width * ratio,
-    height: height * ratio,
-  }
-}
+import {scaleImageSize} from "../Image/Image";
 
 interface ImagesProps {
   images: [any];
