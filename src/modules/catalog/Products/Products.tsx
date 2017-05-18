@@ -32,6 +32,8 @@ const options = {
   }),
   props({ data: { loading, allProducts, fetchMore } }) {
     if (!loading) {
+      // This is temp hack to exclude products without subProducts
+      // TODO: Should be solved in GraphQL server
       allProducts = update(allProducts, {
         products: {
           $set: allProducts.products.filter(p => p.subProducts.length != 0)
@@ -62,19 +64,45 @@ const options = {
   }
 };
 
+let timer;
+
 class Products extends React.Component<any,any> {
 
   ref;
-  bottomHeight;
+  bottomHeight: number;
   threshold = 800;
 
   state = {
     haveMoreProducts: true,
+    scrolledProducts: 0,
+  }
+
+  refineScrolledProducts = (scrolledProducts) => {
+    const { fetchMore, allProducts: {products, total} } = this.props;
+
+    if (scrolledProducts < LIMIT) {
+      scrolledProducts = LIMIT > total ? total : LIMIT;
+    } else if (scrolledProducts > total) {
+      scrolledProducts = total;
+    }
+    return scrolledProducts;
   }
 
   handleScroll = (event) => {
-    const { fetchMore } = this.props;
-    if (event.srcElement.scrollTop > this.bottomHeight) {
+    const { fetchMore, allProducts: {products, total} } = this.props;
+
+    // Calculate scrolled products
+    const { scrolledProducts, haveMoreProducts } = this.state;
+    let _scrolledProducts = (
+      Math.round(
+        event.srcElement.scrollTop
+        / this.bottomHeight
+        * products.length
+      )
+    )
+    this.setState({scrolledProducts: _scrolledProducts})
+
+    if (event.srcElement.scrollTop > this.bottomHeight && haveMoreProducts === true) {
       window.removeEventListener('scroll', this.handleScroll, true);
       fetchMore();
     }
@@ -82,7 +110,7 @@ class Products extends React.Component<any,any> {
 
   componentDidUpdate = (prevProps, prevState) => {
     const { loading, allProducts } = this.props;
-    if (loading === false && allProducts.products.length % LIMIT == 0) {
+    if (loading === false) {
       window.addEventListener('scroll', this.handleScroll, true);
       this.bottomHeight = (
         this.ref.offsetTop + this.ref.clientHeight
@@ -123,13 +151,12 @@ class Products extends React.Component<any,any> {
       gutter = 20;
     }
 
-
     return (
       <div style={{padding: padding}} ref={element => this.ref = element}>
         <MasonryInfiniteScroller
           sizes={[{ columns: 2, gutter: gutter }]}
           style={{
-            marginBottom: 30,
+            marginBottom: 35,
           }}
         >
           {products.map((product, i) => {
@@ -147,7 +174,10 @@ class Products extends React.Component<any,any> {
           <Icon type="loading" size="lg"/>
         </div>
 
-        <ProductsCounter current={products.length} total={total}/>
+        <ProductsCounter
+          scrolled={this.refineScrolledProducts(this.state.scrolledProducts)}
+          total={total}
+        />
       </div>
     )
   }

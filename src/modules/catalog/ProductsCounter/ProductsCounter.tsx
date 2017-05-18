@@ -4,20 +4,20 @@ import { Progress } from "antd-mobile";
 
 class ProductsCounter extends React.Component<any,any> {
   render() {
-    const { current, total } = this.props;
+    const { scrolled, total } = this.props;
     return (
       <div>
         <div style={{
           position: "fixed",
           right: 20,
-          bottom: 10,
+          bottom: 15,
           color: "gray",
         }}>
-          {current}/{total}
+          {scrolled}/{total}
         </div>
 
         <Progress
-          percent={Math.round(current/total*100)}
+          percent={Math.round(scrolled/total*100)}
           position="normal"
           unfilled="hide"
           appearTransition

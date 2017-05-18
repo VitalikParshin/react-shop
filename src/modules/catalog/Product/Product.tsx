@@ -2,12 +2,10 @@ import * as React from "react";
 
 import { Button, Card, Flex } from "antd-mobile";
 
-import {Images} from "../../product/index";
 import { Link } from "react-router-dom";
 
 const scaleImageSize = (width, height) => {
   const ratio = window.innerWidth / 2.4 / 360;
-  // const ratio = maxWidth / width;
   return {
     width: width * ratio,
     height: height * ratio,
@@ -18,30 +16,29 @@ const getMinOfArray = (numArray) => {
   return Math.min.apply(null, numArray);
 }
 
-// <Images images={images}/>
 const Product = (props) => {
   const { id, name, titleImage, subProducts, brand, i } = props;
   const subProduct = subProducts[0];
   const url = `/product/${id}`;
   const prices = subProducts.map(el => el.price);
-  const onePrice = prices.length === 1;
+  const isSinglePrice = prices.length === 1;
   const minPrice = getMinOfArray(prices);
 
   let cardPadding: number;
   let borderRadius: number;
-  let cardWidth: number;
+  let cardWidth = Math.round(window.innerWidth / 2);
   if (window.innerWidth <= 640) {
     cardPadding = 10;
     borderRadius = 4;
-    cardWidth = Math.round(window.innerWidth / 2) - 22;
+    cardWidth -= 22;
   } else if (window.innerWidth <= 750) {
     cardPadding = 14;
     borderRadius = 6;
-    cardWidth = Math.round(window.innerWidth / 2) - 28;
+    cardWidth -= 28;
   } else {
     cardPadding = 15;
     borderRadius = 8;
-    cardWidth = Math.round(window.innerWidth / 2) - 32;
+    cardWidth -= 32;
   }
 
   return (
@@ -70,7 +67,7 @@ const Product = (props) => {
           </Link>
         </div>
         <div style={{fontWeight: "bold", fontSize: "0.3rem", color: "#468847", marginTop: cardPadding}} >
-          <div>{ onePrice ? "от " : "" }{parseInt(minPrice)} грн</div>
+          <div>{ isSinglePrice ? "от " : "" }{parseInt(minPrice)} грн</div>
         </div>
       </div>
     </div>
