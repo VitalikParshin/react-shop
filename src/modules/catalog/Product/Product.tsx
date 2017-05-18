@@ -74,14 +74,8 @@ class Product extends React.Component<any,any> {
       }}>
         <WhiteSpace size="sm" />
         <div style={{padding: cardPadding}}>
-          <Link
-              to={url}
-              style={{
-                display: "block",
-                textAlign: "center",
-                height: maxImageHeight,
-              }}>
-            <Image {...titleImage} />
+          <Link to={url}>
+            <Image divHeight={maxImageHeight} {...titleImage} />
           </Link>
 
           {images.length > 1 ?

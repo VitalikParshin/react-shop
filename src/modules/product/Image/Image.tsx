@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Carousel, WhiteSpace, WingBlank } from "antd-mobile";
+import {Carousel, WhiteSpace, WingBlank, Flex} from "antd-mobile";
 
 export const scaleImageSize = (width, height) => {
   const ratio = window.innerWidth / 2.4 / 360;
@@ -13,17 +13,29 @@ interface ImageProps {
   src: string;
   width: number;
   height: number;
-  isTitle: boolean
+  isTitle: boolean;
+  divHeight: number;
 }
 
 class Image extends React.Component<ImageProps, any> {
   render() {
-    const { width, height, src, isTitle } = this.props;
+    const { divHeight, width, height, src, isTitle } = this.props;
     return (
-      <img
-        height={scaleImageSize(width, height).height}
-        src={src}
-      />
+      <Flex
+          justify="center"
+          align="center"
+          style={{height: divHeight}}
+      >
+        <img
+          src={src}
+          // height={scaleImageSize(width, height).height}
+          style={{
+            objectFit: "contain",
+            width: "100%",
+            height: "100%",
+          }}
+        />
+      </Flex>
     )
   }
 }
