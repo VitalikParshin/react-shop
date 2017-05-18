@@ -1,6 +1,13 @@
 import * as React from "react";
-import {Button, Card, Flex, Icon, WingBlank} from "antd-mobile";
-import { Link } from "react-router-dom";
+import {
+  Button,
+  Card,
+  Flex,
+  Icon,
+  WingBlank,
+  WhiteSpace
+} from "antd-mobile";
+import {Link} from "react-router-dom";
 import {Images, Image} from "../../product/index";
 import {scaleImageSize} from "../../product/Image/Image";
 import Ripples from "react-ripples";
@@ -65,7 +72,7 @@ class Product extends React.Component<any,any> {
         borderRadius: borderRadius,
         background: "white",
       }}>
-        <WingBlank size="lg" />
+        <WhiteSpace size="sm" />
         <div style={{padding: cardPadding}}>
           <Link
               to={url}
@@ -81,7 +88,7 @@ class Product extends React.Component<any,any> {
             (
               <Flex
                   justify="center"
-                  // wrap="wrap"
+                  wrap="wrap"
               >
                 {images.map(image => (
                   <Icon
@@ -99,18 +106,15 @@ class Product extends React.Component<any,any> {
 
           {/*<Images images={images} />*/}
           <div style={{lineHeight: "0.25rem", fontSize: "0.25rem", marginTop: cardPadding}}>
-            <Link to={url}>
-              {id}
-              {name}
-              <br/>
-              {brand.name} {subProduct.article}
-            </Link>
+            {name}
+            <br/>
+            {brand.name} {subProduct.article}
           </div>
           <div style={{fontWeight: "bold", fontSize: "0.3rem", color: "#468847", marginTop: cardPadding}} >
             <div>{ isSinglePrice ? "от " : "" }{parseInt(minPrice)} грн</div>
           </div>
         </div>
-        <WingBlank size="lg" />
+        <WhiteSpace size="sm" />
       </div>
     )
   }
