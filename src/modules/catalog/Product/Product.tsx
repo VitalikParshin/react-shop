@@ -52,14 +52,6 @@ class Product extends React.Component<any,any> {
       cardWidth -= 32;
     }
 
-    let _colorsSet: string[] = [];
-    let imagesSet: any[] = [];
-    for (let image of images) {
-      if (_colorsSet.indexOf(image.color) === -1) {
-        _colorsSet.push(image.color);
-        imagesSet.push(image);
-      }
-    }
     const maxImageHeight = Math.max(
       ...images.map(img => scaleImageSize(img.width, img.height).height)
     );
@@ -85,10 +77,13 @@ class Product extends React.Component<any,any> {
             <Image {...titleImage} />
           </Link>
 
-          {imagesSet.length > 1 ?
+          {images.length > 1 ?
             (
-              <Flex justify="center" wrap="wrap">
-                {imagesSet.map(image => (
+              <Flex
+                  justify="center"
+                  // wrap="wrap"
+              >
+                {images.map(image => (
                   <Icon
                     type={require("!svg-sprite!./dot.svg")}
                     size={image.id == titleImage.id ? "lg" : "md"}
