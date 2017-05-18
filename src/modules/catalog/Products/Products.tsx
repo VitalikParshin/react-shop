@@ -168,7 +168,7 @@ class Products extends React.Component<any,any> {
           style={{
             display: this.state.haveMoreProducts ? "block" : "none",
             textAlign: "center",
-            paddingTop: 30,
+            paddingTop: 10,
           }}
         >
           <Icon type="loading" size="lg"/>
