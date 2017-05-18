@@ -82,7 +82,6 @@ class Product extends React.Component<any,any> {
             (
               <Flex
                   justify="center"
-                  wrap="wrap"
               >
                 {images.map(image => (
                   <Icon
