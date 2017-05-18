@@ -27,7 +27,7 @@ class ProductsCounter extends React.Component<any,any> {
             right: 0,
             bottom: 0,
             width: "100%",
-            borderColor: "orange",
+            borderColor: scrolled === total ? "#468847" : "orange",
           }}
         />
       </div>
