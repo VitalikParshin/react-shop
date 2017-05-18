@@ -9,7 +9,7 @@ class ProductsCounter extends React.Component<any,any> {
       <div>
         <div style={{
           position: "fixed",
-          right: 20,
+          right: 30,
           bottom: 15,
           color: "gray",
         }}>
