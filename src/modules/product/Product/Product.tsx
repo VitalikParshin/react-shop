@@ -3,8 +3,8 @@ import * as React from "react";
 import { Button, Flex } from "antd-mobile";
 import { compose, gql, graphql } from "react-apollo";
 
-import { Images } from "../index";
-import { Loading } from "../../layout/index";
+import {Images, ProductTabs} from "../index";
+import {Loading} from "../../layout/index";
 import { PRODUCT_QUERY } from "../../catalog/model";
 import { connect } from "react-redux";
 
@@ -45,6 +45,7 @@ class Product extends React.Component<ConnectedProductProps, ProductProps> {
 
     return (
       <div>
+        <ProductTabs/>
         <h3>
           <div>
             {product.name + " "}
