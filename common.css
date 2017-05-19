@@ -14,3 +14,11 @@ body {
 .sidebar {
   margin-top: 70px !important;
 }
+
+.overflow-hidden {
+  overflow: hidden !important;
+}
+
+.overflow-scroll {
+  overflow: scroll !important;
+}

@@ -9,6 +9,7 @@ class SidebarCatalog extends React.Component<any,any> {
 
   onSetSidebarOpen = () => {
     const { dispatch } = this.props;
+    // this.setProps({style:{overflow:"hidden"}})
     dispatch({type: ACTION_TOOTLE_CATALOG})
   }
 
@@ -21,6 +22,7 @@ class SidebarCatalog extends React.Component<any,any> {
         sidebar={<Catalog isDrawer={true}/>}
         open={layout.openCatalog}
         onSetOpen={this.onSetSidebarOpen as any}
+        contentClassName="overflow-hidden"
       >
         {this.props.children}
       </Sidebar>
