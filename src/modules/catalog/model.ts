@@ -99,6 +99,15 @@ export const PRODUCT_QUERY = gql`
         price
         oldPrice
         discount
+        attributes {
+          name
+          values {
+            id
+            name
+            value
+            description
+          }
+        }
       }
     }
   }
