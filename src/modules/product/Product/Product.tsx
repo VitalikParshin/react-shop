@@ -45,7 +45,7 @@ class Product extends React.Component<ConnectedProductProps, ProductProps> {
 
     return (
       <div>
-        <ProductTabs/>
+        <Images images={images}/>
         <h3>
           <div>
             {product.name + " "}
@@ -55,8 +55,7 @@ class Product extends React.Component<ConnectedProductProps, ProductProps> {
             {`Код товара: ${firstProduct.id}`}
           </div>
         </h3>
-        <hr/>
-        <Images images={images}/>
+        <ProductTabs/>
         <hr/>
         <div style={{marginTop: "60px"}} className="am-wingblank am-wingblank-lg">
 

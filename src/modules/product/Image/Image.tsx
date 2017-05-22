@@ -1,8 +1,9 @@
 import * as React from "react";
 import {Carousel, WhiteSpace, WingBlank, Flex} from "antd-mobile";
 
-export const scaleImageSize = (width, height) => {
-  const ratio = window.innerWidth / 2.4 / 360;
+const defaultRatio = window.innerWidth / 2.4 / 360;
+
+export const scaleImageSize = (width, height, ratio=defaultRatio) => {
   return {
     width: width * ratio,
     height: height * ratio,
@@ -24,11 +25,13 @@ class Image extends React.Component<ImageProps, any> {
       <Flex
           justify="center"
           align="center"
-          style={{height: divHeight}}
+          style={{
+            width: window.innerWidth,
+            height: window.innerHeight,
+          }}
       >
         <img
           src={src}
-          // height={scaleImageSize(width, height).height}
           style={{
             objectFit: "contain",
             width: "100%",

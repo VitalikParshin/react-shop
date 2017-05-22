@@ -43,8 +43,8 @@ class ProductTabs extends React.Component<ConnectedTabProps, TabsProps> {
         <Tabs
           animated
           defaultActiveKey="2"
-          onChange={callback} onTabClick={handleTabClick}
-
+          onChange={callback}
+          onTabClick={handleTabClick}
         >
           <Tabs.TabPane tab="选项卡一" key="1">
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '5rem', backgroundColor: '#fff' }}>
