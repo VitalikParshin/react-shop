@@ -45,39 +45,38 @@ class Product extends React.Component<ConnectedProductProps, ProductProps> {
 
     return (
       <div>
-        <ProductTabs/>
-        <h3>
-          <div>
-            {product.name + " "}
-            {brand.name}
-          </div>
-          <div style={{color: "#b94a48"}}>
-            {`Код товара: ${firstProduct.id}`}
-          </div>
-        </h3>
-        <hr/>
-        <Images images={images}/>
-        <hr/>
-        <div style={{marginTop: "60px"}} className="am-wingblank am-wingblank-lg">
-
-          <div style={{color: "green", fontSize: "24px"}}>Eсть в наличии</div>
-
+        <ProductTabs dataProduct={product} />
+          <h3>
+            <div>
+              {product.name + " "}
+              {brand.name}
+            </div>
+            <div style={{color: "#b94a48"}}>
+              {`Код товара: ${firstProduct.id}`}
+            </div>
+          </h3>
           <hr/>
-          <Flex>
-            <div style={{fontSize: "40px",}}>{sProduct[0].price} грн</div>
-            <div style={{textDecoration: "line-through", fontSize: "24px"}}>{sProduct[0].oldPrice} грн</div>
-            <Button>Купить</Button>
-          </Flex>
+          <Images images={images}/>
           <hr/>
+          <div style={{marginTop: "60px"}} className="am-wingblank am-wingblank-lg">
+
+            <div style={{color: "green", fontSize: "24px"}}>Eсть в наличии</div>
+
+            <hr/>
+            <Flex>
+              <div style={{fontSize: "40px",}}>{} грн</div>
+              <div style={{textDecoration: "line-through", fontSize: "24px"}}>{} грн</div>
+              <Button>Купить</Button>
+            </Flex>
+          </div>
           <div>
             {sProduct.map(el =>
               <div >
-                <div style={{fontSize: "40px",}}>{el.price} грн</div>
-                <div style={{textDecoration: "line-through", fontSize: "24px"}}>{el.oldPrice} грн</div>
+                <div style={{fontSize: "40px", color: "#468847"}}>{el.price} грн</div>
+                <div style={{textDecoration: "line-through", fontSize: "24px", color: "#b94a48!important"}}>{el.oldPrice} грн</div>
               </div>
             )}
           </div>
-
           <br/>
           <div className="article">
             <a>Артикул:</a>
@@ -87,7 +86,6 @@ class Product extends React.Component<ConnectedProductProps, ProductProps> {
           </div>
           <div>Цвет: </div>
           <div>Количество: </div>
-
           <div dangerouslySetInnerHTML={createMarkup(product.description)}></div>
           <div>Характеристики товара: </div>
           <Flex>
@@ -98,7 +96,6 @@ class Product extends React.Component<ConnectedProductProps, ProductProps> {
               <Button>Купить</Button>
             </Flex.Item>
           </Flex>
-        </div>
       </div>
     )
   }

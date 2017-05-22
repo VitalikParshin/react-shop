@@ -11,10 +11,12 @@ import { connect } from "react-redux";
 const TabPane = Tabs.TabPane;
 
 interface ConnectedTabProps {
+  dataProduct: any;
   data?: any;
 };
 
 interface TabsProps {
+  dataProduct: any;
 };
 
 const options = {
@@ -38,27 +40,74 @@ function handleTabClick(key) {
 
 class ProductTabs extends React.Component<ConnectedTabProps, TabsProps> {
   render() {
-    return (
+    const dataProduct = this.props.dataProduct;
+    const { brand, images, subProducts } = dataProduct;
+    const subProduct = subProducts.map(el => el);
+    const firstProduct = subProduct[0];
+    console.log("SubProducts:", subProducts)
+   return (
       <div>
         <Tabs
           animated
-          defaultActiveKey="2"
+          defaultActiveKey="1"
           onChange={callback} onTabClick={handleTabClick}
 
         >
-          <Tabs.TabPane tab="选项卡一" key="1">
-            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '5rem', backgroundColor: '#fff' }}>
-              选项卡一内容
+          <TabPane tab="Купить" key="1">
+            <div style={{backgroundColor: "#fff" }}>
+              <div  className="am-wingblank am-wingblank-lg">
+                <div style={{display: "flex", flexDirection: "column", paddingTop: "10px"}}>
+                  <div>{dataProduct.name} {brand.name}</div>
+                  <div style={{color: "#b94a48", fontSize: "24px"}}>
+                    {`Код товара: ${firstProduct.id}`}
+                  </div>
+                </div>
+                <hr/>
+                <Images images={images}/>
+                <div style={{marginTop: "160px"}}>
+                  <div style={{color: "green", fontSize: "24px"}}>Eсть в наличии</div>
+                  <hr/>
+                  <div style={{display: "flex", flexDirection: "row", justifyContent: "space-between"}}>
+                    <div style={{width: "50%"}}>
+                      <div style={{fontSize: "40px", color: "#468847"}}>{firstProduct.price} грн</div>
+                      <div style={{textDecoration: "line-through", fontSize: "24px", color: "#b94a48"}}>{firstProduct.oldPrice} грн</div>
+                    </div>
+                    <div style={{width: "50%"}}>
+                      <Button
+                        className="btn"
+                        style={{background: "#51a351", textColor: "white"}}
+                        // type="primary"
+                        size="small"
+                        icon={require('svg-sprite!./basket.svg')}
+                      >
+                        Купить
+                      </Button>
+                    </div>
+                  </div>
+                </div>
+                <hr/>
+                <div dangerouslySetInnerHTML={createMarkup(dataProduct.description)}>
+                </div>
+              </div>
             </div>
-          </Tabs.TabPane>
-          <TabPane tab="选项卡二" key="2">
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '5rem', backgroundColor: '#fff' }}>
-              选项卡二内容
+                  slkdjf;lsjflsjljflsjdlfsjlksjldfkjadjal;kdfjal;dkjfaldjfal;djfla;djfaldj
+                  slkdjf;lsjflsjljflsjdlfsjlksjldfkjadjal;kdfjal;dkjfaldjfal;djfla;djfaldj
+                  slkdjf;lsjflsjljflsjdlfsjlksjldfkjadjal;kdfjal;dkjfaldjfal;djfla;djfaldj
+                  slkdjf;lsjflsjljflsjdlfsjlksjldfkjadjal;kdfjal;dkjfaldjfal;djfla;djfaldj
+                  slkdjf;lsjflsjljflsjdlfsjlksjldfkjadjal;kdfjal;dkjfaldjfal;djfla;djfaldj
+                  slkdjf;lsjflsjljflsjdlfsjlksjldfkjadjal;kdfjal;dkjfaldjfal;djfla;djfaldj
+
             </div>
           </TabPane>
-          <TabPane tab="选项卡三" key="3">
+          <TabPane tab="Характеристика" key="2">
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '5rem', backgroundColor: '#fff' }}>
-              选项卡三内容
+              характеристика
+            </div>
+          </TabPane>
+          <TabPane tab="Размеры" key="3">
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '5rem', backgroundColor: '#fff' }}>
+              таблица с размерами
             </div>
           </TabPane>
           <TabPane tab="选项卡三" key="4">
