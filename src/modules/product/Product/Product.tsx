@@ -46,6 +46,7 @@ class Product extends React.Component<ConnectedProductProps, ProductProps> {
     return (
       <div>
         <ProductTabs dataProduct={product} />
+        {/*
           <h3>
             <div>
               {product.name + " "}
@@ -96,6 +97,8 @@ class Product extends React.Component<ConnectedProductProps, ProductProps> {
               <Button>Купить</Button>
             </Flex.Item>
           </Flex>
+        */}
+
       </div>
     )
   }

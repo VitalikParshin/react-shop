@@ -47,13 +47,14 @@ class ProductTabs extends React.Component<ConnectedTabProps, TabsProps> {
     console.log("SubProducts:", subProducts)
    return (
       <div>
+        <Images images={images}/>
+        <WhiteSpace size="md"/>
         <Tabs
           animated
-          defaultActiveKey="2"
           onChange={callback}
           onTabClick={handleTabClick}
         >
-          <TabPane tab="Купить" key="1">
+          <TabPane tab="Инфо" key="1">
             <div style={{backgroundColor: "#fff" }}>
               <div  className="am-wingblank am-wingblank-lg">
                 <div style={{display: "flex", flexDirection: "column", paddingTop: "10px"}}>
@@ -62,8 +63,6 @@ class ProductTabs extends React.Component<ConnectedTabProps, TabsProps> {
                     {`Код товара: ${firstProduct.id}`}
                   </div>
                 </div>
-                <hr/>
-                <Images images={images}/>
                 <div style={{marginTop: "160px"}}>
                   <div style={{color: "green", fontSize: "24px"}}>Eсть в наличии</div>
                   <hr/>

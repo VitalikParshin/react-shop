@@ -8,8 +8,7 @@ import {
   WhiteSpace
 } from "antd-mobile";
 import {Link} from "react-router-dom";
-import {Images, Image} from "../../product/index";
-import {scaleImageSize} from "../../product/Image/Image";
+import {Image, scaleImageSize} from "../../product/index";
 import Ripples from "react-ripples";
 
 const getMinOfArray = (numArray) => {
@@ -73,9 +72,24 @@ class Product extends React.Component<any,any> {
         background: "white",
       }}>
         <WhiteSpace size="sm" />
-        <div style={{padding: cardPadding}}>
-          <Link to={url}>
-            <Image divHeight={maxImageHeight} {...titleImage} />
+        <div style={{ padding: cardPadding }}>
+          <Link key={`link-key`} to={{ pathname: url, modal: true }} >
+            <Flex
+                justify="center"
+                align="center"
+                style={{
+                  height: maxImageHeight,
+                }}
+            >
+              <img
+                src={titleImage.src}
+                style={{
+                  objectFit: "contain",
+                  width: "100%",
+                  height: "100%",
+                }}
+              />
+            </Flex>
           </Link>
 
           {images.length > 1 ?
@@ -96,8 +110,6 @@ class Product extends React.Component<any,any> {
               </Flex>
             ) : ""
           }
-
-          {/*<Images images={images} />*/}
           <div style={{lineHeight: "0.25rem", fontSize: "0.25rem", marginTop: cardPadding}}>
             {name}
             <br/>
