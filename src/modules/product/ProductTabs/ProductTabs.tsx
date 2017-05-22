@@ -49,15 +49,9 @@ class ProductTabs extends React.Component<ConnectedTabProps, TabsProps> {
       <div>
         <Tabs
           animated
-<<<<<<< HEAD
-          defaultActiveKey="1"
-          onChange={callback} onTabClick={handleTabClick}
-
-=======
           defaultActiveKey="2"
           onChange={callback}
           onTabClick={handleTabClick}
->>>>>>> 69e133c8563fc3e1a83fac4db2d6798c1a072048
         >
           <TabPane tab="Купить" key="1">
             <div style={{backgroundColor: "#fff" }}>
