@@ -12,42 +12,8 @@ import store from "./store";
 import history from "./history"
 import { Layout } from "./modules/layout/index";
 import { HomePage, ProductPage, CategoryPage } from "./pages/index";
+import {Product, ProductModal} from "./modules/product/index";
 
-
-const Modal = ({ match, history }) => {
-  const back = (e) => {
-    e.stopPropagation()
-    history.goBack()
-  }
-  return (
-    <div
-      onClick={back}
-      style={{
-        position: 'absolute',
-        top: 0,
-        left: 0,
-        bottom: 0,
-        right: 0,
-        background: 'rgba(0, 0, 0, 0.15)'
-      }}
-    >
-      <div className='modal' style={{
-      position: 'absolute',
-        background: '#fff',
-        top: 25,
-        left: '10%',
-        right: '10%',
-        padding: 15,
-        border: '2px solid #444'
-      }}>
-        <h1>HELLO</h1>
-        <button type='button' onClick={back}>
-          Close
-        </button>
-      </div>
-    </div>
-  )
-}
 
 class ProductsSwitch extends React.Component<any,any> {
 
@@ -77,6 +43,7 @@ class ProductsSwitch extends React.Component<any,any> {
   }
 
   render() {
+    // https://reacttraining.com/react-router/web/example/modal-gallery
     const { location } = this.props
     const isModal = !!(
       location.state &&
@@ -89,7 +56,7 @@ class ProductsSwitch extends React.Component<any,any> {
           <Route path="/category/:id" component={CategoryPage} />
           <Route path="/product/:id" component={ProductPage} />
         </Switch>
-        {/*{isModal ? <Route path="/product/:id" component={Modal} /> : null}*/}
+        {isModal ? <Route path="/product/:id" component={ProductModal} /> : null}
       </div>
     )
   }
@@ -101,11 +68,8 @@ const App = () => {
     <ApolloProvider store={store} client={client}>
       <ConnectedRouter history={history}>
         <Layout>
-          <Switch>
-            <Route exact path="/" component={HomePage} />
-            <Route path="/category/:id" component={CategoryPage} />
-            <Route path="/product/:id" component={ProductPage} />
-          </Switch>
+          <Route exact path="/" component={HomePage} />
+          <Route component={ProductsSwitch} />
         </Layout>
       </ConnectedRouter>
     </ApolloProvider>
