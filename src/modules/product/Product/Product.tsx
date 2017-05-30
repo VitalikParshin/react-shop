@@ -33,11 +33,12 @@ function createMarkup(html) {
 
 class Product extends React.Component<ConnectedProductProps & ProductProps, any> {
 
-  componentWillReceiveProps(nextProps) {
-    const { data } = this.props;
+  componentWillReceiveProps = (nextProps) => {
+    const { data } = nextProps;
     const { loading, product } = data;
-    if(loading === false && this.props.product.subProductId === null) {
-      const {subProducts} = product;
+    const selectedProduct = nextProps.product;
+    if(loading === false && selectedProduct.subProductId === null) {
+      const { subProducts } = product;
       const subProductId = subProducts[0].id;
       this.props.dispatch({type: ACTION_SELECT_SUBPRODUCT, subProductId: subProductId})
     }
