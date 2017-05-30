@@ -9,12 +9,12 @@ const DEFAULT_PRODUCT = {
 const product = (state = DEFAULT_PRODUCT, action) => {
   switch (action.type) {
     case ACTION_SELECT_SUBPRODUCT:
-      return update(DEFAULT_PRODUCT, {
+      return update(state, {
         subProductId: {$set: action.subProductId}
       });
 
     case ACTION_SELECT_COLOR:
-      return update(DEFAULT_PRODUCT, {
+      return update(state, {
         colorId: {$set: action.colorId}
       });
     default:
@@ -23,13 +23,3 @@ const product = (state = DEFAULT_PRODUCT, action) => {
 };
 
 export default product;
-
-// componentWillReceiveProps(nextProps) {
-//   const { data } = this.props;
-//   const {loading, product } = data;
-//   if(loading === false && this.props.product.subProductId === null) {
-//     const {subProducts} = product;
-//     const subProductId = subProducts[0].id;
-//     this.props.dispatch({type: ACTION_SELECT_SUBPRODUCT, subProductId: subProductId})
-//   }
-// }

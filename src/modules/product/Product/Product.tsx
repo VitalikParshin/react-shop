@@ -8,6 +8,7 @@ import {Images, ProductTabs} from "../index";
 import {Loading} from "../../layout/index";
 import { PRODUCT_QUERY } from "../../catalog/model";
 import { connect } from "react-redux";
+import {ACTION_ADD_VIEWED_PRODUCT} from "../../catalog/constants";
 
 interface ConnectedProductProps {
   data?: any;
@@ -33,6 +34,12 @@ function createMarkup(html) {
 
 class Product extends React.Component<ConnectedProductProps & ProductProps, any> {
 
+  constructor(props) {
+    super(props);
+    const { dispatch, id } = props;
+    dispatch({type: ACTION_ADD_VIEWED_PRODUCT, productId: id })
+  }
+
   componentWillReceiveProps = (nextProps) => {
     const { data } = nextProps;
     const { loading, product } = data;
@@ -54,7 +61,7 @@ class Product extends React.Component<ConnectedProductProps & ProductProps, any>
     const firstProduct = subProducts[0];
 
     return (
-      <div>
+      <div style={{ textAlign:"left" }}>
         <ProductTabs dataProduct={product} />
       </div>
     )

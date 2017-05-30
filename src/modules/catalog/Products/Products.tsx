@@ -64,7 +64,6 @@ const options = {
   }
 };
 
-let timer;
 
 class Products extends React.Component<any,any> {
 
@@ -183,7 +182,8 @@ class Products extends React.Component<any,any> {
   }
 }
 
-const mapStateToProps: any = (state) => ({})
+const mapStateToProps: any = (state) => ({
+})
 
 export default compose(
     connect<any, {}, any>(mapStateToProps),

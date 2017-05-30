@@ -10,21 +10,28 @@ import {
 import {Link} from "react-router-dom";
 import {Image, scaleImageSize} from "../../product/index";
 import Ripples from "react-ripples";
+import {connect} from "react-redux";
 
 const getMinOfArray = (numArray) => {
   return Math.min.apply(null, numArray);
 }
+
 
 class Product extends React.Component<any,any> {
   state = {
     titleImage: {}
   }
 
+  isViewed() {
+    const {catalog, id} = this.props;
+    return catalog.viewedProductIds.indexOf(id) != -1;
+  }
+
   constructor(props) {
     super(props);
-    const { images } = this.props;
+    const { imagesWithColor } = this.props;
     this.state = {
-      titleImage: images.filter(img => img.isTitle)[0] || images[0]
+      titleImage: imagesWithColor.filter(img => img.isTitle)[0] || imagesWithColor[0]
     }
   }
 
@@ -33,7 +40,7 @@ class Product extends React.Component<any,any> {
   }
 
   render() {
-    const { id, name, subProducts, brand, images } = this.props;
+    const { id, name, subProducts, brand, imagesWithColor, key, catalog } = this.props;
     const { titleImage } = this.state as any;
     const subProduct = subProducts[0];
     const url = `/product/${id}`;
@@ -59,21 +66,36 @@ class Product extends React.Component<any,any> {
     }
 
     const maxImageHeight = Math.max(
-      ...images.map(img => scaleImageSize(img.width, img.height).height)
+      ...imagesWithColor.map(img => scaleImageSize(img.width, img.height).height)
     );
+
     return (
       <div style={{
         dispalay: "block",
         width: cardWidth,
-        border: "1px solid lightgrey",
+        border: `1px solid ${this.isViewed() ? "orange" : "lightgrey"}`,
         boxShadow: "0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24)",
         transition: "all 0.3s cubic-bezier(.25,.8,.25,1)",
         borderRadius: borderRadius,
         background: "white",
       }}>
+
+        {this.isViewed() ? (
+          <div style={{position: "absolute", top: 3, left: 10}}>
+            <Icon
+              type={require("!svg-sprite!./viewed.svg")}
+              size="sm"
+              style={{fill: "orange"}}
+            />
+          </div>
+        ) : ""}
+
         <WhiteSpace size="sm" />
         <div style={{ padding: cardPadding }}>
-          <Link key={`link-key`} to={{ pathname: url, modal: true }} >
+          <Link to={{
+            pathname: url,
+            state: { modal: true }
+          }}>
             <Flex
                 justify="center"
                 align="center"
@@ -91,13 +113,12 @@ class Product extends React.Component<any,any> {
               />
             </Flex>
           </Link>
-
-          {images.length > 1 ?
+          {imagesWithColor.length > 1 ?
             (
               <Flex
                   justify="center"
               >
-                {images.map(image => (
+                {imagesWithColor.map(image => (
                   <Icon
                     type={require("!svg-sprite!./dot.svg")}
                     size={image.id == titleImage.id ? "lg" : "md"}
@@ -125,4 +146,9 @@ class Product extends React.Component<any,any> {
   }
 }
 
-export default Product;
+const mapStateToProps: any = (state) => ({
+  catalog: state.catalog,
+})
+
+export default connect<any, {}, any>(mapStateToProps)(Product)
+

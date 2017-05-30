@@ -137,7 +137,7 @@ export const ALL_PRODUCTS_QUERY = gql`
           id
           name
         }
-        images {
+        imagesWithColor {
           id
           src
           width
