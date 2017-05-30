@@ -109,6 +109,14 @@ export const PRODUCT_QUERY = gql`
           }
         }
       }
+      attributes{
+        id
+        name
+        values{
+          name
+          description
+        }
+      }
     }
   }
 `;

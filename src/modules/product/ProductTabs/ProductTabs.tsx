@@ -1,6 +1,18 @@
 import * as React from "react";
+import {ACTION_SELECT_SUBPRODUCT, ACTION_SELECT_COLOR} from "../constants";
 
-import {Button, Flex, Tabs, WhiteSpace} from "antd-mobile";
+import {
+  Button,
+  Flex,
+  Tabs,
+  WhiteSpace,
+  WingBlank,
+  Table,
+  Icon,
+  List,
+  Radio,
+} from "antd-mobile";
+
 import {compose, gql, graphql} from "react-apollo";
 
 import { Images } from "../index";
@@ -9,10 +21,12 @@ import { PRODUCT_QUERY } from "../../catalog/model";
 import { connect } from "react-redux";
 
 const TabPane = Tabs.TabPane;
-
+const Item = Flex.Item;
 interface ConnectedTabProps {
   dataProduct: any;
   data?: any;
+  product: any;
+  dispatch: any;
 };
 
 interface TabsProps {
@@ -38,17 +52,63 @@ function handleTabClick(key) {
   console.log('onTabClick', key);
 }
 
-class ProductTabs extends React.Component<ConnectedTabProps, TabsProps> {
+class ProductTabs extends React.Component<ConnectedTabProps & TabsProps,  any> {
+    constructor(props){
+      super(props)
+      this.state = {
+        style: {
+          background: "#108ee9"
+        },
+        price: "123445",
+        check: ''
+      }
+    }
+
+  changeColor() {
+    this.setState({
+      style: {background: "#0d7ccc"}
+    })
+  }
+
+  checkOn() {
+    this.setState({
+      id: "",
+      check: "check"
+    })
+  }
+
   render() {
     const dataProduct = this.props.dataProduct;
-    const { brand, images, subProducts } = dataProduct;
-    const subProduct = subProducts.map(el => el);
-    const firstProduct = subProduct[0];
-    console.log("SubProducts:", subProducts)
-   return (
-      <div>
-        <Images images={images}/>
-        <WhiteSpace size="md"/>
+    const { brand, images, subProducts,  attributes} = dataProduct;
+    const subProduct = subProducts[0];
+    const image = images.map(el => el.color);
+
+  return (
+      <div style={{marginBottom: "60px"}}>
+        <Images images={images} />
+        <WhiteSpace size="md" />
+
+        <Flex style={{display: "flex", alignItems: "flex-end", width: "100%", position: "fixed", bottom: 0, zIndex: 1 }}>
+          <div style={{
+              backgroundColor: '#ebebef',
+              color: '#bbb',
+              textAlign: 'center',
+              height: '0.7rem',
+              lineHeight: '0.6rem',
+              width: '100%'}}>{this.state.price}
+          </div>
+          <div style={{
+              backgroundColor: this.state.style.background,
+              color: '#f7f7ae',
+              textAlign: 'center',
+              height: '0.7rem',
+              lineHeight: '0.6rem',
+              width: '100%'}}
+              onClick={this.changeColor.bind(this)}
+              >Купить
+          </div>
+        </Flex>
+
         <Tabs
           animated
           onChange={callback}
@@ -56,47 +116,122 @@ class ProductTabs extends React.Component<ConnectedTabProps, TabsProps> {
         >
           <TabPane tab="Инфо" key="1">
             <div style={{backgroundColor: "#fff" }}>
-              <div  className="am-wingblank am-wingblank-lg">
+              <div className="am-wingblank am-wingblank-lg">
                 <div style={{display: "flex", flexDirection: "column", paddingTop: "10px"}}>
                   <div>{dataProduct.name} {brand.name}</div>
+                  <div style={{color: "green", fontSize: "24px"}}>Eсть в наличии</div>
                   <div style={{color: "#b94a48", fontSize: "24px"}}>
-                    {`Код товара: ${firstProduct.id}`}
+                    {`Код товара: ${subProduct.id}`}
                   </div>
                 </div>
-                <div style={{marginTop: "160px"}}>
-                  <div style={{color: "green", fontSize: "24px"}}>Eсть в наличии</div>
+                <div style={{marginTop: "100px"}}>
+                  Image Caruosel
                   <hr/>
                   <div style={{display: "flex", flexDirection: "row", justifyContent: "space-between"}}>
-                    <div style={{width: "50%"}}>
-                      <div style={{fontSize: "40px", color: "#468847"}}>{firstProduct.price} грн</div>
-                      <div style={{textDecoration: "line-through", fontSize: "24px", color: "#b94a48"}}>{firstProduct.oldPrice} грн</div>
+                    <div style={{width: "35%"}}>
+                      <div style={{fontSize: "40px", color: "#468847"}}>{Math.trunc(subProduct.price) } грн</div>
+                      <div style={{textDecoration: "line-through", fontSize: "24px", color: "#b94a48"}}>{Math.trunc(subProduct.oldPrice)} грн</div>
                     </div>
-                    <div style={{width: "50%"}}>
+                    <div style={{width: "28%"}}>
+                      <Icon
+                        type={require('svg-sprite!./free-delivery.png')}
+                        style={{width: "150px", height: "75px"}}
+                      />
+                    </div>
+                    <div style={{width: "42%"}}>
                       <Button
                         className="btn"
-                        style={{background: "#51a351", textColor: "white"}}
-                        // type="primary"
+                        style={{textColor: "white"}}
                         size="small"
                         icon={require('svg-sprite!./basket.svg')}
                       >
-                        Купить
+                        В корзину
                       </Button>
                     </div>
                   </div>
                 </div>
                 <hr/>
-                <div dangerouslySetInnerHTML={createMarkup(dataProduct.description)}>
-                </div>
-              </div>
-            </div>
-            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '5rem', backgroundColor: '#fff' }}>
-                  slkdjf;lsjflsjljflsjdlfsjlksjldfkjadjal;kdfjal;dkjfaldjfal;djfla;djfaldj
-                  slkdjf;lsjflsjljflsjdlfsjlksjldfkjadjal;kdfjal;dkjfaldjfal;djfla;djfaldj
-                  slkdjf;lsjflsjljflsjdlfsjlksjldfkjadjal;kdfjal;dkjfaldjfal;djfla;djfaldj
-                  slkdjf;lsjflsjljflsjdlfsjlksjldfkjadjal;kdfjal;dkjfaldjfal;djfla;djfaldj
-                  slkdjf;lsjflsjljflsjdlfsjlksjldfkjadjal;kdfjal;dkjfaldjfal;djfla;djfaldj
-                  slkdjf;lsjflsjljflsjdlfsjlksjldfkjadjal;kdfjal;dkjfaldjfal;djfla;djfaldj
 
+                {/* Select Colors */}
+                <div style={{display: "flex", alignItems: "flex-end"}}>
+                  <Icon type={require('svg-sprite!./product-sizes.svg')}  style={{color: "#1296db", }}/>
+                  <div style={{color: "#1296db"}}>Выберите цвет :</div>
+                </div>
+                <Flex direction="row" justify="around" >
+                  {images.map(el =>
+                    <div>
+                      <WhiteSpace />
+                      <div style={{
+                            width: "52px",
+                            height: "52px",
+                            borderRadius: "16px",
+                            backgroundColor: el.color,
+                            cursor: "pointer"
+                          }}
+                          onClick={this.checkOn.bind(this)}>
+                          <Icon type={this.state.check} style={{color: "white"}} />
+                      </div>
+                      {1 == 1 ? 1 : 2 }
+                      <WhiteSpace />
+                    </div>
+                  )}
+
+                </Flex>
+                <hr/>
+
+                {/* Select Sizes */}
+                <div style={{display: "flex", alignItems: "flex-end"}}>
+                  <Icon type={require('svg-sprite!./product-sizes.svg')}  style={{color: "#1296db", }}/>
+                  <div style={{color: "#1296db"}}>Выберите Размер :</div>
+                </div>
+
+                {subProducts.map(el =>
+                  <div>
+                    <div>
+                      {el.attributes.map(e =>
+                        <div>
+                          {e.name} - {e.values.map(v =>
+                              v.name
+                            )}
+                        </div>
+                      )}
+                    </div>
+                    <div style={{color: "#468847", fontSize: "30px", textAlign: "right"}}>Цена: {el.price} грн</div>
+                    <Button type="primary">Вибрать</Button>
+                    <WhiteSpace size="lg"></WhiteSpace>
+                  </div>
+                )}
+                <hr/>
+
+                {/* Characteristics */}
+                <div style={{color: "#1296db"}}>
+                  <div style={{display: "flex", alignItems: "flex-end"}}>
+                    <Icon type={require('svg-sprite!./detail.svg')}  style={{}}/>
+                    Характеристики :
+                  </div>
+                </div>
+
+                  {attributes.map(el =>
+                    <div className="flex-container" style={{display: "flex", flexDirection: "row", justifyContent: "space-between"}}>
+                      <div>{el.name} :</div>
+                      <div style={{color: "grey"}}>
+                        {el.values.map(v => v.name).join(", ")}
+                      </div>
+                    </div>
+                  )}
+
+
+                <hr/>
+
+                {/* about Product*/}
+                <div style={{color: "#1296db", display: "flex", alignItems: "flex-end"}}>
+                  <Icon type={require('svg-sprite!./info.svg')} style={{}}/>
+                  <div>О ТОВАРЕ</div>
+                </div>
+                <div
+                  dangerouslySetInnerHTML={createMarkup(dataProduct.description)}
+                  style={{fontSize: "30px"}} />
+              </div>
             </div>
           </TabPane>
           <TabPane tab="Характеристика" key="2">
@@ -104,34 +239,26 @@ class ProductTabs extends React.Component<ConnectedTabProps, TabsProps> {
               характеристика
             </div>
           </TabPane>
-          <TabPane tab="Размеры" key="3">
-            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '5rem', backgroundColor: '#fff' }}>
-              таблица с размерами
-            </div>
-          </TabPane>
-          <TabPane tab="选项卡三" key="4">
-            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '5rem', backgroundColor: '#fff' }}>
-              选项卡三内容
-            </div>
-          </TabPane>
-          <TabPane tab="选项卡三" key="5">
-            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '5rem', backgroundColor: '#fff' }}>
-              选项卡三内容
-            </div>
-          </TabPane>
-          <TabPane tab="选项卡三" key="6">
-            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '5rem', backgroundColor: '#fff' }}>
-              选项卡三内容
-            </div>
-          </TabPane>
-          <TabPane tab="选项卡三" key="7">
-            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '5rem', backgroundColor: '#fff' }}>
-              选项卡三内容
-            </div>
-          </TabPane>
-          <TabPane tab="选项卡三" key="8">
-            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '5rem', backgroundColor: '#fff' }}>
-              选项卡三内容
+          <TabPane style={{ backgroundColor: '#fff' }}  tab="Размеры" key="3">
+            <div className="am-wingblank am-wingblank-lg">
+                <div>
+                  {subProducts.map(el =>
+                    <div>
+                      <div>
+                        {el.attributes.map(e =>
+                          <div>
+                            {e.name} - {e.values.map(v =>
+                                v.value
+                              )}
+                          </div>
+                        )}
+                      </div>
+                      <div style={{color: "#468847", fontSize: "30px", textAlign: "right"}}>Цена: {el.price} грн</div>
+                      <Button type="primary">Купить</Button>
+                      <WhiteSpace size="lg"></WhiteSpace>
+                    </div>
+                  )}
+                </div>
             </div>
           </TabPane>
         </Tabs>
@@ -142,6 +269,7 @@ class ProductTabs extends React.Component<ConnectedTabProps, TabsProps> {
 }
 
 const mapStateToProps: any = (state) => ({
+  product: state.product
 })
 
 export default compose(

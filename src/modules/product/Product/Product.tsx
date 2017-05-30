@@ -1,4 +1,5 @@
 import * as React from "react";
+import {ACTION_SELECT_SUBPRODUCT, ACTION_SELECT_COLOR} from "../constants";
 
 import { Button, Flex } from "antd-mobile";
 import { compose, gql, graphql } from "react-apollo";
@@ -10,6 +11,8 @@ import { connect } from "react-redux";
 
 interface ConnectedProductProps {
   data?: any;
+  product: any;
+  dispatch: any;
 };
 
 interface ProductProps {
@@ -28,83 +31,37 @@ function createMarkup(html) {
   return {__html: html};
 }
 
-class Product extends React.Component<ConnectedProductProps, ProductProps> {
+class Product extends React.Component<ConnectedProductProps & ProductProps, any> {
+
+  componentWillReceiveProps(nextProps) {
+    const { data } = this.props;
+    const { loading, product } = data;
+    if(loading === false && this.props.product.subProductId === null) {
+      const {subProducts} = product;
+      const subProductId = subProducts[0].id;
+      this.props.dispatch({type: ACTION_SELECT_SUBPRODUCT, subProductId: subProductId})
+    }
+  }
+
   render() {
     const { loading, product } = this.props.data;
     if (loading == true) {
       return <Loading/>
     }
     const { brand, images, subProducts } = product;
-    const sProduct = subProducts.map(el => el);
-
-    const firstProduct = sProduct[0];
-    console.log("shortDescription : ", product.description);
-    // const sProduct = subProducts[0];
-    const ArticleSubProduct = subProducts.map(el => el.article);
-    console.log("subProduct", ArticleSubProduct.map(el => el));
+    const subProductId = this.props.product.subProductId;
+    const firstProduct = subProducts[0];
 
     return (
       <div>
         <ProductTabs dataProduct={product} />
-        {/*
-          <h3>
-            <div>
-              {product.name + " "}
-              {brand.name}
-            </div>
-            <div style={{color: "#b94a48"}}>
-              {`Код товара: ${firstProduct.id}`}
-            </div>
-          </h3>
-          <hr/>
-          <Images images={images}/>
-          <hr/>
-          <div style={{marginTop: "60px"}} className="am-wingblank am-wingblank-lg">
-
-            <div style={{color: "green", fontSize: "24px"}}>Eсть в наличии</div>
-
-            <hr/>
-            <Flex>
-              <div style={{fontSize: "40px",}}>{} грн</div>
-              <div style={{textDecoration: "line-through", fontSize: "24px"}}>{} грн</div>
-              <Button>Купить</Button>
-            </Flex>
-          </div>
-          <div>
-            {sProduct.map(el =>
-              <div >
-                <div style={{fontSize: "40px", color: "#468847"}}>{el.price} грн</div>
-                <div style={{textDecoration: "line-through", fontSize: "24px", color: "#b94a48!important"}}>{el.oldPrice} грн</div>
-              </div>
-            )}
-          </div>
-          <br/>
-          <div className="article">
-            <a>Артикул:</a>
-            {sProduct.map(el =>
-              <div>{el.article}</div>
-            )}
-          </div>
-          <div>Цвет: </div>
-          <div>Количество: </div>
-          <div dangerouslySetInnerHTML={createMarkup(product.description)}></div>
-          <div>Характеристики товара: </div>
-          <Flex>
-            <Flex.Item>
-              <Button><a href="tel:+380661983831">Позвонить</a></Button>
-            </Flex.Item>
-            <Flex.Item>
-              <Button>Купить</Button>
-            </Flex.Item>
-          </Flex>
-        */}
-
       </div>
     )
   }
 }
 
 const mapStateToProps: any = (state) => ({
+  product: state.product
 })
 
 export default compose(

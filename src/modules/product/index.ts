@@ -1,3 +1,5 @@
+import reducer from "./reducer";
+
 import Images from "./Images/Images";
 import Image, {scaleImageSize} from "./Image/Image";
 import Product from "./Product/Product";
@@ -11,4 +13,7 @@ export {
   scaleImageSize,
 
   ProductTabs,
+
+  reducer
+
 }
