@@ -1,5 +1,9 @@
 import { gql } from "react-apollo/lib";
 
+export interface ICatalog {
+  viewedProductIds: String[];
+  showOnlyViewed: boolean;
+}
 
 export const CATEGORY_QUERY = gql`
   query category($id: Int) {

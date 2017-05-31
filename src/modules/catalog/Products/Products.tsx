@@ -14,8 +14,8 @@ import {
 } from "antd-mobile";
 import MasonryInfiniteScroller from "react-masonry-infinite";
 import { Link } from "react-router-dom";
-import { ALL_PRODUCTS_QUERY } from "../model";
-import { Product, ProductsCounter } from "../index";
+import {ALL_PRODUCTS_QUERY, ICatalog} from "../model";
+import {Product, ProductsCounter} from "../index";
 import { Loading } from "../../layout/index";
 import update from "immutability-helper";
 
@@ -64,8 +64,17 @@ const options = {
   }
 };
 
+interface ConnectedProductsProps {
+  allProducts: any;
+  fetchMore: any;
+  loading: boolean;
+}
 
-class Products extends React.Component<any,any> {
+interface ProductsProps {
+  catalog: ICatalog;
+}
+
+class Products extends React.Component<ConnectedProductsProps & ProductsProps, any> {
 
   ref;
   bottomHeight: number;
@@ -131,12 +140,11 @@ class Products extends React.Component<any,any> {
   }
 
   render() {
-    const { loading, allProducts, fetchMore } = this.props;
+    const { loading, allProducts, fetchMore, catalog } = this.props;
     if (loading == true) {
       return <Loading/>
     }
-    const { products, total } = allProducts;
-
+    let { products, total } = allProducts;
     let padding: number;
     let gutter: number;
     if (window.innerWidth <= 640) {
@@ -183,6 +191,7 @@ class Products extends React.Component<any,any> {
 }
 
 const mapStateToProps: any = (state) => ({
+  catalog: state.catalog,
 })
 
 export default compose(
