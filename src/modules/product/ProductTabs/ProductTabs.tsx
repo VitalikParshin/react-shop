@@ -11,17 +11,21 @@ import {
   Icon,
   List,
   Radio,
+  Checkbox,
 } from "antd-mobile";
 
 import {compose, gql, graphql} from "react-apollo";
 
-import { Images } from "../index";
+import { Images, SelectSize } from "../index";
 import { Loading } from "../../layout/index";
 import { PRODUCT_QUERY } from "../../catalog/model";
 import { connect } from "react-redux";
 
 const TabPane = Tabs.TabPane;
 const Item = Flex.Item;
+const CheckboxItem = Checkbox.CheckboxItem;
+const AgreeItem = Checkbox.AgreeItem;
+
 interface ConnectedTabProps {
   dataProduct: any;
   data?: any;
@@ -31,6 +35,7 @@ interface ConnectedTabProps {
 
 interface TabsProps {
   dataProduct: any;
+  cureProduct: any;
 };
 
 const options = {
@@ -51,6 +56,14 @@ function callback(key) {
 function handleTabClick(key) {
   console.log('onTabClick', key);
 }
+
+
+class Size extends React.Component<any, any>{
+  render(){
+    return <div>This page in developering....</div>
+  }
+}
+
 
 class ProductTabs extends React.Component<ConnectedTabProps & TabsProps,  any> {
     constructor(props){
@@ -79,7 +92,9 @@ class ProductTabs extends React.Component<ConnectedTabProps & TabsProps,  any> {
 
   render() {
     const dataProduct = this.props.dataProduct;
+
     const { brand, images, subProducts,  attributes} = dataProduct;
+    const curePriceProduct = this.props.cureProduct.map(el => el.price);
     const subProduct = subProducts[0];
     const image = images.map(el => el.color);
 
@@ -91,11 +106,11 @@ class ProductTabs extends React.Component<ConnectedTabProps & TabsProps,  any> {
         <Flex style={{display: "flex", alignItems: "flex-end", width: "100%", position: "fixed", bottom: 0, zIndex: 1 }}>
           <div style={{
               backgroundColor: '#ebebef',
-              color: '#bbb',
+              color: 'black',
               textAlign: 'center',
               height: '0.7rem',
               lineHeight: '0.6rem',
-              width: '100%'}}>{this.state.price}
+              width: '100%'}}>{parseInt(curePriceProduct)} грн
           </div>
           <div style={{
               backgroundColor: this.state.style.background,
@@ -180,47 +195,25 @@ class ProductTabs extends React.Component<ConnectedTabProps & TabsProps,  any> {
                 <hr/>
 
                 {/* Select Sizes */}
-                <div style={{display: "flex", alignItems: "flex-end"}}>
-                  <Icon type={require('svg-sprite!./product-sizes.svg')}  style={{color: "#1296db", }}/>
-                  <div style={{color: "#1296db"}}>Выберите Размер :</div>
-                </div>
 
-                {subProducts.map(el =>
-                  <div>
-                    <div>
-                      {el.attributes.map(e =>
-                        <div>
-                          {e.name} - {e.values.map(v =>
-                              v.name
-                            )}
-                        </div>
-                      )}
-                    </div>
-                    <div style={{color: "#468847", fontSize: "30px", textAlign: "right"}}>Цена: {el.price} грн</div>
-                    <Button type="primary">Вибрать</Button>
-                    <WhiteSpace size="lg"></WhiteSpace>
-                  </div>
-                )}
-                <hr/>
+                {subProducts.length <= 1 ? <Size /> : <SelectSize dataSubProducts={subProducts}/> }
 
                 {/* Characteristics */}
-                <div style={{color: "#1296db"}}>
-                  <div style={{display: "flex", alignItems: "flex-end"}}>
-                    <Icon type={require('svg-sprite!./detail.svg')}  style={{}}/>
-                    Характеристики :
-                  </div>
-                </div>
 
-                  {attributes.map(el =>
-                    <div className="flex-container" style={{display: "flex", flexDirection: "row", justifyContent: "space-between"}}>
-                      <div>{el.name} :</div>
-                      <div style={{color: "grey"}}>
-                        {el.values.map(v => v.name).join(", ")}
+                <List className="my-list" renderHeader={ () => {
+                  return (
+                    <div style={{color: "#1296db"}}>
+                      <div style={{display: "flex", alignItems: "flex-end"}}>
+                        <Icon type={require('svg-sprite!./detail.svg')}/>
+                        Характеристики :
                       </div>
                     </div>
+                  )
+                }}>
+                  {attributes.map(el =>
+                      <List.Item extra={el.values.map(v => v.name).join(", ")} style={{fontSize: "12px"}}>{el.name}</List.Item>
                   )}
-
-
+                </List>
                 <hr/>
 
                 {/* about Product*/}

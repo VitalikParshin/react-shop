@@ -58,11 +58,11 @@ class Product extends React.Component<ConnectedProductProps & ProductProps, any>
     }
     const { brand, images, subProducts } = product;
     const subProductId = this.props.product.subProductId;
-    const firstProduct = subProducts[0];
+    const cureProduct =  subProducts.filter(el => el.id === subProductId)
 
     return (
       <div style={{ textAlign:"left" }}>
-        <ProductTabs dataProduct={product} />
+        <ProductTabs dataProduct={product} cureProduct={cureProduct}/>
       </div>
     )
   }
