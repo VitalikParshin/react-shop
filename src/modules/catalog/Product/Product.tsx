@@ -8,7 +8,7 @@ import {
   WhiteSpace
 } from "antd-mobile";
 import {Link} from "react-router-dom";
-import {Image, scaleImageSize} from "../../product/index";
+import {Image, scaleImageSize, Images} from "../../product/index";
 import Ripples from "react-ripples";
 import {connect} from "react-redux";
 
@@ -113,6 +113,10 @@ class Product extends React.Component<any,any> {
               />
             </Flex>
           </Link>
+
+          {/*<Images images={imagesWithColor}/>*/}
+
+          {/* Images */}
           {imagesWithColor.length > 1 ?
             (
               <Flex

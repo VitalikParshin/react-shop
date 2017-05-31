@@ -44,7 +44,7 @@ class Product extends React.Component<ConnectedProductProps & ProductProps, any>
     const { data } = nextProps;
     const { loading, product } = data;
     const selectedProduct = nextProps.product;
-    if(loading === false && selectedProduct.subProductId === null) {
+    if(selectedProduct.subProductId === null) {
       const { subProducts } = product;
       const subProductId = subProducts[0].id;
       this.props.dispatch({type: ACTION_SELECT_SUBPRODUCT, subProductId: subProductId})
@@ -59,7 +59,6 @@ class Product extends React.Component<ConnectedProductProps & ProductProps, any>
     const { brand, images, subProducts } = product;
     const subProductId = this.props.product.subProductId;
     const firstProduct = subProducts[0];
-
     return (
       <div style={{ textAlign:"left" }}>
         <ProductTabs dataProduct={product} />
