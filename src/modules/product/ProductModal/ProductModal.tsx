@@ -20,15 +20,11 @@ class ProductModal extends React.Component<any,any> {
     })
   }
 
+
   render() {
     const { match, history } = this.props;
     return (
-      <Modal
-        transparent={false}
-        visible={this.state.showModal}
-        animationType="fade"
-        style={{textAlign: "left"}}
-      >
+      <div className="modal">
         <Flex
             justify="start"
             align="center"
@@ -63,7 +59,7 @@ class ProductModal extends React.Component<any,any> {
         <div style={{marginTop: HEIGHT}}>
           <Product id={match.params.id}/>
         </div>
-      </Modal>
+      </div>
     )
   }
 }
