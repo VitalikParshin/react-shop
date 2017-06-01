@@ -5,6 +5,7 @@ import Image, {scaleImageSize} from "./Image/Image";
 import Product from "./Product/Product";
 import ProductModal from "./ProductModal/ProductModal";
 import ProductTabs from "./ProductTabs/ProductTabs";
+import SelectSize from "./ProductTabs/SelectSize";
 
 export {
   Product,
@@ -16,6 +17,7 @@ export {
   scaleImageSize,
 
   ProductTabs,
+  SelectSize,
 
   reducer
 
