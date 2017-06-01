@@ -24,7 +24,7 @@ class Product extends React.Component<any,any> {
 
   isViewed() {
     const {catalog, id} = this.props;
-    return catalog.viewedProductIds.indexOf(id) != -1;
+    return catalog.viewedProductIds.indexOf(id) !== -1;
   }
 
   constructor(props) {

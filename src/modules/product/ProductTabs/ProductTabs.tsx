@@ -35,7 +35,7 @@ interface ConnectedTabProps {
 
 interface TabsProps {
   dataProduct: any;
-  cureProduct: any;
+  activeSubProduct: any;
 };
 
 const options = {
@@ -92,10 +92,8 @@ class ProductTabs extends React.Component<ConnectedTabProps & TabsProps,  any> {
 
   render() {
     const dataProduct = this.props.dataProduct;
-
+    const { activeSubProduct } = this.props;
     const { brand, images, subProducts,  attributes} = dataProduct;
-    const curePriceProduct = this.props.cureProduct.map(el => el.price);
-    const subProduct = subProducts[0];
     const image = images.map(el => el.color);
 
   return (
@@ -110,7 +108,7 @@ class ProductTabs extends React.Component<ConnectedTabProps & TabsProps,  any> {
               textAlign: 'center',
               height: '0.7rem',
               lineHeight: '0.6rem',
-              width: '100%'}}>{parseInt(curePriceProduct)} грн
+              width: '100%'}}>{parseInt(activeSubProduct.price)} грн
           </div>
           <div style={{
               backgroundColor: this.state.style.background,
@@ -136,7 +134,7 @@ class ProductTabs extends React.Component<ConnectedTabProps & TabsProps,  any> {
                   <div>{dataProduct.name} {brand.name}</div>
                   <div style={{color: "green", fontSize: "24px"}}>Eсть в наличии</div>
                   <div style={{color: "#b94a48", fontSize: "24px"}}>
-                    {`Код товара: ${subProduct.id}`}
+                    {`Код товара: ${activeSubProduct.id}`}
                   </div>
                 </div>
                 <div style={{marginTop: "100px"}}>
@@ -144,8 +142,8 @@ class ProductTabs extends React.Component<ConnectedTabProps & TabsProps,  any> {
                   <hr/>
                   <div style={{display: "flex", flexDirection: "row", justifyContent: "space-between"}}>
                     <div style={{width: "35%"}}>
-                      <div style={{fontSize: "40px", color: "#468847"}}>{Math.trunc(subProduct.price) } грн</div>
-                      <div style={{textDecoration: "line-through", fontSize: "24px", color: "#b94a48"}}>{Math.trunc(subProduct.oldPrice)} грн</div>
+                      <div style={{fontSize: "40px", color: "#468847"}}>{Math.trunc(activeSubProduct.price) } грн</div>
+                      <div style={{textDecoration: "line-through", fontSize: "24px", color: "#b94a48"}}>{Math.trunc(activeSubProduct.oldPrice)} грн</div>
                     </div>
                     <div style={{width: "28%"}}>
                       <Icon

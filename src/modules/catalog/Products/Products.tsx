@@ -15,8 +15,8 @@ import {
 import MasonryInfiniteScroller from "react-masonry-infinite";
 import { Link } from "react-router-dom";
 import {ALL_PRODUCTS_QUERY, ICatalog} from "../model";
-import {Product, ProductsCounter} from "../index";
-import { Loading } from "../../layout/index";
+import {Product, ProductsCounter, ShowOnlyViewed} from "../index";
+import {Loading} from "../../layout/index";
 import update from "immutability-helper";
 
 const LIMIT = 10;
@@ -140,11 +140,23 @@ class Products extends React.Component<ConnectedProductsProps & ProductsProps, a
   }
 
   render() {
-    const { loading, allProducts, fetchMore, catalog } = this.props;
+    const {
+      loading,
+      allProducts,
+      fetchMore,
+      catalog: {showOnlyViewed, viewedProductIds}
+    } = this.props;
+
     if (loading == true) {
       return <Loading/>
     }
-    let { products, total } = allProducts;
+    const { products, total } = allProducts;
+    const filteredProducts = (
+      showOnlyViewed === true
+      ? products.filter(p => viewedProductIds.indexOf(p.id) !== -1)
+      : products
+    )
+
     let padding: number;
     let gutter: number;
     if (window.innerWidth <= 640) {
@@ -166,7 +178,7 @@ class Products extends React.Component<ConnectedProductsProps & ProductsProps, a
             marginBottom: 35,
           }}
         >
-          {products.map((product, i) => {
+          {filteredProducts.map((product, i) => {
             return <Product key={i} {...product}/>
           })}
         </MasonryInfiniteScroller>
@@ -185,6 +197,9 @@ class Products extends React.Component<ConnectedProductsProps & ProductsProps, a
           scrolled={this.refineScrolledProducts(this.state.scrolledProducts)}
           total={total}
         />
+
+        <ShowOnlyViewed/>
+
       </div>
     )
   }

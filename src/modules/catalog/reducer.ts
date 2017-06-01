@@ -1,8 +1,10 @@
 import update from "immutability-helper";
-import {ACTION_ADD_VIEWED_PRODUCT} from "./constants";
+import {ACTION_ADD_VIEWED_PRODUCT, ACTION_TOGGLE_SHOW_ONLY_VIEWED} from "./constants";
+import {ICatalog} from "./model";
 
-const DEFAULT_CATALOG = {
-  viewedProductIds: [String],
+const DEFAULT_CATALOG : ICatalog = {
+  viewedProductIds: [],
+  showOnlyViewed: false,
 };
 
 const catalog = (state = DEFAULT_CATALOG, action) => {
@@ -16,6 +18,10 @@ const catalog = (state = DEFAULT_CATALOG, action) => {
       } else {
         return state;
       }
+    case ACTION_TOGGLE_SHOW_ONLY_VIEWED:
+      return update(state, {
+        showOnlyViewed: {$set: !state.showOnlyViewed},
+      })
     default:
       return state;
   }
