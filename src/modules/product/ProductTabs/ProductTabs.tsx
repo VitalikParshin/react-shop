@@ -97,7 +97,7 @@ class ProductTabs extends React.Component<ConnectedTabProps & TabsProps,  any> {
     const image = images.map(el => el.color);
 
   return (
-      <Flex.Item style={{marginBottom: "60px"}}>
+      <div style={{marginBottom: "60px"}}>
         <Images images={images} />
         <WhiteSpace size="md" />
 
@@ -108,33 +108,33 @@ class ProductTabs extends React.Component<ConnectedTabProps & TabsProps,  any> {
             zIndex: 1,
             textAlign: "center",
         }}>
-          <Flex.Item style={{
+          <div style={{
               backgroundColor: '#ebebef',
               color: 'black',
               width: '50%',
               lineHeight: '0.6rem',
           }}>{parseInt(activeSubProduct.price)} грн
-          </Flex.Item>
-          <Flex.Item
+          </div>
+          <div
               style={{
                 backgroundColor: this.state.style.background,
                 color: '#f7f7ae',
                 width: '50%',
                 lineHeight: '0.6rem',
-                margin: 0,
               }}
               onClick={this.changeColor.bind(this)}
               >Купить
-          </Flex.Item>
+          </div>
         </Flex>
 
         <Tabs
           animated
           onChange={callback}
           onTabClick={handleTabClick}
+          pageSize={3}
         >
           <TabPane tab="Инфо" key="1">
-            <div style={{backgroundColor: "#fff" }}>
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', backgroundColor: "#fff" }}>
               <div className="am-wingblank am-wingblank-lg">
                 <div style={{display: "flex", flexDirection: "column", paddingTop: "10px"}}>
                   <div>{dataProduct.name} {brand.name}</div>
@@ -232,13 +232,13 @@ class ProductTabs extends React.Component<ConnectedTabProps & TabsProps,  any> {
             </div>
           </TabPane>
           <TabPane tab="Характеристика" key="2">
-            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '5rem', backgroundColor: '#fff' }}>
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', backgroundColor: '#fff' }}>
               характеристика
             </div>
           </TabPane>
-          <TabPane style={{ backgroundColor: '#fff' }}  tab="Размеры" key="3">
-            <div className="am-wingblank am-wingblank-lg">
-                <div>
+          <TabPane tab="Размеры" key="3">
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
+                <WingBlank size="lg">
                   {subProducts.map(el =>
                     <div>
                       <div>
@@ -255,7 +255,7 @@ class ProductTabs extends React.Component<ConnectedTabProps & TabsProps,  any> {
                       <WhiteSpace size="lg"></WhiteSpace>
                     </div>
                   )}
-                </div>
+                </WingBlank>
             </div>
           </TabPane>
         </Tabs>
