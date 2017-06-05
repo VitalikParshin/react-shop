@@ -1,7 +1,3 @@
-
-
-
-
 import * as React from "react";
 import { Switch } from "react-router-dom";
 import { ConnectedRouter } from "react-router-redux";
@@ -12,7 +8,7 @@ import store from "./store";
 import history from "./history"
 import { Layout } from "./modules/layout/index";
 import { HomePage, ProductPage, CategoryPage } from "./pages/index";
-import {Product, ProductModal} from "./modules/product/index";
+import {Product, ProductModal, Tabs} from "./modules/product/index";
 
 
 class ProductsSwitch extends React.Component<any,any> {
@@ -63,16 +59,22 @@ class ProductsSwitch extends React.Component<any,any> {
 }
 
 
+// const App = () => {
+//   return (
+//     <ApolloProvider store={store} client={client}>
+//       <ConnectedRouter history={history}>
+//         <Layout>
+//           <Route exact path="/" component={HomePage} />
+//           <Route component={ProductsSwitch} />
+//         </Layout>
+//       </ConnectedRouter>
+//     </ApolloProvider>
+//   )
+// }
+
 const App = () => {
   return (
-    <ApolloProvider store={store} client={client}>
-      <ConnectedRouter history={history}>
-        <Layout>
-          <Route exact path="/" component={HomePage} />
-          <Route component={ProductsSwitch} />
-        </Layout>
-      </ConnectedRouter>
-    </ApolloProvider>
+    <Tabs/>
   )
 }
 
