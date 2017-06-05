@@ -97,29 +97,35 @@ class ProductTabs extends React.Component<ConnectedTabProps & TabsProps,  any> {
     const image = images.map(el => el.color);
 
   return (
-      <div style={{marginBottom: "60px"}}>
+      <Flex.Item style={{marginBottom: "60px"}}>
         <Images images={images} />
         <WhiteSpace size="md" />
 
-        <Flex style={{display: "flex", alignItems: "flex-end", width: "100%", position: "fixed", bottom: 0, zIndex: 1 }}>
-          <div style={{
+        <Flex style={{
+            width: "100%",
+            position: "fixed",
+            bottom: 0,
+            zIndex: 1,
+            textAlign: "center",
+        }}>
+          <Flex.Item style={{
               backgroundColor: '#ebebef',
               color: 'black',
-              textAlign: 'center',
-              height: '0.7rem',
+              width: '50%',
               lineHeight: '0.6rem',
-              width: '100%'}}>{parseInt(activeSubProduct.price)} грн
-          </div>
-          <div style={{
-              backgroundColor: this.state.style.background,
-              color: '#f7f7ae',
-              textAlign: 'center',
-              height: '0.7rem',
-              lineHeight: '0.6rem',
-              width: '100%'}}
+          }}>{parseInt(activeSubProduct.price)} грн
+          </Flex.Item>
+          <Flex.Item
+              style={{
+                backgroundColor: this.state.style.background,
+                color: '#f7f7ae',
+                width: '50%',
+                lineHeight: '0.6rem',
+                margin: 0,
+              }}
               onClick={this.changeColor.bind(this)}
               >Купить
-          </div>
+          </Flex.Item>
         </Flex>
 
         <Tabs
