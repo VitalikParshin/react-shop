@@ -23,6 +23,7 @@ class CatalogTrigger extends React.Component<CatalogTriggerProps,any> {
 
   render() {
     const { layout, height } = this.props;
+
     return (
       <Ripples>
         <Icon

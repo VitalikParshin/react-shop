@@ -141,7 +141,7 @@ class Product extends React.Component<any,any> {
             {brand.name} {subProduct.article}
           </div>
           <div style={{fontWeight: "bold", fontSize: "0.3rem", color: "#468847", marginTop: cardPadding}} >
-            <div>{ isSinglePrice ? "от " : "" }{parseInt(minPrice)} грн</div>
+            <div>{ isSinglePrice ? "" : "от " }{parseInt(minPrice)} грн</div>
           </div>
         </div>
         <WhiteSpace size="sm" />
