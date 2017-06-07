@@ -16,7 +16,7 @@ import {
 
 import {compose, gql, graphql} from "react-apollo";
 
-import { Images, SelectSize, Size } from "../index";
+import { Images, SelectSize } from "../index";
 import { Loading } from "../../layout/index";
 import { PRODUCT_QUERY } from "../../catalog/model";
 import { connect } from "react-redux";
