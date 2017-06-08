@@ -30,3 +30,5 @@ steam.dmg
 !.vscode/launch.json
 !.vscode/tasks.json
 !.vscode/settings.json
+
+yarn.lock

@@ -1,24 +1,27 @@
 import * as React from "react";
-import {ACTION_SELECT_SUBPRODUCT, ACTION_SELECT_COLOR} from "../constants";
+import {
+  ACTION_SELECT_COLOR,
+  ACTION_SELECT_SUBPRODUCT,
+} from "../constants";
 
 import { Button, Flex } from "antd-mobile";
 import { compose, gql, graphql } from "react-apollo";
-
-import {Images, ProductTabs} from "../index";
-import {Loading} from "../../layout/index";
-import { PRODUCT_QUERY } from "../../catalog/model";
 import { connect } from "react-redux";
+
 import {ACTION_ADD_VIEWED_PRODUCT} from "../../catalog/constants";
+import { PRODUCT_QUERY } from "../../catalog/model";
+import {Loading} from "../../layout/index";
+import {Images, ProductTabs} from "../index";
 
 interface ConnectedProductProps {
   data?: any;
   product: any;
   dispatch: any;
-};
+}
 
 interface ProductProps {
-  id: Number;
-};
+  id: number;
+}
 
 const options = {
   options: props => ({
