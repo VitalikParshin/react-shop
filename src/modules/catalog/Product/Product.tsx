@@ -1,50 +1,51 @@
 import * as React from "react";
+
 import {
   Button,
   Card,
   Flex,
   Icon,
+  WhiteSpace,
   WingBlank,
-  WhiteSpace
 } from "antd-mobile";
-import {Link} from "react-router-dom";
-import {Image, scaleImageSize, Images} from "../../product/index";
+
+import { connect } from "react-redux";
 import Ripples from "react-ripples";
-import {connect} from "react-redux";
+import { Link } from "react-router-dom";
+import { Image, Images, scaleImageSize } from "../../product/index";
 
 const getMinOfArray = (numArray) => {
   return Math.min.apply(null, numArray);
-}
+};
 
-
-class Product extends React.Component<any,any> {
-  state = {
-    titleImage: {}
-  }
-
-  isViewed() {
-    const {catalog, id} = this.props;
-    return catalog.viewedProductIds.indexOf(id) !== -1;
-  }
+class Product extends React.Component<any, any> {
+  public state = {
+    titleImage: {},
+  };
 
   constructor(props) {
     super(props);
     const { imagesWithColor } = this.props;
     this.state = {
-      titleImage: imagesWithColor.filter(img => img.isTitle)[0] || imagesWithColor[0]
-    }
+      titleImage: imagesWithColor.filter((img) => img.isTitle)[0] || imagesWithColor[0],
+    };
   }
 
-  changeTitleImage = (e, image) => {
-    this.setState({titleImage: image})
+  public isViewed() {
+    const {catalog, id} = this.props;
+    return catalog.viewedProductIds.indexOf(id) !== -1;
   }
 
-  render() {
+  public changeTitleImage = (e, image) => {
+    this.setState({titleImage: image});
+  }
+
+  public render() {
     const { id, name, subProducts, brand, imagesWithColor, key, catalog } = this.props;
     const { titleImage } = this.state as any;
     const subProduct = subProducts[0];
     const url = `/product/${id}`;
-    const prices = subProducts.map(el => el.price);
+    const prices = subProducts.map((el) => el.price);
     const isSinglePrice = prices.length === 1;
     const minPrice = getMinOfArray(prices);
 
@@ -66,18 +67,18 @@ class Product extends React.Component<any,any> {
     }
 
     const maxImageHeight = Math.max(
-      ...imagesWithColor.map(img => scaleImageSize(img.width, img.height).height)
+      ...imagesWithColor.map((img) => scaleImageSize(img.width, img.height).height),
     );
 
     return (
       <div style={{
-        dispalay: "block",
-        width: cardWidth,
-        border: `1px solid ${this.isViewed() ? "orange" : "lightgrey"}`,
-        boxShadow: "0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24)",
-        transition: "all 0.3s cubic-bezier(.25,.8,.25,1)",
-        borderRadius: borderRadius,
         background: "white",
+        border: `1px solid ${this.isViewed() ? "orange" : "lightgrey"}`,
+        borderRadius,
+        boxShadow: "0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24)",
+        dispalay: "block",
+        transition: "all 0.3s cubic-bezier(.25,.8,.25,1)",
+        width: cardWidth,
       }}>
 
         {this.isViewed() ? (
@@ -94,7 +95,7 @@ class Product extends React.Component<any,any> {
         <div style={{ padding: cardPadding }}>
           <Link to={{
             pathname: url,
-            state: { modal: true }
+            state: { modal: true },
           }}>
             <Flex
                 justify="center"
@@ -106,9 +107,9 @@ class Product extends React.Component<any,any> {
               <img
                 src={titleImage.src}
                 style={{
+                  height: "100%",
                   objectFit: "contain",
                   width: "100%",
-                  height: "100%",
                 }}
               />
             </Flex>
@@ -122,14 +123,14 @@ class Product extends React.Component<any,any> {
               <Flex
                   justify="center"
               >
-                {imagesWithColor.map(image => (
+                {imagesWithColor.map((image) => (
                   <Icon
                     type={require("!svg-sprite!./dot.svg")}
-                    size={image.id == titleImage.id ? "lg" : "md"}
+                    size={image.id === titleImage.id ? "lg" : "md"}
                     style={{
                       fill: image.color,
                     }}
-                    onClick={e => this.changeTitleImage(e, image)}
+                    onClick={(e) => this.changeTitleImage(e, image)}
                   />
                 ))}
               </Flex>
@@ -141,18 +142,17 @@ class Product extends React.Component<any,any> {
             {brand.name} {subProduct.article}
           </div>
           <div style={{fontWeight: "bold", fontSize: "0.3rem", color: "#468847", marginTop: cardPadding}} >
-            <div>{ isSinglePrice ? "" : "от " }{parseInt(minPrice)} грн</div>
+            <div>{ isSinglePrice ? "" : "от " }{ parseInt(minPrice, 10) } грн</div>
           </div>
         </div>
         <WhiteSpace size="sm" />
       </div>
-    )
+    );
   }
 }
 
 const mapStateToProps: any = (state) => ({
   catalog: state.catalog,
-})
+});
 
-export default connect<any, {}, any>(mapStateToProps)(Product)
-
+export default connect<any, {}, any>(mapStateToProps)(Product);

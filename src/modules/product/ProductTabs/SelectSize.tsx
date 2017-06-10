@@ -1,42 +1,41 @@
 import * as React from "react";
 import { connect } from "react-redux";
 
-import {ACTION_SELECT_SUBPRODUCT} from "../constants";
 import {
-  Icon,
   Checkbox,
+  Flex,
+  Icon,
   List,
   Radio,
-  Flex,
   WhiteSpace,
-  WingBlank
+  WingBlank,
 } from "antd-mobile";
-
+import { ACTION_SELECT_SUBPRODUCT } from "../constants";
 
 const Item = List.Item;
 
-interface ConnectedSizeProps {
+interface IConnectedSizeProps {
   dispatch: any;
   product: any;
 }
 
-interface SizeProps {
-  dataProduct: any
+interface ISizeProps {
+  dataProduct: any;
 }
 
-class SelectSize extends React.Component <ConnectedSizeProps & SizeProps, any > {
+class SelectSize extends React.Component <IConnectedSizeProps & ISizeProps, any > {
 
-  onChangePrice = (elId) => {
+  public onChangePrice = (elId) => {
     this.props.dispatch(
       {
-        type: ACTION_SELECT_SUBPRODUCT,
+        colorId: this.props.product.colorId,
         subProductId: elId,
-        colorId: this.props.product.colorId
-      }
-    )
+        type: ACTION_SELECT_SUBPRODUCT,
+      },
+    );
   }
 
-  render() {
+  public render() {
 
     const {subProducts} = this.props.dataProduct;
 
@@ -44,25 +43,26 @@ class SelectSize extends React.Component <ConnectedSizeProps & SizeProps, any > 
         <List renderHeader={ () => {
           return (
             <div style={{display: "flex", alignItems: "flex-end"}}>
-              <Icon type={require('svg-sprite!./product-sizes.svg')}  style={{color: "#1296db", }}/>
+              <Icon type={require("svg-sprite!./product-sizes.svg")}  style={{color: "#1296db"}}/>
               <div style={{color: "#1296db"}}>Выберите Размер (Ш x В x Г) :</div>
             </div>
-          )
+          );
         }}>
-          {subProducts.map(el => (
+          {subProducts.map((el) => (
               <Item
                   onClick={() => this.onChangePrice(el.id)}
                   thumb={el.id === this.props.product.subProductId ?
                     <Icon
-                      type={require('svg-sprite!./check-circle.svg')}
+                      type={require("svg-sprite!./check-circle.svg")}
                       style={{fill: "#62f104"}}/>
                     :
                     <Icon
-                      type={require('svg-sprite!./circle.svg')}/>}
+                      type={require("svg-sprite!./circle.svg")}/>}
               >
                 {
-                  el.attributes.length != 0
-                  ? el.attributes.slice(0, 3).map(e => e.values.map(i => i.value) ).join("x") + " " + el.attributes.slice(5, 6).map(e => e.values.map(i => i.name))
+                  el.attributes.length !== 0
+                  ? el.attributes.slice(0, 3).map((e) => e.values.map((i) => i.value) ).join("x") +
+                    " " + el.attributes.slice(5, 6).map((e) => e.values.map((i) => i.name))
                   : el.article
                 }
               </Item>
@@ -72,10 +72,8 @@ class SelectSize extends React.Component <ConnectedSizeProps & SizeProps, any > 
   }
 }
 
-
 const mapStateToProps: any = (state) => ({
-  product: state.product
-})
+  product: state.product,
+});
 
-export default connect<ConnectedSizeProps, {}, SizeProps>(mapStateToProps)(SelectSize);
-
+export default connect<IConnectedSizeProps, {}, ISizeProps>(mapStateToProps)(SelectSize);

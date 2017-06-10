@@ -1,27 +1,26 @@
 // https://reacttraining.com/react-router/web/example/modal-gallery
 
 import * as React from "react";
-import { Product } from "../index";
-import {Modal, Flex, Icon} from "antd-mobile";
-import {HEIGHT} from "../../layout/Header/Header";
 import Ripples from "react-ripples";
 
+import {Flex, Icon, Modal} from "antd-mobile";
+import {HEIGHT} from "../../layout/Header/Header";
+import { Product } from "../index";
 
-class ProductModal extends React.Component<any,any> {
-  state = {
-    showModal: true
-  }
+class ProductModal extends React.Component<any, any> {
+  public state = {
+    showModal: true,
+  };
 
-  back = (e) => {
+  public back = (e) => {
     e.stopPropagation();
     this.props.history.goBack();
     this.setState({
       showModal: false,
-    })
+    });
   }
 
-
-  render() {
+  public render() {
     const { match, history } = this.props;
     return (
       <div className="modal">
@@ -29,13 +28,13 @@ class ProductModal extends React.Component<any,any> {
             justify="start"
             align="center"
             style={{
-              position: "fixed",
-              top: 0,
-              left: 0,
-              right: 0,
               backgroundColor: "rgb(0, 136, 204)",
-              width: "100%",
               color: "white",
+              left: 0,
+              position: "fixed",
+              right: 0,
+              top: 0,
+              width: "100%",
               zIndex: 1000,
             }}
         >
@@ -51,7 +50,7 @@ class ProductModal extends React.Component<any,any> {
               onClick={this.back}
             />
           </Ripples>
-          <h3 style={{margin: 0, textAlign:"center", width:"80%"}}>
+          <h3 style={{margin: 0, textAlign: "center", width: "80%"}}>
             Товар #{match.params.id}
           </h3>
         </Flex>
@@ -60,7 +59,7 @@ class ProductModal extends React.Component<any,any> {
           <Product id={match.params.id}/>
         </div>
       </div>
-    )
+    );
   }
 }
 

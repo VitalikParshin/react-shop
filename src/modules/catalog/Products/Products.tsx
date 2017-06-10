@@ -1,34 +1,36 @@
 import * as React from "react";
-import { gql, compose, graphql } from "react-apollo";
+import { compose, gql, graphql } from "react-apollo";
 import { connect } from "react-redux";
+
 import {
+  Button,
+  Card,
+  Carousel,
   Drawer,
+  Flex,
+  Icon,
   List,
   NavBar,
-  Icon,
   WingBlank,
-  Carousel,
-  Flex,
-  Card,
-  Button
 } from "antd-mobile";
+
+import update from "immutability-helper";
 import MasonryInfiniteScroller from "react-masonry-infinite";
 import { Link } from "react-router-dom";
-import {ALL_PRODUCTS_QUERY, ICatalog} from "../model";
-import {Product, ProductsCounter, ShowOnlyViewed} from "../index";
 import {Loading} from "../../layout/index";
-import update from "immutability-helper";
+import {Product, ProductsCounter, ShowOnlyViewed} from "../index";
+import {ALL_PRODUCTS_QUERY, ICatalog} from "../model";
 
 const LIMIT = 10;
 
 const options = {
-  options: props => ({
+  options: (props) => ({
+    fetchPolicy: "network-only",
     variables: {
       categoryId: props.categoryId,
-      offset: 0,
       first: LIMIT,
+      offset: 0,
     },
-    fetchPolicy: "network-only",
   }),
   props({ data: { loading, allProducts, fetchMore } }) {
     if (!loading) {
@@ -36,56 +38,57 @@ const options = {
       // TODO: Should be solved in GraphQL server
       allProducts = update(allProducts, {
         products: {
-          $set: allProducts.products.filter(p => p.subProducts.length != 0)
-        }
-      })
+          $set: allProducts.products.filter((p) => p.subProducts.length !== 0),
+        },
+      });
     }
     return {
-      loading,
       allProducts,
+      loading,
       fetchMore() {
         return fetchMore({
-          variables: {
-            offset: allProducts.products.length,
-          },
           updateQuery: (prev, { fetchMoreResult }) => {
-            if (!fetchMoreResult.allProducts) { return prev };
+            if (!fetchMoreResult.allProducts) { return prev; }
             return update(prev, {
               allProducts: {
                 products: {
                   $push: fetchMoreResult.allProducts.products,
                 },
-              }
+              },
             });
+          },
+          variables: {
+            offset: allProducts.products.length,
           },
         });
       },
     };
-  }
+  },
 };
 
-interface ConnectedProductsProps {
+interface IConnectedProductsProps {
   allProducts: any;
   fetchMore: any;
   loading: boolean;
 }
 
-interface ProductsProps {
+interface IProductsProps {
   catalog: ICatalog;
 }
 
-class Products extends React.Component<ConnectedProductsProps & ProductsProps, any> {
+class Products extends React.Component<IConnectedProductsProps & IProductsProps, any> {
 
-  ref;
-  bottomHeight: number;
-  threshold = 800;
+  public ref;
 
-  state = {
+  public bottomHeight: number;
+  public threshold = 800;
+
+  public state = {
     haveMoreProducts: true,
     scrolledProducts: 0,
-  }
+  };
 
-  refineScrolledProducts = (scrolledProducts) => {
+  public refineScrolledProducts = (scrolledProducts) => {
     const { fetchMore, allProducts: {products, total} } = this.props;
 
     if (scrolledProducts < LIMIT) {
@@ -96,30 +99,30 @@ class Products extends React.Component<ConnectedProductsProps & ProductsProps, a
     return scrolledProducts;
   }
 
-  handleScroll = (event) => {
+  public handleScroll = (event) => {
     const { fetchMore, allProducts: {products, total} } = this.props;
 
     // Calculate scrolled products
     const { scrolledProducts, haveMoreProducts } = this.state;
-    let _scrolledProducts = (
+    const scrolled = (
       Math.round(
         event.srcElement.scrollTop
         / this.bottomHeight
-        * products.length
+        * products.length,
       )
-    )
-    this.setState({scrolledProducts: _scrolledProducts})
+    );
+    this.setState({scrolledProducts: scrolled});
 
     if (event.srcElement.scrollTop > this.bottomHeight && haveMoreProducts === true) {
-      window.removeEventListener('scroll', this.handleScroll, true);
+      window.removeEventListener("scroll", this.handleScroll, true);
       fetchMore();
     }
   }
 
-  componentDidUpdate = (prevProps, prevState) => {
+  public componentDidUpdate = (prevProps, prevState) => {
     const { loading, allProducts } = this.props;
     if (loading === false) {
-      window.addEventListener('scroll', this.handleScroll, true);
+      window.addEventListener("scroll", this.handleScroll, true);
       this.bottomHeight = (
         this.ref.offsetTop + this.ref.clientHeight
         - window.innerHeight - this.threshold
@@ -127,41 +130,41 @@ class Products extends React.Component<ConnectedProductsProps & ProductsProps, a
     }
   }
 
-  componentWillReceiveProps = (nextProps) => {
+  public componentWillReceiveProps = (nextProps) => {
     const { loading, allProducts } = nextProps;
     if (loading === false ) {
       const { products, total } = allProducts;
       if (products.length >= total) {
         this.setState({
-          haveMoreProducts: false
+          haveMoreProducts: false,
         });
       }
     }
   }
 
-  render() {
+  public render() {
     const {
       loading,
       allProducts,
       fetchMore,
-      catalog: {showOnlyViewed, viewedProductIds}
+      catalog: {showOnlyViewed, viewedProductIds},
     } = this.props;
 
-    if (loading == true) {
-      return <Loading/>
+    if (loading === true) {
+      return <Loading/>;
     }
     const { products, total } = allProducts;
     const filteredProducts = (
       showOnlyViewed === true
-      ? products.filter(p => viewedProductIds.indexOf(p.id) !== -1)
+      ? products.filter((p) => viewedProductIds.indexOf(p.id) !== -1)
       : products
-    )
+    );
 
     let padding: number;
     let gutter: number;
     if (window.innerWidth <= 640) {
       padding = 4;
-      gutter = 15
+      gutter = 15;
     } else if (window.innerWidth <= 750) {
       padding = 8;
       gutter = 17;
@@ -171,23 +174,23 @@ class Products extends React.Component<ConnectedProductsProps & ProductsProps, a
     }
 
     return (
-      <div style={{padding: padding}} ref={element => this.ref = element}>
+      <div style={{padding}} ref={(element) => this.ref = element}>
         <MasonryInfiniteScroller
-          sizes={[{ columns: 2, gutter: gutter }]}
+          sizes={[{ columns: 2, gutter }]}
           style={{
             marginBottom: 35,
           }}
         >
           {filteredProducts.map((product, i) => {
-            return <Product key={i} {...product}/>
+            return <Product key={i} {...product}/>;
           })}
         </MasonryInfiniteScroller>
 
         <div
           style={{
             display: this.state.haveMoreProducts ? "block" : "none",
-            textAlign: "center",
             paddingTop: 10,
+            textAlign: "center",
           }}
         >
           <Icon type="loading" size="lg"/>
@@ -201,17 +204,15 @@ class Products extends React.Component<ConnectedProductsProps & ProductsProps, a
         <ShowOnlyViewed/>
 
       </div>
-    )
+    );
   }
 }
 
 const mapStateToProps: any = (state) => ({
   catalog: state.catalog,
-})
+});
 
 export default compose(
     connect<any, {}, any>(mapStateToProps),
     graphql(ALL_PRODUCTS_QUERY, options),
 )(Products);
-
-

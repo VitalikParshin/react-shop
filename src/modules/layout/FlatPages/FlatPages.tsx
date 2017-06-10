@@ -2,21 +2,21 @@ import * as React from "react";
 import { connect } from "react-redux";
 
 import { compose, gql, graphql } from "react-apollo";
-import {ILayout} from "../model";
 import Ripples from "react-ripples";
 import { utils } from "../../layout/index";
+import {ILayout} from "../model";
 
 import {
-  List,
-  WhiteSpace,
-  WingBlank,
   Button,
+  Flex,
+  Icon,
+  List,
   Modal,
-Icon,
-Flex
+WhiteSpace,
+WingBlank,
 } from "antd-mobile";
-import {Loading} from "../index";
 import {HEIGHT} from "../Header/Header";
+import {Loading} from "../index";
 
 const FLATPAGES_QUERY = gql `
   query flatpages{
@@ -34,7 +34,7 @@ const FLATPAGES_QUERY = gql `
       image
     }
   }
-`
+`;
 
 function createMarkup(html) {
   return {__html: html};
@@ -42,62 +42,63 @@ function createMarkup(html) {
 
 class FlatPages extends React.Component<any, any> {
 
-  state = {
-    showModal: false,
+  public state = {
     page: {
+      content: "",
       id: "",
       name: "",
-      content: "",
-    }
-  }
+    },
+    showModal: false,
+  };
 
-  showModal = (e, page) => {
+  public showModal = (e, page) => {
     e.preventDefault();
     this.setState({
-      page: page,
+      page,
       showModal: true,
     });
   }
 
-  closeModal = () => {
+  public closeModal = () => {
     this.setState({
       content: "",
       showModal: false,
     });
   }
 
-  getIcon = (id) => {
-    const _id = parseInt(id)
-    switch(_id) {
-      //info
+  public getIcon = (id) => {
+    // tslint:disable-next-line:variable-name
+    const _id = parseInt(id, 10);
+    switch (_id) {
+      // info
       case 4: {
         return require("!svg-sprite!./about.svg");
       }
-      //contacts
+      // contacts
       case 5: {
         return require("!svg-sprite!./contacts.svg");
       }
-      //exchange and return
+      // exchange and return
       case 8: {
         return require("!svg-sprite!./exchange.svg");
       }
-      //make order
+      // make order
       case 7: {
         return require("!svg-sprite!./order.svg");
       }
-      //buyers
+      // buyers
       case 10: {
         return require("!svg-sprite!./buyers.svg");
       }
-      //discount card
+      // discount card
       case 6: {
         return require("!svg-sprite!./discount.svg");
       }
-      //schedule of work
+      // schedule of work
       case 14: {
         return require("!svg-sprite!./schedule.svg");
       }
-      //shipping and payment
+      // shipping and payment
       case 2: {
         return require("!svg-sprite!./shipping.svg");
       }
@@ -105,11 +106,11 @@ class FlatPages extends React.Component<any, any> {
       case 15: {
         return require("!svg-sprite!./roulette.svg");
       }
-      //suppliers
+      // suppliers
       case 11: {
         return require("!svg-sprite!./info.svg");
       }
-      //guarantee
+      // guarantee
       case 3: {
         return require("!svg-sprite!./guarantee.svg");
       }
@@ -119,10 +120,10 @@ class FlatPages extends React.Component<any, any> {
     }
   }
 
-  render() {
+  public render() {
     const { data }  = this.props;
     if (!data) {
-      return <div></div>
+      return <div></div>;
     }
 
     const { loading, flatPages } = data;
@@ -133,7 +134,7 @@ class FlatPages extends React.Component<any, any> {
     return (
       <div>
         <List>
-          {flatPages.map(page => (
+          {flatPages.map((page) => (
             <List.Item
               wrap
               arrow="horizontal"
@@ -154,13 +155,13 @@ class FlatPages extends React.Component<any, any> {
               justify="start"
               align="center"
               style={{
-                position: "fixed",
-                top: 0,
-                left: 0,
-                right: 0,
                 backgroundColor: "rgb(0, 136, 204)",
-                width: "100%",
                 color: "white",
+                left: 0,
+                position: "fixed",
+                right: 0,
+                top: 0,
+                width: "100%",
               }}
           >
             <Ripples during={200}>
@@ -175,37 +176,37 @@ class FlatPages extends React.Component<any, any> {
                 onClick={this.closeModal}
               />
             </Ripples>
-            <h3 style={{margin: 0, textAlign:"center", width:"80%"}}>
+            <h3 style={{margin: 0, textAlign: "center", width: "80%"}}>
               {this.state.page.name}
             </h3>
           </Flex>
           <div
             dangerouslySetInnerHTML={createMarkup(this.state.page.content)}
             style={{
+              marginTop: 100,
               padding: utils.isSafariBrowser() ? 20 : 0,
               textAlign: "left",
-              marginTop: 100,
             }}
           />
         </Modal>
       </div>
-    )
+    );
   }
 }
 
 const mapStateToProps: any = (state) => ({
   layout: state.layout,
   router: state.router,
-})
+});
 
 export default compose(
   connect<any, {}, any>(mapStateToProps),
   graphql(FLATPAGES_QUERY, {
     options: ({ layout, router }) => ({
       skip: !(
-        router.location.pathname == "/"
+        router.location.pathname === "/"
         || layout.openMenu
       ),
     }),
-  })
+  }),
 )(FlatPages);

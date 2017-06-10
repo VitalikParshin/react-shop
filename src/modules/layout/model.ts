@@ -4,4 +4,3 @@ export interface ILayout {
   openMenu: boolean;
   openShoppingCart: boolean;
 }
-

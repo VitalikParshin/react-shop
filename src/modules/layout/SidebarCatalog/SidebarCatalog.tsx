@@ -1,19 +1,19 @@
 import * as React from "react";
-import { ACTION_TOOTLE_CATALOG } from "../constants";
-import Sidebar from "react-sidebar";
-import { gql, compose, graphql } from "react-apollo";
+import { compose, gql, graphql } from "react-apollo";
 import { connect } from "react-redux";
+import Sidebar from "react-sidebar";
+import { ACTION_TOOTLE_CATALOG } from "../constants";
 import { Catalog, utils } from "../index";
 
-class SidebarCatalog extends React.Component<any,any> {
+class SidebarCatalog extends React.Component<any, any> {
 
-  onSetSidebarOpen = () => {
+  public onSetSidebarOpen = () => {
     const { dispatch } = this.props;
     // this.setProps({style:{overflow:"hidden"}})
-    dispatch({type: ACTION_TOOTLE_CATALOG})
+    dispatch({type: ACTION_TOOTLE_CATALOG});
   }
 
-  render() {
+  public render() {
     const { layout } = this.props;
     return (
       <Sidebar
@@ -25,14 +25,13 @@ class SidebarCatalog extends React.Component<any,any> {
       >
         {this.props.children}
       </Sidebar>
-    )
+    );
   }
 }
 
-
 const mapStateToProps: any = (state) => ({
   layout: state.layout,
-})
+});
 
 export default compose(
     connect<any, {}, any>(mapStateToProps),

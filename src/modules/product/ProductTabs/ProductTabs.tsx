@@ -1,25 +1,25 @@
 import * as React from "react";
-import {ACTION_SELECT_SUBPRODUCT, ACTION_SELECT_COLOR} from "../constants";
+import {compose, gql, graphql} from "react-apollo";
+import { connect } from "react-redux";
+
+import {ACTION_SELECT_COLOR, ACTION_SELECT_SUBPRODUCT} from "../constants";
 
 import {
   Button,
+  Checkbox,
   Flex,
-  Tabs,
-  WhiteSpace,
-  WingBlank,
-  Table,
   Icon,
   List,
   Radio,
-  Checkbox,
+  Table,
+  Tabs,
+  WhiteSpace,
+  WingBlank,
 } from "antd-mobile";
 
-import {compose, gql, graphql} from "react-apollo";
-
-import { Images, SelectSize } from "../index";
-import { Loading } from "../../layout/index";
 import { PRODUCT_QUERY } from "../../catalog/model";
-import { connect } from "react-redux";
+import { Loading } from "../../layout/index";
+import { Images, SelectSize } from "../index";
 
 const TabPane = Tabs.TabPane;
 const FlexItem = Flex.Item;
@@ -27,25 +27,25 @@ const ListItem = List.Item;
 const CheckboxItem = Checkbox.CheckboxItem;
 const AgreeItem = Checkbox.AgreeItem;
 
-interface ConnectedTabProps {
+interface IConnectedTabProps {
   dataProduct: any;
   data?: any;
   product: any;
   dispatch: any;
-};
+}
 
-interface TabsProps {
+interface ITabsProps {
   dataProduct: any;
   activeSubProduct: any;
   activeColor: any;
-};
+}
 
 const options = {
-  options: props => ({
+  options: (props) => ({
     variables: {
-      id: props.id
-    }
-  })
+      id: props.id,
+    },
+  }),
 };
 
 function createMarkup(html) {
@@ -53,30 +53,31 @@ function createMarkup(html) {
 }
 
 function callback(key) {
-  console.log('onChange', key);
+  // tslint:disable-next-line:no-console
+  console.log("onChange", key);
 }
 function handleTabClick(key) {
-  console.log('onTabClick', key);
+  // tslint:disable-next-line:no-console
+  console.log("onTabClick", key);
 }
 
-class ProductTabs extends React.Component<ConnectedTabProps & TabsProps,  any> {
+class ProductTabs extends React.Component<IConnectedTabProps & ITabsProps,  any> {
 
-  changeColor = (colorId) => {
-    this.props.dispatch({type: ACTION_SELECT_COLOR, colorId: colorId})
+  public changeColor = (colorId) => {
+    this.props.dispatch({type: ACTION_SELECT_COLOR, colorId });
   }
 
-  checkOn() {
+  public checkOn() {
     this.setState({
+      check: "check",
       id: "",
-      check: "check"
-    })
+    });
   }
 
-  render() {
+  public render() {
     const dataProduct = this.props.dataProduct;
     const { activeSubProduct } = this.props;
     const { brand, images, subProducts,  attributes} = dataProduct;
-    console.log("subProductId", this.props.product.subProductId, "colorId", this.props.product.colorId)
 
     return (
         <Tabs
@@ -98,11 +99,17 @@ class ProductTabs extends React.Component<ConnectedTabProps & TabsProps,  any> {
                 <div style={{display: "flex", flexDirection: "row", justifyContent: "space-between"}}>
                   <div style={{width: "35%"}}>
                     <div style={{fontSize: "40px", color: "#468847"}}>{Math.trunc(activeSubProduct.price) } грн</div>
-                    <div style={{textDecoration: "line-through", fontSize: "24px", color: "#b94a48"}}>{Math.trunc(activeSubProduct.oldPrice)} грн</div>
+                    <div
+                        style={{
+                          color: "#b94a48",
+                          fontSize: "24px",
+                          textDecoration: "line-through",
+                        }}
+                    >{Math.trunc(activeSubProduct.oldPrice)} грн</div>
                   </div>
                   <div style={{width: "28%"}}>
                     <Icon
-                      type={require('svg-sprite!./free-delivery.png')}
+                      type={require("svg-sprite!./free-delivery.png")}
                       style={{width: "150px", height: "75px"}}
                     />
                   </div>
@@ -111,7 +118,7 @@ class ProductTabs extends React.Component<ConnectedTabProps & TabsProps,  any> {
                       className="btn"
                       style={{textColor: "white"}}
                       size="small"
-                      icon={require('svg-sprite!./basket.svg')}
+                      icon={require("svg-sprite!./basket.svg")}
                     >
                       В корзину
                     </Button>
@@ -121,41 +128,41 @@ class ProductTabs extends React.Component<ConnectedTabProps & TabsProps,  any> {
               <hr/>
 
               {/* Select Sizes */}
-              {subProducts.length > 1 ? <SelectSize dataProduct={dataProduct} /> : '' }
+              {subProducts.length > 1 ? <SelectSize dataProduct={dataProduct} /> : "" }
               <WhiteSpace/>
 
               {/* Select Colors*/}
               <WingBlank>
-                { images.filter( el => el.color !== "").length > 1 ?
+                { images.filter((el) => el.color !== "").length > 1 ?
                   <Flex>
-                      <Icon type={require('svg-sprite!./product-sizes.svg')}  style={{color: "#1296db", }}/>
+                      <Icon type={require("svg-sprite!./product-sizes.svg")}  style={{color: "#1296db"}}/>
                       <div style={{color: "#1296db"}}>Выберите цвет :</div>
                     <div>
-                      { images.filter( el => el.color !== "").map(e =>
+                      { images.filter((el) => el.color !== "").map((e) =>
                         e.id === this.props.activeColor ?
                         <Icon
-                            type={require('svg-sprite!./circle-check_color.svg')}
+                            type={require("svg-sprite!./circle-check_color.svg")}
                             style={{fill: e.color, color: e.color}}
                         />
                         :
                         <Icon
                             onClick={() => this.changeColor(e.id)}
-                            type={require('svg-sprite!./icon-circle-for-colors.svg')}
+                            type={require("svg-sprite!./icon-circle-for-colors.svg")}
                             style={{fill: e.color, color: e.color}}
-                        />
+                        />,
                       )}
                     </div>
                   </Flex>
                   :
                   <Flex>
-                      <Icon type={require('svg-sprite!./product-sizes.svg')}  style={{color: "#1296db", }}/>
+                      <Icon type={require("svg-sprite!./product-sizes.svg")}  style={{color: "#1296db"}}/>
                       <div style={{color: "#1296db"}}>Цвет : </div>
-                      {images.filter( el => el.color !== "").map(e =>
+                      {images.filter((el) => el.color !== "").map((e) =>
                         <Icon
-                              type={require('svg-sprite!./check-circle.svg')}
+                              type={require("svg-sprite!./check-circle.svg")}
                               style={{fill: e.color, color: e.color}}
-                        />
-                    )}
+                        />,
+                      )}
                   </Flex>
                 }
               </WingBlank>
@@ -165,27 +172,31 @@ class ProductTabs extends React.Component<ConnectedTabProps & TabsProps,  any> {
               <List className="my-list" renderHeader={ () => {
                 return (
                   <Flex style={{ color: "#1296db"}}>
-                    <Icon type={require('svg-sprite!./detail.svg')}/>
+                    <Icon type={require("svg-sprite!./detail.svg")}/>
                     Характеристики :
                   </Flex>
-                )
+                );
               }}>
-                {attributes.map(el =>
-                    <ListItem extra={el.values.map(v => v.name).join(", ")} style={{fontSize: "12px"}}>{el.name}</ListItem>
+                {attributes.map((el) =>
+                  <ListItem
+                    extra={el.values.map((v) => v.name).join(", ")}
+                    style={{fontSize: "12px"}}>{el.name}
+                  </ListItem>,
                 )}
 
                 { subProducts.length <= 1 ?
                   // <Size dataProduct={dataProduct} />
-                  subProducts.map(el =>
+                  subProducts.map((el) =>
                     <ListItem
                         extra={
-                            el.attributes.length != 0
-                            ? el.attributes.slice(0, 3).map(e => e.values.map(i => i.value) ).join("x") + " " + el.attributes.slice(5, 6).map(e => e.values.map(i => i.name))
-                            : el.article
-                          }
+                          el.attributes.length !== 0
+                          ? el.attributes.slice(0, 3).map((e) => e.values.map((i) => i.value) ).join("x") +
+                            " " + el.attributes.slice(5, 6).map((e) => e.values.map((i) => i.name))
+                          : el.article
+                        }
                     >
                       Размер (Ш x В x Г) :
-                    </ListItem>
+                    </ListItem>,
                   )
                   :
                    ""
@@ -196,10 +207,10 @@ class ProductTabs extends React.Component<ConnectedTabProps & TabsProps,  any> {
               <List className="my-list" renderHeader={() => {
                 return (
                   <Flex style={{ color: "#1296db"}}>
-                    <Icon type={require('svg-sprite!./info.svg')} />
+                    <Icon type={require("svg-sprite!./info.svg")} />
                     <div>О ТОВАРЕ</div>
                   </Flex>
-                )
+                );
               }}>
                 <ListItem>
                   <div
@@ -210,19 +221,27 @@ class ProductTabs extends React.Component<ConnectedTabProps & TabsProps,  any> {
             </div>
           </TabPane>
           <TabPane tab="Характеристика" key="2">
-            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '5rem', backgroundColor: '#fff' }}>
+            <div
+              style={{
+                alignItems: "center",
+                backgroundColor: "#fff" ,
+                display: "flex",
+                height: "5rem",
+                justifyContent: "center",
+              }}
+            >
               характеристика
             </div>
           </TabPane>
         </Tabs>
-    )
+    );
   }
 }
 
 const mapStateToProps: any = (state) => ({
-  product: state.product
-})
+  product: state.product,
+});
 
 export default compose(
-    connect<ConnectedTabProps, {}, TabsProps>(mapStateToProps),
+    connect<IConnectedTabProps, {}, ITabsProps>(mapStateToProps),
 )(ProductTabs);

@@ -1,13 +1,10 @@
-import { createStore, combineReducers, compose, applyMiddleware } from "redux";
+import { routerMiddleware, routerReducer } from "react-router-redux";
+import { applyMiddleware, combineReducers, compose, createStore } from "redux";
 import logger from "redux-logger";
 import thunk from "redux-thunk";
-import {
-  routerReducer,
-  routerMiddleware,
-} from "react-router-redux";
-import rootReducer from "./rootReducer";
 import client from "./graphqlClient";
-import history from "./history"
+import history from "./history";
+import rootReducer from "./rootReducer";
 
 const initialState = {};
 
@@ -25,7 +22,9 @@ const store = createStore(
   initialState,
   compose(
     applyMiddleware(...middlewares),
-    (typeof (window as any).__REDUX_DEVTOOLS_EXTENSION__ !== "undefined") ? (window as any).__REDUX_DEVTOOLS_EXTENSION__() : f => f,
+    (typeof (window as any).__REDUX_DEVTOOLS_EXTENSION__ !== "undefined")
+    ? (window as any).__REDUX_DEVTOOLS_EXTENSION__()
+    : (f) => f,
   ),
 );
 

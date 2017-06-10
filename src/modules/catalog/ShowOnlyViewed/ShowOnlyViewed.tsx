@@ -1,16 +1,16 @@
-import * as React from "react";
 import {Icon} from "antd-mobile";
+import * as React from "react";
 import { connect } from "react-redux";
 import {ACTION_TOGGLE_SHOW_ONLY_VIEWED} from "../constants";
 
 class ShowOnlyViewed extends React.Component<any, any> {
 
-  toggleViewed = (e) => {
+  public toggleViewed = (e) => {
     const { dispatch } = this.props;
     dispatch({type: ACTION_TOGGLE_SHOW_ONLY_VIEWED});
   }
 
-  render() {
+  public render() {
     const { catalog: { showOnlyViewed } } = this.props;
     return (
       <div
@@ -23,16 +23,12 @@ class ShowOnlyViewed extends React.Component<any, any> {
           style={{fill: showOnlyViewed ? "orange" : "grey"}}
         />
       </div>
-    )
+    );
   }
 }
 
 const mapStateToProps: any = (state) => ({
   catalog: state.catalog,
-})
+});
 
-export default connect<any, {}, any>(mapStateToProps)(ShowOnlyViewed)
-
-
-
-
+export default connect<any, {}, any>(mapStateToProps)(ShowOnlyViewed);

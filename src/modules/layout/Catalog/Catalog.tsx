@@ -1,22 +1,24 @@
 import * as React from "react";
-import { gql, compose, graphql } from "react-apollo";
+import { compose, gql, graphql } from "react-apollo";
 import { connect } from "react-redux";
+import { Link } from "react-router-dom";
+import {  Sticky, StickyContainer } from "react-sticky";
+
 import {
+  Card,
+  Carousel,
   Drawer,
+  Flex,
+  Grid,
+  Icon,
   List,
   NavBar,
-  Icon,
   WingBlank,
-  Carousel,
-  Flex,
-  Card,
-  Grid
 } from "antd-mobile";
-import { StickyContainer, Sticky } from "react-sticky";
-import { Link } from "react-router-dom";
-import { Loading, SubCatalog } from "../../layout/index";
+
 import { ACTION_TOOTLE_CATALOG } from "../../layout/constants";
 import { HEIGHT } from "../../layout/Header/Header";
+import { Loading, SubCatalog } from "../../layout/index";
 
 export const CATALOG_QUERY = gql`
   query categories {
@@ -32,19 +34,18 @@ export const CATALOG_QUERY = gql`
   }
 `;
 
+class Catalog extends React.Component<any, any> {
 
-class Catalog extends React.Component<any,any> {
-
-  render() {
+  public render() {
     const { isDrawer, data } = this.props;
     const { loading, categories } = data;
-    if (loading == true) {
-      return <Loading/>
+    if (loading === true) {
+      return <Loading />;
     }
 
     const startCats: any = [];
     const childrenMap: any = {};
-    for (let cat of categories) {
+    for (const cat of categories) {
       if (cat.parent) {
         const key = cat.parent.id;
         if (!(key in childrenMap)) {
@@ -56,13 +57,15 @@ class Catalog extends React.Component<any,any> {
       }
     }
 
-    let style = {
-      textAlign: "center",
+    const style = {
       backgroundColor: "#f5f5f9",
       paddingTop: 10,
+      textAlign: "center",
     };
     if (isDrawer === true) {
+      // tslint:disable-next-line:no-string-literal
       style["width"] = window.innerWidth * 0.9;
+      // tslint:disable-next-line:no-string-literal
       style["padding"] = 10;
     }
 
@@ -78,7 +81,7 @@ class Catalog extends React.Component<any,any> {
           </div>
         ))}
       </div>
-    )
+    );
 
     // onStickyStateChange = (isSticky) => {
     //   console.log(`Am I sticky?: ${ isSticky ? 'Yep!' : 'Nope!'}`);
@@ -111,7 +114,7 @@ class Catalog extends React.Component<any,any> {
   }
 }
 
-const mapStateToProps: any = (state) => ({})
+const mapStateToProps: any = (state) => ({});
 
 export default compose(
     connect<any, {}, any>(mapStateToProps),

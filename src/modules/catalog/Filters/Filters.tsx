@@ -1,45 +1,48 @@
 import * as React from "react";
+
 import {
-  Card,
   Button,
+  Card,
+  createTooltip,
   Flex,
   List,
+  Range,
   Switch,
   WingBlank,
-  createTooltip,
-  Range,
 } from "antd-mobile";
-import {Images} from "../../product/index";
-import { Link } from "react-router-dom";
+
 import { compose } from "react-apollo";
 import { connect } from "react-redux";
-
+import { Link } from "react-router-dom";
+import { Images } from "../../product/index";
 
 const RangeWithTooltip = createTooltip(Range);
 
+class Filter extends React.Component<any, any> {
+  public state = {
+    active: true,
+  };
 
-class Filter extends React.Component<any,any> {
-  state = {
-    active: true
-  }
-  handleChange = () => {
+  public handleChange = () => {
     this.setState({active: !this.state.active});
   }
-  render() {
+
+  public render() {
     return (
       <Switch
         checked={this.state.active}
         onChange={this.handleChange}
       />
-    )
+    );
   }
 }
 
-
+// tslint:disable-next-line:max-classes-per-file
 class Filters extends React.Component<any, any> {
-  render() {
+  public render() {
     const log = (name) => {
       return (value) => {
+        // tslint:disable-next-line:no-console
         console.log(`${name}: ${value}`);
       };
     };
@@ -47,12 +50,12 @@ class Filters extends React.Component<any, any> {
     return (
 
       <div style={{
-        background:"white",
-        width: 500,
+        background: "white",
         height: "100%",
+        width: 500,
       }}>
         <List
-          renderHeader={() => '表单开关项'}
+          renderHeader={() => "表单开关项"}
         >
           <List.Item
             extra={<Filter/>}
@@ -63,9 +66,9 @@ class Filters extends React.Component<any, any> {
             <RangeWithTooltip
               min={0}
               max={1000}
-              defaultValue={[0,1000]}
-              // onChange={log('change')}
-              onAfterChange={log('afterChange')}
+              defaultValue={[0, 1000]}
+              // onChange={log("change")}
+              onAfterChange={log("afterChange")}
             />
           </WingBlank>
 
