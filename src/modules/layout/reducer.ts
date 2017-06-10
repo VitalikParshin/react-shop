@@ -1,6 +1,7 @@
 import update from "immutability-helper";
 
 import {
+  // tslint:disable-next-line:ordered-imports
   ACTION_TOOTLE_FILTERS,
 
   ACTION_ENABLE_CATALOG,
@@ -15,10 +16,9 @@ import {
 } from "./constants";
 import {ILayout} from "./model";
 
-
 const DEFAULT_LAYOUT: ILayout = {
-  openFilters: false,
   openCatalog: false,
+  openFilters: false,
   openMenu: false,
   openShoppingCart: false,
 };
@@ -27,37 +27,37 @@ const layout = (state = DEFAULT_LAYOUT, action) => {
   switch (action.type) {
     case ACTION_TOOTLE_FILTERS:
       return update(DEFAULT_LAYOUT, {
-        openFilters: {$set: !state.openFilters}
+        openFilters: {$set: !state.openFilters},
       });
 
     case ACTION_DISABLE_CATALOG:
       return update(DEFAULT_LAYOUT, {
-        openCatalog: {$set: false}
+        openCatalog: {$set: false},
       });
     case ACTION_ENABLE_CATALOG:
       return update(DEFAULT_LAYOUT, {
-        openCatalog: {$set: true}
+        openCatalog: {$set: true},
       });
     case ACTION_TOOTLE_CATALOG:
       return update(DEFAULT_LAYOUT, {
-        openCatalog: {$set: !state.openCatalog}
+        openCatalog: {$set: !state.openCatalog},
       });
 
     case ACTION_DISABLE_MENU:
       return update(DEFAULT_LAYOUT, {
-        openMenu: {$set: false}
+        openMenu: {$set: false},
       });
     case ACTION_ENABLE_MENU:
       return update(DEFAULT_LAYOUT, {
-        openMenu: {$set: true}
+        openMenu: {$set: true},
       });
     case ACTION_TOOTLE_MENU:
       return update(DEFAULT_LAYOUT, {
-        openMenu: {$set: !state.openMenu}
+        openMenu: {$set: !state.openMenu},
       });
 
     case ACTION_RESET:
-      return Object.assign({}, DEFAULT_LAYOUT)
+      return Object.assign({}, DEFAULT_LAYOUT);
     default:
       return state;
   }

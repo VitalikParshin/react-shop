@@ -1,27 +1,27 @@
-import * as React from "react";
 import { Button, Icon } from "antd-mobile";
+import * as React from "react";
 import { compose } from "react-apollo";
 import { connect } from "react-redux";
+import Ripples from "react-ripples";
 import {
-  ACTION_TOOTLE_MENU
+  ACTION_TOOTLE_MENU,
 } from "../../layout/constants";
 import {ILayout} from "../model";
-import Ripples from "react-ripples";
 
-interface MenuTriggerProps {
+interface IMenuTriggerProps {
   layout: ILayout;
   dispatch: any;
   height: number;
 }
 
-class MenuTrigger extends React.Component<MenuTriggerProps,any> {
+class MenuTrigger extends React.Component<IMenuTriggerProps, any> {
 
-  onClick = (e) => {
+  public onClick = (e) => {
     e.preventDefault();
     this.props.dispatch({type: ACTION_TOOTLE_MENU});
   }
 
-  render() {
+  public render() {
     const { layout, height } = this.props;
     return (
       <Ripples>
@@ -31,18 +31,18 @@ class MenuTrigger extends React.Component<MenuTriggerProps,any> {
           onClick={this.onClick}
           style={{
             fill: layout.openMenu === true ? "orange" : "white",
-            height: height,
-            padding: `0 ${height/3}px`
+            height,
+            padding: `0 ${height / 3}px`,
           }}
         />
       </Ripples>
-    )
+    );
   }
 }
 
 const mapStateToProps: any = (state) => ({
   layout: state.layout,
-})
+});
 
 export default compose(
     connect<any, {}, any>(mapStateToProps),

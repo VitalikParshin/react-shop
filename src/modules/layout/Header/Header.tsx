@@ -1,25 +1,25 @@
+import { Button, Card, Flex, Icon, List, NavBar, NoticeBar, WingBlank } from "antd-mobile";
 import * as React from "react";
-import { List, WingBlank, Flex, Button, NoticeBar, NavBar, Icon, Card } from "antd-mobile";
-import { Link } from  "react-router-dom";
 import Ripples from "react-ripples";
-import {CatalogTrigger, MenuTrigger, HomeTrigger} from "../index";
+import { Link } from "react-router-dom";
 import {ShoppingCartTrigger} from "../../shoppingCart/index";
+import {CatalogTrigger, HomeTrigger, MenuTrigger} from "../index";
 
 export const HEIGHT = 80;
 
-class Header extends React.Component<any,any> {
-  render() {
+class Header extends React.Component<any, any> {
+  public render() {
     return (
       <Flex
         justify="between"
         align="center"
         style={{
-          top: 0,
           background: "#08c",
+          height: HEIGHT,
           position: "fixed",
+          top: 0,
           width: "100%",
           zIndex: 100,
-          height: HEIGHT,
         }}
       >
         <HomeTrigger height={HEIGHT}/>
@@ -27,7 +27,7 @@ class Header extends React.Component<any,any> {
         <CatalogTrigger height={HEIGHT}/>
         <ShoppingCartTrigger height={HEIGHT}/>
       </Flex>
-    )
+    );
   }
 }
 

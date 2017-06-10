@@ -1,29 +1,28 @@
-import * as React from "react";
 import {
-  Icon,
-  WingBlank,
-  List,
   Button,
   Flex,
+  Icon,
+  List,
   Modal,
-  WhiteSpace
+  WhiteSpace,
+  WingBlank,
 } from "antd-mobile";
-import {Link} from "react-router-dom";
-import {Header, Footer, SidebarCatalog, FlatPages} from "../index";
+import * as React from "react";
 import {compose, graphql} from "react-apollo";
 import { connect } from "react-redux";
-import { ACTION_TOOTLE_CATALOG } from "../constants";
+import {Link} from "react-router-dom";
 import Sidebar from "react-sidebar";
+import { ACTION_TOOTLE_CATALOG } from "../constants";
+import {FlatPages, Footer, Header, SidebarCatalog} from "../index";
 
-
-class Menu extends React.Component<any,any> {
-  render() {
-    const width = window.innerWidth * 0.9
+class Menu extends React.Component<any, any> {
+  public render() {
+    const width = window.innerWidth * 0.9;
     return (
       <div style={{
         background: "white",
         height: "100%",
-        width: width,
+        width,
       }}>
         <Flex justify="center" align="center">
           <img
@@ -37,7 +36,7 @@ class Menu extends React.Component<any,any> {
         <WhiteSpace size="lg" />
         <FlatPages/>
       </div>
-    )
+    );
   }
 }
 

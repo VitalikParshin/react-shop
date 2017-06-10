@@ -4,4 +4,4 @@ import ShoppingCartTrigger from "./ShoppingCartTrigger/ShoppingCartTrigger";
 export {
   ShoppingCart,
   ShoppingCartTrigger,
-}
+};

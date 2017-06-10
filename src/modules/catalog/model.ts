@@ -1,7 +1,7 @@
 import { gql } from "react-apollo/lib";
 
 export interface ICatalog {
-  viewedProductIds: String[];
+  viewedProductIds: string[];
   showOnlyViewed: boolean;
 }
 
@@ -40,7 +40,6 @@ export const CATEGORY_QUERY = gql`
   }
 `;
 
-
 export const CATEGORIES_QUERY = gql`
   query categories($id: Int) {
     categories(id: $id) {
@@ -72,7 +71,6 @@ export const CATEGORIES_QUERY = gql`
     }
   }
 `;
-
 
 export const PRODUCT_QUERY = gql`
   query product($id: Int) {
@@ -160,5 +158,3 @@ export const ALL_PRODUCTS_QUERY = gql`
     }
   }
 `;
-
-

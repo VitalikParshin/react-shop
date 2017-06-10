@@ -1,25 +1,25 @@
 import * as React from "react";
+
 import { Button, Icon } from "antd-mobile";
 import { compose } from "react-apollo";
 import { connect } from "react-redux";
-import { ACTION_TOOTLE_FILTERS } from "../../layout/constants";
 import Ripples from "react-ripples";
+import { ACTION_TOOTLE_FILTERS } from "../../layout/constants";
 import {ILayout} from "../../layout/model";
 
-interface ShoppingCartTriggerProps {
+interface IShoppingCartTriggerProps {
   layout: ILayout;
   dispatch: any;
   height: number;
 }
 
+class ShoppingCartTrigger extends React.Component<IShoppingCartTriggerProps, any> {
 
-class ShoppingCartTrigger extends React.Component<ShoppingCartTriggerProps,any> {
-
-  onClick = () => {
-    this.props.dispatch({type: ACTION_TOOTLE_FILTERS})
+  public onClick = () => {
+    this.props.dispatch({type: ACTION_TOOTLE_FILTERS});
   }
 
-  render() {
+  public render() {
     const { layout, height } = this.props;
     return (
       <Ripples>
@@ -29,18 +29,19 @@ class ShoppingCartTrigger extends React.Component<ShoppingCartTriggerProps,any> 
           onClick={this.onClick}
           style={{
             fill: layout.openShoppingCart ? "orange" : "white",
+            // tslint:disable-next-line:object-literal-shorthand
             height: height,
-            padding: `0 ${height/3}px`
+            padding: `0 ${height / 3}px`,
           }}
         />
       </Ripples>
-    )
+    );
   }
 }
 
 const mapStateToProps: any = (state) => ({
   layout: state.layout,
-})
+});
 
 export default compose(
     connect<any, {}, any>(mapStateToProps),

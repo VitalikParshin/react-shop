@@ -8,7 +8,6 @@ export const ACTION_ENABLE_MENU = "layout.ACTION_ENABLE_MENU";
 export const ACTION_DISABLE_MENU = "layout.ACTION_DISABLE_MENU";
 export const ACTION_TOOTLE_MENU = "layout.TOOTLE_MENU";
 
-
 export const ACTION_TOOTLE_SHOPPING_CART = "layout.ACTION_TOOTLE_SHOPPING_CART";
 
 export const ACTION_RESET = "layout.RESET";

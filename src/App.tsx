@@ -1,17 +1,17 @@
 import * as React from "react";
+
+import { ApolloProvider } from "react-apollo";
+import { Route, Router } from "react-router";
 import { Switch } from "react-router-dom";
 import { ConnectedRouter } from "react-router-redux";
-import { ApolloProvider } from "react-apollo";
-import { Router, Route } from "react-router";
 import client from "./graphqlClient";
-import store from "./store";
-import history from "./history"
+import history from "./history";
 import { Layout } from "./modules/layout/index";
-import { HomePage, ProductPage, CategoryPage } from "./pages/index";
 import {Product, ProductModal} from "./modules/product/index";
+import { CategoryPage, HomePage, ProductPage } from "./pages/index";
+import store from "./store";
 
-
-class ProductsSwitch extends React.Component<any,any> {
+class ProductsSwitch extends React.Component<any, any> {
 
   // We can pass a location to <Switch/> that will tell it to
   // ignore the router's current location and use the location
@@ -25,27 +25,27 @@ class ProductsSwitch extends React.Component<any,any> {
   // So, to get both screens to render, we can save the old
   // location and pass it to Switch, so it will think the location
   // is still `/` even though its `/images/2`.
-  previousLocation = this.props.location
+  public previousLocation = this.props.location;
 
-  componentWillUpdate(nextProps) {
-    const { location } = this.props
+  public componentWillUpdate(nextProps) {
+    const { location } = this.props;
     // set previousLocation if props.location is not modal
     if (
-      nextProps.history.action !== 'POP' &&
+      nextProps.history.action !== "POP" &&
       (!location.state || !location.state.modal)
     ) {
-      this.previousLocation = this.props.location
+      this.previousLocation = this.props.location;
     }
   }
 
-  render() {
+  public render() {
     // https://reacttraining.com/react-router/web/example/modal-gallery
-    const { location } = this.props
+    const { location } = this.props;
     const isModal = !!(
       location.state &&
       location.state.modal &&
       this.previousLocation !== location // not initial render
-    )
+    );
     return (
       <div>
         <Switch location={isModal ? this.previousLocation : location}>
@@ -54,7 +54,7 @@ class ProductsSwitch extends React.Component<any,any> {
         </Switch>
         {isModal ? <Route path="/product/:id" component={ProductModal} /> : null}
       </div>
-    )
+    );
   }
 }
 
@@ -68,7 +68,7 @@ const App = () => {
         </Layout>
       </ConnectedRouter>
     </ApolloProvider>
-  )
-}
+  );
+};
 
 export default App;

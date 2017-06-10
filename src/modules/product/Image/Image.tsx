@@ -1,13 +1,13 @@
+import {Carousel, Flex, WhiteSpace, WingBlank} from "antd-mobile";
 import * as React from "react";
-import {Carousel, WhiteSpace, WingBlank, Flex} from "antd-mobile";
 
-export const scaleImageSize = (width, height, ratio=1) => {
+export const scaleImageSize = (width, height, ratio = 1) => {
   ratio = ratio || window.innerWidth / 2.4 / 360;
   return {
-    width: width * ratio,
     height: height * ratio,
-  }
-}
+    width: width * ratio,
+  };
+};
 
 interface ImageProps {
   src: string;
@@ -18,7 +18,7 @@ interface ImageProps {
 }
 
 class Image extends React.Component<ImageProps, any> {
-  render() {
+  public render() {
     const { divHeight, width, height, src, isTitle } = this.props;
     return (
       <Flex
@@ -29,13 +29,13 @@ class Image extends React.Component<ImageProps, any> {
         <img
           src={src}
           style={{
+            height: "100%",
             objectFit: "contain",
             width: "100%",
-            height: "100%",
           }}
         />
       </Flex>
-    )
+    );
   }
 }
 

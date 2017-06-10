@@ -1,20 +1,20 @@
-import * as React from "react";
 import { Button } from "antd-mobile";
+import * as React from "react";
 import { Link } from "react-router-dom";
 
-class Footer extends React.Component<any,any> {
-    render() {
+class Footer extends React.Component<any, any> {
+    public render() {
         return (
             <div style={{
-              position: "fixed",
-              bottom: 0,
               background: "lightblue",
-              width: "100%",
+              bottom: 0,
+              position: "fixed",
               textAlign: "center",
+              width: "100%",
             }}>
               BuyBag 2017
             </div>
-        )
+        );
     }
 }
 

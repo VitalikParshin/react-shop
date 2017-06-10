@@ -1,17 +1,17 @@
-import * as React from "react";
 import { Button, Icon } from "antd-mobile";
+import * as React from "react";
 import {compose} from "react-apollo";
 import { connect } from "react-redux";
 import {ACTION_TOOTLE_FILTERS} from "../../layout/constants";
 
-class FiltersTrigger extends React.Component<any,any> {
+class FiltersTrigger extends React.Component<any, any> {
 
-  onClick = (e) => {
+  public onClick = (e) => {
     e.preventDefault();
-    this.props.dispatch({type: ACTION_TOOTLE_FILTERS})
+    this.props.dispatch({type: ACTION_TOOTLE_FILTERS});
   }
 
-  render() {
+  public render() {
     return (
       <Button
         icon={require("!svg-sprite!./filter.svg")}
@@ -21,12 +21,12 @@ class FiltersTrigger extends React.Component<any,any> {
       >
         ФИЛЬТРЫ
       </Button>
-    )
+    );
   }
 }
 
 const mapStateToProps: any = (state) => ({
-})
+});
 
 export default compose(
     connect<any, {}, any>(mapStateToProps),
