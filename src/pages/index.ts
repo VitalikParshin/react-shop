@@ -6,4 +6,4 @@ export {
   CategoryPage,
   HomePage,
   ProductPage,
-}
+};
