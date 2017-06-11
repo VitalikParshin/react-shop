@@ -9,7 +9,8 @@ import Ripples from "react-ripples";
 import {ACTION_ADD_VIEWED_PRODUCT} from "../../catalog/constants";
 import { PRODUCT_QUERY } from "../../catalog/model";
 import {Loading} from "../../layout/index";
-import {Images, ProductTabs} from "../index";
+import {Images, ProductTabs } from "../index";
+import {IProduct} from "../model";
 
 interface IConnectedProductProps {
   data?: any;
@@ -49,7 +50,8 @@ class Product extends React.Component<IConnectedProductProps & IProductProps, an
     const { data } = nextProps;
     const { loading } = data;
     if (loading === false) {
-      const { product: { subProducts }, product } = data;
+      const product: IProduct = data.product;
+      const { subProducts } = product;
       const { subProductId } = nextProps.product;
       const subProductIds = subProducts.map((sp) => sp.id);
       const subProductColor = product.images[0].id;

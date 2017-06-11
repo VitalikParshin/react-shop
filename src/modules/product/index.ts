@@ -7,6 +7,8 @@ import ProductModal from "./ProductModal/ProductModal";
 import ProductTabs from "./ProductTabs/ProductTabs";
 import SelectSize from "./ProductTabs/SelectSize";
 
+import * as model from "./model";
+
 export {
   Product,
   ProductModal,
@@ -20,5 +22,5 @@ export {
   SelectSize,
 
   reducer,
-
+  model,
 };
