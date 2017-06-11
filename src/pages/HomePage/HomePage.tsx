@@ -1,5 +1,6 @@
 import * as React from "react";
-import {Flex, Button, WhiteSpace} from "antd-mobile";
+
+import {Button, Flex, WhiteSpace} from "antd-mobile";
 import {Catalog, FlatPages} from "../../modules/layout/index";
 
 const HomePage = () => {
@@ -9,7 +10,7 @@ const HomePage = () => {
       <WhiteSpace size="lg" />
       <FlatPages />
     </div>
-  )
-}
+  );
+};
 
 export default HomePage;
