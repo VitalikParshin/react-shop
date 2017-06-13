@@ -10,16 +10,21 @@ import {ACTION_ADD_VIEWED_PRODUCT} from "../../catalog/constants";
 import { PRODUCT_QUERY } from "../../catalog/model";
 import {Loading} from "../../layout/index";
 import {Images, ProductTabs } from "../index";
-import {IProduct} from "../model";
+import {ICurrentDataProduct, IProduct} from "../model";
+
+interface IData {
+  loading: boolean;
+  product: IProduct;
+}
 
 interface IConnectedProductProps {
-  data?: any;
-  product: any;
+  data: IData;
+  product: ICurrentDataProduct;
   dispatch: any;
 }
 
 interface IProductProps {
-  id: number;
+  id: string;
 }
 
 const options = {
@@ -48,9 +53,8 @@ class Product extends React.Component<IConnectedProductProps & IProductProps, an
 
   public componentWillReceiveProps = (nextProps) => {
     const { data } = nextProps;
-    const { loading } = data;
+    const { loading, product } = data;
     if (loading === false) {
-      const product: IProduct = data.product;
       const { subProducts } = product;
       const { subProductId } = nextProps.product;
       const subProductIds = subProducts.map((sp) => sp.id);
@@ -66,8 +70,9 @@ class Product extends React.Component<IConnectedProductProps & IProductProps, an
   }
 
   public render() {
-    const {data, product: { subProductId, colorId } } = this.props;
+    const { data } = this.props;
     const { loading, product } = data;
+    const {subProductId, colorId} = this.props.product;
     if (loading === true || subProductId === null) {
       return <Loading/>;
     }
@@ -77,16 +82,15 @@ class Product extends React.Component<IConnectedProductProps & IProductProps, an
     return (
       <div style={{ textAlign: "left" }}>
         <Images images={images} />
-        <ProductTabs dataProduct={product} activeSubProduct={activeSubProduct} activeColor={colorId}/>
+        <ProductTabs dataProduct={product} activeSubProduct={activeSubProduct} />
         <Flex style={{
-                alignItems: "flex-end",
-                bottom: 0,
-                display: "flex",
-                position: "fixed",
-                width: "100%",
-                zIndex: 1,
-              }}
-        >
+            alignItems: "flex-end",
+            bottom: 0,
+            display: "flex",
+            position: "fixed",
+            width: "100%",
+            zIndex: 1,
+        }}>
             <Ripples
                 style={{
                   backgroundColor: "#fb039e",

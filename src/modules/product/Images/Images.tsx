@@ -1,12 +1,18 @@
 import {Carousel, Flex, WhiteSpace, WingBlank} from "antd-mobile";
 import * as React from "react";
 import {scaleImageSize} from "../Image/Image";
+import {IImage} from "../model";
 
-interface ImagesProps {
-  images: [any];
+interface IImagesProps {
+  images: [IImage];
 }
 
-class Images extends React.Component<ImagesProps, any> {
+interface IImagesState {
+  // data: [string];
+  initialHeight: any;
+}
+
+class Images extends React.Component<IImagesProps, IImagesState> {
 
   public state = {
     data: ["", "", ""],
