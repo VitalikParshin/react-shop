@@ -5,7 +5,7 @@ import { connect } from "react-redux";
 import {ACTION_TOOTLE_CATALOG, ACTION_TOOTLE_MENU} from "../constants";
 import {Menu, utils} from "../index";
 
-class SidebarMenu extends React.Component < any, any > {
+class SidebarMenu extends React.Component<any, any> {
 
   public onSetSidebarOpen = () => {
     const { dispatch } = this.props;

@@ -3,7 +3,6 @@ import * as React from "react";
 import {compose, graphql} from "react-apollo";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
-import Sidebar from "react-sidebar";
 import { ACTION_TOOTLE_CATALOG } from "../constants";
 import {HEIGHT} from "../Header/Header";
 import {Footer, Header, SidebarCatalog, SidebarMenu} from "../index";
@@ -15,7 +14,7 @@ class Layout extends React.Component<any, any> {
         <Header/>
         <SidebarMenu>
           <SidebarCatalog>
-            <div>{this.props.children}</div>
+            {this.props.children}
           </SidebarCatalog>
         </SidebarMenu>
       </div>
