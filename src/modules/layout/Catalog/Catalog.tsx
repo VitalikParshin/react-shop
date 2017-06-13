@@ -2,7 +2,6 @@ import * as React from "react";
 import { compose, gql, graphql } from "react-apollo";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
-import {  Sticky, StickyContainer } from "react-sticky";
 
 import {
   Card,
@@ -82,35 +81,6 @@ class Catalog extends React.Component<any, any> {
         ))}
       </div>
     );
-
-    // onStickyStateChange = (isSticky) => {
-    //   console.log(`Am I sticky?: ${ isSticky ? 'Yep!' : 'Nope!'}`);
-    // }
-
-    // return (
-    //   <div style={style}>
-    //     {startCats.map((parent, i) => (
-    //       <StickyContainer>
-    //         <Sticky
-    //           topOffset={-HEIGHT * 1.5}
-    //           stickyStyle={{top: HEIGHT}}
-    //           // onStickyStateChange={this.onStickyStateChange}
-    //         >
-    //           <header>
-    //             <h2 style={{ textAlign:"center", background: "#f5f5f9", zIndex: 10000}}>
-    //               {parent.name}
-    //             </h2>
-    //           </header>
-    //         </Sticky>
-    //         <SubCatalog
-    //           categories={childrenMap[parent.id]}
-    //           isDrawer={isDrawer}
-    //         />
-    //       </StickyContainer>
-    //     ))}
-    //   </div>
-    // )
-
   }
 }
 
