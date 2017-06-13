@@ -20,6 +20,7 @@ import {
 import { PRODUCT_QUERY } from "../../catalog/model";
 import { Loading } from "../../layout/index";
 import { Images, SelectSize } from "../index";
+import {ICurrentDataProduct, IProduct, ISubProduct} from "../model";
 
 const TabPane = Tabs.TabPane;
 const FlexItem = Flex.Item;
@@ -28,16 +29,13 @@ const CheckboxItem = Checkbox.CheckboxItem;
 const AgreeItem = Checkbox.AgreeItem;
 
 interface IConnectedTabProps {
-  dataProduct: any;
-  data?: any;
-  product: any;
+  product: ICurrentDataProduct;
   dispatch: any;
 }
 
 interface ITabsProps {
-  dataProduct: any;
-  activeSubProduct: any;
-  activeColor: any;
+  dataProduct: IProduct;
+  activeSubProduct: ISubProduct;
 }
 
 const options = {
@@ -67,17 +65,10 @@ class ProductTabs extends React.Component<IConnectedTabProps & ITabsProps,  any>
     this.props.dispatch({type: ACTION_SELECT_COLOR, colorId });
   }
 
-  public checkOn() {
-    this.setState({
-      check: "check",
-      id: "",
-    });
-  }
-
   public render() {
-    const dataProduct = this.props.dataProduct;
-    const { activeSubProduct } = this.props;
-    const { brand, images, subProducts,  attributes} = dataProduct;
+    const {dataProduct, product, activeSubProduct} = this.props;
+    const { brand, images, subProducts,  attributes } = dataProduct;
+    const {subProductId, colorId} = this.props.product;
 
     return (
         <Tabs
@@ -98,14 +89,14 @@ class ProductTabs extends React.Component<IConnectedTabProps & ITabsProps,  any>
                 <hr/>
                 <div style={{display: "flex", flexDirection: "row", justifyContent: "space-between"}}>
                   <div style={{width: "35%"}}>
-                    <div style={{fontSize: "40px", color: "#468847"}}>{Math.trunc(activeSubProduct.price) } грн</div>
+                    <div style={{fontSize: "40px", color: "#468847"}}>{ activeSubProduct.price } грн</div>
                     <div
                         style={{
                           color: "#b94a48",
                           fontSize: "24px",
                           textDecoration: "line-through",
                         }}
-                    >{Math.trunc(activeSubProduct.oldPrice)} грн</div>
+                    >{ activeSubProduct.oldPrice } грн</div>
                   </div>
                   <div style={{width: "28%"}}>
                     <Icon
@@ -139,7 +130,7 @@ class ProductTabs extends React.Component<IConnectedTabProps & ITabsProps,  any>
                       <div style={{color: "#1296db"}}>Выберите цвет :</div>
                     <div>
                       { images.filter((el) => el.color !== "").map((e) =>
-                        e.id === this.props.activeColor ?
+                          e.id === this.props.product.colorId ?
                         <Icon
                             type={require("svg-sprite!./circle-check_color.svg")}
                             style={{fill: e.color, color: e.color}}

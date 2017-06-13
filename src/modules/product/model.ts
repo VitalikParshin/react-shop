@@ -3,13 +3,59 @@ export interface ILayout {
   openFilters: boolean;
 }
 
-export interface ISubProduct {
-  id: number;
+export interface ICurrentDataProduct {
+  subProductId: string;
+  colorId: number;
 }
 
 export interface IProduct {
+  id: string;
+  name: string;
+  shortDescription: string;
+  description: string;
+  brand: IBrand;
+  category: ICategory;
+  images: [IImage];
+  subProducts: [ISubProduct];
+  attributes: [IAttribute];
+}
+
+export interface IBrand {
+  id: string;
+  name: string;
+}
+
+export interface ICategory {
+  id: string;
+  name: string;
+}
+
+export interface IImage {
+  id: number;
+  src: string;
+  width: number;
+  height: number;
+  color: string;
+  isTitle: boolean;
+}
+
+export interface ISubProduct {
+  id: string;
+  article: string;
+  price: number;
+  oldPrice: number;
+  discount: string;
+  attributes: [IAttribute];
+}
+
+export interface IAttribute {
+  name: string;
+  values: [IValue];
+}
+
+export interface IValue {
   id: number;
   name: string;
-  images: any;
-  subProducts: [ISubProduct];
+  value: string;
+  description: string;
 }
