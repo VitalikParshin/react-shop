@@ -1,5 +1,3 @@
-import * as React from "react";
-
 import {
   Button,
   Card,
@@ -8,15 +6,28 @@ import {
   WhiteSpace,
   WingBlank,
 } from "antd-mobile";
-
+import * as React from "react";
 import { connect } from "react-redux";
 import Ripples from "react-ripples";
 import { Link } from "react-router-dom";
+import styled from "../../../styled-components";
 import { Image, Images, scaleImageSize } from "../../product/index";
 
 const getMinOfArray = (numArray) => {
   return Math.min.apply(null, numArray);
 };
+
+const ImageContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  height: ${(props) => (props as any).height}px;
+  img {
+    height: 100%;
+    object-fit: contain;
+    width: 100%;
+  }
+`;
 
 class Product extends React.Component<any, any> {
   public state = {
@@ -99,22 +110,9 @@ class Product extends React.Component<any, any> {
                 pathname: url,
                 state: { modal: true },
               }}>
-                <Flex
-                    justify="center"
-                    align="center"
-                    style={{
-                      height: maxImageHeight,
-                    }}
-                >
-                  <img
-                    src={titleImage.src}
-                    style={{
-                      height: "100%",
-                      objectFit: "contain",
-                      width: "100%",
-                    }}
-                  />
-                </Flex>
+                <ImageContainer height={maxImageHeight}>
+                  <img src={titleImage.src}/>
+                </ImageContainer>
               </Link>
 
               {/*<Images images={imagesWithColor}/>*/}
@@ -122,9 +120,7 @@ class Product extends React.Component<any, any> {
               {/* Images */}
               {imagesWithColor.length > 1 ?
                 (
-                  <Flex
-                      justify="center"
-                  >
+                  <Flex justify="center">
                     {imagesWithColor.map((image) => (
                       <Icon
                         type={require("!svg-sprite!./dot.svg")}

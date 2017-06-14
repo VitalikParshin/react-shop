@@ -8,6 +8,7 @@ import {Link} from "react-router-dom";
 import { push } from "react-router-redux";
 import {ACTION_DISABLE_CATALOG, ACTION_RESET} from "../constants";
 import {SidebarCatalog} from "../index";
+import styled from "../../../styled-components";
 
 function chunk(arr, len = 1) {
   const chunks: any = [];
@@ -19,6 +20,10 @@ function chunk(arr, len = 1) {
   }
   return chunks;
 }
+
+const CardStyled = styled(Card)`
+  padding: 0;
+`;
 
 class SubCatalog extends React.Component<any, any> {
   public state = {
@@ -47,7 +52,7 @@ class SubCatalog extends React.Component<any, any> {
                 key={`cat${index}`}
                 style={{textAlign: "center", margin: 5}
               }>
-                <Card style={{padding: 0}}>
+                <CardStyled>
                   <Ripples>
                     <div
                       style={{
@@ -72,7 +77,7 @@ class SubCatalog extends React.Component<any, any> {
                       </div>
                     </div>
                   </Ripples>
-                </Card>
+                </CardStyled>
               </Flex.Item>
             ))}
           </Flex>
