@@ -1,10 +1,11 @@
 import {Card, Flex} from "antd-mobile";
+import Touchable from "rc-touchable";
 import * as React from "react";
 import { compose, gql, graphql } from "react-apollo";
 import { connect } from "react-redux";
+import Ripples from "react-ripples";
 import {Link} from "react-router-dom";
 import { push } from "react-router-redux";
-
 import {ACTION_DISABLE_CATALOG, ACTION_RESET} from "../constants";
 import {SidebarCatalog} from "../index";
 
@@ -46,28 +47,31 @@ class SubCatalog extends React.Component<any, any> {
                 key={`cat${index}`}
                 style={{textAlign: "center", margin: 5}
               }>
-                <Card>
-                  <div
-                    style={{
-                      height: 190,
-                      paddingTop: 30,
-                    }}
-                    onClick={(e) => this.onClick(e, cat)}
-                  >
-                    <img
-                      src={cat.image || ""}
-                      onLoad={() => {
-                        // fire window resize event to change height
-                        window.dispatchEvent(new Event("resize"));
-                        this.setState({
-                          initialHeight: null,
-                        });
+                <Card style={{padding: 0}}>
+                  <Ripples>
+                    <div
+                      style={{
+                        height: 190,
+                        paddingBottom: 10,
+                        paddingTop: 30,
                       }}
-                    />
-                    <div style={{maxWidth: "80%", margin: "auto"}}>
-                      {cat.name}
+                      onClick={(e) => this.onClick(e, cat)}
+                    >
+                      <img
+                        src={cat.image || ""}
+                        onLoad={() => {
+                          // fire window resize event to change height
+                          window.dispatchEvent(new Event("resize"));
+                          this.setState({
+                            initialHeight: null,
+                          });
+                        }}
+                      />
+                      <div style={{maxWidth: "80%", margin: "auto"}}>
+                        {cat.name}
+                      </div>
                     </div>
-                  </div>
+                  </Ripples>
                 </Card>
               </Flex.Item>
             ))}
