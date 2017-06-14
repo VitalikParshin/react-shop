@@ -15,7 +15,7 @@ import { Image, Images, scaleImageSize } from "../../product/index";
 import {IBrand, IImageWithColor, IProduct, ISubProduct} from "../../product/model";
 import {ICatalog} from "../model";
 
-const ImageContainer = styled.div`
+const ImageContainerStyled = styled.div`
   display: flex;
   justify-content: center;
   align-content: center;
@@ -26,6 +26,16 @@ const ImageContainer = styled.div`
     width: 100%;
   }
 `;
+
+const ProductStyled = styled.div`
+  background: white;
+  border: 1px solid ${(props) => (props as any).isViewed ? "orange" : "lightgrey"};
+  border-radius: ${(props) => (props as any).borderRadius}px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+  dispalay: block;
+  transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+  width: ${(props) => (props as any).width}px;
+` as any;
 
 const getMinOfArray = (numArray) => {
   return Math.min.apply(null, numArray);
@@ -98,70 +108,62 @@ class Product extends React.Component<IConnectedProductProps & IProductProps, an
     );
 
     return (
-      <Ripples>
+      <ProductStyled
+          borderRadius
+          isViewed={this.isViewed()}
+          width={cardWidth}
+      >
+        {this.isViewed() ? (
+          <div style={{position: "absolute", top: 3, left: 10}}>
+            <Icon
+              type={require("!svg-sprite!./viewed.svg")}
+              size="sm"
+              style={{fill: "orange"}}
+            />
+          </div>
+        ) : ""}
 
-        <div style={{
-          background: "white",
-          border: `1px solid ${this.isViewed() ? "orange" : "lightgrey"}`,
-          borderRadius,
-          boxShadow: "0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24)",
-          dispalay: "block",
-          transition: "all 0.3s cubic-bezier(.25,.8,.25,1)",
-          width: cardWidth,
-        }}>
+        <WhiteSpace size="sm" />
+          <div style={{ padding: cardPadding }}>
+            <Link to={{
+              pathname: url,
+              // state: { modal: true },
+            }}>
+              <ImageContainerStyled height={maxImageHeight}>
+                <img src={titleImage.src}/>
+              </ImageContainerStyled>
+            </Link>
 
-          {this.isViewed() ? (
-            <div style={{position: "absolute", top: 3, left: 10}}>
-              <Icon
-                type={require("!svg-sprite!./viewed.svg")}
-                size="sm"
-                style={{fill: "orange"}}
-              />
+            {/*<Images images={imagesWithColor}/>*/}
+
+            {/* Images */}
+            {imagesWithColor.length > 1 ?
+              (
+                <Flex justify="center">
+                  {imagesWithColor.map((image) => (
+                    <Icon
+                      type={require("!svg-sprite!./dot.svg")}
+                      size={image.id === titleImage.id ? "lg" : "md"}
+                      style={{
+                        fill: image.color,
+                      }}
+                      onClick={(e) => this.changeTitleImage(e, image)}
+                    />
+                  ))}
+                </Flex>
+              ) : ""
+            }
+            <div style={{lineHeight: "0.25rem", fontSize: "0.25rem", marginTop: cardPadding}}>
+              {name}
+              <br/>
+              {brand.name} {subProduct.article}
             </div>
-          ) : ""}
-
-          <WhiteSpace size="sm" />
-            <div style={{ padding: cardPadding }}>
-              <Link to={{
-                pathname: url,
-                state: { modal: true },
-              }}>
-                <ImageContainer height={maxImageHeight}>
-                  <img src={titleImage.src}/>
-                </ImageContainer>
-              </Link>
-
-              {/*<Images images={imagesWithColor}/>*/}
-
-              {/* Images */}
-              {imagesWithColor.length > 1 ?
-                (
-                  <Flex justify="center">
-                    {imagesWithColor.map((image) => (
-                      <Icon
-                        type={require("!svg-sprite!./dot.svg")}
-                        size={image.id === titleImage.id ? "lg" : "md"}
-                        style={{
-                          fill: image.color,
-                        }}
-                        onClick={(e) => this.changeTitleImage(e, image)}
-                      />
-                    ))}
-                  </Flex>
-                ) : ""
-              }
-              <div style={{lineHeight: "0.25rem", fontSize: "0.25rem", marginTop: cardPadding}}>
-                {name}
-                <br/>
-                {brand.name} {subProduct.article}
-              </div>
-              <div style={{fontWeight: "bold", fontSize: "0.3rem", color: "#468847", marginTop: cardPadding}} >
-                <div>{ isSinglePrice ? "" : "от " }{ parseInt(minPrice, 10) } грн</div>
-              </div>
+            <div style={{fontWeight: "bold", fontSize: "0.3rem", color: "#468847", marginTop: cardPadding}} >
+              <div>{ isSinglePrice ? "" : "от " }{ parseInt(minPrice, 10) } грн</div>
             </div>
-          <WhiteSpace size="sm" />
-        </div>
-      </Ripples>
+          </div>
+        <WhiteSpace size="sm" />
+      </ProductStyled>
     );
   }
 }
