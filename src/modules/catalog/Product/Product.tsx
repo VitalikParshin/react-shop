@@ -27,7 +27,6 @@ const ImageContainer = styled.div`
   }
 `;
 
-
 const getMinOfArray = (numArray) => {
   return Math.min.apply(null, numArray);
 };
