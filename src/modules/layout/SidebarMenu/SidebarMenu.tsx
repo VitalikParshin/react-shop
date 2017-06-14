@@ -21,7 +21,7 @@ class SidebarMenu extends React.Component<any, any> {
         sidebar={<Menu/>}
         open={layout.openMenu}
         onOpenChange={this.onSetSidebarOpen as any}
-        contentStyle={{marginTop: 70}}
+        contentStyle={{marginTop: 80}}
       >
         {this.props.children}
       </Drawer>
