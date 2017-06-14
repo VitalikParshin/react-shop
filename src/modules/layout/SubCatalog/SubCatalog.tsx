@@ -6,9 +6,9 @@ import { connect } from "react-redux";
 import Ripples from "react-ripples";
 import {Link} from "react-router-dom";
 import { push } from "react-router-redux";
+import styled from "../../../styled-components";
 import {ACTION_DISABLE_CATALOG, ACTION_RESET} from "../constants";
 import {SidebarCatalog} from "../index";
-import styled from "../../../styled-components";
 
 function chunk(arr, len = 1) {
   const chunks: any = [];
