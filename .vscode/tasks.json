@@ -2,32 +2,10 @@
 	// See https://go.microsoft.com/fwlink/?LinkId=733558
 	// for the documentation about the tasks.json format
 	"version": "0.1.0",
-	"command": "sh",
-	"args": [
-		"-c"
-	],
-    "isShellCommand": true,
-    "showOutput": "always",
-    "suppressTaskName": true,
-    "tasks": [
-			{
-				"taskName": "tsm -w",
-				"args": [
-					"tsm"
-				],
-				"isBuildCommand": false,
-				"showOutput": "silent",
-					"problemMatcher": "$tsc"
-			},
-			{
-				"taskName": "tsc -w",
-				"args": [
-					"node_modules/typescript/bin/tsc -w"
-				],
-				"isBuildCommand": true,
-				"showOutput": "always",
-				"isBackground": true,
-					"problemMatcher": "$tsc"
-			}
-		]
+	"command": "node_modules/typescript/bin/tsc",
+	"isShellCommand": true,
+	"isBackground": true,
+	"args": ["-w"],
+	"showOutput": "silent",
+	"problemMatcher": "$tsc"
 }
