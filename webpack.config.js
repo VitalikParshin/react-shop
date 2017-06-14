@@ -6,7 +6,6 @@ const ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 const autoprefixer = require("autoprefixer");
 const pxtorem = require("postcss-pxtorem");
-// var  TsConfigPathsPlugin  = require("awesome-typescript-loader");
 
 module.exports = {
   devtool: "source-map",
@@ -80,9 +79,5 @@ module.exports = {
     new ExtractTextPlugin("bundle.css", { disable: false, allChunks: true }),
     new webpack.optimize.OccurenceOrderPlugin(),
     new webpack.HotModuleReplacementPlugin(),
-    // new TsConfigPathsPlugin({
-    //     configFileName: "tsconfig.json",
-    //     compiler: "typescript"
-    // }),
   ],
 };
