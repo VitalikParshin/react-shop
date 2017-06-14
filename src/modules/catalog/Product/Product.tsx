@@ -127,7 +127,7 @@ class Product extends React.Component<IConnectedProductProps & IProductProps, an
           <div style={{ padding: cardPadding }}>
             <Link to={{
               pathname: url,
-              // state: { modal: true },
+              state: { modal: true },
             }}>
               <ImageContainerStyled height={maxImageHeight}>
                 <img src={titleImage.src}/>

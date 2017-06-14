@@ -50,7 +50,6 @@
     "@types/webpack-env": "1.13.0",
     "antd-mobile-demo-data": "^0.1.4",
     "autoprefixer": "^6.7.7",
-    "awesome-typescript-loader": "^3.1.2",
     "babel-core": "~6.20.0",
     "babel-loader": "~6.2.9",
     "babel-plugin-add-module-exports": "^0.2.1",
@@ -75,8 +74,9 @@
     "style-loader": "^0.17.0",
     "styled-components": "^2.0.1",
     "svg-sprite-loader": "0.3.1",
+    "ts-loader": "^2.1.0",
     "tslint": "^5.4.3",
-    "typescript": "^2.3.2",
+    "typescript": "2.3.4",
     "url-loader": "~0.5.7",
     "webpack": "^1.14.0",
     "webpack-dev-server": "^1.16.2"
