@@ -16,7 +16,6 @@ import {
 } from "antd-mobile";
 
 import { Link } from "react-router-dom";
-import Sidebar from "react-sidebar";
 import { ACTION_TOOTLE_CATALOG, ACTION_TOOTLE_FILTERS } from "../../layout/constants";
 import { HEIGHT } from "../../layout/Header/Header";
 import { utils } from "../../layout/index";

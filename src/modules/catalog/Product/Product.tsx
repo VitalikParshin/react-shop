@@ -86,82 +86,85 @@ class Product extends React.Component<IConnectedProductProps & IProductProps, an
     );
 
     return (
-      <div style={{
-        background: "white",
-        border: `1px solid ${this.isViewed() ? "orange" : "lightgrey"}`,
-        borderRadius,
-        boxShadow: "0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24)",
-        dispalay: "block",
-        transition: "all 0.3s cubic-bezier(.25,.8,.25,1)",
-        width: cardWidth,
-      }}>
+      <Ripples>
 
-        {this.isViewed() ? (
-          <div style={{position: "absolute", top: 3, left: 10}}>
-            <Icon
-              type={require("!svg-sprite!./viewed.svg")}
-              size="sm"
-              style={{fill: "orange"}}
-            />
-          </div>
-        ) : ""}
+        <div style={{
+          background: "white",
+          border: `1px solid ${this.isViewed() ? "orange" : "lightgrey"}`,
+          borderRadius,
+          boxShadow: "0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24)",
+          dispalay: "block",
+          transition: "all 0.3s cubic-bezier(.25,.8,.25,1)",
+          width: cardWidth,
+        }}>
 
-        <WhiteSpace size="sm" />
-        <div style={{ padding: cardPadding }}>
-          <Link to={{
-            pathname: url,
-            state: { modal: true },
-          }}>
-            <Flex
-                justify="center"
-                align="center"
-                style={{
-                  height: maxImageHeight,
-                }}
-            >
-              <img
-                src={titleImage.src}
-                style={{
-                  height: "100%",
-                  objectFit: "contain",
-                  width: "100%",
-                }}
+          {this.isViewed() ? (
+            <div style={{position: "absolute", top: 3, left: 10}}>
+              <Icon
+                type={require("!svg-sprite!./viewed.svg")}
+                size="sm"
+                style={{fill: "orange"}}
               />
-            </Flex>
-          </Link>
+            </div>
+          ) : ""}
 
-          {/*<Images images={imagesWithColor}/>*/}
-
-          {/* Images */}
-          {imagesWithColor.length > 1 ?
-            (
-              <Flex
-                  justify="center"
-              >
-                {imagesWithColor.map((image) => (
-                  <Icon
-                    type={require("!svg-sprite!./dot.svg")}
-                    size={image.id === titleImage.id ? "lg" : "md"}
+          <WhiteSpace size="sm" />
+            <div style={{ padding: cardPadding }}>
+              <Link to={{
+                pathname: url,
+                state: { modal: true },
+              }}>
+                <Flex
+                    justify="center"
+                    align="center"
                     style={{
-                      fill: image.color,
+                      height: maxImageHeight,
                     }}
-                    onClick={(e) => this.changeTitleImage(e, image)}
+                >
+                  <img
+                    src={titleImage.src}
+                    style={{
+                      height: "100%",
+                      objectFit: "contain",
+                      width: "100%",
+                    }}
                   />
-                ))}
-              </Flex>
-            ) : ""
-          }
-          <div style={{lineHeight: "0.25rem", fontSize: "0.25rem", marginTop: cardPadding}}>
-            {name}
-            <br/>
-            {brand.name} {subProduct.article}
-          </div>
-          <div style={{fontWeight: "bold", fontSize: "0.3rem", color: "#468847", marginTop: cardPadding}} >
-            <div>{ isSinglePrice ? "" : "от " }{ parseInt(minPrice, 10) } грн</div>
-          </div>
+                </Flex>
+              </Link>
+
+              {/*<Images images={imagesWithColor}/>*/}
+
+              {/* Images */}
+              {imagesWithColor.length > 1 ?
+                (
+                  <Flex
+                      justify="center"
+                  >
+                    {imagesWithColor.map((image) => (
+                      <Icon
+                        type={require("!svg-sprite!./dot.svg")}
+                        size={image.id === titleImage.id ? "lg" : "md"}
+                        style={{
+                          fill: image.color,
+                        }}
+                        onClick={(e) => this.changeTitleImage(e, image)}
+                      />
+                    ))}
+                  </Flex>
+                ) : ""
+              }
+              <div style={{lineHeight: "0.25rem", fontSize: "0.25rem", marginTop: cardPadding}}>
+                {name}
+                <br/>
+                {brand.name} {subProduct.article}
+              </div>
+              <div style={{fontWeight: "bold", fontSize: "0.3rem", color: "#468847", marginTop: cardPadding}} >
+                <div>{ isSinglePrice ? "" : "от " }{ parseInt(minPrice, 10) } грн</div>
+              </div>
+            </div>
+          <WhiteSpace size="sm" />
         </div>
-        <WhiteSpace size="sm" />
-      </div>
+      </Ripples>
     );
   }
 }

@@ -1,11 +1,11 @@
+import { Drawer } from "antd-mobile";
 import * as React from "react";
 import { compose, gql, graphql } from "react-apollo";
 import { connect } from "react-redux";
-import Sidebar from "react-sidebar";
 import {ACTION_TOOTLE_CATALOG, ACTION_TOOTLE_MENU} from "../constants";
 import {Menu, utils} from "../index";
 
-class SidebarMenu extends React.Component < any, any > {
+class SidebarMenu extends React.Component<any, any> {
 
   public onSetSidebarOpen = () => {
     const { dispatch } = this.props;
@@ -16,16 +16,15 @@ class SidebarMenu extends React.Component < any, any > {
     const { layout } = this.props;
 
     return (
-      <Sidebar
+      <Drawer
         touch={utils.swipeEnabled()}
-        touchHandleWidth={utils.swipeEnabled() ? 0 : undefined}
         sidebar={<Menu/>}
         open={layout.openMenu}
-        onSetOpen={this.onSetSidebarOpen as any}
-        contentClassName="sidebar"
+        onOpenChange={this.onSetSidebarOpen as any}
+        contentStyle={{marginTop: 70}}
       >
         {this.props.children}
-      </Sidebar>
+      </Drawer>
     );
   }
 }
