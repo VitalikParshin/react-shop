@@ -13,19 +13,34 @@ import { connect } from "react-redux";
 import Ripples from "react-ripples";
 import { Link } from "react-router-dom";
 import { Image, Images, scaleImageSize } from "../../product/index";
+import {IBrand, IImageWithColor, IProduct, ISubProduct} from "../../product/model";
+import {ICatalog} from "../model";
 
 const getMinOfArray = (numArray) => {
   return Math.min.apply(null, numArray);
 };
 
-class Product extends React.Component<any, any> {
+interface IConnectedProductProps {
+  catalog: ICatalog;
+}
+
+interface IProductProps {
+  key: number;
+  id: string;
+  name: string;
+  subProducts: [ISubProduct];
+  brand: IBrand;
+  imagesWithColor: [IImageWithColor];
+}
+
+class Product extends React.Component<IConnectedProductProps & IProductProps, any> {
   public state = {
     titleImage: {},
   };
 
   constructor(props) {
     super(props);
-    const { imagesWithColor } = this.props;
+    const {imagesWithColor}  = this.props;
     this.state = {
       titleImage: imagesWithColor.filter((img) => img.isTitle)[0] || imagesWithColor[0],
     };
@@ -155,4 +170,4 @@ const mapStateToProps: any = (state) => ({
   catalog: state.catalog,
 });
 
-export default connect<any, {}, any>(mapStateToProps)(Product);
+export default connect<IConnectedProductProps, {}, IProductProps>(mapStateToProps)(Product);

@@ -19,9 +19,20 @@ import MasonryInfiniteScroller from "react-masonry-infinite";
 import { Link } from "react-router-dom";
 import {Loading} from "../../layout/index";
 import {Product, ProductsCounter, ShowOnlyViewed} from "../index";
-import {ALL_PRODUCTS_QUERY, ICatalog} from "../model";
+import {ALL_PRODUCTS_QUERY, IAllProduct, ICatalog} from "../model";
 
 const LIMIT = 10;
+
+interface IConnectedProductsProps {
+  allProducts: IAllProduct;
+  fetchMore: any;
+  loading: boolean;
+  catalog: ICatalog;
+}
+
+interface IProductsProps {
+  categoryId: string;
+}
 
 const options = {
   options: (props) => ({
@@ -65,16 +76,6 @@ const options = {
     };
   },
 };
-
-interface IConnectedProductsProps {
-  allProducts: any;
-  fetchMore: any;
-  loading: boolean;
-}
-
-interface IProductsProps {
-  catalog: ICatalog;
-}
 
 class Products extends React.Component<IConnectedProductsProps & IProductsProps, any> {
 
@@ -213,6 +214,6 @@ const mapStateToProps: any = (state) => ({
 });
 
 export default compose(
-    connect<any, {}, any>(mapStateToProps),
+    connect<IConnectedProductsProps, {}, IProductsProps>(mapStateToProps),
     graphql(ALL_PRODUCTS_QUERY, options),
 )(Products);

@@ -66,7 +66,7 @@ class ProductTabs extends React.Component<IConnectedTabProps & ITabsProps,  any>
   }
 
   public render() {
-    const {dataProduct, product, activeSubProduct} = this.props;
+    const {dataProduct, product, activeSubProduct, dispatch} = this.props;
     const { brand, images, subProducts,  attributes } = dataProduct;
     const {subProductId, colorId} = this.props.product;
 
@@ -119,7 +119,7 @@ class ProductTabs extends React.Component<IConnectedTabProps & ITabsProps,  any>
               <hr/>
 
               {/* Select Sizes */}
-              {subProducts.length > 1 ? <SelectSize dataProduct={dataProduct} /> : "" }
+              {subProducts.length > 1 ? <SelectSize subProducts={subProducts} /> : "" }
               <WhiteSpace/>
 
               {/* Select Colors*/}
