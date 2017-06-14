@@ -11,16 +11,17 @@ import {
   WingBlank,
 } from "antd-mobile";
 import { ACTION_SELECT_SUBPRODUCT } from "../constants";
+import {ICurrentDataProduct, ISubProduct} from "../model";
 
 const Item = List.Item;
 
 interface IConnectedSizeProps {
   dispatch: any;
-  product: any;
+  product: ICurrentDataProduct;
 }
 
 interface ISizeProps {
-  dataProduct: any;
+  subProducts: [ISubProduct];
 }
 
 class SelectSize extends React.Component <IConnectedSizeProps & ISizeProps, any > {
@@ -37,7 +38,7 @@ class SelectSize extends React.Component <IConnectedSizeProps & ISizeProps, any 
 
   public render() {
 
-    const {subProducts} = this.props.dataProduct;
+    const { subProducts } = this.props;
 
     return (
         <List renderHeader={ () => {

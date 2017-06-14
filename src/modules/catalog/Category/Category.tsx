@@ -19,8 +19,18 @@ import { Link } from "react-router-dom";
 import { ACTION_TOOTLE_CATALOG, ACTION_TOOTLE_FILTERS } from "../../layout/constants";
 import { HEIGHT } from "../../layout/Header/Header";
 import { utils } from "../../layout/index";
+import {ILayout} from "../../layout/model";
 import { Filters, FiltersTrigger, Product, Products } from "../index";
 import { CATEGORY_QUERY } from "../model";
+
+interface IConnectedCategoryProps {
+  dispatch: any;
+  layout: ILayout;
+}
+
+interface ICategoryProps {
+  id: string;
+}
 
 const options = {
   options: (props) => ({
@@ -31,7 +41,7 @@ const options = {
   }),
 };
 
-class Category extends React.Component<any, any> {
+class Category extends React.Component<IConnectedCategoryProps & ICategoryProps, any> {
 
   public onSetSidebarOpen = () => {
     const { dispatch } = this.props;
@@ -53,6 +63,6 @@ const mapStateToProps: any = (state) => ({
 });
 
 export default compose(
-    connect<any, {}, any>(mapStateToProps),
-    graphql(CATEGORY_QUERY, options),
+    connect<IConnectedCategoryProps, {}, ICategoryProps>(mapStateToProps),
+    // graphql(CATEGORY_QUERY, options),
 )(Category);

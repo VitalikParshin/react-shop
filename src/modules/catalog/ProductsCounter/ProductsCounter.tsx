@@ -1,7 +1,12 @@
 import { Progress } from "antd-mobile";
 import * as React from "react";
 
-class ProductsCounter extends React.Component<any, any> {
+interface IProductsCounterProps {
+  scrolled: number;
+  total: number;
+}
+
+class ProductsCounter extends React.Component<IProductsCounterProps, any> {
   public render() {
     const { scrolled, total } = this.props;
     return (

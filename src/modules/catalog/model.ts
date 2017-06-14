@@ -1,8 +1,15 @@
 import { gql } from "react-apollo/lib";
+import {IProduct} from "../product/model";
 
 export interface ICatalog {
   viewedProductIds: string[];
   showOnlyViewed: boolean;
+}
+export interface ICategory {
+  id: string;
+  name: string;
+  alias: string;
+  products: [IProduct];
 }
 
 export const CATEGORY_QUERY = gql`
@@ -39,6 +46,10 @@ export const CATEGORY_QUERY = gql`
     }
   }
 `;
+
+export interface ICategories {
+  products: [IProduct];
+}
 
 export const CATEGORIES_QUERY = gql`
   query categories($id: Int) {
@@ -122,6 +133,11 @@ export const PRODUCT_QUERY = gql`
     }
   }
 `;
+
+export interface IAllProduct {
+  total: number;
+  products: [IProduct];
+}
 
 export const ALL_PRODUCTS_QUERY = gql`
   query allProducts($categoryId: Int, $offset: Int, $first: Int) {

@@ -16,6 +16,7 @@ export interface IProduct {
   brand: IBrand;
   category: ICategory;
   images: [IImage];
+  imagesWithColor: [IImageWithColor];
   subProducts: [ISubProduct];
   attributes: [IAttribute];
 }
@@ -35,6 +36,15 @@ export interface IImage {
   src: string;
   width: number;
   height: number;
+  color: string;
+  isTitle: boolean;
+}
+
+export interface IImageWithColor {
+  id: number;
+  src: string;
+  height: number;
+  width: number;
   color: string;
   isTitle: boolean;
 }

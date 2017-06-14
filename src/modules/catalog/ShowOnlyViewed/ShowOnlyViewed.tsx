@@ -2,8 +2,14 @@ import {Icon} from "antd-mobile";
 import * as React from "react";
 import { connect } from "react-redux";
 import {ACTION_TOGGLE_SHOW_ONLY_VIEWED} from "../constants";
+import {ICatalog} from "../model";
 
-class ShowOnlyViewed extends React.Component<any, any> {
+interface IConnectedShowOnlyViewedProps {
+  dispatch: any;
+  catalog: ICatalog;
+}
+
+class ShowOnlyViewed extends React.Component<IConnectedShowOnlyViewedProps, any> {
 
   public toggleViewed = (e) => {
     const { dispatch } = this.props;
