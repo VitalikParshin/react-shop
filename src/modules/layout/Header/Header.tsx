@@ -9,11 +9,11 @@ export const HEIGHT = 80;
 
 const FlexStyled = styled(Flex as any)`
   background: #08c;
-  height: ${HEIGHT};
+  height: ${HEIGHT}px;
   position: fixed;
   top: 0;
   width: 100%;
-  zIndex: 100;
+  z-index: 100;
 ` as any;
 
 class Header extends React.Component<any, any> {

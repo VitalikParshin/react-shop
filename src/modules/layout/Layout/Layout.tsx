@@ -14,7 +14,7 @@ class Layout extends React.Component<any, any> {
         <Header/>
         <SidebarMenu>
           <SidebarCatalog>
-            {this.props.children}
+            <div>{this.props.children}</div>
           </SidebarCatalog>
         </SidebarMenu>
       </div>
