@@ -48,7 +48,7 @@ module.exports = {
         exclude: /src/,
       },
 
-      // project styles using CSS-Modules
+      // project styles with CSS Modules
       {
         test: /\.css$/,
         loader: ExtractTextPlugin.extract('style-loader', 'css-loader?modules&importLoaders=1&localIdentName=[local]___[hash:base64:5]!postcss-loader'),
