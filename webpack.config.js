@@ -35,16 +35,32 @@ module.exports = {
         test: /\.tsx?$/,
         loader: "babel-loader!ts-loader",
       },
-      { test: /\.less$/, loader: ExtractTextPlugin.extract("css?sourceMap!postcss-loader!less?sourceMap") },
-      { test: /\.css$/, loader: ExtractTextPlugin.extract("css?sourceMap!postcss-loader") },
+
+      // antd-mobile styles
+      {
+        test: /\.less$/,
+        loader: ExtractTextPlugin.extract("css?sourceMap!postcss-loader!less?sourceMap"),
+        exclude: /src/,
+      },
+      {
+        test: /\.css$/,
+        loader: ExtractTextPlugin.extract("css?sourceMap!postcss-loader"),
+        exclude: /src/,
+      },
+
+      // project styles using CSS-Modules
+      {
+        test: /\.css$/,
+        loader: ExtractTextPlugin.extract('style-loader', 'css-loader?modules&importLoaders=1&localIdentName=[local]___[hash:base64:5]!postcss-loader'),
+        include: [path.resolve(__dirname, "./src")],
+      },
+
       { test: /\.(jpg|png)$/, loader: "url?limit=8192" },
       {
         test: /\.(svg)$/,
         loader: 'svg-sprite',
         include: [
           require.resolve('antd-mobile').replace(/warn\.js$/, ''),
-          // path.resolve(__dirname, 'src/my-project-svg-foler'),  // 2. 自己私人的 svg 存放目录
-
         ],
       },
 

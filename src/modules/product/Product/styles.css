@@ -1,0 +1,28 @@
+.product {
+  text-align: left;
+}
+
+.buy {
+  bottom: 0;
+  position: fixed;
+  width: 100%;
+  z-index: 100;
+}
+
+.buyPrice {
+  background-color: #fb039e;
+  color: #f1f901;
+  height: 0.7rem;
+  line-height: 0.6rem;
+  text-align: center;
+  width: 100%;
+}
+
+.buyButton {
+  background-color: #0379FF;
+  color: #f7f7ae;
+  height: 0.7rem;
+  line-height: 0.6rem;
+  text-align: center;
+  width: 100%;
+}

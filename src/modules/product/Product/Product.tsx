@@ -11,6 +11,9 @@ import {Loading} from "../../layout/index";
 import {Images, ProductTabs } from "../index";
 import {ICurrentDataProduct, IProduct, PRODUCT_QUERY} from "../model";
 
+// tslint:disable-next-line:no-var-requires
+const styles = require("./styles.css");
+
 interface IData {
   loading: boolean;
   product: IProduct;
@@ -78,39 +81,18 @@ class Product extends React.Component<IConnectedProductProps & IProductProps, an
     const { brand, images, subProducts } = product;
     const activeSubProduct = getActiveSubProduct(subProducts, subProductId);
 
+      // <div style={{ border: "4px solid black", textAlign: "left" }}>
     return (
-      <div style={{ textAlign: "left" }}>
+      <div className={styles.product}>
         <Images images={images} />
         <ProductTabs dataProduct={product} activeSubProduct={activeSubProduct} />
-        <Flex style={{
-            alignItems: "flex-end",
-            bottom: 0,
-            display: "flex",
-            position: "fixed",
-            width: "100%",
-            zIndex: 1,
-        }}>
-            <Ripples
-                style={{
-                  backgroundColor: "#fb039e",
-                  color: "#f1f901",
-                  height: "0.7rem",
-                  lineHeight: "0.6rem",
-                  textAlign: "center",
-                  width: "100%",
-                }}>{parseInt(activeSubProduct.price, 10)} грн
-            </Ripples>
-            <Ripples
-              style={{
-                  backgroundColor: "#0379FF",
-                  color: "#f7f7ae",
-                  height: "0.7rem",
-                  lineHeight: "0.6rem",
-                  textAlign: "center",
-                  width: "100%",
-                }}
-            >Купить
-            </Ripples>
+        <Flex className={styles.buy}>
+          <Ripples className={styles.buyPrice}>
+            {parseInt(activeSubProduct.price, 10)} грн
+          </Ripples>
+          <Ripples className={styles.buyButton}>
+            Купить
+          </Ripples>
         </Flex>
       </div>
     );
