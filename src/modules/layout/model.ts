@@ -1,6 +1,60 @@
+import { gql } from "react-apollo/lib";
+import { ICategory } from "../product/model";
+
 export interface ILayout {
   openFilters: boolean;
   openCatalog: boolean;
   openMenu: boolean;
   openShoppingCart: boolean;
 }
+
+export interface ICategories {
+  categories: [ICategory];
+}
+
+export const CATALOG_QUERY = gql`
+  query categories {
+    categories {
+      name
+      id
+      alias
+      parent {
+        id
+      }
+      image
+    }
+  }
+`;
+
+export interface IFlatPage {
+  id: string;
+  name: string;
+  url: string;
+  content: string;
+  templateName: string;
+  metaTitle: string;
+  metaDescription: string;
+  metaKeywords: string;
+  dateUpdated: string;
+  isActive: boolean;
+  image: null;
+
+}
+
+export const FLATPAGES_QUERY = gql`
+  query flatpages{
+    flatPages{
+      id
+      name
+      url
+      content
+      templateName
+      metaTitle
+      metaDescription
+      metaKeywords
+      dateUpdated
+      isActive
+      image
+    }
+  }
+`;

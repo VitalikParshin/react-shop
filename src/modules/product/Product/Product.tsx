@@ -7,10 +7,9 @@ import { compose, gql, graphql } from "react-apollo";
 import Ripples from "react-ripples";
 
 import {ACTION_ADD_VIEWED_PRODUCT} from "../../catalog/constants";
-import { PRODUCT_QUERY } from "../../catalog/model";
 import {Loading} from "../../layout/index";
 import {Images, ProductTabs } from "../index";
-import {ICurrentDataProduct, IProduct} from "../model";
+import {ICurrentDataProduct, IProduct, PRODUCT_QUERY} from "../model";
 
 interface IData {
   loading: boolean;

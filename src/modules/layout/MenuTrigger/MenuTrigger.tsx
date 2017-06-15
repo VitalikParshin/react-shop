@@ -8,13 +8,16 @@ import {
 } from "../../layout/constants";
 import {ILayout} from "../model";
 
-interface IMenuTriggerProps {
+interface IConnectedMenuTriggerProps {
   layout: ILayout;
   dispatch: any;
+}
+
+interface IMenuTriggerProps {
   height: number;
 }
 
-class MenuTrigger extends React.Component<IMenuTriggerProps, any> {
+class MenuTrigger extends React.Component<IConnectedMenuTriggerProps & IMenuTriggerProps, any> {
 
   public onClick = (e) => {
     e.preventDefault();
@@ -45,5 +48,5 @@ const mapStateToProps: any = (state) => ({
 });
 
 export default compose(
-    connect<any, {}, any>(mapStateToProps),
+    connect<IConnectedMenuTriggerProps, {}, IMenuTriggerProps>(mapStateToProps),
 )(MenuTrigger);

@@ -15,28 +15,31 @@ import {
   WingBlank,
 } from "antd-mobile";
 
+import { IData } from "../../../model";
+
 import { ACTION_TOOTLE_CATALOG } from "../../layout/constants";
 import { HEIGHT } from "../../layout/Header/Header";
 import { Loading, SubCatalog } from "../../layout/index";
+import { ICategory } from "../../product/model";
+import { CATALOG_QUERY } from "../model";
 
-export const CATALOG_QUERY = gql`
-  query categories {
-    categories {
-      name
-      id
-      alias
-      parent {
-        id
-      }
-      image
-    }
-  }
-`;
+interface ICatalogData extends IData {
+  categories: [ICategory];
+}
 
-class Catalog extends React.Component<any, any> {
+interface IConnectedCatalogProps {
+  dispatch: any;
+  data: ICatalogData;
+}
+
+interface ICatalogProps {
+  isDrawer: boolean;
+}
+
+class Catalog extends React.Component < IConnectedCatalogProps & ICatalogProps, any > {
 
   public render() {
-    const { isDrawer, data } = this.props;
+    const { isDrawer, data} = this.props;
     const { loading, categories } = data;
     if (loading === true) {
       return <Loading />;
@@ -87,6 +90,6 @@ class Catalog extends React.Component<any, any> {
 const mapStateToProps: any = (state) => ({});
 
 export default compose(
-    connect<any, {}, any>(mapStateToProps),
+    connect<IConnectedCatalogProps, {}, ICatalogProps>(mapStateToProps),
     graphql(CATALOG_QUERY),
 )(Catalog);

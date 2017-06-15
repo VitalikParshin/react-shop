@@ -4,8 +4,14 @@ import { compose, gql, graphql } from "react-apollo";
 import { connect } from "react-redux";
 import {ACTION_TOOTLE_CATALOG, ACTION_TOOTLE_MENU} from "../constants";
 import {Menu, utils} from "../index";
+import {ILayout} from "../model";
 
-class SidebarMenu extends React.Component<any, any> {
+interface IConnectedSidebarMenu {
+  layout: ILayout;
+  dispatch: any;
+}
+
+class SidebarMenu extends React.Component<IConnectedSidebarMenu & any, any> {
 
   public onSetSidebarOpen = () => {
     const { dispatch } = this.props;
@@ -34,5 +40,5 @@ const mapStateToProps: any = (state) => ({
 });
 
 export default compose(
-    connect<any, {}, any>(mapStateToProps),
+    connect<IConnectedSidebarMenu, {}, any>(mapStateToProps),
 )(SidebarMenu);

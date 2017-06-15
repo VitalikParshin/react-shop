@@ -6,7 +6,7 @@ import {Catalog, FlatPages} from "../../modules/layout/index";
 const HomePage = () => {
   return (
     <div>
-      <Catalog />
+      <Catalog isDrawer={false} />
       <WhiteSpace size="lg" />
       <FlatPages />
     </div>

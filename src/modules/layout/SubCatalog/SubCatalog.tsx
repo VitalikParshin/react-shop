@@ -1,14 +1,25 @@
-import {Card, Flex} from "antd-mobile";
+import { Card, Flex } from "antd-mobile";
 import Touchable from "rc-touchable";
 import * as React from "react";
 import { compose, gql, graphql } from "react-apollo";
 import { connect } from "react-redux";
 import Ripples from "react-ripples";
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 import { push } from "react-router-redux";
 import styled from "../../../styled-components";
-import {ACTION_DISABLE_CATALOG, ACTION_RESET} from "../constants";
-import {SidebarCatalog} from "../index";
+import { ICategory } from "../../product/model";
+import { ACTION_DISABLE_CATALOG, ACTION_RESET } from "../constants";
+import { ILayout } from "../model";
+
+interface IConnectedSubCatalogProps {
+  layout: ILayout;
+  dispatch: any;
+}
+
+interface ISubCatalogProps {
+  categories: ICategory;
+  isDrawer: boolean;
+}
 
 function chunk(arr, len = 1) {
   const chunks: any = [];
@@ -25,7 +36,7 @@ const CardStyled = styled(Card)`
   padding: 0;
 `;
 
-class SubCatalog extends React.Component<any, any> {
+class SubCatalog extends React.Component<IConnectedSubCatalogProps & ISubCatalogProps, any> {
   public state = {
     initialHeight: 400,
   };
@@ -92,5 +103,5 @@ const mapStateToProps: any = (state) => ({
 });
 
 export default compose(
-    connect<any, {}, any>(mapStateToProps),
+    connect<IConnectedSubCatalogProps, {}, ISubCatalogProps>(mapStateToProps),
 )(SubCatalog);

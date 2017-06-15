@@ -4,12 +4,17 @@ import { compose, gql, graphql } from "react-apollo";
 import { connect } from "react-redux";
 import { ACTION_TOOTLE_CATALOG } from "../constants";
 import { Catalog, utils } from "../index";
+import {ILayout} from "../model";
 
-class SidebarCatalog extends React.Component<any, any> {
+interface IConnectedSideBarProps {
+  layout: ILayout;
+  dispatch: any;
+}
+
+class SidebarCatalog extends React.Component<IConnectedSideBarProps  & any, any> {
 
   public onSetSidebarOpen = () => {
     const { dispatch } = this.props;
-    // this.setProps({style:{overflow:"hidden"}})
     dispatch({type: ACTION_TOOTLE_CATALOG});
   }
 
@@ -33,5 +38,5 @@ const mapStateToProps: any = (state) => ({
 });
 
 export default compose(
-    connect<any, {}, any>(mapStateToProps),
+    connect<IConnectedSideBarProps, {}, any>(mapStateToProps),
 )(SidebarCatalog);

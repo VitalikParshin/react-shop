@@ -5,7 +5,9 @@
         "**/.DS_Store": true,
         "**/.json.gzip": true,
         "**/npm-debug.log*": true,
-        "node_modules": false
+        "node_modules": false,
+        "**/.history": true,
+        "**/.idea": true
     },
     "search.exclude": {
         "**/node_modules": true,
@@ -15,7 +17,9 @@
         "**/*.js.map": true,
         "**/*.css.d.ts": true,
         "**/*.patch": true,
-        "**/*.diff": true
+        "**/*.diff": true,
+        "**/.history": true,
+        "**/.idea": true
     },
     "scss.validate": false,
     "css.validate": false,

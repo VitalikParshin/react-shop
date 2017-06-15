@@ -12,7 +12,7 @@ import {compose, graphql} from "react-apollo";
 import { connect } from "react-redux";
 import {Link} from "react-router-dom";
 import { ACTION_TOOTLE_CATALOG } from "../constants";
-import {FlatPages, Footer, Header, SidebarCatalog} from "../index";
+import {FlatPages, Footer, Header} from "../index";
 
 class Menu extends React.Component<any, any> {
   public render() {

@@ -17,17 +17,20 @@ import {
 import update from "immutability-helper";
 import MasonryInfiniteScroller from "react-masonry-infinite";
 import { Link } from "react-router-dom";
+import { IData } from "../../../model";
 import {Loading} from "../../layout/index";
 import {Product, ProductsCounter, ShowOnlyViewed} from "../index";
 import {ALL_PRODUCTS_QUERY, IAllProduct, ICatalog} from "../model";
 
 const LIMIT = 10;
 
-interface IConnectedProductsProps {
+interface IDataProducts extends IData {
   allProducts: IAllProduct;
-  fetchMore: any;
-  loading: boolean;
+}
+
+interface IConnectedProductsProps {
   catalog: ICatalog;
+  data: IDataProducts;
 }
 
 interface IProductsProps {
@@ -54,24 +57,26 @@ const options = {
       });
     }
     return {
-      allProducts,
-      loading,
-      fetchMore() {
-        return fetchMore({
-          updateQuery: (prev, { fetchMoreResult }) => {
-            if (!fetchMoreResult.allProducts) { return prev; }
-            return update(prev, {
-              allProducts: {
-                products: {
-                  $push: fetchMoreResult.allProducts.products,
+      data: {
+        allProducts,
+        loading,
+        fetchMore() {
+          return fetchMore({
+            updateQuery: (prev, { fetchMoreResult }) => {
+              if (!fetchMoreResult.allProducts) { return prev; }
+              return update(prev, {
+                allProducts: {
+                  products: {
+                    $push: fetchMoreResult.allProducts.products,
+                  },
                 },
-              },
-            });
-          },
-          variables: {
-            offset: allProducts.products.length,
-          },
-        });
+              });
+            },
+            variables: {
+              offset: allProducts.products.length,
+            },
+          });
+        },
       },
     };
   },
@@ -90,7 +95,8 @@ class Products extends React.Component<IConnectedProductsProps & IProductsProps,
   };
 
   public refineScrolledProducts = (scrolledProducts) => {
-    const { fetchMore, allProducts: {products, total} } = this.props;
+    const { data } = this.props;
+    const { fetchMore, allProducts: {products, total} } = data;
 
     if (scrolledProducts < LIMIT) {
       scrolledProducts = LIMIT > total ? total : LIMIT;
@@ -101,7 +107,8 @@ class Products extends React.Component<IConnectedProductsProps & IProductsProps,
   }
 
   public handleScroll = (event) => {
-    const { fetchMore, allProducts: {products, total} } = this.props;
+    const { data } = this.props;
+    const { fetchMore, allProducts: {products, total} } = data;
 
     // Calculate scrolled products
     const { scrolledProducts, haveMoreProducts } = this.state;
@@ -121,7 +128,7 @@ class Products extends React.Component<IConnectedProductsProps & IProductsProps,
   }
 
   public componentDidUpdate = (prevProps, prevState) => {
-    const { loading, allProducts } = this.props;
+    const { loading, allProducts } = this.props.data;
     if (loading === false) {
       window.addEventListener("scroll", this.handleScroll, true);
       this.bottomHeight = (
@@ -145,11 +152,14 @@ class Products extends React.Component<IConnectedProductsProps & IProductsProps,
 
   public render() {
     const {
+      data,
+      catalog: {showOnlyViewed, viewedProductIds},
+    } = this.props;
+    const {
       loading,
       allProducts,
       fetchMore,
-      catalog: {showOnlyViewed, viewedProductIds},
-    } = this.props;
+    } = data;
 
     if (loading === true) {
       return <Loading/>;

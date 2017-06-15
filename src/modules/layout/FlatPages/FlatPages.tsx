@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import { compose, gql, graphql } from "react-apollo";
 import Ripples from "react-ripples";
 import { utils } from "../../layout/index";
-import {ILayout} from "../model";
+import {FLATPAGES_QUERY, IFlatPage, ILayout} from "../model";
 
 import {
   Button,
@@ -15,32 +15,26 @@ import {
 WhiteSpace,
 WingBlank,
 } from "antd-mobile";
+import {IData} from "../../../model";
 import {HEIGHT} from "../Header/Header";
 import {Loading} from "../index";
 
-const FLATPAGES_QUERY = gql `
-  query flatpages{
-    flatPages{
-      id
-      name
-      url
-      content
-      templateName
-      metaTitle
-      metaDescription
-      metaKeywords
-      dateUpdated
-      isActive
-      image
-    }
-  }
-`;
+interface IFlatPagesData extends IData {
+  flatPages: IFlatPage;
+}
+
+interface IConnectedFlatPagesProps {
+  layout: ILayout;
+  router: any;
+  dispatch: any;
+  data: IFlatPagesData;
+}
 
 function createMarkup(html) {
   return {__html: html};
 }
 
-class FlatPages extends React.Component<any, any> {
+class FlatPages extends React.Component<IConnectedFlatPagesProps & any, any> {
 
   public state = {
     page: {
@@ -200,7 +194,7 @@ const mapStateToProps: any = (state) => ({
 });
 
 export default compose(
-  connect<any, {}, any>(mapStateToProps),
+  connect<IConnectedFlatPagesProps, {}, any>(mapStateToProps),
   graphql(FLATPAGES_QUERY, {
     options: ({ layout, router }) => ({
       skip: !(

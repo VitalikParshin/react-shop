@@ -8,13 +8,16 @@ import {
 } from "../../layout/constants";
 import {ILayout} from "../model";
 
-interface ICatalogTriggerProps {
+interface IConnectedCatalogTriggerProps {
   layout: ILayout;
   dispatch: any;
+}
+
+interface ICatalogTriggerProps {
   height: number;
 }
 
-class CatalogTrigger extends React.Component<ICatalogTriggerProps, any> {
+class CatalogTrigger extends React.Component<IConnectedCatalogTriggerProps & ICatalogTriggerProps, any> {
 
   public onClick = (e) => {
     e.preventDefault();
@@ -46,5 +49,5 @@ const mapStateToProps: any = (state) => ({
 });
 
 export default compose(
-    connect<any, {}, any>(mapStateToProps),
+    connect<IConnectedCatalogTriggerProps, {}, ICatalogTriggerProps>(mapStateToProps),
 )(CatalogTrigger);

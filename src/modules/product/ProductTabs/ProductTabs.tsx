@@ -17,7 +17,6 @@ import {
   WingBlank,
 } from "antd-mobile";
 
-import { PRODUCT_QUERY } from "../../catalog/model";
 import { Loading } from "../../layout/index";
 import { Images, SelectSize } from "../index";
 import {ICurrentDataProduct, IProduct, ISubProduct} from "../model";

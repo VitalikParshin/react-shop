@@ -21,7 +21,7 @@ import { HEIGHT } from "../../layout/Header/Header";
 import { utils } from "../../layout/index";
 import {ILayout} from "../../layout/model";
 import { Filters, FiltersTrigger, Product, Products } from "../index";
-import { CATEGORY_QUERY } from "../model";
+// import { CATEGORY_QUERY } from "../model";
 
 interface IConnectedCategoryProps {
   dispatch: any;

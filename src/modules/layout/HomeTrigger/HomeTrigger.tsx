@@ -7,13 +7,17 @@ import {Link} from "react-router-dom";
 import { ACTION_RESET, ACTION_TOOTLE_MENU } from "../../layout/constants";
 import {ILayout} from "../model";
 
-interface IMenuTriggerProps {
+interface IConnectedHomeTriggerProps {
   router: any;
   dispatch: any;
+  layout: ILayout;
+}
+
+interface IHomeTriggerProps {
   height: number;
 }
 
-class MenuTrigger extends React.Component<IMenuTriggerProps, any> {
+class HomeTrigger extends React.Component<IConnectedHomeTriggerProps & IHomeTriggerProps, any> {
 
   public onClick = (e) => {
     e.preventDefault();
@@ -49,5 +53,5 @@ const mapStateToProps: any = (state) => ({
 });
 
 export default compose(
-    connect<any, {}, any>(mapStateToProps),
-)(MenuTrigger);
+    connect<IConnectedHomeTriggerProps, {}, IHomeTriggerProps>(mapStateToProps),
+)(HomeTrigger);
