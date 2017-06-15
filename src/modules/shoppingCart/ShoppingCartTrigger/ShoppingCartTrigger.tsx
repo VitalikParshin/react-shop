@@ -7,13 +7,16 @@ import Ripples from "react-ripples";
 import { ACTION_TOOTLE_FILTERS } from "../../layout/constants";
 import {ILayout} from "../../layout/model";
 
-interface IShoppingCartTriggerProps {
+interface IConnectedShoppingCartTriggerProps {
   layout: ILayout;
   dispatch: any;
+}
+
+interface IShoppingCartTriggerProps {
   height: number;
 }
 
-class ShoppingCartTrigger extends React.Component<IShoppingCartTriggerProps, any> {
+class ShoppingCartTrigger extends React.Component<IConnectedShoppingCartTriggerProps & IShoppingCartTriggerProps, any> {
 
   public onClick = () => {
     this.props.dispatch({type: ACTION_TOOTLE_FILTERS});
@@ -44,5 +47,5 @@ const mapStateToProps: any = (state) => ({
 });
 
 export default compose(
-    connect<any, {}, any>(mapStateToProps),
+  connect<IConnectedShoppingCartTriggerProps, {}, IShoppingCartTriggerProps>(mapStateToProps),
 )(ShoppingCartTrigger);
