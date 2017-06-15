@@ -17,10 +17,15 @@ class ShowOnlyViewed extends React.Component<IConnectedShowOnlyViewedProps, any>
   }
 
   public render() {
-    const { catalog: { showOnlyViewed } } = this.props;
+    const { catalog: { showOnlyViewed, viewedProductIds } } = this.props;
     return (
       <div
-          style={{position: "fixed", bottom: 0, left: 20}}
+          style={{
+            bottom: 0,
+            display: viewedProductIds.length === 0 ? "none" : "block",
+            left: 20,
+            position: "fixed",
+          }}
           onClick={this.toggleViewed}
       >
         <Icon

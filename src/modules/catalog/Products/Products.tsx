@@ -212,7 +212,7 @@ class Products extends React.Component<IConnectedProductsProps & IProductsProps,
           total={total}
         />
 
-        <ShowOnlyViewed/>
+        {/*<ShowOnlyViewed/>*/}
 
       </div>
     );
