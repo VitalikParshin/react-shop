@@ -72,6 +72,7 @@ class ProductTabs extends React.Component<IConnectedTabProps & ITabsProps,  any>
     return (
         <Tabs
           animated
+          swipeable={false}
           onChange={callback}
           onTabClick={handleTabClick}
         >
