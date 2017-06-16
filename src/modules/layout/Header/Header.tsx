@@ -3,7 +3,6 @@ import * as React from "react";
 import Ripples from "react-ripples";
 import { Link } from "react-router-dom";
 import styled from "../../../styled-components";
-import {ShoppingCartTrigger} from "../../shoppingCart/index";
 import {CatalogTrigger, HomeTrigger, MenuTrigger} from "../index";
 export const HEIGHT = 80;
 
@@ -26,7 +25,15 @@ class Header extends React.Component<any, any> {
         <HomeTrigger height={HEIGHT}/>
         <MenuTrigger height={HEIGHT}/>
         <CatalogTrigger height={HEIGHT}/>
-        <ShoppingCartTrigger height={HEIGHT}/>
+        <Icon
+          type={require("!svg-sprite!./cart.svg")}
+          size="md"
+          style={{
+            height: HEIGHT,
+            padding: `0 ${HEIGHT / 3}px`,
+          }}
+        />
+
       </FlexStyled>
     );
   }
