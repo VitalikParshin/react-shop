@@ -46,3 +46,12 @@ export const ALL_PRODUCTS_QUERY = gql`
     }
   }
 `;
+
+export const CATEGORY_QUERY = gql`
+  query category($categoryId: Int) {
+    category(id: $categoryId) {
+      id
+      name
+    }
+  }
+`;

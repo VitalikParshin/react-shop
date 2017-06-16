@@ -1,4 +1,3 @@
-export const ACTION_TOOTLE_FILTERS = "layout.TOOTLE_FILTERS";
 
 export const ACTION_ENABLE_CATALOG = "layout.ACTION_ENABLE_CATALOG";
 export const ACTION_DISABLE_CATALOG = "layout.ACTION_DISABLE_CATALOG";
@@ -7,7 +6,5 @@ export const ACTION_TOOTLE_CATALOG = "layout.TOOTLE_CATALOG";
 export const ACTION_ENABLE_MENU = "layout.ACTION_ENABLE_MENU";
 export const ACTION_DISABLE_MENU = "layout.ACTION_DISABLE_MENU";
 export const ACTION_TOOTLE_MENU = "layout.TOOTLE_MENU";
-
-export const ACTION_TOOTLE_SHOPPING_CART = "layout.ACTION_TOOTLE_SHOPPING_CART";
 
 export const ACTION_RESET = "layout.RESET";

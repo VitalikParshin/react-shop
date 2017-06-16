@@ -2,10 +2,8 @@ import { gql } from "react-apollo/lib";
 import { ICategory } from "../product/model";
 
 export interface ILayout {
-  openFilters: boolean;
   openCatalog: boolean;
   openMenu: boolean;
-  openShoppingCart: boolean;
 }
 
 export interface ICategories {

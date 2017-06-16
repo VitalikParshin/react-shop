@@ -2,8 +2,6 @@ import update from "immutability-helper";
 
 import {
   // tslint:disable-next-line:ordered-imports
-  ACTION_TOOTLE_FILTERS,
-
   ACTION_ENABLE_CATALOG,
   ACTION_DISABLE_CATALOG,
   ACTION_TOOTLE_CATALOG,
@@ -18,17 +16,11 @@ import {ILayout} from "./model";
 
 const DEFAULT_LAYOUT: ILayout = {
   openCatalog: false,
-  openFilters: false,
   openMenu: false,
-  openShoppingCart: false,
 };
 
 const layout = (state = DEFAULT_LAYOUT, action) => {
   switch (action.type) {
-    case ACTION_TOOTLE_FILTERS:
-      return update(DEFAULT_LAYOUT, {
-        openFilters: {$set: !state.openFilters},
-      });
 
     case ACTION_DISABLE_CATALOG:
       return update(DEFAULT_LAYOUT, {

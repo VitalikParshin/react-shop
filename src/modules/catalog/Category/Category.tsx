@@ -16,16 +16,17 @@ import {
 } from "antd-mobile";
 
 import { Link } from "react-router-dom";
-import { ACTION_TOOTLE_CATALOG, ACTION_TOOTLE_FILTERS } from "../../layout/constants";
+import { ACTION_TOOTLE_CATALOG } from "../../layout/constants";
 import { HEIGHT } from "../../layout/Header/Header";
-import { utils } from "../../layout/index";
+import {Loading, utils} from "../../layout/index";
 import {ILayout} from "../../layout/model";
-import { Filters, FiltersTrigger, Product, Products } from "../index";
+import { Product, Products } from "../index";
+import {CATEGORY_QUERY} from "../model";
 // import { CATEGORY_QUERY } from "../model";
-
 interface IConnectedCategoryProps {
   dispatch: any;
   layout: ILayout;
+  data: any;
 }
 
 interface ICategoryProps {
@@ -34,7 +35,6 @@ interface ICategoryProps {
 
 const options = {
   options: (props) => ({
-    skip: true,
     variables: {
       id: props.id,
     },
@@ -43,15 +43,15 @@ const options = {
 
 class Category extends React.Component<IConnectedCategoryProps & ICategoryProps, any> {
 
-  public onSetSidebarOpen = () => {
-    const { dispatch } = this.props;
-    dispatch({type: ACTION_TOOTLE_FILTERS});
-  }
-
   public render() {
-    const { id, dispatch, layout } = this.props;
+    const { id, dispatch, layout, data } = this.props;
+    const { loading } = data;
+    if (loading === true) {
+      return <Loading />;
+    }
     return (
       <div style={{margin: "20px 10px"}}>
+        <div>{id}</div>
         <Products categoryId={id}/>
       </div>
     );
@@ -64,5 +64,5 @@ const mapStateToProps: any = (state) => ({
 
 export default compose(
     connect<IConnectedCategoryProps, {}, ICategoryProps>(mapStateToProps),
-    // graphql(CATEGORY_QUERY, options),
+    graphql(CATEGORY_QUERY, options),
 )(Category);

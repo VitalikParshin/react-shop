@@ -5,7 +5,7 @@ import { Category, Products } from "../../modules/catalog/index";
 
 const CategoryPage = (props) => {
   return (
-    <Category id={props.match.params.id}/>
+    <Category id={props.match.params.id} />
   );
 };
 
