@@ -48,8 +48,8 @@ export const ALL_PRODUCTS_QUERY = gql`
 `;
 
 export const CATEGORY_QUERY = gql`
-  query category($categoryId: Int) {
-    category(id: $categoryId) {
+  query category($id: Int) {
+    category(id: $id) {
       id
       name
     }

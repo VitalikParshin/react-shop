@@ -1,7 +1,3 @@
-import * as React from "react";
-import { compose, gql, graphql } from "react-apollo";
-import { connect } from "react-redux";
-
 import {
   Button,
   Card,
@@ -14,14 +10,22 @@ import {
   WhiteSpace,
   WingBlank,
 } from "antd-mobile";
-
+import * as React from "react";
+import { compose, gql, graphql } from "react-apollo";
+import { connect } from "react-redux";
 import { Link } from "react-router-dom";
+import client from "../../../graphqlClient";
 import { ACTION_TOOTLE_CATALOG } from "../../layout/constants";
 import { HEIGHT } from "../../layout/Header/Header";
 import {Loading, utils} from "../../layout/index";
 import {ILayout} from "../../layout/model";
+import {ICategory} from "../../product/model";
 import { Product, Products } from "../index";
-import {CATEGORY_QUERY} from "../model";
+// import {CATEGORY_QUERY} from "../model";
+
+// tslint:disable-next-line:no-var-requires
+const styles = require("./styles.css");
+
 // import { CATEGORY_QUERY } from "../model";
 interface IConnectedCategoryProps {
   dispatch: any;
@@ -35,6 +39,7 @@ interface ICategoryProps {
 
 const options = {
   options: (props) => ({
+    fetchPolicy: "cache-first",
     variables: {
       id: props.id,
     },
@@ -44,14 +49,33 @@ const options = {
 class Category extends React.Component<IConnectedCategoryProps & ICategoryProps, any> {
 
   public render() {
-    const { id, dispatch, layout, data } = this.props;
-    const { loading } = data;
-    if (loading === true) {
-      return <Loading />;
-    }
+    const {
+      id,
+      dispatch,
+      layout,
+      // data,
+    } = this.props;
+
+    // const { loading, category } = data;
+    // if (loading === true) {
+    //   return <Loading />;
+    // }
+
+    const category = client.readFragment({
+      fragment: gql`
+        fragment myCategory on CategoryType {
+          name
+        }
+      `,
+      id: `CategoryType:${id}`,
+    }) as ICategory;
     return (
       <div style={{margin: "20px 10px"}}>
-        <div>{id}</div>
+        {
+          category
+          ? <h2 className={styles.category}>{category.name}</h2>
+          : ""
+        }
         <Products categoryId={id}/>
       </div>
     );
@@ -64,5 +88,5 @@ const mapStateToProps: any = (state) => ({
 
 export default compose(
     connect<IConnectedCategoryProps, {}, ICategoryProps>(mapStateToProps),
-    graphql(CATEGORY_QUERY, options),
+    // graphql(CATEGORY_QUERY, options),
 )(Category);

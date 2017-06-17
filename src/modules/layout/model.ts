@@ -13,8 +13,8 @@ export interface ICategories {
 export const CATALOG_QUERY = gql`
   query categories {
     categories {
-      name
       id
+      name
       alias
       parent {
         id
