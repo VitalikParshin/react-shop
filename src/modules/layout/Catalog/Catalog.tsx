@@ -87,7 +87,9 @@ class Catalog extends React.Component < IConnectedCatalogProps & ICatalogProps, 
   }
 }
 
-const mapStateToProps: any = (state) => ({});
+const mapStateToProps: any = (state) => ({
+  router: state.router,
+});
 
 export default compose(
     connect<IConnectedCatalogProps, {}, ICatalogProps>(mapStateToProps),

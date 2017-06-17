@@ -60,10 +60,9 @@ class Category extends React.Component<IConnectedCategoryProps & ICategoryProps,
     // if (loading === true) {
     //   return <Loading />;
     // }
-
     const category = client.readFragment({
       fragment: gql`
-        fragment myCategory on CategoryType {
+        fragment categoryName on CategoryType {
           name
         }
       `,

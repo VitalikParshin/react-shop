@@ -14,6 +14,7 @@ import { ILayout } from "../model";
 interface IConnectedSubCatalogProps {
   layout: ILayout;
   dispatch: any;
+  router: any;
 }
 
 interface ISubCatalogProps {
@@ -47,8 +48,15 @@ class SubCatalog extends React.Component<IConnectedSubCatalogProps & ISubCatalog
       dispatch({type: ACTION_DISABLE_CATALOG}),
     )
     .then((response) => {
-      dispatch(push(`/category/${cat.id}`));
+      if (!this.isCurrentCategory(cat.id)) {
+        dispatch(push(`/category/${cat.id}`));
+      }
     });
+  }
+
+  public isCurrentCategory = (id) => {
+    const { router: {location: {pathname }}} = this.props;
+    return pathname.search(`/category/${id}`) !== -1;
   }
 
   public render() {
@@ -68,6 +76,7 @@ class SubCatalog extends React.Component<IConnectedSubCatalogProps & ISubCatalog
                     <div
                       style={{
                         height: 190,
+                        opacity: this.isCurrentCategory(cat.id) ? 0.3 : 1,
                         paddingBottom: 10,
                         paddingTop: 30,
                       }}
@@ -100,6 +109,7 @@ class SubCatalog extends React.Component<IConnectedSubCatalogProps & ISubCatalog
 
 const mapStateToProps: any = (state) => ({
   layout: state.layout,
+  router: state.router,
 });
 
 export default compose(
