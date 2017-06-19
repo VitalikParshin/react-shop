@@ -18,7 +18,7 @@ WingBlank,
 import {IData} from "../../../model";
 import {HEIGHT} from "../Header/Header";
 import {Loading} from "../index";
-
+const styles = require("./styles.css");
 interface IFlatPagesData extends IData {
   flatPages: IFlatPage;
 }
@@ -174,7 +174,7 @@ class FlatPages extends React.Component<IConnectedFlatPagesProps & any, any> {
               {this.state.page.name}
             </h3>
           </Flex>
-          <div
+          <div className={styles.flatpage}
             dangerouslySetInnerHTML={createMarkup(this.state.page.content)}
             style={{
               marginTop: 100,

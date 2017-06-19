@@ -1,0 +1,9 @@
+.flatpage * {
+  color: black !important;
+  font-size: 30px;
+}
+.flapages .h1,
+.flapages .h2,
+.flapages .h3  {
+  color: red !important;
+}
