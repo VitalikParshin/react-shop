@@ -18,14 +18,10 @@ WingBlank,
 import {IData} from "../../../model";
 import {HEIGHT} from "../Header/Header";
 import {Loading} from "../index";
-<<<<<<< HEAD
 
 // tslint:disable-next-line:no-var-requires
 const styles = require("./styles.css");
 
-=======
-const styles = require("./styles.css");
->>>>>>> 354e9484f4ba8fb7b9160adef315493c6f641291
 interface IFlatPagesData extends IData {
   flatPages: IFlatPage;
 }
