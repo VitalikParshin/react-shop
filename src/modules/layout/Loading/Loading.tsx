@@ -1,10 +1,13 @@
 import { Button, Icon, List, WingBlank } from "antd-mobile";
 import * as React from "react";
 
+// tslint:disable-next-line:no-var-requires
+const styles = require("./styles.css");
+
 const Loading = () => {
   return (
-    <div style={{position: "fixed", top: "45%", left: "45%"}}>
-      <Icon type={require("!svg-sprite!./loading.svg")} size="lg"/>
+    <div className={styles.icon}>
+      <Icon type={require("!svg-sprite!./loading.svg")} size="lg" />
     </div>
   );
 };

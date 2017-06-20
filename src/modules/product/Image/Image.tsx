@@ -9,6 +9,9 @@ export const scaleImageSize = (width, height, ratio = 1) => {
   };
 };
 
+// tslint:disable-next-line:no-var-requires
+const styles = require("./styles.css");
+
 interface ImageProps {
   src: string;
   width: number;
@@ -27,12 +30,8 @@ class Image extends React.Component<ImageProps, null> {
           style={{height: divHeight}}
       >
         <img
-          src={src}
-          style={{
-            height: "100%",
-            objectFit: "contain",
-            width: "100%",
-          }}
+            className={styles.image}
+            src={src}
         />
       </Flex>
     );

@@ -15,6 +15,9 @@ import {ICurrentDataProduct, ISubProduct} from "../model";
 
 const Item = List.Item;
 
+// tslint:disable-next-line:no-var-requires
+const styles = require("./styles.css");
+
 interface IConnectedSizeProps {
   dispatch: any;
   product: ICurrentDataProduct;
@@ -44,8 +47,8 @@ class SelectSize extends React.Component <IConnectedSizeProps & ISizeProps, any 
         <List renderHeader={ () => {
           return (
             <div style={{display: "flex", alignItems: "flex-end"}}>
-              <Icon type={require("svg-sprite!./product-sizes.svg")}  style={{color: "#1296db"}}/>
-              <div style={{color: "#1296db"}}>Выберите Размер (Ш x В x Г) :</div>
+              <Icon className={styles.SizeNameIcon} type={require("svg-sprite!./product-sizes.svg")}/>
+              <div className={styles.SizeName}>Выберите Размер (Ш x В x Г) :</div>
             </div>
           );
         }}>
@@ -54,8 +57,9 @@ class SelectSize extends React.Component <IConnectedSizeProps & ISizeProps, any 
                   onClick={() => this.onChangePrice(el.id)}
                   thumb={el.id === this.props.product.subProductId ?
                     <Icon
-                      type={require("svg-sprite!./check-circle.svg")}
-                      style={{fill: "#62f104"}}/>
+                        className={styles.checkIcon}
+                        type={require("svg-sprite!./check-circle.svg")}
+                    />
                     :
                     <Icon
                       type={require("svg-sprite!./circle.svg")}/>}

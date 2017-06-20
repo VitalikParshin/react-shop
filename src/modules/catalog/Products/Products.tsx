@@ -22,6 +22,9 @@ import {Loading} from "../../layout/index";
 import {Product, ProductsCounter, ShowOnlyViewed} from "../index";
 import {ALL_PRODUCTS_QUERY, IAllProduct, ICatalog} from "../model";
 
+// tslint:disable-next-line:no-var-requires
+const styles = require("./styles.css");
+
 const LIMIT = 10;
 
 interface IDataProducts extends IData {
@@ -139,7 +142,7 @@ class Products extends React.Component<IConnectedProductsProps & IProductsProps,
   }
 
   public componentWillReceiveProps = (nextProps) => {
-    const { loading, allProducts } = nextProps;
+    const { loading, allProducts } = nextProps.data;
     if (loading === false ) {
       const { products, total } = allProducts;
       if (products.length >= total) {
@@ -187,10 +190,8 @@ class Products extends React.Component<IConnectedProductsProps & IProductsProps,
     return (
       <div style={{padding}} ref={(element) => this.ref = element}>
         <MasonryInfiniteScroller
+          className={styles.masonryInfiniteScroller}
           sizes={[{ columns: 2, gutter }]}
-          style={{
-            marginBottom: 35,
-          }}
         >
           {filteredProducts.map((product, i) => {
             return <Product key={i} {...product}/>;
@@ -198,10 +199,9 @@ class Products extends React.Component<IConnectedProductsProps & IProductsProps,
         </MasonryInfiniteScroller>
 
         <div
+          className={styles.icon}
           style={{
             display: this.state.haveMoreProducts ? "block" : "none",
-            paddingTop: 10,
-            textAlign: "center",
           }}
         >
           <Icon type="loading" size="lg"/>

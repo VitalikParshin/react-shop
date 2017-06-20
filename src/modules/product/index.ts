@@ -5,7 +5,7 @@ import Images from "./Images/Images";
 import Product from "./Product/Product";
 import ProductModal from "./ProductModal/ProductModal";
 import ProductTabs from "./ProductTabs/ProductTabs";
-import SelectSize from "./ProductTabs/SelectSize";
+import SelectSize from "./SelectSize/SelectSize";
 
 import * as model from "./model";
 

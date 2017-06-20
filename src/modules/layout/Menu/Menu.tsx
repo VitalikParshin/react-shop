@@ -14,22 +14,21 @@ import {Link} from "react-router-dom";
 import { ACTION_TOOTLE_CATALOG } from "../constants";
 import {FlatPages, Footer, Header} from "../index";
 
+// tslint:disable-next-line:no-var-requires
+const styles = require("./styles.css");
+
 class Menu extends React.Component<any, any> {
   public render() {
     const width = window.innerWidth * 0.9;
     return (
-      <div style={{
-        background: "white",
-        height: "100%",
-        width,
-      }}>
+      <div
+          className={styles.menu}
+          style={{width}}
+      >
         <Flex justify="center" align="center">
           <img
-            style={{
-              paddingTop: 100,
-              width: "90%",
-            }}
-            src="http://static1.buybag.com.ua/static/img/logo.png"
+              className={styles.image}
+              src="http://static1.buybag.com.ua/static/img/logo.png"
           />
         </Flex>
         <WhiteSpace size="lg" />

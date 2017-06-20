@@ -19,6 +19,9 @@ import {IData} from "../../../model";
 import {HEIGHT} from "../Header/Header";
 import {Loading} from "../index";
 
+// tslint:disable-next-line:no-var-requires
+const styles = require("./styles.css");
+
 interface IFlatPagesData extends IData {
   flatPages: IFlatPage;
 }
@@ -132,7 +135,7 @@ class FlatPages extends React.Component<IConnectedFlatPagesProps & any, any> {
             <List.Item
               wrap
               arrow="horizontal"
-              thumb={<Icon type={this.getIcon(page.id)} style={{fill: "black"}} size="md"/>}
+              thumb={<Icon className={styles.icon} type={this.getIcon(page.id)} size="md"/>}
               onClick={(e) => this.showModal(e, page) }
             >
               {page.name}

@@ -7,6 +7,9 @@ import {Link} from "react-router-dom";
 import { ACTION_RESET, ACTION_TOOTLE_MENU } from "../../layout/constants";
 import {ILayout} from "../model";
 
+// tslint:disable-next-line:no-var-requires
+const styles = require("./styles.css");
+
 interface IConnectedHomeTriggerProps {
   router: any;
   dispatch: any;
@@ -29,15 +32,18 @@ class HomeTrigger extends React.Component<IConnectedHomeTriggerProps & IHomeTrig
     return (
       <Ripples onClick={this.onClick}>
         <Link to="/">
-          <Flex align="center" style={{color: "white", padding: `0 ${height / 3}px`, height}}>
-            BUY
+          <Flex
+              className={styles.homeTrigger}
+              align="center"
+              style={{padding: `0 ${height / 3}px`, height}}
+          >BUY
             <Icon
-              type={require("!svg-sprite!./packet_filled.svg")}
-              size="md"
-              style={{
-                fill: router.location.pathname === "/" ? "orange" : "white",
-                margin: "0px 10px 15px 10px",
-              }}
+                className={styles.icon}
+                type={require("!svg-sprite!./packet_filled.svg")}
+                size="md"
+                style={{
+                  fill: router.location.pathname === "/" ? "orange" : "white",
+                }}
             />
             BAG
           </Flex>

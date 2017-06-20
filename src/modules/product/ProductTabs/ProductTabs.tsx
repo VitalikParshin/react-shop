@@ -21,6 +21,9 @@ import { Loading } from "../../layout/index";
 import { Images, SelectSize } from "../index";
 import {ICurrentDataProduct, IProduct, ISubProduct} from "../model";
 
+// tslint:disable-next-line:no-var-requires
+const styles = require("./styles.css");
+
 const TabPane = Tabs.TabPane;
 const FlexItem = Flex.Item;
 const ListItem = List.Item;
@@ -76,12 +79,12 @@ class ProductTabs extends React.Component<IConnectedTabProps & ITabsProps,  any>
           onChange={callback}
           onTabClick={handleTabClick}
         >
-          <TabPane tab="Инфо" key="1" style={{marginBottom: "30px"}}>
-            <div style={{backgroundColor: "#fff" }}>
+          <TabPane className={styles.firstTabPane } tab="Инфо" key="1">
+            <div className={styles.tabPaneArea}>
               <WingBlank size="md" style={{display: "flex", flexDirection: "column", paddingTop: "10px"}}>
                 <div>{dataProduct.name} {brand.name}</div>
-                <div style={{color: "green", fontSize: "24px"}}>Eсть в наличии</div>
-                <div style={{color: "#b94a48", fontSize: "24px"}}>
+                <div className={styles.availability}>Eсть в наличии</div>
+                <div className={styles.productCode}>
                   {`Код товара: ${activeSubProduct.id}`}
                 </div>
               </WingBlank>
@@ -89,19 +92,13 @@ class ProductTabs extends React.Component<IConnectedTabProps & ITabsProps,  any>
                 <hr/>
                 <div style={{display: "flex", flexDirection: "row", justifyContent: "space-between"}}>
                   <div style={{width: "35%"}}>
-                    <div style={{fontSize: "40px", color: "#468847"}}>{ activeSubProduct.price } грн</div>
-                    <div
-                        style={{
-                          color: "#b94a48",
-                          fontSize: "24px",
-                          textDecoration: "line-through",
-                        }}
-                    >{ activeSubProduct.oldPrice } грн</div>
+                    <div className={styles.price}>{parseInt(activeSubProduct.price, 10)} грн</div>
+                    <div className={styles.oldPrice}>{parseInt(activeSubProduct.oldPrice, 10)} грн</div>
                   </div>
                   <div style={{width: "28%"}}>
                     <Icon
-                      type={require("svg-sprite!./free-delivery.png")}
-                      style={{width: "150px", height: "75px"}}
+                        className={styles.deliveryIcon}
+                        type={require("svg-sprite!./free-delivery.png")}
                     />
                   </div>
                   <div style={{width: "42%"}}>

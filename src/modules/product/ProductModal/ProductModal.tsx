@@ -7,6 +7,9 @@ import {Flex, Icon, Modal} from "antd-mobile";
 import {HEIGHT} from "../../layout/Header/Header";
 import { Product } from "../index";
 
+// tslint:disable-next-line:no-var-requires
+const styles = require("./styles.css");
+
 class ProductModal extends React.Component<any, any> {
   public state = {
     showModal: true,
@@ -25,32 +28,22 @@ class ProductModal extends React.Component<any, any> {
     return (
       <div className="modal">
         <Flex
+            className={styles.flex}
             justify="start"
             align="center"
-            style={{
-              backgroundColor: "rgb(0, 136, 204)",
-              color: "white",
-              left: 0,
-              position: "fixed",
-              right: 0,
-              top: 0,
-              width: "100%",
-              zIndex: 1000,
-            }}
         >
           <Ripples during={200}>
             <Icon
-              type={require("!svg-sprite!./back.svg")}
-              size="md"
-              style={{
-                fill: "white",
-                height: HEIGHT,
-                padding: "0 20px",
-              }}
-              onClick={this.back}
+                className={styles.icon}
+                type={require("!svg-sprite!./back.svg")}
+                size="md"
+                style={{
+                  height: HEIGHT,
+                }}
+                onClick={this.back}
             />
           </Ripples>
-          <h3 style={{margin: 0, textAlign: "center", width: "80%"}}>
+          <h3 className={styles.productName}>
             Товар #{match.params.id}
           </h3>
         </Flex>

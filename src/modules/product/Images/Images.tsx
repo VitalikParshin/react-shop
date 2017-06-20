@@ -3,6 +3,9 @@ import * as React from "react";
 import {scaleImageSize} from "../Image/Image";
 import {IImage} from "../model";
 
+// tslint:disable-next-line:no-var-requires
+const styles = require("./styles.css");
+
 interface IImagesProps {
   images: [IImage];
 }
@@ -27,7 +30,8 @@ class Images extends React.Component<IImagesProps, IImagesState> {
 
     return (
       <Carousel
-        className="my-carousel"
+        // className="my-carousel"
+        className={styles.carousel}
         autoplay={false}
         infinite
         selectedIndex={0}
@@ -36,9 +40,7 @@ class Images extends React.Component<IImagesProps, IImagesState> {
         // tslint:disable-next-line:no-console
         afterChange={(index) => console.log("slide to", index)}
         style={{
-          background: "white",
           height: maxImageHeight + 80,
-          padding: "40px 0",
         }}
       >
         {this.props.images.map((image) => (
@@ -50,18 +52,14 @@ class Images extends React.Component<IImagesProps, IImagesState> {
               }}
           >
             <img
-              src={image.src}
-              style={{
-                height: "100%",
-                objectFit: "contain",
-                width: "100%",
-              }}
-              onLoad={() => {
-                window.dispatchEvent(new Event("resize"));
-                this.setState({
-                  initialHeight: null,
-                });
-              }}
+                className={styles.image}
+                src={image.src}
+                onLoad={() => {
+                  window.dispatchEvent(new Event("resize"));
+                  this.setState({
+                    initialHeight: null,
+                  });
+                }}
             />
           </Flex>
         ))}

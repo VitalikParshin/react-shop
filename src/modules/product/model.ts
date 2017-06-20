@@ -57,8 +57,8 @@ export interface IImageWithColor {
 export interface ISubProduct {
   id: string;
   article: string;
-  price: number;
-  oldPrice: number;
+  price: string;
+  oldPrice: string;
   discount: string;
   attributes: [IAttribute];
 }

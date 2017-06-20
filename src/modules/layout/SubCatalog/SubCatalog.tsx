@@ -11,6 +11,9 @@ import { ICategory } from "../../product/model";
 import { ACTION_DISABLE_CATALOG, ACTION_RESET } from "../constants";
 import { ILayout } from "../model";
 
+// tslint:disable-next-line:no-var-requires
+const styles = require("./styles.css");
+
 interface IConnectedSubCatalogProps {
   layout: ILayout;
   dispatch: any;
@@ -68,19 +71,17 @@ class SubCatalog extends React.Component<IConnectedSubCatalogProps & ISubCatalog
           <Flex justify="center">
             {cats.map((cat, index) => (
               <Flex.Item
-                key={`cat${index}`}
-                style={{textAlign: "center", margin: 5}
-              }>
+                  className={styles.flexItem}
+                  key={`cat${index}`}
+              >
                 <CardStyled>
                   <Ripples>
                     <div
-                      style={{
-                        height: 190,
-                        opacity: this.isCurrentCategory(cat.id) ? 0.3 : 1,
-                        paddingBottom: 10,
-                        paddingTop: 30,
-                      }}
-                      onClick={(e) => this.onClick(e, cat)}
+                        className={styles.card}
+                        style={{
+                          opacity: this.isCurrentCategory(cat.id) ? 0.3 : 1,
+                        }}
+                        onClick={(e) => this.onClick(e, cat)}
                     >
                       <img
                         src={cat.image || ""}
@@ -92,7 +93,7 @@ class SubCatalog extends React.Component<IConnectedSubCatalogProps & ISubCatalog
                           });
                         }}
                       />
-                      <div style={{maxWidth: "80%", margin: "auto"}}>
+                      <div className={styles.name}>
                         {cat.name}
                       </div>
                     </div>

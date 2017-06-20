@@ -1,6 +1,9 @@
 import { Progress } from "antd-mobile";
 import * as React from "react";
 
+// tslint:disable-next-line:no-var-requires
+const styles = require("./styles.css");
+
 interface IProductsCounterProps {
   scrolled: number;
   total: number;
@@ -11,27 +14,18 @@ class ProductsCounter extends React.Component<IProductsCounterProps, any> {
     const { scrolled, total } = this.props;
     return (
       <div>
-        <div style={{
-          bottom: 15,
-          color: "gray",
-          position: "fixed",
-          right: 30,
-        }}>
+        <div className={styles.productsCounter}>
           {scrolled}/{total}
         </div>
 
         <Progress
+          className={styles.progress}
           percent={Math.round(scrolled / total * 100)}
           position="normal"
           unfilled="hide"
           appearTransition
           style={{
             borderColor: scrolled === total ? "#468847" : "orange",
-            bottom: 0,
-            left: 0,
-            position: "fixed",
-            right: 0,
-            width: "100%",
           }}
         />
       </div>

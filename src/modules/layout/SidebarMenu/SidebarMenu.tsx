@@ -23,11 +23,11 @@ class SidebarMenu extends React.Component<IConnectedSidebarMenu & any, any> {
 
     return (
       <Drawer
-        touch={utils.swipeEnabled()}
-        sidebar={<Menu/>}
-        open={layout.openMenu}
-        onOpenChange={this.onSetSidebarOpen as any}
-        contentStyle={{marginTop: 80}}
+          touch={utils.swipeEnabled()}
+          sidebar={<Menu/>}
+          open={layout.openMenu}
+          onOpenChange={this.onSetSidebarOpen as any}
+          contentStyle={{marginTop: 80}}
       >
         {this.props.children}
       </Drawer>
