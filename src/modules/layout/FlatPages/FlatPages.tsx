@@ -163,14 +163,13 @@ class FlatPages extends React.Component<IConnectedFlatPagesProps & any, any> {
           >
             <Ripples during={200}>
               <Icon
-                type={require("!svg-sprite!./back.svg")}
-                size="md"
-                style={{
-                  fill: "white",
-                  height: HEIGHT,
-                  padding: "0 20px",
-                }}
-                onClick={this.closeModal}
+                  className={styles.backIcon}
+                  type={require("!svg-sprite!./back.svg")}
+                  size="md"
+                  style={{
+                    height: HEIGHT,
+                  }}
+                  onClick={this.closeModal}
               />
             </Ripples>
             <h3 style={{margin: 0, textAlign: "center", width: "80%"}}>

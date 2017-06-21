@@ -1,14 +1,19 @@
-<<<<<<< HEAD
-.icon {
-  fill: black;
-=======
+.backIcon{
+  padding: 0 20px;
+}
+
 .flatpage * {
   color: black !important;
   font-size: 30px;
 }
+
 .flapages .h1,
 .flapages .h2,
 .flapages .h3  {
   color: red !important;
->>>>>>> 354e9484f4ba8fb7b9160adef315493c6f641291
 }
+
+.flapages .h2 {
+  color: red !important;
+}
+
