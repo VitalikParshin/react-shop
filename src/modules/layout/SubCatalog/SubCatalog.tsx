@@ -7,6 +7,7 @@ import Ripples from "react-ripples";
 import { Link } from "react-router-dom";
 import { push } from "react-router-redux";
 import styled from "../../../styled-components";
+import {ACTION_ADD_VIEWED_CATEGORY} from "../../catalog/constants";
 import { ICategory } from "../../product/model";
 import { ACTION_DISABLE_CATALOG, ACTION_RESET } from "../constants";
 import { ILayout } from "../model";
@@ -15,13 +16,14 @@ import { ILayout } from "../model";
 const styles = require("./styles.css");
 
 interface IConnectedSubCatalogProps {
+  catalog: any;
   layout: ILayout;
   dispatch: any;
   router: any;
 }
 
 interface ISubCatalogProps {
-  categories: ICategory;
+  categories: [ICategory];
   isDrawer: boolean;
 }
 
@@ -36,8 +38,8 @@ function chunk(arr, len = 1) {
   return chunks;
 }
 
-const CardStyled = styled(Card)`
-  padding: 0;
+const CardStyled: any = styled(Card)`
+  border: 1px solid ${(props) => (props as any).isViewed ? "orange" : "lightgrey"};
 `;
 
 class SubCatalog extends React.Component<IConnectedSubCatalogProps & ISubCatalogProps, any> {
@@ -47,6 +49,7 @@ class SubCatalog extends React.Component<IConnectedSubCatalogProps & ISubCatalog
 
   public onClick = (event, cat) => {
     const {dispatch} = this.props;
+    dispatch({type: ACTION_ADD_VIEWED_CATEGORY, categoryId: cat.id});
     Promise.resolve(
       dispatch({type: ACTION_DISABLE_CATALOG}),
     )
@@ -55,6 +58,11 @@ class SubCatalog extends React.Component<IConnectedSubCatalogProps & ISubCatalog
         dispatch(push(`/category/${cat.id}`));
       }
     });
+  }
+
+  public isViewed(id) {
+    const {catalog, categories} = this.props;
+    return catalog.viewedCategoryIds.indexOf(id) !== -1;
   }
 
   public isCurrentCategory = (id) => {
@@ -74,8 +82,12 @@ class SubCatalog extends React.Component<IConnectedSubCatalogProps & ISubCatalog
                   className={styles.flexItem}
                   key={`cat${index}`}
               >
-                <CardStyled>
+                <CardStyled
+                  isViewed={this.isViewed(cat.id)}
+                >
+
                   <Ripples>
+
                     <div
                         className={styles.card}
                         style={{
@@ -109,6 +121,7 @@ class SubCatalog extends React.Component<IConnectedSubCatalogProps & ISubCatalog
 }
 
 const mapStateToProps: any = (state) => ({
+  catalog: state.catalog,
   layout: state.layout,
   router: state.router,
 });
