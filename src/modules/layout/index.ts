@@ -4,6 +4,7 @@ import * as utils from "./utils";
 
 import Catalog from "./Catalog/Catalog";
 import CatalogTrigger from "./CatalogTrigger/CatalogTrigger";
+import FlatPageModal from "./FlatPageModal/FlatPageModal";
 import FlatPages from "./FlatPages/FlatPages";
 import Footer from "./Footer/Footer";
 import Header from "./Header/Header";
@@ -27,6 +28,7 @@ export {
   SubCatalog,
   SidebarCatalog,
   FlatPages,
+  FlatPageModal,
   MenuTrigger,
   Menu,
   SidebarMenu,

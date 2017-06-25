@@ -6,11 +6,42 @@ import { Switch } from "react-router-dom";
 import { ConnectedRouter } from "react-router-redux";
 import client from "./graphqlClient";
 import history from "./history";
-import { Layout } from "./modules/layout/index";
+import {FlatPageModal, FlatPages, Layout} from "./modules/layout/index";
 import {Product, ProductModal} from "./modules/product/index";
-import { CategoryPage, HomePage, ProductPage } from "./pages/index";
+import { CategoryPage, FlatPage, HomePage, ProductPage } from "./pages/index";
 import store from "./store";
 
+class FlatPageSwitch extends React.Component<any, any> {
+
+  public previousLocation = this.props.location;
+
+  public componentWillUpdate(nextProps) {
+    const { location } = this.props;
+    if (
+      nextProps.history.action !== "POP" &&
+      (!location.state || !location.state.modal)
+    ) {
+      this.previousLocation = this.props.location;
+    }
+  }
+
+  public render() {
+    // https://reacttraining.com/react-router/web/example/modal-gallery
+    const { location } = this.props;
+    const isModal = !!(
+      location.state &&
+      location.state.modal &&
+      this.previousLocation !== location // not initial render
+    );
+    return (
+      <div>
+        {isModal ? <Route path="/img/:id" component={FlatPageModal} /> : null}
+      </div>
+    );
+  }
+}
+
+// tslint:disable-next-line:max-classes-per-file
 class ProductsSwitch extends React.Component<any, any> {
 
   public previousLocation = this.props.location;
@@ -52,6 +83,7 @@ const App = () => {
         <Layout>
           <Route exact path="/" component={HomePage} />
           <Route component={ProductsSwitch} />
+          <Route component={FlatPageSwitch} />
         </Layout>
       </ConnectedRouter>
     </ApolloProvider>

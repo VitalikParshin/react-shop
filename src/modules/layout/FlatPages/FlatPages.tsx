@@ -3,7 +3,6 @@ import { connect } from "react-redux";
 
 import { compose, gql, graphql } from "react-apollo";
 import Ripples from "react-ripples";
-import { utils } from "../../layout/index";
 import {FLATPAGES_QUERY, IFlatPage, ILayout} from "../model";
 
 import {
@@ -15,9 +14,10 @@ import {
 WhiteSpace,
 WingBlank,
 } from "antd-mobile";
+import { Link } from "react-router-dom";
 import {IData} from "../../../model";
 import {HEIGHT} from "../Header/Header";
-import {Loading} from "../index";
+import {FlatPageModal, Loading} from "../index";
 
 // tslint:disable-next-line:no-var-requires
 const styles = require("./styles.css");
@@ -53,13 +53,6 @@ class FlatPages extends React.Component<IConnectedFlatPagesProps & any, any> {
     this.setState({
       page,
       showModal: true,
-    });
-  }
-
-  public closeModal = () => {
-    this.setState({
-      content: "",
-      showModal: false,
     });
   }
 
@@ -132,59 +125,24 @@ class FlatPages extends React.Component<IConnectedFlatPagesProps & any, any> {
       <div>
         <List>
           {flatPages.map((page) => (
-            <List.Item
-              wrap
-              arrow="horizontal"
-              thumb={<Icon className={styles.icon} type={this.getIcon(page.id)} size="md"/>}
-              onClick={(e) => this.showModal(e, page) }
-            >
-              {page.name}
-            </List.Item>
+            <Link
+                to={{
+                  pathname: `/img/${page.id}`,
+                  // this is the trick!
+                  state: { modal: true, pages: flatPages },
+                }}
+              >
+              <List.Item
+                wrap
+                arrow="horizontal"
+                thumb={<Icon className={styles.icon} type={this.getIcon(page.id)} size="md"/>}
+                onClick={(e) => this.showModal(e, page) }
+              >
+                {page.name}
+              </List.Item>
+            </Link>
           ))}
         </List>
-
-        <Modal
-          transparent={false}
-          visible={this.state.showModal}
-          animationType="fade"
-        >
-          <Flex
-              justify="start"
-              align="center"
-              style={{
-                backgroundColor: "rgb(0, 136, 204)",
-                color: "white",
-                left: 0,
-                position: "fixed",
-                right: 0,
-                top: 0,
-                width: "100%",
-              }}
-          >
-            <Ripples during={200}>
-              <Icon
-                  className={styles.backIcon}
-                  type={require("!svg-sprite!./back.svg")}
-                  size="md"
-                  style={{
-                    height: HEIGHT,
-                  }}
-                  onClick={this.closeModal}
-              />
-            </Ripples>
-            <h3 style={{margin: 0, textAlign: "center", width: "80%"}}>
-              {this.state.page.name}
-            </h3>
-          </Flex>
-          <div className={styles.flatpage}
-            dangerouslySetInnerHTML={createMarkup(this.state.page.content)}
-            style={{
-              marginTop: 100,
-              padding: utils.isSafariBrowser() ? 20 : 0,
-              textAlign: "left",
-            }}
-          />
-        </Modal>
       </div>
     );
   }
