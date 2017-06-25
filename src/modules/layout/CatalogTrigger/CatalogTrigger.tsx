@@ -30,7 +30,7 @@ class CatalogTrigger extends React.Component<IConnectedCatalogTriggerProps & ICa
     return (
       <Ripples>
         <Icon
-          type={require("!svg-sprite!./catalog.svg")}
+          type={require("!svg-sprite-loader!./catalog.svg")}
           size="md"
           onClick={this.onClick}
           style={{

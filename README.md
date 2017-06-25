@@ -8,7 +8,6 @@
 1. Copy `.env.default` file to `.env`. This will be your local settings.
 1. Install `yarn` globally
 1. Install packages by running in project root `yarn`
-1. Run TypeScript => JS compiler `yarn run tsc_watch` or `cmd`+`F9` in VSCode
 1. Open in Chrome `http://localhost:3000/`
 
 ## Google Chrome DevTools
@@ -45,9 +44,9 @@
 import { Icon, List } from "antd-mobile";
 ...
 
-<Icon type={require("!svg-sprite!./relative/path/to/icon.svg")} />
+<Icon type={require("!svg-sprite-loader!./relative/path/to/icon.svg")} />
 ...
-<List.Item thumb={require("!svg-sprite!./relative/path/to/icon.svg")} />
+<List.Item thumb={require("!svg-sprite-loader!./relative/path/to/icon.svg")} />
 ...
 ```
 

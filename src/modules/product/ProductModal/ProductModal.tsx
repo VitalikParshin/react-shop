@@ -35,7 +35,7 @@ class ProductModal extends React.Component<any, any> {
           <Ripples during={200}>
             <Icon
                 className={styles.icon}
-                type={require("!svg-sprite!./back.svg")}
+                type={require("!svg-sprite-loader!./back.svg")}
                 size="md"
                 style={{
                   height: HEIGHT,

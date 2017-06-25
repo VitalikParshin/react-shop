@@ -30,7 +30,7 @@ class ShowOnlyViewed extends React.Component<IConnectedShowOnlyViewedProps, any>
           onClick={this.toggleViewed}
       >
         <Icon
-          type={require("!svg-sprite!./viewed.svg")}
+          type={require("!svg-sprite-loader!./viewed.svg")}
           size="lg"
           style={{fill: showOnlyViewed ? "orange" : "grey"}}
         />

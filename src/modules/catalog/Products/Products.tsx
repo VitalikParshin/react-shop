@@ -225,5 +225,5 @@ const mapStateToProps: any = (state) => ({
 
 export default compose(
     connect<IConnectedProductsProps, {}, IProductsProps>(mapStateToProps),
-    graphql(ALL_PRODUCTS_QUERY, options),
+    graphql(ALL_PRODUCTS_QUERY, (options as any)),
 )(Products);
