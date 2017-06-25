@@ -4,14 +4,14 @@ import { compose, gql, graphql } from "react-apollo";
 import { connect } from "react-redux";
 import { ACTION_TOOTLE_CATALOG } from "../constants";
 import { Catalog, utils } from "../index";
-import {ILayout} from "../model";
+import { ILayout } from "../model";
 
 interface IConnectedSideBarProps {
   layout: ILayout;
   dispatch: any;
 }
 
-class SidebarCatalog extends React.Component<IConnectedSideBarProps  & any, any> {
+class SidebarCatalog extends React.Component<IConnectedSideBarProps, any> {
 
   public onSetSidebarOpen = () => {
     const { dispatch } = this.props;

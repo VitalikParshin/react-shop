@@ -77,7 +77,7 @@ class ProductTabs extends React.Component<IConnectedTabProps & ITabsProps,  any>
           onChange={callback}
           onTabClick={handleTabClick}
         >
-          <TabPane className={styles.firstTabPane } tab="Инфо" key="1">
+          <TabPane className={styles.firstTabPane} tab="Инфо" key="1">
             <div className={styles.tabPaneArea}>
               <WingBlank size="md" style={{display: "flex", flexDirection: "column", paddingTop: "10px"}}>
                 <div>{dataProduct.name} {brand.name}</div>
