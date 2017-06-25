@@ -114,7 +114,7 @@ class FlatPages extends React.Component<any, any> {
   public render() {
     const { data }  = this.props;
     if (!data) {
-      return <div></div>;
+      return <div/>;
     }
 
     const { loading, flatPages } = data;
@@ -127,17 +127,18 @@ class FlatPages extends React.Component<any, any> {
         <List>
           {flatPages.map((page) => (
             <Link
-                to={{
-                  pathname: `/img/${page.id}`,
-                  // this is the trick!
-                  state: { modal: true, pages: flatPages },
-                }}
-              >
+              key={page.id}
+              to={{
+                pathname: `/img/${page.id}`,
+                // this is the trick!
+                state: { modal: true, pages: flatPages },
+              }}
+            >
               <List.Item
                 wrap
                 arrow="horizontal"
                 thumb={<Icon className={styles.icon} type={this.getIcon(page.id)} size="md"/>}
-                onClick={(e) => this.showModal(e, page) }
+                onClick={(e) => this.showModal(e, page)}
               >
                 {page.name}
               </List.Item>

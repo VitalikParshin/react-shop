@@ -50,7 +50,7 @@ class FlatPageModal extends React.Component<any, any> {
             <Ripples during={200}>
               <Icon
                   className={styles.backIcon}
-                  type={require("!svg-sprite!./back.svg")}
+                  type={require("!svg-sprite-loader!./back.svg")}
                   size="md"
                   style={{
                     height: HEIGHT,
@@ -62,7 +62,8 @@ class FlatPageModal extends React.Component<any, any> {
               {(page.map((el) => el.name))}
             </h3>
           </Flex>
-          <div className={styles.flatpage}
+          <div
+            className={styles.flatpage}
             dangerouslySetInnerHTML={createMarkup(page.map((el) => el.content))}
             style={{
               marginTop: 100,

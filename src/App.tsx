@@ -8,7 +8,7 @@ import client from "./graphqlClient";
 import history from "./history";
 import {FlatPageModal, FlatPages, Layout} from "./modules/layout/index";
 import {Product, ProductModal} from "./modules/product/index";
-import { CategoryPage, FlatPage, HomePage, ProductPage } from "./pages/index";
+import { CategoryPage, HomePage, ProductPage } from "./pages/index";
 import store from "./store";
 
 class FlatPageSwitch extends React.Component<any, any> {
