@@ -168,9 +168,9 @@ class ProductTabs extends React.Component<IConnectedTabProps & ITabsProps,  any>
                   </Flex>
                 );
               }}>
-                {attributes.map((el, i) =>
+                {attributes.map((el, index) =>
                   <List.Item
-                    key={i}
+                    key={index}
                     extra={el.values.map((v) => v.name).join(", ")}
                     style={{fontSize: "12px"}}>{el.name}
                   </List.Item>,
@@ -183,8 +183,8 @@ class ProductTabs extends React.Component<IConnectedTabProps & ITabsProps,  any>
                         key={i}
                         extra={
                           el.attributes.length !== 0
-                          ? el.attributes.slice(0, 3).map((e) => e.values.map((i) => i.value) ).join("x") +
-                            " " + el.attributes.slice(5, 6).map((e) => e.values.map((i) => i.name))
+                          ? el.attributes.slice(0, 3).map((e) => e.values.map((v) => v.value) ).join("x") +
+                            " " + el.attributes.slice(5, 6).map((e) => e.values.map((v) => v.name))
                           : el.article
                         }
                     >
@@ -196,7 +196,7 @@ class ProductTabs extends React.Component<IConnectedTabProps & ITabsProps,  any>
                 }
               </List>
 
-              {/* about Product*/}
+              {/* About Product */}
               <List className="my-list" renderHeader={() => {
                 return (
                   <Flex style={{ color: "#1296db"}}>

@@ -3,6 +3,7 @@
 }
 
 .buy {
+  border-top: 1px solid lightgray;
   bottom: 0;
   position: fixed;
   width: 100%;
@@ -10,8 +11,8 @@
 }
 
 .buyPrice {
-  background-color: #fb039e;
-  color: #f1f901;
+  background-color: #f5f5f9;
+  color: black;
   height: 0.7rem;
   line-height: 0.6rem;
   text-align: center;
@@ -19,8 +20,8 @@
 }
 
 .buyButton {
-  background-color: #0379FF;
-  color: #f7f7ae;
+  background-color: #2474CC;
+  color: white;
   height: 0.7rem;
   line-height: 0.6rem;
   text-align: center;

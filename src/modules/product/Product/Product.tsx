@@ -81,7 +81,6 @@ class Product extends React.Component<IConnectedProductProps & IProductProps, an
     const { brand, images, subProducts } = product;
     const activeSubProduct = getActiveSubProduct(subProducts, subProductId);
 
-      // <div style={{ border: "4px solid black", textAlign: "left" }}>
     return (
       <div className={styles.product}>
         <Images images={images} />
