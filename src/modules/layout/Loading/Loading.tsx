@@ -7,7 +7,7 @@ const styles = require("./styles.css");
 const Loading = () => {
   return (
     <div className={styles.icon}>
-      <Icon type={require("!svg-sprite!./loading.svg")} size="lg" />
+      <Icon type={require("!svg-sprite-loader!./loading.svg")} size="lg" />
     </div>
   );
 };

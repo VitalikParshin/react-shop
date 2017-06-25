@@ -13,17 +13,17 @@ const config = {
     entry: {
         bundle: [
             'react',
-            'react-dom', 
-            'react-redux', 
-            'react-router', 
+            'react-dom',
+            'react-redux',
+            'react-router',
             'react-router-dom',
-            'react-router-redux', 
+            'react-router-redux',
             'redux',
             'redux-thunk',
             'classnames',
             'es6-promise',
             'immutable',
-            ]
+        ]
     },
     output: {
         path: __DEV__ ? CACHE_PATH : LIB_PATH,
@@ -31,8 +31,8 @@ const config = {
         library: '[name]_library'
     },
     plugins: [
-        new webpack.DllPlugin({        
-            path: path.join(__DEV__ ? CACHE_PATH : LIB_PATH, '[name]-manifest.json'), 
+        new webpack.DllPlugin({
+            path: path.join(__DEV__ ? CACHE_PATH : LIB_PATH, '[name]-manifest.json'),
             name: '[name]_library'
         }),
         new webpack.DefinePlugin({
@@ -69,7 +69,7 @@ function callback(err, stats) {
             children: false,
             // modules: true,
             // modulesSort: 'size'
-        }));  
+        }));
     }
 }
 

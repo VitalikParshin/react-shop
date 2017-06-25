@@ -74,9 +74,10 @@ class Catalog extends React.Component < IConnectedCatalogProps & ICatalogProps, 
     return (
       <div style={style}>
         {startCats.map((parent, i) => (
-          <div>
+          <div key={i}>
             <h2>{parent.name}</h2>
             <SubCatalog
+              key={i}
               categories={childrenMap[parent.id]}
               isDrawer={isDrawer}
             />
@@ -87,9 +88,7 @@ class Catalog extends React.Component < IConnectedCatalogProps & ICatalogProps, 
   }
 }
 
-const mapStateToProps: any = (state) => ({
-  router: state.router,
-});
+const mapStateToProps: any = (state) => ({});
 
 export default compose(
     connect<IConnectedCatalogProps, {}, ICatalogProps>(mapStateToProps),

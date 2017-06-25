@@ -8,6 +8,7 @@
 *.diff
 *.patch
 *.bak
+*.log
 .DS_Store
 Thumbs.db
 .project
@@ -30,3 +31,5 @@ steam.dmg
 !.vscode/launch.json
 !.vscode/tasks.json
 !.vscode/settings.json
+
+bundle*

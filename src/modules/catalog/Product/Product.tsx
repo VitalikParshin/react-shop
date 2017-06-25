@@ -10,32 +10,12 @@ import * as React from "react";
 import { connect } from "react-redux";
 import Ripples from "react-ripples";
 import { Link } from "react-router-dom";
-import styled from "../../../styled-components";
 import { Image, Images, scaleImageSize } from "../../product/index";
 import {IBrand, IImageWithColor, IProduct, ISubProduct} from "../../product/model";
 import {ICatalog} from "../model";
 
-const ImageContainerStyled = styled.div`
-  display: flex;
-  justify-content: center;
-  align-content: center;
-  height: ${(props) => (props as any).height}px;
-  img {
-    height: 100%;
-    object-fit: contain;
-    width: 100%;
-  }
-`;
-
-const ProductStyled = styled.div`
-  background: white;
-  border: 1px solid ${(props) => (props as any).isViewed ? "orange" : "lightgrey"};
-  border-radius: ${(props) => (props as any).borderRadius}px;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
-  dispalay: block;
-  transition: all 0.3s cubic-bezier(.25,.8,.25,1);
-  width: ${(props) => (props as any).width}px;
-` as any;
+// tslint:disable-next-line:no-var-requires
+const styles = require("./styles.css");
 
 const getMinOfArray = (numArray) => {
   return Math.min.apply(null, numArray);
@@ -54,7 +34,8 @@ interface IProductProps {
   imagesWithColor: [IImageWithColor];
 }
 
-class Product extends React.Component<IConnectedProductProps & IProductProps, any> {
+// class Product extends React.Component<IConnectedProductProps & IProductProps, any> {
+class Product extends React.Component<any, any> {
 
   public state = {
     titleImage: {},
@@ -88,19 +69,19 @@ class Product extends React.Component<IConnectedProductProps & IProductProps, an
 
     let cardPadding: number;
     let borderRadius: number;
-    let cardWidth = Math.round(window.innerWidth / 2);
+    let width = Math.round(window.innerWidth / 2);
     if (window.innerWidth <= 640) {
       cardPadding = 10;
       borderRadius = 4;
-      cardWidth -= 22;
+      width -= 22;
     } else if (window.innerWidth <= 750) {
       cardPadding = 14;
       borderRadius = 6;
-      cardWidth -= 28;
+      width -= 28;
     } else {
       cardPadding = 15;
       borderRadius = 8;
-      cardWidth -= 32;
+      width -= 32;
     }
 
     const maxImageHeight = Math.max(
@@ -108,15 +89,18 @@ class Product extends React.Component<IConnectedProductProps & IProductProps, an
     );
 
     return (
-      <ProductStyled
-          borderRadius
-          isViewed={this.isViewed()}
-          width={cardWidth}
+      <div
+          className={styles.root}
+          style={{
+            border: `1px solid ${this.isViewed() ? "orange" : "lightgrey"}`,
+            borderRadius,
+            width,
+          }}
       >
         {this.isViewed() ? (
           <div style={{position: "absolute", top: 3, left: 10}}>
             <Icon
-              type={require("!svg-sprite!./viewed.svg")}
+              type={require("!svg-sprite-loader!./viewed.svg")}
               size="sm"
               style={{fill: "orange"}}
             />
@@ -129,9 +113,12 @@ class Product extends React.Component<IConnectedProductProps & IProductProps, an
               pathname: url,
               state: { modal: true },
             }}>
-              <ImageContainerStyled height={maxImageHeight}>
+              <div
+                className={styles.imageContainer}
+                style={{height: maxImageHeight}}
+              >
                 <img src={titleImage.src}/>
-              </ImageContainerStyled>
+              </div>
             </Link>
 
             {/*<Images images={imagesWithColor}/>*/}
@@ -140,9 +127,10 @@ class Product extends React.Component<IConnectedProductProps & IProductProps, an
             {imagesWithColor.length > 1 ?
               (
                 <Flex justify="center">
-                  {imagesWithColor.map((image) => (
+                  {imagesWithColor.map((image, i) => (
                     <Icon
-                      type={require("!svg-sprite!./dot.svg")}
+                      key={i}
+                      type={require("!svg-sprite-loader!./dot.svg")}
                       size={image.id === titleImage.id ? "lg" : "md"}
                       style={{
                         fill: image.color,
@@ -163,7 +151,7 @@ class Product extends React.Component<IConnectedProductProps & IProductProps, an
             </div>
           </div>
         <WhiteSpace size="sm" />
-      </ProductStyled>
+      </div>
     );
   }
 }
@@ -172,4 +160,5 @@ const mapStateToProps: any = (state) => ({
   catalog: state.catalog,
 });
 
-export default connect<IConnectedProductProps, {}, IProductProps>(mapStateToProps)(Product);
+// export default connect<IConnectedProductProps, {}, IProductProps>(mapStateToProps)(Product);
+export default connect<any, any, any>(mapStateToProps)(Product);

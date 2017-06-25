@@ -6,7 +6,6 @@ import { connect } from "react-redux";
 import Ripples from "react-ripples";
 import { Link } from "react-router-dom";
 import { push } from "react-router-redux";
-import styled from "../../../styled-components";
 import {ACTION_ADD_VIEWED_CATEGORY} from "../../catalog/constants";
 import { ICategory } from "../../product/model";
 import { ACTION_DISABLE_CATALOG, ACTION_RESET } from "../constants";
@@ -37,10 +36,6 @@ function chunk(arr, len = 1) {
   }
   return chunks;
 }
-
-const CardStyled: any = styled(Card)`
-  border: 1px solid ${(props) => (props as any).isViewed ? "orange" : "lightgrey"};
-`;
 
 class SubCatalog extends React.Component<IConnectedSubCatalogProps & ISubCatalogProps, any> {
   public state = {
@@ -75,42 +70,42 @@ class SubCatalog extends React.Component<IConnectedSubCatalogProps & ISubCatalog
 
     return (
       <div>
-        {chunk(categories, 2).map((cats) => (
-          <Flex justify="center">
+        {chunk(categories, 2).map((cats, i) => (
+          <Flex justify="center" key={i}>
             {cats.map((cat, index) => (
               <Flex.Item
                   className={styles.flexItem}
                   key={`cat${index}`}
               >
-                <CardStyled
-                  isViewed={this.isViewed(cat.id)}
-                >
-
-                  <Ripples>
-
-                    <div
-                        className={styles.card}
-                        style={{
-                          opacity: this.isCurrentCategory(cat.id) ? 0.3 : 1,
-                        }}
-                        onClick={(e) => this.onClick(e, cat)}
-                    >
-                      <img
-                        src={cat.image || ""}
-                        onLoad={() => {
-                          // fire window resize event to change height
-                          window.dispatchEvent(new Event("resize"));
-                          this.setState({
-                            initialHeight: null,
-                          });
-                        }}
-                      />
-                      <div className={styles.name}>
-                        {cat.name}
+                <div style={{
+                  border: `1px solid ${this.isViewed(cat.id) ? "orange" : "lightgrey"}`,
+                }}>
+                  <Card>
+                    <Ripples>
+                      <div
+                          className={styles.card}
+                          style={{
+                            opacity: this.isCurrentCategory(cat.id) ? 0.3 : 1,
+                          }}
+                          onClick={(e) => this.onClick(e, cat)}
+                      >
+                        <img
+                          src={cat.image || ""}
+                          onLoad={() => {
+                            // fire window resize event to change height
+                            window.dispatchEvent(new Event("resize"));
+                            this.setState({
+                              initialHeight: null,
+                            });
+                          }}
+                        />
+                        <div className={styles.name}>
+                          {cat.name}
+                        </div>
                       </div>
-                    </div>
-                  </Ripples>
-                </CardStyled>
+                    </Ripples>
+                  </Card>
+                </div>
               </Flex.Item>
             ))}
           </Flex>

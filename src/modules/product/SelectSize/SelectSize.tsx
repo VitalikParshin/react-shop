@@ -47,22 +47,24 @@ class SelectSize extends React.Component <IConnectedSizeProps & ISizeProps, any 
         <List renderHeader={ () => {
           return (
             <div style={{display: "flex", alignItems: "flex-end"}}>
-              <Icon className={styles.SizeNameIcon} type={require("svg-sprite!./product-sizes.svg")}/>
+              <Icon className={styles.SizeNameIcon} type={require("svg-sprite-loader!./product-sizes.svg")}/>
               <div className={styles.SizeName}>Выберите Размер (Ш x В x Г) :</div>
             </div>
           );
         }}>
-          {subProducts.map((el) => (
+          {subProducts.map((el, index) => (
               <Item
+                  key={index}
                   onClick={() => this.onChangePrice(el.id)}
-                  thumb={el.id === this.props.product.subProductId ?
-                    <Icon
+                  thumb={
+                    el.id === this.props.product.subProductId
+                    ? <Icon
                         className={styles.checkIcon}
-                        type={require("svg-sprite!./check-circle.svg")}
+                        type={require("svg-sprite-loader!./check-circle.svg")}
                     />
-                    :
-                    <Icon
-                      type={require("svg-sprite!./circle.svg")}/>}
+                    : <Icon
+                      type={require("svg-sprite-loader!./circle.svg")}/>
+                  }
               >
                 {
                   el.attributes.length !== 0

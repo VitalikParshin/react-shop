@@ -43,8 +43,9 @@ class Images extends React.Component<IImagesProps, IImagesState> {
           height: maxImageHeight + 80,
         }}
       >
-        {this.props.images.map((image) => (
+        {this.props.images.map((image, i) => (
           <Flex
+              key={i}
               justify="center"
               align="center"
               style={{

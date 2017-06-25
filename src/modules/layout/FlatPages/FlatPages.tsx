@@ -37,7 +37,8 @@ function createMarkup(html) {
   return {__html: html};
 }
 
-class FlatPages extends React.Component<IConnectedFlatPagesProps & any, any> {
+// class FlatPages extends React.Component<IConnectedFlatPagesProps & any, any> {
+class FlatPages extends React.Component<any, any> {
 
   public state = {
     page: {
@@ -69,50 +70,50 @@ class FlatPages extends React.Component<IConnectedFlatPagesProps & any, any> {
     switch (_id) {
       // info
       case 4: {
-        return require("!svg-sprite!./about.svg");
+        return require("!svg-sprite-loader!./about.svg");
       }
       // contacts
       case 5: {
-        return require("!svg-sprite!./contacts.svg");
+        return require("!svg-sprite-loader!./contacts.svg");
       }
       // exchange and return
       case 8: {
-        return require("!svg-sprite!./exchange.svg");
+        return require("!svg-sprite-loader!./exchange.svg");
       }
       // make order
       case 7: {
-        return require("!svg-sprite!./order.svg");
+        return require("!svg-sprite-loader!./order.svg");
       }
       // buyers
       case 10: {
-        return require("!svg-sprite!./buyers.svg");
+        return require("!svg-sprite-loader!./buyers.svg");
       }
       // discount card
       case 6: {
-        return require("!svg-sprite!./discount.svg");
+        return require("!svg-sprite-loader!./discount.svg");
       }
       // schedule of work
       case 14: {
-        return require("!svg-sprite!./schedule.svg");
+        return require("!svg-sprite-loader!./schedule.svg");
       }
       // shipping and payment
       case 2: {
-        return require("!svg-sprite!./shipping.svg");
+        return require("!svg-sprite-loader!./shipping.svg");
       }
       // rozygrish
       case 15: {
-        return require("!svg-sprite!./roulette.svg");
+        return require("!svg-sprite-loader!./roulette.svg");
       }
       // suppliers
       case 11: {
-        return require("!svg-sprite!./info.svg");
+        return require("!svg-sprite-loader!./info.svg");
       }
       // guarantee
       case 3: {
-        return require("!svg-sprite!./guarantee.svg");
+        return require("!svg-sprite-loader!./guarantee.svg");
       }
       default: {
-        return require("!svg-sprite!./transport.svg");
+        return require("!svg-sprite-loader!./transport.svg");
       }
     }
   }
@@ -131,8 +132,9 @@ class FlatPages extends React.Component<IConnectedFlatPagesProps & any, any> {
     return (
       <div>
         <List>
-          {flatPages.map((page) => (
+          {flatPages.map((page, i) => (
             <List.Item
+              key={i}
               wrap
               arrow="horizontal"
               thumb={<Icon className={styles.icon} type={this.getIcon(page.id)} size="md"/>}
@@ -164,7 +166,7 @@ class FlatPages extends React.Component<IConnectedFlatPagesProps & any, any> {
             <Ripples during={200}>
               <Icon
                   className={styles.backIcon}
-                  type={require("!svg-sprite!./back.svg")}
+                  type={require("!svg-sprite-loader!./back.svg")}
                   size="md"
                   style={{
                     height: HEIGHT,
@@ -204,5 +206,5 @@ export default compose(
         || layout.openMenu
       ),
     }),
-  }),
+  } as any),
 )(FlatPages);

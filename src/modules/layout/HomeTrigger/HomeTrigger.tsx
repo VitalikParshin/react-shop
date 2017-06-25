@@ -3,7 +3,7 @@ import * as React from "react";
 import {compose} from "react-apollo";
 import { connect } from "react-redux";
 import Ripples from "react-ripples";
-import {Link} from "react-router-dom";
+import {Link, NavLink} from "react-router-dom";
 import { ACTION_RESET, ACTION_TOOTLE_MENU } from "../../layout/constants";
 import {ILayout} from "../model";
 
@@ -20,6 +20,30 @@ interface IHomeTriggerProps {
   height: number;
 }
 
+const Logo = ({height, isActive}) => {
+  return (
+    <Flex
+        className={styles.homeTrigger}
+        align="center"
+        style={{
+          height,
+          padding: `0 20px`,
+        }}
+    >
+      BUY
+      <Icon
+          className={styles.icon}
+          type={require("!svg-sprite-loader!./logo.svg")}
+          size="md"
+          style={{
+            fill: isActive ? "orange" : "white",
+          }}
+      />
+      BAG
+    </Flex>
+  );
+};
+
 class HomeTrigger extends React.Component<IConnectedHomeTriggerProps & IHomeTriggerProps, any> {
 
   public onClick = (e) => {
@@ -29,27 +53,18 @@ class HomeTrigger extends React.Component<IConnectedHomeTriggerProps & IHomeTrig
 
   public render() {
     const { router, height } = this.props;
-    return (
-      <Ripples onClick={this.onClick}>
+    const isActive = router.location.pathname === "/";
+    if (isActive) {
+      return <Logo height isActive={true} />;
+    } else {
+      return (
         <Link to="/">
-          <Flex
-              className={styles.homeTrigger}
-              align="center"
-              style={{padding: `0 ${height / 3}px`, height}}
-          >BUY
-            <Icon
-                className={styles.icon}
-                type={require("!svg-sprite!./packet_filled.svg")}
-                size="md"
-                style={{
-                  fill: router.location.pathname === "/" ? "orange" : "white",
-                }}
-            />
-            BAG
-          </Flex>
+          <Ripples onClick={this.onClick}>
+            <Logo height isActive={false} />
+          </Ripples>
         </Link>
-      </Ripples>
-    );
+      );
+    }
   }
 }
 

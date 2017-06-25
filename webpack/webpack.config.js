@@ -13,14 +13,16 @@ const SRC_PATH = path.join(__dirname, '../src'),
 
 const __DEV__ = process.env.NODE_ENV !== 'production';
 
-const bundleConfig = __DEV__ ? 
-    require(STATIC_PATH + "/cache/bundle-config.json") 
+const ExtractTextPlugin = require("extract-text-webpack-plugin");
+
+const bundleConfig = __DEV__ ?
+    require(STATIC_PATH + "/cache/bundle-config.json")
     : require(STATIC_PATH + "/dist/lib/bundle-config.json");
 
 module.exports = {
   	context: SRC_PATH,
 	entry: {
-        app: ['src/app.tsx']
+        app: ['src/main.tsx']
     },
     output: {
         path: DIST_PATH,
@@ -30,23 +32,64 @@ module.exports = {
     },
     module: {
         rules: [
-            { 
+            {
                 test: /\.ts(x?)$/,
                 use: [
                     {
                         loader: "babel-loader"
                     },
                     {
-                        loader: "ts-loader"
+                        loader: "ts-loader",
+                        options: {
+                            configFileName: __DEV__ ? "tsconfig.json" : "tsconfig.prod.json",
+                        }
                     }
                 ]
             },
+
             {
                 test: /\.less|.css$/,
-                use: []
+                use: [],
+                exclude: /src/,
             },
+
+            // project styles with CSS Modules
             {
-                test: /\.(jpg|jpeg|png|gif)(\?[a-z0-9=&.]+)?$/,        
+              test: /\.css$/,
+              include: [path.resolve(__dirname, "../src")],
+              use: ExtractTextPlugin.extract({
+                    fallback: "style-loader",
+                    use: {
+                        loader: "css-loader",
+                        options: {
+                            modules: true,
+                            importLoaders: 1,
+                            localIdentName: "[local]___[hash:base64:5]",
+                        }
+                    }
+              })
+            },
+
+
+            // project styles with CSS Modules
+            // {
+            //   test: /\.css$/,
+            //   use: ExtractTextPlugin.extract({
+            //       fallback: 'style-loader',
+            //       loader: [
+            //           "css-loader?modules&importLoaders=1&localIdentName=[local]___[hash:base64:5]",
+            //           "postcss-loader",
+            //       ],
+            //
+            //
+            //   }),
+            //   // loader: ExtractTextPlugin.extract('style-loader', 'css-loader?modules&importLoaders=1&localIdentName=[local]___[hash:base64:5]!postcss-loader'),
+            //   include: [path.resolve(__dirname, "./src")],
+            // },
+
+
+            {
+                test: /\.(jpg|jpeg|png|gif)(\?[a-z0-9=&.]+)?$/,
                 use: [
                     {
                         loader: "url-loader",
@@ -54,11 +97,14 @@ module.exports = {
                             limit: 8192
                         }
                     }
-                ]        
+                ]
             },
             {
-                test: /\.svg$/,        
-                loader: 'svg-sprite-loader'
+                test: /\.svg$/,
+                loader: 'svg-sprite-loader',
+                include: [
+                    require.resolve('antd-mobile').replace(/warn\.js$/, ''),
+                ],
             }
         ]
     },
@@ -75,7 +121,9 @@ module.exports = {
     },
     plugins: [
         new webpack.DefinePlugin({
-            'process.env.NODE_ENV': __DEV__ ? JSON.stringify('development') : JSON.stringify('production')
+          "process.env.NODE_ENV": JSON.stringify(process.env.NODE_ENV),
+          "process.env.DEBUG": process.env.NODE_ENV == "development",
+          "process.env.DEBUG_GRAPHQL": process.env.DEBUG_GRAPHQL,
         }),
         new HtmlwebpackPlugin({
             filename: 'index.html',
