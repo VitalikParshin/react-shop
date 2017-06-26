@@ -16,3 +16,19 @@
   object-fit: contain;
   width: 100%;
 }
+
+.info {
+  padding: 10px;
+}
+
+.title {
+  color: black;
+  line-height: 0.25rem;
+  font-size: 0.25rem;
+}
+
+.price {
+  color: #468847;
+  font-size: 0.3rem;
+  font-weight: bold;
+}

@@ -148,21 +148,20 @@ class Product extends React.Component<any, any> {
               </Flex>
             ) : ""
           }
+        </div>
 
-          <Link {...linkParams}>
-            <div style={{lineHeight: "0.25rem", fontSize: "0.25rem", marginTop: cardPadding}}>
+        <Link {...linkParams}>
+          <div className={styles.info}>
+            <div className={styles.title} style={{marginTop: cardPadding}}>
               {name}
               <br/>
               {brand.name} {subProduct.article}
             </div>
-            <div style={{fontWeight: "bold", fontSize: "0.3rem", color: "#468847", marginTop: cardPadding}} >
+            <div className={styles.price} style={{marginTop: cardPadding}} >
               <div>{isSinglePrice ? "" : "от "}{parseInt(minPrice, 10)} грн</div>
             </div>
-          </Link>
-
-        </div>
-
-        <WhiteSpace size="sm" />
+          </div>
+        </Link>
 
       </div>
     );
