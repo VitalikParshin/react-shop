@@ -26,5 +26,6 @@
     "editor.tabSize": 2,
     "files.trimTrailingWhitespace": true,
     "files.insertFinalNewline": true,
-    "typescript.tsdk": "node_modules/typescript/lib"
+    "typescript.tsdk": "./node_modules/typescript/lib",
+    "typescript.check.tscVersion": false
   }
