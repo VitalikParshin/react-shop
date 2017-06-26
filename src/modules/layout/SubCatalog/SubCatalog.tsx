@@ -1,7 +1,7 @@
 import { Card, Flex } from "antd-mobile";
-import Touchable from "rc-touchable";
 import * as React from "react";
 import { compose, gql, graphql } from "react-apollo";
+import LazyLoad from "react-lazy-load";
 import { connect } from "react-redux";
 import Ripples from "react-ripples";
 import { Link } from "react-router-dom";
@@ -38,9 +38,6 @@ function chunk(arr, len = 1) {
 }
 
 class SubCatalog extends React.Component<IConnectedSubCatalogProps & ISubCatalogProps, any> {
-  public state = {
-    initialHeight: 400,
-  };
 
   public onClick = (event, cat) => {
     const {dispatch} = this.props;
@@ -91,16 +88,9 @@ class SubCatalog extends React.Component<IConnectedSubCatalogProps & ISubCatalog
                         }}
                         onClick={(e) => this.onClick(e, cat)}
                       >
-                        <img
-                          src={cat.image || ""}
-                          onLoad={() => {
-                            // fire window resize event to change height
-                            window.dispatchEvent(new Event("resize"));
-                            this.setState({
-                              initialHeight: null,
-                            });
-                          }}
-                        />
+                        <LazyLoad offset={1500}>
+                          <img src={cat.image || ""}/>
+                        </LazyLoad>
                         <div className={styles.name}>
                           {cat.name}
                         </div>

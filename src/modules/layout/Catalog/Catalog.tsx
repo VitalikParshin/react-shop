@@ -21,7 +21,7 @@ import { ACTION_TOOTLE_CATALOG } from "../../layout/constants";
 import { HEIGHT } from "../../layout/Header/Header";
 import { Loading, SubCatalog } from "../../layout/index";
 import { ICategory } from "../../product/model";
-import { CATALOG_QUERY } from "../model";
+import {CATALOG_QUERY, ILayout} from "../model";
 
 interface ICatalogData extends IData {
   categories: [ICategory];
@@ -29,6 +29,8 @@ interface ICatalogData extends IData {
 
 interface IConnectedCatalogProps {
   dispatch: any;
+  layout: ILayout;
+  router: any;
   data: ICatalogData;
 }
 
@@ -36,15 +38,14 @@ interface ICatalogProps {
   isDrawer: boolean;
 }
 
-class Catalog extends React.Component < IConnectedCatalogProps & ICatalogProps, any > {
+class Catalog extends React.Component<IConnectedCatalogProps & ICatalogProps, any> {
 
   public render() {
     const { isDrawer, data} = this.props;
-    const { loading, categories } = data;
-    if (loading === true) {
-      return <Loading />;
+    if (!data || data.loading) {
+      return <div />;
     }
-
+    const { loading, categories } = data;
     const startCats: any = [];
     const childrenMap: any = {};
     for (const cat of categories) {
@@ -88,9 +89,18 @@ class Catalog extends React.Component < IConnectedCatalogProps & ICatalogProps, 
   }
 }
 
-const mapStateToProps: any = (state) => ({});
+const mapStateToProps: any = (state) => ({
+  layout: state.layout,
+  router: state.router,
+});
 
 export default compose(
-    connect<IConnectedCatalogProps, {}, ICatalogProps>(mapStateToProps),
-    graphql(CATALOG_QUERY),
+  connect<IConnectedCatalogProps, {}, ICatalogProps>(mapStateToProps),
+  graphql(CATALOG_QUERY, {
+    options: ({ layout, router }) => ({
+      skip: !(
+        router.location.pathname === "/" || layout.openCatalog
+      ),
+    }),
+  } as any),
 )(Catalog);

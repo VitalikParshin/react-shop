@@ -11,6 +11,10 @@ interface IConnectedSideBarProps {
   dispatch: any;
 }
 
+const CatalogMenu = (props) => {
+  return <div><Catalog isDrawer={true}/></div>;
+};
+
 class SidebarCatalog extends React.Component<IConnectedSideBarProps, any> {
 
   public onSetSidebarOpen = () => {
@@ -23,7 +27,7 @@ class SidebarCatalog extends React.Component<IConnectedSideBarProps, any> {
     return (
       <Drawer
         touch={utils.swipeEnabled()}
-        sidebar={<Catalog isDrawer={true}/>}
+        sidebar={<CatalogMenu/>}
         open={layout.openCatalog}
         onOpenChange={this.onSetSidebarOpen as any}
       >

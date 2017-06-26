@@ -37,8 +37,7 @@ function createMarkup(html) {
   return {__html: html};
 }
 
-// class FlatPages extends React.Component<IConnectedFlatPagesProps & any, any> {
-class FlatPages extends React.Component<any, any> {
+class FlatPages extends React.Component<IConnectedFlatPagesProps & any, any> {
 
   public state = {
     page: {
@@ -151,8 +150,7 @@ export default compose(
   graphql(FLATPAGES_QUERY, {
     options: ({ layout, router }) => ({
       skip: !(
-        router.location.pathname === "/"
-        || layout.openMenu
+        router.location.pathname === "/" || layout.openMenu
       ),
     }),
   } as any),

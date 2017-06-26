@@ -21,12 +21,11 @@ import {Loading, utils} from "../../layout/index";
 import {ILayout} from "../../layout/model";
 import {ICategory} from "../../product/model";
 import { Product, Products } from "../index";
-// import {CATEGORY_QUERY} from "../model";
+import { CATEGORY_QUERY } from "../model";
 
 // tslint:disable-next-line:no-var-requires
 const styles = require("./styles.css");
 
-// import { CATEGORY_QUERY } from "../model";
 interface IConnectedCategoryProps {
   dispatch: any;
   layout: ILayout;
@@ -53,21 +52,21 @@ class Category extends React.Component<IConnectedCategoryProps & ICategoryProps,
       id,
       dispatch,
       layout,
-      // data,
+      data,
     } = this.props;
 
-    // const { loading, category } = data;
-    // if (loading === true) {
-    //   return <Loading />;
-    // }
-    const category = client.readFragment({
-      fragment: gql`
-        fragment categoryName on CategoryType {
-          name
-        }
-      `,
-      id: `CategoryType:${id}`,
-    }) as ICategory;
+    const { loading, category } = data;
+    if (loading === true) {
+      return <Loading />;
+    }
+    // const category = client.readFragment({
+    //   fragment: gql`
+    //     fragment categoryName on CategoryType {
+    //       name
+    //     }
+    //   `,
+    //   id: `CategoryType:${id}`,
+    // }) as ICategory;
     return (
       <div style={{margin: "20px 10px"}}>
         {
@@ -87,5 +86,5 @@ const mapStateToProps: any = (state) => ({
 
 export default compose(
     connect<IConnectedCategoryProps, {}, ICategoryProps>(mapStateToProps),
-    // graphql(CATEGORY_QUERY, options),
+    graphql(CATEGORY_QUERY, options),
 )(Category);

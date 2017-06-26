@@ -12,6 +12,7 @@ import Ripples from "react-ripples";
 import { Link } from "react-router-dom";
 import { Image, Images, scaleImageSize } from "../../product/index";
 import {IBrand, IImageWithColor, IProduct, ISubProduct} from "../../product/model";
+import LazyLoad from "react-lazy-load";
 import {ICatalog} from "../model";
 
 // tslint:disable-next-line:no-var-requires
@@ -126,7 +127,9 @@ class Product extends React.Component<any, any> {
               className={styles.imageContainer}
               style={{height: maxImageHeight}}
             >
-              <img src={titleImage.src}/>
+              <LazyLoad height={maxImageHeight} offset={1500}>
+                <img src={titleImage.src}/>
+              </LazyLoad>
             </div>
           </Link>
 
@@ -172,5 +175,4 @@ const mapStateToProps: any = (state) => ({
   catalog: state.catalog,
 });
 
-// export default connect<IConnectedProductProps, {}, IProductProps>(mapStateToProps)(Product);
-export default connect<any, any, any>(mapStateToProps)(Product);
+export default connect<IConnectedProductProps, {}, IProductProps>(mapStateToProps)(Product);
