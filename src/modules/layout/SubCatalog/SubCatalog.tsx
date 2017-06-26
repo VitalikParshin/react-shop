@@ -77,17 +77,19 @@ class SubCatalog extends React.Component<IConnectedSubCatalogProps & ISubCatalog
                   className={styles.flexItem}
                   key={`cat${index}`}
               >
-                <div style={{
-                  border: `1px solid ${this.isViewed(cat.id) ? "orange" : "lightgrey"}`,
-                }}>
+                <div
+                  style={{
+                    border: `1px solid ${this.isViewed(cat.id) ? "orange" : "lightgrey"}`,
+                  }}
+                >
                   <Card>
                     <Ripples>
                       <div
-                          className={styles.card}
-                          style={{
-                            opacity: this.isCurrentCategory(cat.id) ? 0.3 : 1,
-                          }}
-                          onClick={(e) => this.onClick(e, cat)}
+                        className={styles.card}
+                        style={{
+                          opacity: this.isCurrentCategory(cat.id) ? 0.3 : 1,
+                        }}
+                        onClick={(e) => this.onClick(e, cat)}
                       >
                         <img
                           src={cat.image || ""}

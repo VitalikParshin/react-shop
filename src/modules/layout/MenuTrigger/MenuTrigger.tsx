@@ -29,7 +29,7 @@ class MenuTrigger extends React.Component<IConnectedMenuTriggerProps & IMenuTrig
     return (
       <Ripples>
         <Icon
-          type={require("!svg-sprite-loader!./menu.svg") }
+          type={require("!svg-sprite-loader!./menu.svg")}
           size="xs"
           onClick={this.onClick}
           style={{

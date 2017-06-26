@@ -49,14 +49,6 @@ class FlatPages extends React.Component<any, any> {
     showModal: false,
   };
 
-  public showModal = (e, page) => {
-    e.preventDefault();
-    this.setState({
-      page,
-      showModal: true,
-    });
-  }
-
   public getIcon = (id) => {
     // tslint:disable-next-line:variable-name
     const _id = parseInt(id, 10);
@@ -137,8 +129,7 @@ class FlatPages extends React.Component<any, any> {
               <List.Item
                 wrap
                 arrow="horizontal"
-                thumb={<Icon className={styles.icon} type={this.getIcon(page.id)} size="md"/>}
-                onClick={(e) => this.showModal(e, page)}
+                thumb={<Icon type={this.getIcon(page.id)} size="md"/>}
               >
                 {page.name}
               </List.Item>
