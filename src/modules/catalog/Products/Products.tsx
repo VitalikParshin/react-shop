@@ -1,7 +1,7 @@
+import { throttle } from "lodash";
 import * as React from "react";
 import { compose, gql, graphql } from "react-apollo";
 import { connect } from "react-redux";
-
 import {
   Button,
   Card,
@@ -26,6 +26,12 @@ import {ALL_PRODUCTS_QUERY, IAllProduct, ICatalog} from "../model";
 const styles = require("./styles.css");
 
 const LIMIT = 10;
+
+// miliseconds bettwen scroll event
+const SCROLL_THROTTLE = 500;
+
+// px from bottom to start fetch more products
+const FETCH_MORE_THRESHOLD = 1500;
 
 interface IDataProducts extends IData {
   allProducts: IAllProduct;
@@ -90,7 +96,6 @@ class Products extends React.Component<IConnectedProductsProps & IProductsProps,
   public ref;
 
   public bottomHeight: number;
-  public threshold = 800;
 
   public state = {
     haveMoreProducts: true,
@@ -125,18 +130,25 @@ class Products extends React.Component<IConnectedProductsProps & IProductsProps,
     this.setState({scrolledProducts: scrolled});
 
     if (event.srcElement.scrollTop > this.bottomHeight && haveMoreProducts === true) {
-      window.removeEventListener("scroll", this.handleScroll, true);
       fetchMore();
     }
+  }
+
+  componentDidMount() {
+    const { loading, allProducts } = this.props.data;
+    window.addEventListener(
+      "scroll",
+      throttle(this.handleScroll, SCROLL_THROTTLE),
+      true,
+    );
   }
 
   public componentDidUpdate = (prevProps, prevState) => {
     const { loading, allProducts } = this.props.data;
     if (loading === false) {
-      window.addEventListener("scroll", this.handleScroll, true);
       this.bottomHeight = (
         this.ref.offsetTop + this.ref.clientHeight
-        - window.innerHeight - this.threshold
+        - window.innerHeight - FETCH_MORE_THRESHOLD
       );
     }
   }

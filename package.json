@@ -51,7 +51,7 @@
     "@types/immutable": "^3.8.7",
     "@types/isomorphic-fetch": "0.0.30",
     "@types/jwt-decode": "^1.4.28",
-    "@types/lodash": "ts2.0",
+    "@types/lodash": "ts2.3",
     "@types/node": "^8.0.0",
     "@types/react": "~0.14.55",
     "@types/react-redux": "^4.4.40",
