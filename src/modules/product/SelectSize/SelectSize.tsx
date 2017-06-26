@@ -44,14 +44,16 @@ class SelectSize extends React.Component <IConnectedSizeProps & ISizeProps, any 
     const { subProducts } = this.props;
 
     return (
-        <List renderHeader={ () => {
-          return (
-            <div style={{display: "flex", alignItems: "flex-end"}}>
-              <Icon className={styles.SizeNameIcon} type={require("svg-sprite-loader!./product-sizes.svg")}/>
-              <div className={styles.SizeName}>Выберите Размер (Ш x В x Г) :</div>
-            </div>
-          );
-        }}>
+        <List
+          renderHeader={ () => {
+            return (
+              <div style={{display: "flex", alignItems: "flex-end"}}>
+                <Icon className={styles.SizeNameIcon} type={require("svg-sprite-loader!./product-sizes.svg")}/>
+                <div className={styles.SizeName}>Выберите Размер (Ш x В x Г) :</div>
+              </div>
+            );
+          }}
+        >
           {subProducts.map((el, index) => (
               <Item
                   key={index}
@@ -62,8 +64,7 @@ class SelectSize extends React.Component <IConnectedSizeProps & ISizeProps, any 
                         className={styles.checkIcon}
                         type={require("svg-sprite-loader!./check-circle.svg")}
                     />
-                    : <Icon
-                      type={require("svg-sprite-loader!./circle.svg")}/>
+                    : <Icon type={require("svg-sprite-loader!./circle.svg")} />
                   }
               >
                 {
