@@ -23,7 +23,7 @@ import {FlatPageModal, Loading} from "../index";
 const styles = require("./styles.css");
 
 interface IFlatPagesData extends IData {
-  flatPages: IFlatPage;
+  flatPages: [IFlatPage];
 }
 
 interface IConnectedFlatPagesProps {
@@ -37,7 +37,8 @@ function createMarkup(html) {
   return {__html: html};
 }
 
-class FlatPages extends React.Component<IConnectedFlatPagesProps & any, any> {
+// class FlatPages extends React.Component<IConnectedFlatPagesProps, any> {
+class FlatPages extends React.Component<any, any> {
 
   public state = {
     page: {

@@ -15,7 +15,6 @@
         "**/.vscode/chrome/": true,
         "**/*.js": true,
         "**/*.js.map": true,
-        "**/*.css.d.ts": true,
         "**/*.patch": true,
         "**/*.diff": true,
         "**/.history": true,

@@ -20,28 +20,48 @@ config.entry.app.unshift('react-hot-loader/patch');
 
 config.output.publicPath = _localPublicPath;
 
-config.module.rules[1].use = [
-  {
-    loader: "style-loader"
-  },
-  {
-    loader: "css-loader",
-    options: {
-      sourceMap: true,
-    }
-  },
-  {
-    loader: "postcss-loader"
-  },
-  {
-    loader: "less-loader",
-    options: {
-      sourceMap: true,
-      paths: [SRC_PATH],
-      modifyVars: customTheme
-    }
-  },
-];
+config.module.rules[1].use = ExtractTextPlugin.extract({
+  fallback: 'style-loader',
+  use: [
+    {
+      loader: "css-loader",
+    },
+    {
+      loader: "postcss-loader"
+    },
+    {
+      loader: "less-loader",
+      options: {
+        paths: [SRC_PATH],
+        modifyVars: customTheme
+      }
+    },
+  ],
+  exclude: /src/,
+});
+
+// config.module.rules[1].use = [
+//   {
+//     loader: "style-loader"
+//   },
+//   {
+//     loader: "css-loader",
+//     options: {
+//       sourceMap: true,
+//     }
+//   },
+//   {
+//     loader: "postcss-loader"
+//   },
+//   {
+//     loader: "less-loader",
+//     options: {
+//       sourceMap: true,
+//       paths: [SRC_PATH],
+//       modifyVars: customTheme
+//     }
+//   },
+// ];
 
 config.plugins.push(new webpack.HotModuleReplacementPlugin());
 config.plugins.push(
