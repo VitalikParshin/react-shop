@@ -88,6 +88,13 @@ class Product extends React.Component<any, any> {
       ...imagesWithColor.map((img) => scaleImageSize(img.width, img.height).height),
     );
 
+    const linkParams = {
+      to: {
+        pathname: url,
+        state: { modal: true },
+      },
+    };
+
     return (
       <div
           className={styles.root}
@@ -97,52 +104,52 @@ class Product extends React.Component<any, any> {
             width,
           }}
       >
-        {this.isViewed() ? (
-          <div style={{position: "absolute", top: 3, left: 10}}>
-            <Icon
-              type={require("!svg-sprite-loader!./viewed.svg")}
-              size="sm"
-              style={{fill: "orange"}}
-            />
-          </div>
-        ) : ""}
+        {
+          this.isViewed()
+          ? (
+            <div style={{position: "absolute", top: 3, left: 10}}>
+              <Icon
+                type={require("!svg-sprite-loader!./viewed.svg")}
+                size="sm"
+                style={{fill: "orange"}}
+              />
+            </div>
+          )
+          : ""
+        }
 
         <WhiteSpace size="sm" />
-          <div style={{ padding: cardPadding }}>
-            <Link
-              to={{
-                pathname: url,
-                state: { modal: true },
-              }}
+
+        <div style={{ padding: cardPadding }}>
+          <Link {...linkParams}>
+            <div
+              className={styles.imageContainer}
+              style={{height: maxImageHeight}}
             >
-              <div
-                className={styles.imageContainer}
-                style={{height: maxImageHeight}}
-              >
-                <img src={titleImage.src}/>
-              </div>
-            </Link>
+              <img src={titleImage.src}/>
+            </div>
+          </Link>
 
-            {/*<Images images={imagesWithColor}/>*/}
+          {/* Images */}
+          {imagesWithColor.length > 1 ?
+            (
+              <Flex justify="center">
+                {imagesWithColor.map((image, i) => (
+                  <Icon
+                    key={i}
+                    type={require("!svg-sprite-loader!./dot.svg")}
+                    size={image.id === titleImage.id ? "lg" : "md"}
+                    style={{
+                      fill: image.color,
+                    }}
+                    onClick={(e) => this.changeTitleImage(e, image)}
+                  />
+                ))}
+              </Flex>
+            ) : ""
+          }
 
-            {/* Images */}
-            {imagesWithColor.length > 1 ?
-              (
-                <Flex justify="center">
-                  {imagesWithColor.map((image, i) => (
-                    <Icon
-                      key={i}
-                      type={require("!svg-sprite-loader!./dot.svg")}
-                      size={image.id === titleImage.id ? "lg" : "md"}
-                      style={{
-                        fill: image.color,
-                      }}
-                      onClick={(e) => this.changeTitleImage(e, image)}
-                    />
-                  ))}
-                </Flex>
-              ) : ""
-            }
+          <Link {...linkParams}>
             <div style={{lineHeight: "0.25rem", fontSize: "0.25rem", marginTop: cardPadding}}>
               {name}
               <br/>
@@ -151,8 +158,12 @@ class Product extends React.Component<any, any> {
             <div style={{fontWeight: "bold", fontSize: "0.3rem", color: "#468847", marginTop: cardPadding}} >
               <div>{isSinglePrice ? "" : "от "}{parseInt(minPrice, 10)} грн</div>
             </div>
-          </div>
+          </Link>
+
+        </div>
+
         <WhiteSpace size="sm" />
+
       </div>
     );
   }

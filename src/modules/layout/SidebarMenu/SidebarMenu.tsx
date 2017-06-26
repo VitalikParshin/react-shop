@@ -5,6 +5,7 @@ import { connect } from "react-redux";
 import {ACTION_TOOTLE_CATALOG, ACTION_TOOTLE_MENU} from "../constants";
 import {Menu, utils} from "../index";
 import {ILayout} from "../model";
+import {HEIGHT} from "../Header/Header";
 
 interface IConnectedSidebarMenu {
   layout: ILayout;
@@ -23,11 +24,12 @@ class SidebarMenu extends React.Component<IConnectedSidebarMenu & any, any> {
 
     return (
       <Drawer
-          touch={utils.swipeEnabled()}
-          sidebar={<Menu/>}
+          contentStyle={{marginTop: HEIGHT}}
           open={layout.openMenu}
           onOpenChange={this.onSetSidebarOpen as any}
-          contentStyle={{marginTop: 80}}
+          sidebar={<Menu/>}
+          sidebarStyle={{marginTop: HEIGHT}}
+          touch={utils.swipeEnabled()}
       >
         {this.props.children}
       </Drawer>

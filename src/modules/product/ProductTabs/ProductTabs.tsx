@@ -86,35 +86,9 @@ class ProductTabs extends React.Component<IConnectedTabProps & ITabsProps,  any>
                   {`Код товара: ${activeSubProduct.id}`}
                 </div>
               </WingBlank>
-              <WingBlank size="md">
-                <hr/>
-                <div style={{display: "flex", flexDirection: "row", justifyContent: "space-between"}}>
-                  <div style={{width: "35%"}}>
-                    <div className={styles.price}>{parseInt(activeSubProduct.price, 10)} грн</div>
-                    <div className={styles.oldPrice}>{parseInt(activeSubProduct.oldPrice, 10)} грн</div>
-                  </div>
-                  <div style={{width: "28%"}}>
-                    <Icon
-                        className={styles.deliveryIcon}
-                        type={require("svg-sprite-loader!./free-delivery.png")}
-                    />
-                  </div>
-                  <div style={{width: "42%"}}>
-                    <Button
-                      className="btn"
-                      style={{textColor: "white"}}
-                      size="small"
-                      icon={require("svg-sprite-loader!./basket.svg")}
-                    >
-                      В корзину
-                    </Button>
-                  </div>
-                </div>
-              </WingBlank>
-              <hr/>
 
               {/* Select Sizes */}
-              {subProducts.length > 1 ? <SelectSize subProducts={subProducts} /> : "" }
+              {subProducts.length > 1 ? <SelectSize subProducts={subProducts} /> : ""}
               <WhiteSpace/>
 
               {/* Select Colors*/}
@@ -123,7 +97,7 @@ class ProductTabs extends React.Component<IConnectedTabProps & ITabsProps,  any>
                   images.filter((el) => el.color !== "").length > 1
                   ?
                   <Flex>
-                    <Icon type={require("svg-sprite-loader!./product-sizes.svg")}  style={{color: "#1296db"}}/>
+                    <Icon type={require("svg-sprite-loader!./product-sizes.svg")} style={{color: "#1296db"}}/>
                     <div style={{color: "#1296db"}}>Выберите цвет :</div>
                     <div>
                       { images.filter((el) => el.color !== "").map((e, i) =>

@@ -1,0 +1,36 @@
+.price {
+  font-size: 40px;
+  color: #468847;
+}
+
+.oldPrice {
+  color: #b94a48;
+  font-size: 24px;
+  text-decoration: line-through;
+}
+
+.buy {
+  border-top: 1px solid lightgray;
+  bottom: 0;
+  position: fixed;
+  width: 100%;
+  z-index: 10;
+}
+
+.buyPrice {
+  background-color: #f5f5f9;
+  color: black;
+  height: 0.7rem;
+  line-height: 0.7rem;
+  text-align: center;
+  width: 100%;
+}
+
+.buyButton {
+  background-color: #468847;
+  color: white;
+  height: 0.7rem;
+  line-height: 0.7rem;
+  text-align: center;
+  width: 100%;
+}

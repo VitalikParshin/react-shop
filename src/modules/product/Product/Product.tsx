@@ -1,26 +1,24 @@
 import * as React from "react";
 import { connect } from "react-redux";
-import {ACTION_SELECT_COLOR, ACTION_SELECT_SUBPRODUCT} from "../constants";
+import { ACTION_SELECT_SUBPRODUCT } from "../constants";
 
-import { Button, Flex } from "antd-mobile";
-import { compose, gql, graphql } from "react-apollo";
-import Ripples from "react-ripples";
+import { compose, graphql } from "react-apollo";
 
 import {ACTION_ADD_VIEWED_PRODUCT} from "../../catalog/constants";
 import {Loading} from "../../layout/index";
-import {Images, ProductTabs } from "../index";
+import {Images, ProductTabs, ProductBuy } from "../index";
 import {ICurrentDataProduct, IProduct, PRODUCT_QUERY} from "../model";
+import {IData} from "../../../model";
 
 // tslint:disable-next-line:no-var-requires
 const styles = require("./styles.css");
 
-interface IData {
-  loading: boolean;
+interface IDataProduct extends IData {
   product: IProduct;
 }
 
 interface IConnectedProductProps {
-  data: IData;
+  data: IDataProduct;
   product: ICurrentDataProduct;
   dispatch: any;
 }
@@ -78,21 +76,15 @@ class Product extends React.Component<IConnectedProductProps & IProductProps, an
     if (loading === true || subProductId === null) {
       return <Loading/>;
     }
-    const { brand, images, subProducts } = product;
+    const { images, subProducts } = product;
     const activeSubProduct = getActiveSubProduct(subProducts, subProductId);
+    const { price, oldPrice } = activeSubProduct;
 
     return (
       <div className={styles.product}>
         <Images images={images} />
         <ProductTabs dataProduct={product} activeSubProduct={activeSubProduct} />
-        <Flex className={styles.buy}>
-          <Ripples className={styles.buyPrice}>
-            {parseInt(activeSubProduct.price, 10)} грн
-          </Ripples>
-          <Ripples className={styles.buyButton}>
-            Купить
-          </Ripples>
-        </Flex>
+        <ProductBuy price={price} oldPrice={oldPrice} />
       </div>
     );
   }

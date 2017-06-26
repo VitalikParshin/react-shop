@@ -1,5 +1,7 @@
 'use strict';
 
+require("dotenv").config();
+
 const path = require('path'),
     webpack = require('webpack'),
     HtmlwebpackPlugin = require('html-webpack-plugin'),
@@ -18,6 +20,8 @@ const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const bundleConfig = __DEV__ ?
     require(STATIC_PATH + "/cache/bundle-config.json")
     : require(STATIC_PATH + "/dist/lib/bundle-config.json");
+
+console.log('DOTENV', process.env);
 
 module.exports = {
   	context: SRC_PATH,

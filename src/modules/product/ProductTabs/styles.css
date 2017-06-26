@@ -15,19 +15,3 @@
   color: #b94a48;
   font-size: 24px;
 }
-
-.price {
-  font-size: 40px;
-  color: #468847;
-}
-
-.oldPrice {
-  color: #b94a48;
-  font-size: 24px;
-  text-decoration: line-through;
-}
-
-.deliveryIcon {
-  width: 150px;
-  height: 75px;
-}
