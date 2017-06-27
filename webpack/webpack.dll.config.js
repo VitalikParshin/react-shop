@@ -22,7 +22,6 @@ const config = {
             'redux-thunk',
             'classnames',
             'es6-promise',
-            'immutable',
         ]
     },
     output: {
@@ -44,9 +43,6 @@ const config = {
 
 if (__DEV__) {
     config.entry.bundle.push("redux-logger");
-    config.entry.bundle.push("redux-devtools");
-    config.entry.bundle.push("redux-devtools-dock-monitor");
-    config.entry.bundle.push("redux-devtools-log-monitor");
 } else {
     config.plugins.push(
         new webpack.optimize.UglifyJsPlugin({
