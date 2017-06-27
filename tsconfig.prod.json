@@ -2,7 +2,7 @@
     "compilerOptions": {
         "allowJs": false,
         "allowSyntheticDefaultImports": true,
-        "baseUrl": "./src",
+        // "baseUrl": "./src",
         "declaration": false,
         "jsx": "react",
         "lib": [

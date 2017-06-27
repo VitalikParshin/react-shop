@@ -20,5 +20,5 @@ def update():
         run('git reset --hard')
         run('git pull')
         run('yarn')
-        run('node_modules/typescript/bin/tsc')
-        run('yarn run build')
+        # run('node_modules/typescript/bin/tsc')
+        run('yarn run publish')
