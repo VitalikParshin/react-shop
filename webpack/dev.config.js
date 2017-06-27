@@ -37,7 +37,6 @@ config.module.rules[1].use = ExtractTextPlugin.extract({
       }
     },
   ],
-  exclude: /src/,
 });
 
 // config.module.rules[1].use = [
