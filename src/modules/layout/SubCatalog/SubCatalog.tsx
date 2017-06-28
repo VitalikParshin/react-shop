@@ -88,9 +88,7 @@ class SubCatalog extends React.Component<IConnectedSubCatalogProps & ISubCatalog
                         }}
                         onClick={(e) => this.onClick(e, cat)}
                       >
-                        <LazyLoad offset={1500}>
-                          <img src={cat.image || ""}/>
-                        </LazyLoad>
+                        <img src={cat.image || ""}/>
                         <div className={styles.name}>
                           {cat.name}
                         </div>
