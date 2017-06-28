@@ -34,7 +34,8 @@ class SidebarMenu extends React.Component<IConnectedSidebarMenu & any, any> {
           sidebar={<Menu/>}
           // sidebarStyle={{marginTop: HEIGHT}}
           sidebarClassName={styles.sideber}
-          touch={utils.swipeEnabled()}
+          // touch={utils.swipeEnabled()}
+          touch={false}
       >
         {this.props.children}
       </Sidebar>

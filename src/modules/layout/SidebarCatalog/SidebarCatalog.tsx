@@ -30,6 +30,8 @@ class SidebarCatalog extends React.Component<IConnectedSideBarProps, any> {
         touch={utils.swipeEnabled()}
         sidebar={<CatalogMenu/>}
         open={layout.openCatalog}
+        touchHandleWidth={50}
+        dragToggleDistance={60}
         // onOpenChange={this.onSetSidebarOpen as any}
         onSetOpen={this.onSetSidebarOpen as any}
       >
