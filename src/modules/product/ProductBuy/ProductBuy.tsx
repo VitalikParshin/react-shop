@@ -35,9 +35,9 @@ class ProductBuy extends React.Component<IConnectedProductBuyProps & IProductBuy
             }
           </div>
           {/*<Button className={styles.buyButton}>*/}
-          <Button className={styles.buyButton}>
+          <div className={styles.buyButton}>
             Купить
-          </Button>
+          </div>
         </Flex>
     );
   }
