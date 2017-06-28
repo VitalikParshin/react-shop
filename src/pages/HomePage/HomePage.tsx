@@ -22,7 +22,6 @@ class HomePage extends React.Component<any, any> {
         <FlatPages />
       </div>
     );
-
   }
 }
 
