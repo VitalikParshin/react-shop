@@ -12,7 +12,9 @@ class Layout extends React.Component<any, any> {
     return (
       <div>
         <Header/>
-        <div>{this.props.children}</div>
+        <SidebarCatalog>
+          <div>{this.props.children}</div>
+        </SidebarCatalog>
       </div>
     );
     // return (
