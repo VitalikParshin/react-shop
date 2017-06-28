@@ -28,8 +28,7 @@ class CatalogTrigger extends React.Component<IConnectedCatalogTriggerProps & ICa
     const { layout, height } = this.props;
 
     return (
-      <Ripples>
-        <Icon
+      <Icon
           type={require("!svg-sprite-loader!./catalog.svg")}
           size="md"
           onClick={this.onClick}
@@ -38,8 +37,7 @@ class CatalogTrigger extends React.Component<IConnectedCatalogTriggerProps & ICa
             height,
             padding: `0 ${height / 3}px`,
           }}
-        />
-      </Ripples>
+      />
     );
   }
 }
