@@ -28,16 +28,18 @@ class CatalogTrigger extends React.Component<IConnectedCatalogTriggerProps & ICa
     const { layout, height } = this.props;
 
     return (
-      <Icon
-          type={require("!svg-sprite-loader!./catalog.svg")}
-          size="md"
-          onClick={this.onClick}
-          style={{
-            fill: layout.openCatalog ? "orange" : "white",
-            height,
-            padding: `0 ${height / 3}px`,
-          }}
-      />
+      <Ripples>
+        <Icon
+            type={require("!svg-sprite-loader!./catalog.svg")}
+            size="md"
+            onClick={this.onClick}
+            style={{
+              fill: layout.openCatalog ? "orange" : "white",
+              height,
+              padding: `0 ${height / 3}px`,
+            }}
+        />
+      </Ripples>
     );
   }
 }

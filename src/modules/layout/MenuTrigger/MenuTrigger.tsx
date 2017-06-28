@@ -27,16 +27,18 @@ class MenuTrigger extends React.Component<IConnectedMenuTriggerProps & IMenuTrig
   public render() {
     const { layout, height } = this.props;
     return (
-      <Icon
-          type={require("!svg-sprite-loader!./menu.svg")}
-          size="xs"
-          onClick={this.onClick}
-          style={{
-              fill: layout.openMenu === true ? "orange" : "white",
-              height,
-              padding: `0 ${height / 3}px`,
-          }}
-      />
+      <Ripples>
+        <Icon
+            type={require("!svg-sprite-loader!./menu.svg")}
+            size="xs"
+            onClick={this.onClick}
+            style={{
+                fill: layout.openMenu === true ? "orange" : "white",
+                height,
+                padding: `0 ${height / 3}px`,
+            }}
+        />
+      </Ripples>
     );
   }
 }

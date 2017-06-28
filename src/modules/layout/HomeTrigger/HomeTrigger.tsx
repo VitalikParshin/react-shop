@@ -58,9 +58,11 @@ class HomeTrigger extends React.Component<IConnectedHomeTriggerProps & IHomeTrig
       return <Logo height isActive={true} />;
     } else {
       return (
-        <Link to="/" style={{height}}>
-          <Logo height isActive={false} />
-        </Link>
+        <Ripples>
+          <Link to="/" style={{height}}>
+            <Logo height isActive={false} />
+          </Link>
+        </Ripples>
       );
     }
   }
