@@ -9,23 +9,14 @@ import {Footer, Header, SidebarCatalog, SidebarMenu} from "../index";
 
 class Layout extends React.Component<any, any> {
   public render() {
-    // return (
-    //   <div>
-    //     <Header/>
-    //     <SidebarMenu>
-    //       <SidebarCatalog>
-    //         <div>{this.props.children}</div>
-    //       </SidebarCatalog>
-    //     </SidebarMenu>
-    //   </div>
-    // );
-
     return (
       <div>
         <Header/>
+        <SidebarMenu>
           <SidebarCatalog>
             <div>{this.props.children}</div>
           </SidebarCatalog>
+        </SidebarMenu>
       </div>
     );
   }

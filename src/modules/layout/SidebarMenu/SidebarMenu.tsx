@@ -1,11 +1,14 @@
-import { Drawer } from "antd-mobile";
 import * as React from "react";
 import { compose, gql, graphql } from "react-apollo";
 import { connect } from "react-redux";
+import Sidebar from "react-sidebar";
 import {ACTION_TOOTLE_CATALOG, ACTION_TOOTLE_MENU} from "../constants";
 import {Menu, utils} from "../index";
 import {ILayout} from "../model";
 import {HEIGHT} from "../Header/Header";
+
+// tslint:disable-next-line:no-var-requires
+const styles = require("./styles.css");
 
 interface IConnectedSidebarMenu {
   layout: ILayout;
@@ -23,16 +26,18 @@ class SidebarMenu extends React.Component<IConnectedSidebarMenu & any, any> {
     const { layout } = this.props;
 
     return (
-      <Drawer
-          contentStyle={{marginTop: HEIGHT}}
+      <Sidebar
+          // contentStyle={{marginTop: HEIGHT}}
+          contentClassName={styles.content}
           open={layout.openMenu}
-          onOpenChange={this.onSetSidebarOpen as any}
+          onSetOpen={this.onSetSidebarOpen as any}
           sidebar={<Menu/>}
-          sidebarStyle={{marginTop: HEIGHT}}
+          // sidebarStyle={{marginTop: HEIGHT}}
+          sidebarClassName={styles.sideber}
           touch={utils.swipeEnabled()}
       >
         {this.props.children}
-      </Drawer>
+      </Sidebar>
     );
   }
 }
