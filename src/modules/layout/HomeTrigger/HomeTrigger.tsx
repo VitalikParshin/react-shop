@@ -46,11 +46,6 @@ const Logo = ({height, isActive}) => {
 
 class HomeTrigger extends React.Component<IConnectedHomeTriggerProps & IHomeTriggerProps, any> {
 
-  public onClick = (e) => {
-    e.preventDefault();
-    this.props.dispatch({type: ACTION_RESET});
-  }
-
   public render() {
     const { router, height } = this.props;
     const isActive = router.location.pathname === "/";
