@@ -11,5 +11,5 @@
 
 .flexItem {
   text-align: center;
-  margin: 5px;
+  margin: 5px !important;
 }

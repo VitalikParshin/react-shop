@@ -35,17 +35,9 @@ class FlatPageModal extends React.Component<any, any> {
     return (
       <div className="modal">
           <Flex
+              className={styles.backPanel}
               justify="start"
               align="center"
-              style={{
-                backgroundColor: "rgb(0, 136, 204)",
-                color: "white",
-                left: 0,
-                position: "fixed",
-                right: 0,
-                top: 0,
-                width: "100%",
-              }}
           >
             <Ripples during={200}>
               <Icon

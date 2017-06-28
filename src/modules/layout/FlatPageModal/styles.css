@@ -1,4 +1,13 @@
-.backIcon{
+.backPanel {
+  background-color: #2474CC;
+  color: white;
+  left: 0;
+  position: fixed;
+  right: 0;
+  top: 0;
+  width: 100%;
+}
+.backIcon {
   padding: 0 20px;
 }
 

@@ -1,6 +1,11 @@
 .menu {
   background: white;
   height: 100%;
+  padding: 10px 0;
+}
+
+.menu .am-list-body {
+  border: none !important;
 }
 
 .image {

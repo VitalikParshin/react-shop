@@ -17,6 +17,17 @@ import {FlatPages, Footer, Header} from "../index";
 // tslint:disable-next-line:no-var-requires
 const styles = require("./styles.css");
 
+const Logo = (props) => {
+  return (
+    <Flex justify="center" align="center">
+      <img
+          className={styles.image}
+          src="http://static1.buybag.com.ua/static/img/logo.png"
+      />
+    </Flex>
+  );
+};
+
 class Menu extends React.Component<any, any> {
   public render() {
     const width = window.innerWidth * 0.9;
@@ -25,13 +36,8 @@ class Menu extends React.Component<any, any> {
           className={styles.menu}
           style={{width}}
       >
-        <Flex justify="center" align="center">
-          <img
-              className={styles.image}
-              src="http://static1.buybag.com.ua/static/img/logo.png"
-          />
-        </Flex>
-        <WhiteSpace size="lg" />
+        {/*<Logo/>*/}
+        {/*<WhiteSpace size="lg" />*/}
         <FlatPages/>
       </div>
     );

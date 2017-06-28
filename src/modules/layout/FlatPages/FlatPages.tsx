@@ -11,8 +11,8 @@ import {
   Icon,
   List,
   Modal,
-WhiteSpace,
-WingBlank,
+  WhiteSpace,
+  WingBlank,
 } from "antd-mobile";
 import { Link } from "react-router-dom";
 import {IData} from "../../../model";
@@ -116,13 +116,12 @@ class FlatPages extends React.Component<any, any> {
 
     return (
       <div>
-        <List>
+        <List style={{border: "none"}}>
           {flatPages.map((page) => (
             <Link
               key={page.id}
               to={{
                 pathname: `/img/${page.id}`,
-                // this is the trick!
                 state: { modal: true, pages: flatPages },
               }}
             >
