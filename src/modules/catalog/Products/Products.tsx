@@ -136,11 +136,11 @@ class Products extends React.Component<IConnectedProductsProps & IProductsProps,
 
   componentDidMount() {
     const { loading, allProducts } = this.props.data;
-    window.addEventListener(
-      "scroll",
-      throttle(this.handleScroll, SCROLL_THROTTLE),
-      true,
-    );
+    // window.addEventListener(
+    //   "scroll",
+    //   throttle(this.handleScroll, SCROLL_THROTTLE),
+    //   true,
+    // );
   }
 
   public componentDidUpdate = (prevProps, prevState) => {
