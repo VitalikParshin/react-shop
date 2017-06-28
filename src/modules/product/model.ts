@@ -5,17 +5,17 @@ export interface ICurrentDataProduct {
   colorId: number;
 }
 
+export interface IParentCategory {
+  id: string;
+  name: string;
+}
+
 export interface ICategory {
   id: string;
   name: string;
   alias: string;
   products: [IProduct];
-  parent: Iparent;
-}
-
-export interface Iparent {
-  id: string;
-  name: string;
+  parent: IParentCategory;
 }
 
 export interface IProduct {

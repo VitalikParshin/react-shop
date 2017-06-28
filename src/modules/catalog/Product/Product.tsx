@@ -24,19 +24,13 @@ const getMinOfArray = (numArray) => {
 
 interface IConnectedProductProps {
   catalog: ICatalog;
+  dispatch: any;
 }
 
-interface IProductProps {
-  key: number;
-  id: string;
-  name: string;
-  subProducts: [ISubProduct];
-  brand: IBrand;
-  imagesWithColor: [IImageWithColor];
+interface IProductProps extends IProduct {
 }
 
-// class Product extends React.Component<IConnectedProductProps & IProductProps, any> {
-class Product extends React.Component<any, any> {
+class Product extends React.Component<IConnectedProductProps & IProductProps, any> {
 
   public state = {
     titleImage: {},
@@ -60,7 +54,7 @@ class Product extends React.Component<any, any> {
   }
 
   public render() {
-    const { id, name, subProducts, brand, imagesWithColor, key, catalog } = this.props;
+    const { id, name, subProducts, brand, imagesWithColor, catalog } = this.props;
     const { titleImage } = this.state as any;
     const subProduct = subProducts[0];
     const url = `/product/${id}`;

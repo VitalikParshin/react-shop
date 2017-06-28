@@ -5,7 +5,7 @@ import { connect } from "react-redux";
 import { ACTION_TOOTLE_CATALOG } from "../constants";
 import { Catalog, utils } from "../index";
 import { ILayout } from "../model";
-import * as Sidebar from "react-sidebar";
+import Sidebar from "react-sidebar";
 
 interface IConnectedSideBarProps {
   layout: ILayout;
@@ -30,7 +30,8 @@ class SidebarCatalog extends React.Component<IConnectedSideBarProps, any> {
         touch={utils.swipeEnabled()}
         sidebar={<CatalogMenu/>}
         open={layout.openCatalog}
-        onOpenChange={this.onSetSidebarOpen as any}
+        // onOpenChange={this.onSetSidebarOpen as any}
+        onSetOpen={this.onSetSidebarOpen as any}
       >
         {this.props.children}
       </Sidebar>
