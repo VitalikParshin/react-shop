@@ -80,7 +80,7 @@ class SubCatalog extends React.Component<IConnectedSubCatalogProps & ISubCatalog
                   }}
                 >
                   <Card>
-                    <Ripples>
+                    {/*<Ripples>*/}
                       <div
                         className={styles.card}
                         style={{
@@ -95,7 +95,7 @@ class SubCatalog extends React.Component<IConnectedSubCatalogProps & ISubCatalog
                           {cat.name}
                         </div>
                       </div>
-                    </Ripples>
+                    {/*</Ripples>*/}
                   </Card>
                 </div>
               </Flex.Item>
