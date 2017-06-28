@@ -1,12 +1,12 @@
 .flex {
   background-color: #2474CC;
   color: white;
-  left: 0px;
+  left: 0;
   position: fixed;
-  right: 0px;
-  top: 0px;
+  right: 0;
+  top: 0;
   width: 100%;
-  z-index: 1000px;
+  z-index: 1000;
 }
 
 .icon {

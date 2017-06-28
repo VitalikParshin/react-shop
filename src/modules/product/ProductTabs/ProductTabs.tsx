@@ -74,10 +74,12 @@ class ProductTabs extends React.Component<IConnectedTabProps & ITabsProps,  any>
       <div className={styles.tabPaneArea}>
         <WingBlank size="md" style={{display: "flex", flexDirection: "column", paddingTop: "10px"}}>
           <div>{dataProduct.name} {brand.name}</div>
-          <div className={styles.availability}>Eсть в наличии</div>
-          <div className={styles.productCode}>
-            {`Код товара: ${activeSubProduct.id}`}
-          </div>
+          <Flex justify="between">
+            <div className={styles.productCode}>
+              {`Код товара: ${activeSubProduct.id}`}
+            </div>
+            <div className={styles.availability}>Eсть в наличии</div>
+          </Flex>
         </WingBlank>
 
         {/* Select Sizes */}
@@ -85,69 +87,60 @@ class ProductTabs extends React.Component<IConnectedTabProps & ITabsProps,  any>
         <WhiteSpace/>
 
         {/* Select Colors*/}
-        <WingBlank>
+        <hr/>
           {
             images.filter((el) => el.color !== "").length > 1
             ?
             <Flex>
-              <Icon type={require("svg-sprite-loader!./product-sizes.svg")} style={{color: "#1296db"}}/>
-              <div style={{color: "#1296db"}}>Выберите цвет :</div>
+              <div className={styles.tabTitle}>Цвет</div>
               <div>
                 { images.filter((el) => el.color !== "").map((e, i) =>
                     e.id === this.props.product.colorId ?
                   <Icon
                       key={i}
                       type={require("svg-sprite-loader!./circle-check_color.svg")}
-                      style={{fill: e.color, color: e.color}}
+                      style={{fill: e.color, color: e.color, marginLeft: "0.1rem"}}
                   />
                   :
                   <Icon
                       key={i}
                       onClick={() => this.changeColor(e.id)}
                       type={require("svg-sprite-loader!./icon-circle-for-colors.svg")}
-                      style={{fill: e.color, color: e.color}}
+                      style={{fill: e.color, color: e.color, marginLeft: "0.1rem"}}
                   />,
                 )}
               </div>
             </Flex>
             :
             <Flex>
-                <Icon type={require("svg-sprite-loader!./product-sizes.svg")}  style={{color: "#1296db"}}/>
-                <div style={{color: "#1296db"}}>Цвет : </div>
+              <div className={styles.tabTitle}>Цвет</div>
+              <div>
                 {images.filter((el) => el.color !== "").map((e, i) =>
                   <Icon
                       key={i}
                       type={require("svg-sprite-loader!./check-circle.svg")}
-                      style={{fill: e.color, color: e.color}}
+                      style={{fill: e.color, color: e.color, marginLeft: "0.1rem"}}
                   />,
                 )}
+              </div>
             </Flex>
           }
-        </WingBlank>
         <hr/>
 
-        <List
-          renderHeader={ () => {
-            return (
-              <Flex style={{ color: "#1296db"}}>
-                <Icon type={require("svg-sprite-loader!./detail.svg")}/>
-                Характеристики :
-              </Flex>
-            );
-          }}
-        >
+        <div className={styles.tabTitle}>Характеристики</div>
+        <div style={{marginTop: "0.2rem"}}>
           {attributes.map((el, index) =>
-            <List.Item
-              key={index}
-              extra={el.values.map((v) => v.name).join(", ")}
-              style={{fontSize: "12px"}}
-            >
-              {el.name}
-            </List.Item>,
+            <WingBlank key={index}>
+              <Flex direction="row" justify="between">
+                <div className={styles.characteristicName}>{el.name}</div>
+                <div className={styles.characteristicValue}>{el.values.map((v) => v.name).join(", ")}</div>
+              </Flex>
+            </WingBlank>,
           )}
 
-          { subProducts.length <= 1 ?
-            // <Size dataProduct={dataProduct} />
+          {
+            subProducts.length === 1
+            ?
             subProducts.map((el, i) =>
               <List.Item
                   key={i}
@@ -158,32 +151,22 @@ class ProductTabs extends React.Component<IConnectedTabProps & ITabsProps,  any>
                     : el.article
                   }
               >
-                Размер (Ш x В x Г) :
+                Размер, ШxВxГ
               </List.Item>,
             )
-            :
-              ""
+            : ""
           }
-        </List>
+        </div>
 
         {/* About Product */}
-        <List
-          renderHeader={() => {
-            return (
-              <Flex style={{ color: "#1296db"}}>
-                <Icon type={require("svg-sprite-loader!./info.svg")} />
-                <div>О ТОВАРЕ</div>
-              </Flex>
-            );
-          }}
-        >
-          <List.Item>
-            <div
-                dangerouslySetInnerHTML={createMarkup(dataProduct.description)}
-                style={{fontSize: "30px"}}
-            />
-          </List.Item>
-        </List>
+        <hr/>
+        <div className={styles.tabTitle}>О товаре</div>
+        <WingBlank>
+          <div
+            className={styles.dangerouslySetInnerHTML}
+            dangerouslySetInnerHTML={createMarkup(dataProduct.description)}
+          />
+        </WingBlank>
       </div>
     );
   }

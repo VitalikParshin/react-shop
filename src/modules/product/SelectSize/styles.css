@@ -1,10 +1,13 @@
+.title {
+  color: #1296db;
+  padding-left: 0.1rem;
+  font-size: 0.35rem;
+}
+
 .SizeNameIcon{
   color: #1296db;
 }
 
-.SizeName {
-  color: #1296db;
-}
 
 .checkIcon {
   fill: #62f104;

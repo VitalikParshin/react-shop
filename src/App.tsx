@@ -35,7 +35,7 @@ class FlatPageSwitch extends React.Component<any, any> {
     );
     return (
       <div>
-        {isModal ? <Route path="/img/:id" component={FlatPageModal} /> : null}
+        {isModal ? <Route path="/flatpage/:id" component={FlatPageModal} /> : null}
       </div>
     );
   }

@@ -91,7 +91,7 @@ class FlatPages extends React.Component<any, any> {
       }
       // suppliers
       case 11: {
-        return require("!svg-sprite-loader!./info.svg");
+        return require("!svg-sprite-loader!./suppliers.svg");
       }
       // guarantee
       case 3: {
@@ -121,14 +121,14 @@ class FlatPages extends React.Component<any, any> {
             <Link
               key={page.id}
               to={{
-                pathname: `/img/${page.id}`,
+                pathname: `/flatpage/${page.id}`,
                 state: { modal: true, pages: flatPages },
               }}
             >
               <List.Item
                 wrap
                 arrow="horizontal"
-                thumb={<Icon type={this.getIcon(page.id)} size="md"/>}
+                thumb={<Icon className={styles.icon} type={this.getIcon(page.id)} size="md"/>}
               >
                 {page.name}
               </List.Item>
