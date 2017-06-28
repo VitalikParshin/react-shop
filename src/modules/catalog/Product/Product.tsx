@@ -127,9 +127,9 @@ class Product extends React.Component<any, any> {
               className={styles.imageContainer}
               style={{height: maxImageHeight}}
             >
-              <LazyLoad height={maxImageHeight} offset={1500}>
+              {/*<LazyLoad height={maxImageHeight} offset={1500}>*/}
                 <img src={titleImage.src}/>
-              </LazyLoad>
+              {/*</LazyLoad>*/}
             </div>
           </Link>
 

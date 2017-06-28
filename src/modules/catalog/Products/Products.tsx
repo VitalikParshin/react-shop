@@ -25,7 +25,7 @@ import {ALL_PRODUCTS_QUERY, IAllProduct, ICatalog} from "../model";
 // tslint:disable-next-line:no-var-requires
 const styles = require("./styles.css");
 
-const LIMIT = 40;
+const LIMIT = 10;
 
 // miliseconds bettwen scroll event
 const SCROLL_THROTTLE = 500;
@@ -136,11 +136,11 @@ class Products extends React.Component<IConnectedProductsProps & IProductsProps,
 
   componentDidMount() {
     const { loading, allProducts } = this.props.data;
-    // window.addEventListener(
-    //   "scroll",
-    //   throttle(this.handleScroll, SCROLL_THROTTLE),
-    //   true,
-    // );
+    window.addEventListener(
+      "scroll",
+      throttle(this.handleScroll, SCROLL_THROTTLE),
+      true,
+    );
   }
 
   public componentDidUpdate = (prevProps, prevState) => {
