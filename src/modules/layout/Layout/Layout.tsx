@@ -9,15 +9,6 @@ import {Footer, Header, SidebarCatalog, SidebarMenu} from "../index";
 
 class Layout extends React.Component<any, any> {
   public render() {
-    return (
-      <div>
-        <Header/>
-        <SidebarCatalog>
-          {this.props.children}
-        </SidebarCatalog>
-      </div>
-    );
-
     // return (
     //   <div>
     //     <Header/>
@@ -28,6 +19,15 @@ class Layout extends React.Component<any, any> {
     //     </SidebarMenu>
     //   </div>
     // );
+
+    return (
+      <div>
+        <Header/>
+          <SidebarCatalog>
+            <div>{this.props.children}</div>
+          </SidebarCatalog>
+      </div>
+    );
   }
 }
 

@@ -1,10 +1,11 @@
-import { Drawer } from "antd-mobile";
+import * as Sie from 'react-sidebar';
 import * as React from "react";
 import { compose, gql, graphql } from "react-apollo";
 import { connect } from "react-redux";
 import { ACTION_TOOTLE_CATALOG } from "../constants";
 import { Catalog, utils } from "../index";
 import { ILayout } from "../model";
+import * as Sidebar from "react-sidebar";
 
 interface IConnectedSideBarProps {
   layout: ILayout;
@@ -25,14 +26,14 @@ class SidebarCatalog extends React.Component<IConnectedSideBarProps, any> {
   public render() {
     const { layout } = this.props;
     return (
-      <Drawer
+      <Sidebar
         touch={utils.swipeEnabled()}
         sidebar={<CatalogMenu/>}
         open={layout.openCatalog}
         onOpenChange={this.onSetSidebarOpen as any}
       >
         {this.props.children}
-      </Drawer>
+      </Sidebar>
     );
   }
 }
