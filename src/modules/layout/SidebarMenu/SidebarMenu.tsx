@@ -15,6 +15,10 @@ interface IConnectedSidebarMenu {
   dispatch: any;
 }
 
+const sidebarStyles = {
+  content: {overflowY: 'scroll', WebkitOverflowScrolling: 'touch'},
+};
+
 class SidebarMenu extends React.Component<IConnectedSidebarMenu & any, any> {
 
   onSetSidebarOpen = () => {
@@ -28,6 +32,7 @@ class SidebarMenu extends React.Component<IConnectedSidebarMenu & any, any> {
     return (
       <Sidebar
           // contentStyle={{marginTop: HEIGHT}}
+          styles={sidebarStyles}
           contentClassName={styles.content}
           open={layout.openMenu}
           onSetOpen={this.onSetSidebarOpen as any}

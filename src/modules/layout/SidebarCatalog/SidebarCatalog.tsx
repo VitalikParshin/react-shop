@@ -16,6 +16,10 @@ const CatalogMenu = (props) => {
   return <div><Catalog isDrawer={true}/></div>;
 };
 
+const sidebarStyles = {
+  content: {overflowY: 'scroll', WebkitOverflowScrolling: 'touch'},
+};
+
 class SidebarCatalog extends React.Component<IConnectedSideBarProps, any> {
 
   onSetSidebarOpen = () => {
@@ -27,6 +31,7 @@ class SidebarCatalog extends React.Component<IConnectedSideBarProps, any> {
     const { layout } = this.props;
     return (
       <Sidebar
+        styles={sidebarStyles}
         touch={utils.swipeEnabled()}
         sidebar={<CatalogMenu/>}
         open={layout.openCatalog}
