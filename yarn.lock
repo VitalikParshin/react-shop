@@ -198,43 +198,43 @@ ansi-styles@^2.2.1:
   version "2.2.1"
   resolved "https://registry.yarnpkg.com/ansi-styles/-/ansi-styles-2.2.1.tgz#b432dd3358b634cf75e1e4664368240533c1ddbe"
 
-antd-mobile@1.1.0:
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/antd-mobile/-/antd-mobile-1.1.0.tgz#75d350fe10962fcad54370dd5de36f258ce2637c"
+antd-mobile@^1.4.1:
+  version "1.4.1"
+  resolved "https://registry.yarnpkg.com/antd-mobile/-/antd-mobile-1.4.1.tgz#37680129f82c5d782bc9ee885a5a2acf42289f18"
   dependencies:
     array-tree-filter "~1.0.0"
     babel-runtime "6.x"
     classnames "~2.2.1"
     create-react-class "^15.5.2"
     moment "~2.18.1"
-    normalize.css "^6.0.0"
-    nuka-carousel "~2.0.4"
-    object-assign "~4.1.0"
-    omit.js "~0.1.0"
+    normalize.css "^7.0.0"
+    omit.js "~1.0.0"
     prop-types "^15.5.8"
     rc-checkbox "~2.0.0"
     rc-collapse "~1.7.0"
     rc-dialog "~6.5.7"
     rc-drawer "~0.4.9"
-    rc-input-number "~3.4.13"
-    rc-notification "~1.4.1"
-    rc-slider "~7.0.1"
+    rc-input-number "~3.6.0"
+    rc-notification "~2.0.0"
+    rc-slider "~8.1.2"
     rc-steps "~2.5.1"
-    rc-swipeout "~1.2.4"
-    rc-table "~5.3.1"
-    rc-tabs "~7.3.1"
+    rc-swipeout "~1.3.0"
+    rc-table "~5.4.0"
+    rc-tabs "~8.0.0"
     rc-tooltip "~3.4.3"
-    rc-touchable "~1.0.11"
+    rc-touchable "~1.2.2"
     react-native-camera-roll-picker "~1.1.6"
     react-native-collapsible "^0.8.0"
-    react-native-drawer-layout "~1.1.1"
-    react-native-menu "~0.20.1"
+    react-native-drawer-layout "~1.3.0"
+    react-native-menu "~0.21.0"
     react-native-scrollable-tab-view "^0.7.2"
     rmc-cascader "^4.1.1"
     rmc-date-picker "^5.3.1"
-    rmc-list-view "^0.7.4"
+    rmc-list-view "^0.8.0"
+    rmc-nuka-carousel "^2.2.0"
     rmc-picker "^3.8.0"
     rn-topview "~0.1.0"
+    warning "^3.0.0"
 
 anymatch@^1.3.0:
   version "1.3.0"
@@ -3759,9 +3759,9 @@ normalize-url@^1.4.0:
     query-string "^4.1.0"
     sort-keys "^1.0.0"
 
-normalize.css@^6.0.0:
-  version "6.0.0"
-  resolved "https://registry.yarnpkg.com/normalize.css/-/normalize.css-6.0.0.tgz#22188c2707c911fb3ad3c1aac0677ff68661bea8"
+normalize.css@^7.0.0:
+  version "7.0.0"
+  resolved "https://registry.yarnpkg.com/normalize.css/-/normalize.css-7.0.0.tgz#abfb1dd82470674e0322b53ceb1aaf412938e4bf"
 
 npmlog@^4.0.2:
   version "4.1.0"
@@ -3777,14 +3777,6 @@ nth-check@~1.0.1:
   resolved "https://registry.yarnpkg.com/nth-check/-/nth-check-1.0.1.tgz#9929acdf628fc2c41098deab82ac580cf149aae4"
   dependencies:
     boolbase "~1.0.0"
-
-nuka-carousel@~2.0.4:
-  version "2.0.4"
-  resolved "https://registry.yarnpkg.com/nuka-carousel/-/nuka-carousel-2.0.4.tgz#eabd24f2785b6d07503542af64155ee5ceccd7ad"
-  dependencies:
-    exenv "^1.2.0"
-    kw-react-tween-state "^0.1.5"
-    object-assign "^4.1.0"
 
 num2fraction@^1.2.2:
   version "1.2.2"
@@ -3813,11 +3805,11 @@ obuf@^1.0.0, obuf@^1.1.1:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/obuf/-/obuf-1.1.1.tgz#104124b6c602c6796881a042541d36db43a5264e"
 
-omit.js@~0.1.0:
-  version "0.1.0"
-  resolved "https://registry.yarnpkg.com/omit.js/-/omit.js-0.1.0.tgz#9786a21a6d6c316fa35bb14e7101eeee21c52044"
+omit.js@~1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/omit.js/-/omit.js-1.0.0.tgz#e013cb86a7517b9cf6f7cfb0ddb4297256a99288"
   dependencies:
-    object-assign "^4.1.0"
+    babel-runtime "^6.23.0"
 
 on-finished@~2.3.0:
   version "2.3.0"
@@ -4383,7 +4375,7 @@ promise@^7.1.1:
   dependencies:
     asap "~2.0.3"
 
-prop-types@15.x, prop-types@^15.5.10, prop-types@^15.5.4, prop-types@^15.5.6, prop-types@^15.5.7, prop-types@^15.5.8:
+prop-types@15.x, prop-types@^15.5.10, prop-types@^15.5.4, prop-types@^15.5.6, prop-types@^15.5.7, prop-types@^15.5.8, prop-types@^15.5.9:
   version "15.5.10"
   resolved "https://registry.yarnpkg.com/prop-types/-/prop-types-15.5.10.tgz#2797dfc3126182e3a95e3dfbb2e893ddd7456154"
   dependencies:
@@ -4528,9 +4520,17 @@ rc-drawer@~0.4.9:
     babel-runtime "6.x"
     classnames "^2.2.4"
 
-rc-input-number@~3.4.13:
-  version "3.4.15"
-  resolved "https://registry.yarnpkg.com/rc-input-number/-/rc-input-number-3.4.15.tgz#2f904735400af083b9eeb60596a05e48b1fa8b8e"
+rc-hammerjs@^0.6.6, rc-hammerjs@~0.6.0:
+  version "0.6.8"
+  resolved "https://registry.yarnpkg.com/rc-hammerjs/-/rc-hammerjs-0.6.8.tgz#dc50faff35ecce9a822a338d59206a962e09a23d"
+  dependencies:
+    babel-runtime "^6.23.0"
+    hammerjs "^2.0.8"
+    prop-types "^15.5.9"
+
+rc-input-number@~3.6.0:
+  version "3.6.1"
+  resolved "https://registry.yarnpkg.com/rc-input-number/-/rc-input-number-3.6.1.tgz#9c26e1be9ae7a09633ae55e196b2b11ea7d18cc2"
   dependencies:
     babel-runtime "^6.23.0"
     classnames "^2.2.0"
@@ -4538,19 +4538,19 @@ rc-input-number@~3.4.13:
     prop-types "^15.5.7"
     rc-touchable "^1.0.0"
 
-rc-notification@~1.4.1:
-  version "1.4.3"
-  resolved "https://registry.yarnpkg.com/rc-notification/-/rc-notification-1.4.3.tgz#4eae85807bd7e5aee1c8927a5c9bebafe4e57787"
+rc-notification@~2.0.0:
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/rc-notification/-/rc-notification-2.0.1.tgz#8f4d3ea19e6523b801fe076e83af634fc4fdb0f2"
   dependencies:
     babel-runtime "^6.23.0"
     classnames "2.x"
     prop-types "^15.5.8"
     rc-animate "2.x"
-    rc-util "4.x"
+    rc-util "^4.0.4"
 
-rc-slider@~7.0.1:
-  version "7.0.8"
-  resolved "https://registry.yarnpkg.com/rc-slider/-/rc-slider-7.0.8.tgz#1bdd7cbfd8ec1b6418ba55e506888bbb50159556"
+rc-slider@~8.1.2:
+  version "8.1.3"
+  resolved "https://registry.yarnpkg.com/rc-slider/-/rc-slider-8.1.3.tgz#7a259385760dbdd7d0a1726f078ca40a47b94a97"
   dependencies:
     babel-runtime "6.x"
     classnames "^2.2.5"
@@ -4567,18 +4567,18 @@ rc-steps@~2.5.1:
     lodash.debounce "^4.0.8"
     prop-types "^15.5.7"
 
-rc-swipeout@~1.2.4:
-  version "1.2.7"
-  resolved "https://registry.yarnpkg.com/rc-swipeout/-/rc-swipeout-1.2.7.tgz#9d04fa21b7db2bb0cbb3afa20f48c74fdfe9f960"
+rc-swipeout@~1.3.0:
+  version "1.3.7"
+  resolved "https://registry.yarnpkg.com/rc-swipeout/-/rc-swipeout-1.3.7.tgz#51e15529e4881e4da9cf08f4a90b8bd11b2c9f52"
   dependencies:
     babel-runtime "6.x"
     object.omit "~2.0.0"
-    react-hammerjs "^0.5.0"
-    react-native-swipe-out "~2.0.12"
+    rc-hammerjs "^0.6.6"
+    react-native-swipeout "~2.1.1"
 
-rc-table@~5.3.1:
-  version "5.3.4"
-  resolved "https://registry.yarnpkg.com/rc-table/-/rc-table-5.3.4.tgz#f4923e22bc4f028b1387fda69c1f4b7374201bbc"
+rc-table@~5.4.0:
+  version "5.4.0"
+  resolved "https://registry.yarnpkg.com/rc-table/-/rc-table-5.4.0.tgz#8e8a60609e3522e2132e2ce17290f445141bbe33"
   dependencies:
     babel-runtime "^6.23.0"
     component-classes "^1.2.6"
@@ -4588,15 +4588,15 @@ rc-table@~5.3.1:
     shallowequal "^0.2.2"
     warning "^3.0.0"
 
-rc-tabs@~7.3.1:
-  version "7.3.4"
-  resolved "https://registry.yarnpkg.com/rc-tabs/-/rc-tabs-7.3.4.tgz#c0b8753fc0cc5e6c3354a815afe96b8f00361a3a"
+rc-tabs@~8.0.0:
+  version "8.0.0"
+  resolved "https://registry.yarnpkg.com/rc-tabs/-/rc-tabs-8.0.0.tgz#24519e7bafd43b0440e9c651a0d3ef0312bcfcac"
   dependencies:
     babel-runtime "6.x"
     classnames "2.x"
     create-react-class "15.x"
     prop-types "15.x"
-    react-hammerjs "~0.5.0"
+    rc-hammerjs "~0.6.0"
     warning "^3.0.0"
 
 rc-tooltip@^3.4.2, rc-tooltip@~3.4.3:
@@ -4607,7 +4607,14 @@ rc-tooltip@^3.4.2, rc-tooltip@~3.4.3:
     prop-types "^15.5.8"
     rc-trigger "1.x"
 
-rc-touchable@^1.0.0, rc-touchable@^1.0.2, rc-touchable@~1.0.11:
+rc-touchable@^1.0.0, rc-touchable@~1.2.2:
+  version "1.2.2"
+  resolved "https://registry.yarnpkg.com/rc-touchable/-/rc-touchable-1.2.2.tgz#e0936ca0069b455cba728e54d4c10c0fa13558fe"
+  dependencies:
+    babel-runtime "6.x"
+    object-assign "^4.1.0"
+
+rc-touchable@^1.0.2:
   version "1.0.13"
   resolved "https://registry.yarnpkg.com/rc-touchable/-/rc-touchable-1.0.13.tgz#2f56599210a81999296235e3880c497d63ad1aa5"
   dependencies:
@@ -4676,12 +4683,6 @@ react-fastclick@^3.0.1:
   version "3.0.2"
   resolved "https://registry.yarnpkg.com/react-fastclick/-/react-fastclick-3.0.2.tgz#2994c60088cda90b0b2cbfac4b6e7c6bc73d6a3a"
 
-react-hammerjs@^0.5.0, react-hammerjs@~0.5.0:
-  version "0.5.0"
-  resolved "https://registry.yarnpkg.com/react-hammerjs/-/react-hammerjs-0.5.0.tgz#aa20e5c5f44d660f3e8e87ed11282f12173e77ae"
-  dependencies:
-    hammerjs "^2.0.8"
-
 react-hot-loader@3.0.0-beta.7:
   version "3.0.0-beta.7"
   resolved "https://registry.yarnpkg.com/react-hot-loader/-/react-hot-loader-3.0.0-beta.7.tgz#d5847b8165d731c4d5b30d86d5d4716227a0fa83"
@@ -4732,15 +4733,15 @@ react-native-dismiss-keyboard@1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/react-native-dismiss-keyboard/-/react-native-dismiss-keyboard-1.0.0.tgz#32886242b3f2317e121f3aeb9b0a585e2b879b49"
 
-react-native-drawer-layout@~1.1.1:
-  version "1.1.6"
-  resolved "https://registry.yarnpkg.com/react-native-drawer-layout/-/react-native-drawer-layout-1.1.6.tgz#e6fff2e2a13cd3821496827e65c20222d4441009"
+react-native-drawer-layout@~1.3.0:
+  version "1.3.2"
+  resolved "https://registry.yarnpkg.com/react-native-drawer-layout/-/react-native-drawer-layout-1.3.2.tgz#b9740d7663a1dc4f88a61b9c6d93d2d948ea426e"
   dependencies:
     react-native-dismiss-keyboard "1.0.0"
 
-react-native-menu@~0.20.1:
-  version "0.20.2"
-  resolved "https://registry.yarnpkg.com/react-native-menu/-/react-native-menu-0.20.2.tgz#a1bec7a3d1660246561298c851f98728bc4a1305"
+react-native-menu@~0.21.0:
+  version "0.21.0"
+  resolved "https://registry.yarnpkg.com/react-native-menu/-/react-native-menu-0.21.0.tgz#ebc647862eb80ed00e2289397bf8b634b09b1e8b"
   dependencies:
     react-timer-mixin "^0.13.3"
 
@@ -4751,9 +4752,9 @@ react-native-scrollable-tab-view@^0.7.2:
     react-static-container "^1.0.1"
     react-timer-mixin "^0.13.3"
 
-react-native-swipe-out@~2.0.12:
-  version "2.0.14"
-  resolved "https://registry.yarnpkg.com/react-native-swipe-out/-/react-native-swipe-out-2.0.14.tgz#971b1d62dbc383892e633da003bfa69a766fe765"
+react-native-swipeout@~2.1.1:
+  version "2.1.3"
+  resolved "https://registry.yarnpkg.com/react-native-swipeout/-/react-native-swipeout-2.1.3.tgz#ec9361d8ab5d89ec757674d548acd8c789519071"
   dependencies:
     react-tween-state "^0.1.5"
 
@@ -5136,9 +5137,9 @@ rmc-date-picker@^5.3.1:
     moment "2.x"
     rmc-picker "^3.8.0"
 
-rmc-list-view@^0.7.4:
-  version "0.7.7"
-  resolved "https://registry.yarnpkg.com/rmc-list-view/-/rmc-list-view-0.7.7.tgz#548fd686070daf352d22bd9a74f852be69ebc4d6"
+rmc-list-view@^0.8.0:
+  version "0.8.3"
+  resolved "https://registry.yarnpkg.com/rmc-list-view/-/rmc-list-view-0.8.3.tgz#65fc85f2de8ed69818e1db24cd8587f3f72034c7"
   dependencies:
     autobind-decorator "^1.3.3"
     babel-runtime "6.x"
@@ -5149,7 +5150,16 @@ rmc-list-view@^0.7.4:
     react-mixin "^3.0.5"
     react-sticky "^5.0.2"
     react-timer-mixin "^0.13.3"
-    zscroller "~0.2.2"
+    zscroller "~0.3.0"
+
+rmc-nuka-carousel@^2.2.0:
+  version "2.2.1"
+  resolved "https://registry.yarnpkg.com/rmc-nuka-carousel/-/rmc-nuka-carousel-2.2.1.tgz#c4238193a298be128a2f13ecb5c26fd77ad00ccd"
+  dependencies:
+    create-react-class "^15.5.3"
+    exenv "^1.2.0"
+    kw-react-tween-state "^0.1.5"
+    object-assign "^4.1.0"
 
 rmc-picker@^3.8.0, rmc-picker@^3.9.3:
   version "3.10.5"
@@ -6145,12 +6155,6 @@ yargs@^6.0.0:
     which-module "^1.0.0"
     y18n "^3.2.1"
     yargs-parser "^4.2.0"
-
-zscroller@~0.2.2:
-  version "0.2.5"
-  resolved "https://registry.yarnpkg.com/zscroller/-/zscroller-0.2.5.tgz#b8a4f541e3f1337e89037c4a7ec5130460fad35c"
-  dependencies:
-    raf "^3.3.0"
 
 zscroller@~0.3.0:
   version "0.3.0"
