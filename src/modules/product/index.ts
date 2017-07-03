@@ -4,7 +4,7 @@ import Image, {scaleImageSize} from "./Image/Image";
 import Images from "./Images/Images";
 import Product from "./Product/Product";
 import ProductModal from "./ProductModal/ProductModal";
-import ProductTabs from "./ProductTabs/ProductTabs";
+import ProductInfo from "./ProductInfo/ProductInfo";
 import SelectSize from "./SelectSize/SelectSize";
 import ProductBuy from "./ProductBuy/ProductBuy";
 
@@ -19,7 +19,7 @@ export {
   Image,
   scaleImageSize,
 
-  ProductTabs,
+  ProductInfo,
   SelectSize,
   ProductBuy,
 

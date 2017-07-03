@@ -6,7 +6,7 @@ import { compose, graphql } from "react-apollo";
 
 import {ACTION_ADD_VIEWED_PRODUCT} from "../../catalog/constants";
 import {Loading} from "../../layout/index";
-import {Images, ProductTabs, ProductBuy } from "../index";
+import {Images, ProductInfo, ProductBuy } from "../index";
 import {ICurrentDataProduct, IProduct, PRODUCT_QUERY} from "../model";
 import {IData} from "../../../model";
 
@@ -83,7 +83,7 @@ class Product extends React.Component<IConnectedProductProps & IProductProps, an
     return (
       <div className={styles.product}>
         <Images images={images} />
-        <ProductTabs dataProduct={product} activeSubProduct={activeSubProduct} />
+        <ProductInfo dataProduct={product} activeSubProduct={activeSubProduct} />
         <ProductBuy price={price} oldPrice={oldPrice} />
       </div>
     );

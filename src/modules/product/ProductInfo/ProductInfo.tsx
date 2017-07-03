@@ -27,12 +27,12 @@ const styles = require("./styles.css");
 const { TabPane } = Tabs;
 const { AgreeItem, CheckboxItem } = Checkbox;
 
-interface IConnectedTabProps {
+interface IConnectedProductInfoProps {
   product: ICurrentDataProduct;
   dispatch: any;
 }
 
-interface ITabsProps {
+interface IProductInfoProps {
   dataProduct: IProduct;
   activeSubProduct: ISubProduct;
 }
@@ -59,7 +59,7 @@ function handleTabClick(key) {
   console.log("onTabClick", key);
 }
 
-class ProductTabs extends React.Component<IConnectedTabProps & ITabsProps,  any> {
+class ProductInfo extends React.Component<IConnectedProductInfoProps & IProductInfoProps,  any> {
 
   public changeColor = (colorId) => {
     this.props.dispatch({type: ACTION_SELECT_COLOR, colorId });
@@ -72,14 +72,8 @@ class ProductTabs extends React.Component<IConnectedTabProps & ITabsProps,  any>
 
     return (
       <div className={styles.tabPaneArea}>
-        <WingBlank size="md" style={{display: "flex", flexDirection: "column", paddingTop: "10px"}}>
+        <WingBlank size="lg" style={{display: "flex", flexDirection: "column", paddingTop: "10px"}}>
           <div>{dataProduct.name} {brand.name}</div>
-          <Flex justify="between">
-            <div className={styles.productCode}>
-              {`Код товара: ${activeSubProduct.id}`}
-            </div>
-            <div className={styles.availability}>Eсть в наличии</div>
-          </Flex>
         </WingBlank>
 
         {/* Select Sizes */}
@@ -87,44 +81,42 @@ class ProductTabs extends React.Component<IConnectedTabProps & ITabsProps,  any>
         <WhiteSpace/>
 
         {/* Select Colors*/}
-        <hr/>
+        <Flex>
+          <div className={styles.tabTitle}>Цвет</div>
           {
             images.filter((el) => el.color !== "").length > 1
             ?
-            <Flex>
-              <div className={styles.tabTitle}>Цвет</div>
-              <div>
-                { images.filter((el) => el.color !== "").map((e, i) =>
-                    e.id === this.props.product.colorId ?
-                  <Icon
-                      key={i}
-                      type={require("svg-sprite-loader!./circle-check_color.svg")}
-                      style={{fill: e.color, color: e.color, marginLeft: "0.1rem"}}
-                  />
-                  :
-                  <Icon
-                      key={i}
-                      onClick={() => this.changeColor(e.id)}
-                      type={require("svg-sprite-loader!./icon-circle-for-colors.svg")}
-                      style={{fill: e.color, color: e.color, marginLeft: "0.1rem"}}
-                  />,
-                )}
-              </div>
-            </Flex>
+              images.filter((el) => el.color !== "").map((e, i) =>
+                e.id === this.props.product.colorId
+                ?
+                <Icon
+                    key={i}
+                    type={require("svg-sprite-loader!./circle-check_color.svg")}
+                    style={{fill: e.color, color: e.color, marginLeft: "0.1rem"}}
+                />
+                :
+                <Icon
+                    key={i}
+                    onClick={() => this.changeColor(e.id)}
+                    type={require("svg-sprite-loader!./icon-circle-for-colors.svg")}
+                    style={{fill: e.color, color: e.color, marginLeft: "0.1rem"}}
+                />,
+              )
             :
-            <Flex>
-              <div className={styles.tabTitle}>Цвет</div>
-              <div>
-                {images.filter((el) => el.color !== "").map((e, i) =>
-                  <Icon
-                      key={i}
-                      type={require("svg-sprite-loader!./check-circle.svg")}
-                      style={{fill: e.color, color: e.color, marginLeft: "0.1rem"}}
-                  />,
-                )}
-              </div>
-            </Flex>
+              images.filter((el) => el.color !== "").map((e, i) =>
+                <Icon
+                    key={i}
+                    type={require("svg-sprite-loader!./check-circle.svg")}
+                    style={{
+                      fill: e.color,
+                      color: e.color,
+                      marginLeft: "0.1rem",
+                    }}
+                />,
+              )
           }
+        </Flex>
+
         <hr/>
 
         <div className={styles.tabTitle}>Характеристики</div>
@@ -177,5 +169,5 @@ const mapStateToProps: any = (state) => ({
 });
 
 export default compose(
-    connect<IConnectedTabProps, {}, ITabsProps>(mapStateToProps),
-)(ProductTabs);
+    connect<IConnectedProductInfoProps, {}, IProductInfoProps>(mapStateToProps),
+)(ProductInfo);

@@ -18,16 +18,16 @@ const Item = List.Item;
 // tslint:disable-next-line:no-var-requires
 const styles = require("./styles.css");
 
-interface IConnectedSizeProps {
+interface IConnectedSubProductsProps {
   dispatch: any;
   product: ICurrentDataProduct;
 }
 
-interface ISizeProps {
+interface ISubProductsProps {
   subProducts: [ISubProduct];
 }
 
-class SelectSize extends React.Component <IConnectedSizeProps & ISizeProps, any > {
+class SubProducts extends React.Component <IConnectedSubProductsProps & ISubProductsProps, any > {
 
   public onChangePrice = (elId) => {
     this.props.dispatch(
@@ -49,7 +49,7 @@ class SelectSize extends React.Component <IConnectedSizeProps & ISizeProps, any 
         <List
           renderHeader={ () => {
             return (
-              <div className={styles.title}>Размер, ШxВxГ</div>
+              <div className={styles.title}>Модификации</div>
             );
           }}
         >
@@ -84,4 +84,4 @@ const mapStateToProps: any = (state) => ({
   product: state.product,
 });
 
-export default connect<IConnectedSizeProps, {}, ISizeProps>(mapStateToProps)(SelectSize);
+export default connect<IConnectedSubProductsProps, {}, ISubProductsProps>(mapStateToProps)(SubProducts);

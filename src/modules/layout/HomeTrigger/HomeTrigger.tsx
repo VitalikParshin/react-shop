@@ -30,7 +30,7 @@ const Logo = ({height, isActive}) => {
           padding: `0 20px`,
         }}
     >
-      BUY
+      REACT
       <Icon
           className={styles.icon}
           type={require("!svg-sprite-loader!./logo.svg")}
@@ -39,7 +39,7 @@ const Logo = ({height, isActive}) => {
             fill: isActive ? "orange" : "white",
           }}
       />
-      BAG
+      SHOP
     </Flex>
   );
 };
