@@ -22,7 +22,7 @@ const Logo = (props) => {
     <Flex justify="center" align="center">
       <img
           className={styles.image}
-          src="http://static1.buybag.com.ua/static/img/logo.png"
+          src="http://static1.shop.serga.name/static/img/logo.png"
       />
     </Flex>
   );

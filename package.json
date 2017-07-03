@@ -1,5 +1,5 @@
 {
-  "name": "buybag-mobile",
+  "name": "shop",
   "version": "0.0.1",
   "scripts": {
     "start": "npm run dev-all",
@@ -95,6 +95,6 @@
     "webpack-dev-server": "^2.5.0"
   },
   "main": "index.js",
-  "repository": "git@gitlab.com:BuyBag/buybag-mobile.git",
-  "author": "a.serga <a.serga@smartweb.com.ua>"
+  "repository": "https://github.com/ArtemSerga/react-shop.git",
+  "author": "Artem Serga <artem@serga.name>"
 }

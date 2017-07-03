@@ -2,7 +2,7 @@ import os
 from fabric.api import cd, env, run, sudo, get, put, local
 
 # Common VARS
-PROJECT_NAME = "buybag-mobile"
+PROJECT_NAME = "Shop"
 
 # Remote VARS
 REMOTE_HOME_DIR = "/var/www"
@@ -12,7 +12,7 @@ env.warn_only = True
 
 def prod():
     env.user = 'root'
-    env.hosts = ['buybag.com.ua']
+    env.hosts = ['shop.serga.name']
 
 def update():
     with cd(REMOTE_PROJECT_DIR):
@@ -20,5 +20,4 @@ def update():
         run('git reset --hard')
         run('git pull')
         run('yarn')
-        # run('node_modules/typescript/bin/tsc')
         run('yarn run publish')

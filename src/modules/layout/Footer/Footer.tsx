@@ -9,7 +9,7 @@ class Footer extends React.Component<any, any> {
     public render() {
         return (
             <div className={styles.footer}>
-              BuyBag 2017
+              ReactShop
             </div>
         );
     }
