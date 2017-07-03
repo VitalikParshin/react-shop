@@ -3,9 +3,9 @@
 import * as React from "react";
 import Ripples from "react-ripples";
 
-import {Flex, Icon, Modal} from "antd-mobile";
+import {Flex, Icon } from "antd-mobile";
 import {HEIGHT} from "../../layout/Header/Header";
-import { utils } from "../../layout/index";
+import { utils, Modal } from "../../layout/index";
 import {Product} from "../../product/index";
 // tslint:disable-next-line:no-var-requires
 const styles = require("./styles.css");
@@ -33,37 +33,37 @@ class FlatPageModal extends React.Component<any, any> {
     const page = pages.filter((el) => el.id === id );
 
     return (
-      <div className="modal">
-          <Flex
-              className={styles.backPanel}
-              justify="start"
-              align="center"
-          >
-            <Ripples during={200}>
-              <Icon
-                  className={styles.backIcon}
-                  type={require("!svg-sprite-loader!./back.svg")}
-                  size="md"
-                  style={{
-                    height: HEIGHT,
-                  }}
-                  onClick={this.back}
-              />
-            </Ripples>
-            <h3 style={{margin: 0, textAlign: "center", width: "80%"}}>
-              {(page.map((el) => el.name))}
-            </h3>
-          </Flex>
-          <div
-            className={styles.flatpage}
-            dangerouslySetInnerHTML={createMarkup(page.map((el) => el.content))}
-            style={{
-              marginTop: 100,
-              padding: utils.isSafariBrowser() ? 20 : 0,
-              textAlign: "left",
-            }}
-          />
-      </div>
+      <Modal>
+        <Flex
+            className={styles.backPanel}
+            justify="start"
+            align="center"
+        >
+          <Ripples during={200}>
+            <Icon
+                className={styles.backIcon}
+                type={require("!svg-sprite-loader!./back.svg")}
+                size="md"
+                style={{
+                  height: HEIGHT,
+                }}
+                onClick={this.back}
+            />
+          </Ripples>
+          <h3 style={{margin: 0, textAlign: "center", width: "80%"}}>
+            {(page.map((el) => el.name))}
+          </h3>
+        </Flex>
+        <div
+          className={styles.flatpage}
+          dangerouslySetInnerHTML={createMarkup(page.map((el) => el.content))}
+          style={{
+            marginTop: 100,
+            padding: utils.isSafariBrowser() ? 20 : 0,
+            textAlign: "left",
+          }}
+        />
+      </Modal>
     );
   }
 }

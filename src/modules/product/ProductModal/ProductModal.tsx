@@ -1,11 +1,12 @@
+import { Flex, Icon } from 'antd-mobile';
+import * as React from 'react';
+import Ripples from 'react-ripples';
+
+import { HEIGHT } from '../../layout/Header/Header';
+import { Modal } from '../../layout/index';
+import { Product } from '../index';
+
 // https://reacttraining.com/react-router/web/example/modal-gallery
-
-import * as React from "react";
-import Ripples from "react-ripples";
-
-import {Flex, Icon, Modal} from "antd-mobile";
-import {HEIGHT} from "../../layout/Header/Header";
-import { Product } from "../index";
 
 // tslint:disable-next-line:no-var-requires
 const styles = require("./styles.css");
@@ -26,7 +27,7 @@ class ProductModal extends React.Component<any, any> {
   public render() {
     const { match, history } = this.props;
     return (
-      <div className="modal">
+      <Modal>
         <Flex
             className={styles.flex}
             justify="start"
@@ -51,7 +52,7 @@ class ProductModal extends React.Component<any, any> {
         <div style={{marginTop: HEIGHT}}>
           <Product id={match.params.id}/>
         </div>
-      </div>
+      </Modal>
     );
   }
 }

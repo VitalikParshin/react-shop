@@ -16,24 +16,25 @@ import MenuTrigger from "./MenuTrigger/MenuTrigger";
 import SidebarCatalog from "./SidebarCatalog/SidebarCatalog";
 import SidebarMenu from "./SidebarMenu/SidebarMenu";
 import SubCatalog from "./SubCatalog/SubCatalog";
+import Modal from "./Modal/Modal";
 import {swipeEnabled} from "./utils";
 
 export {
-  Header,
-  Layout,
-  Footer,
-  Loading,
-  CatalogTrigger,
   Catalog,
-  SubCatalog,
-  SidebarCatalog,
-  FlatPages,
+  CatalogTrigger,
   FlatPageModal,
-  MenuTrigger,
-  Menu,
-  SidebarMenu,
+  FlatPages,
+  Footer,
+  Header,
   HomeTrigger,
-
+  Layout,
+  Loading,
+  Menu,
+  MenuTrigger,
+  Modal,
+  SidebarCatalog,
+  SidebarMenu,
+  SubCatalog,
   model,
   reducer,
   utils,

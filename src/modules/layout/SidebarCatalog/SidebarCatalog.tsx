@@ -1,11 +1,11 @@
-import * as Sie from 'react-sidebar';
-import * as React from "react";
-import { compose, gql, graphql } from "react-apollo";
-import { connect } from "react-redux";
-import { ACTION_TOOTLE_CATALOG } from "../constants";
-import { Catalog, utils } from "../index";
-import { ILayout } from "../model";
-import Sidebar from "react-sidebar";
+import * as React from 'react';
+import { compose } from 'react-apollo';
+import { connect } from 'react-redux';
+import Sidebar from 'react-sidebar';
+
+import { ACTION_TOOTLE_CATALOG } from '../constants';
+import { Catalog, utils } from '../index';
+import { ILayout } from '../model';
 
 interface IConnectedSideBarProps {
   layout: ILayout;
