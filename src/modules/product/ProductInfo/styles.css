@@ -61,4 +61,9 @@
   line-height: 0.35rem;
 }
 
-
+.colorName {
+  text-transform: lowercase;
+  color: gray;
+  width: 200px;
+  text-align: right;
+}

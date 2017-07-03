@@ -41,7 +41,8 @@ export interface IImage {
   src: string;
   width: number;
   height: number;
-  color: string;
+  colorValue: string;
+  colorName: string;
   isTitle: boolean;
 }
 
@@ -99,7 +100,8 @@ export const PRODUCT_QUERY = gql`
         src
         width
         height
-        color
+        colorValue
+        colorName
         isTitle
       }
       subProducts {

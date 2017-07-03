@@ -49,16 +49,6 @@ function createMarkup(html) {
   return {__html: html};
 }
 
-function callback(key) {
-  // tslint:disable-next-line:no-console
-  console.log("onChange", key);
-}
-
-function handleTabClick(key) {
-  // tslint:disable-next-line:no-console
-  console.log("onTabClick", key);
-}
-
 class ProductInfo extends React.Component<IConnectedProductInfoProps & IProductInfoProps,  any> {
 
   public changeColor = (colorId) => {
@@ -69,7 +59,7 @@ class ProductInfo extends React.Component<IConnectedProductInfoProps & IProductI
     const {dataProduct, product, activeSubProduct, dispatch} = this.props;
     const { brand, images, subProducts,  attributes } = dataProduct;
     const {subProductId, colorId} = this.props.product;
-
+    const activeImage = images.filter(image => image.id === colorId)[0];
     return (
       <div className={styles.tabPaneArea}>
         <WingBlank size="lg" style={{display: "flex", flexDirection: "column", paddingTop: "10px"}}>
@@ -81,40 +71,45 @@ class ProductInfo extends React.Component<IConnectedProductInfoProps & IProductI
         <WhiteSpace/>
 
         {/* Select Colors*/}
-        <Flex>
+        <Flex justify="between">
           <div className={styles.tabTitle}>Цвет</div>
-          {
-            images.filter((el) => el.color !== "").length > 1
-            ?
-              images.filter((el) => el.color !== "").map((e, i) =>
-                e.id === this.props.product.colorId
-                ?
-                <Icon
-                    key={i}
-                    type={require("svg-sprite-loader!./circle-check_color.svg")}
-                    style={{fill: e.color, color: e.color, marginLeft: "0.1rem"}}
-                />
-                :
-                <Icon
-                    key={i}
-                    onClick={() => this.changeColor(e.id)}
-                    type={require("svg-sprite-loader!./icon-circle-for-colors.svg")}
-                    style={{fill: e.color, color: e.color, marginLeft: "0.1rem"}}
-                />,
-              )
-            :
-              images.filter((el) => el.color !== "").map((e, i) =>
-                <Icon
-                    key={i}
-                    type={require("svg-sprite-loader!./check-circle.svg")}
-                    style={{
-                      fill: e.color,
-                      color: e.color,
-                      marginLeft: "0.1rem",
-                    }}
-                />,
-              )
-          }
+          <div>
+            {
+              images.filter((el) => el.colorValue !== "").length > 1
+              ?
+                images.filter((el) => el.colorValue !== "").map((e, i) =>
+                  e.id === this.props.product.colorId
+                  ?
+                  <Icon
+                      key={i}
+                      type={require("svg-sprite-loader!./circle-check_color.svg")}
+                      style={{fill: e.colorValue, color: e.colorValue, marginLeft: "0.1rem"}}
+                  />
+                  :
+                  <Icon
+                      key={i}
+                      onClick={() => this.changeColor(e.id)}
+                      type={require("svg-sprite-loader!./icon-circle-for-colors.svg")}
+                      style={{fill: e.colorValue, color: e.colorValue, marginLeft: "0.1rem"}}
+                  />,
+                )
+              :
+                images.filter((el) => el.colorValue !== "").map((e, i) =>
+                  <Icon
+                      key={i}
+                      type={require("svg-sprite-loader!./check-circle.svg")}
+                      style={{
+                        fill: e.colorValue,
+                        color: e.colorValue,
+                        marginLeft: "0.1rem",
+                      }}
+                  />,
+                )
+            }
+          </div>
+          <div className={styles.colorName}>
+            {activeImage.colorName
+          }</div>
         </Flex>
 
         <hr/>
