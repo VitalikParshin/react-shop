@@ -200,14 +200,15 @@ class Products extends React.Component<IConnectedProductsProps & IProductsProps,
 
     return (
       <div style={{padding}} ref={(element) => this.ref = element}>
-        <MasonryInfiniteScroller
+        <Flex
+          wrap="wrap"
           className={styles.masonryInfiniteScroller}
-          sizes={[{ columns: 2, gutter }]}
+          // sizes={[{ columns: 2, gutter }]}
         >
           {filteredProducts.map((product, i) => {
             return <Product key={i} {...product}/>;
           })}
-        </MasonryInfiniteScroller>
+        </Flex>
 
         <div
           className={styles.icon}
