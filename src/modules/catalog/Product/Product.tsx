@@ -137,7 +137,7 @@ class Product extends React.Component<IConnectedProductProps & IProductProps, an
                     type={require("!svg-sprite-loader!./dot.svg")}
                     size={image.id === titleImage.id ? "lg" : "md"}
                     style={{
-                      fill: image.color,
+                      fill: image.colorValue,
                     }}
                     onClick={(e) => this.changeTitleImage(e, image)}
                   />

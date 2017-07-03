@@ -2,7 +2,7 @@ import os
 from fabric.api import cd, env, run, sudo, get, put, local
 
 # Common VARS
-PROJECT_NAME = "Shop"
+PROJECT_NAME = "react-shop"
 
 # Remote VARS
 REMOTE_HOME_DIR = "/var/www"

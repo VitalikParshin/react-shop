@@ -25,7 +25,7 @@ export interface IProduct {
   description: string;
   brand: IBrand;
   category: ICategory;
-  images: [IImage];
+  images: [IImageWithColor];
   imagesWithColor: [IImageWithColor];
   subProducts: [ISubProduct];
   attributes: [IAttribute];
@@ -41,18 +41,12 @@ export interface IImage {
   src: string;
   width: number;
   height: number;
-  colorValue: string;
-  colorName: string;
   isTitle: boolean;
 }
 
-export interface IImageWithColor {
-  id: number;
-  src: string;
-  height: number;
-  width: number;
-  color: string;
-  isTitle: boolean;
+export interface IImageWithColor extends IImage {
+  colorValue: string;
+  colorName: string;
 }
 
 export interface ISubProduct {

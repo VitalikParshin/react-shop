@@ -33,7 +33,8 @@ export const ALL_PRODUCTS_QUERY = gql`
           src
           width
           height
-          color
+          colorName
+          colorValue
           isTitle
         }
         subProducts {

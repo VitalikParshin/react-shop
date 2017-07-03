@@ -10,7 +10,8 @@
     "build-app-pro": "cross-env NODE_ENV=production node webpack/prod.config.js",
     "build-dev-bundle": "cross-env NODE_ENV=development node webpack/webpack.dll.config.js",
     "build-pro-bundle": "cross-env NODE_ENV=production node webpack/webpack.dll.config.js",
-    "tslint": "tslint --project ."
+    "tslint": "tslint --project .",
+    "watch": "./node_modules/typescript/bin/tsc -w"
   },
   "license": "ISC",
   "dependencies": {
