@@ -13,9 +13,9 @@ import store from "./store";
 
 class FlatPageSwitch extends React.Component<any, any> {
 
-  public previousLocation = this.props.location;
+  previousLocation = this.props.location;
 
-  public componentWillUpdate(nextProps) {
+  componentWillUpdate(nextProps) {
     const { location } = this.props;
     if (
       nextProps.history.action !== "POP" &&
@@ -25,7 +25,7 @@ class FlatPageSwitch extends React.Component<any, any> {
     }
   }
 
-  public render() {
+  render() {
     // https://reacttraining.com/react-router/web/example/modal-gallery
     const { location } = this.props;
     const isModal = !!(
@@ -44,9 +44,9 @@ class FlatPageSwitch extends React.Component<any, any> {
 // tslint:disable-next-line:max-classes-per-file
 class ProductsSwitch extends React.Component<any, any> {
 
-  public previousLocation = this.props.location;
+  previousLocation = this.props.location;
 
-  public componentWillUpdate(nextProps) {
+  componentWillUpdate(nextProps) {
     const { location } = this.props;
     if (
       nextProps.history.action !== "POP" &&
@@ -56,7 +56,7 @@ class ProductsSwitch extends React.Component<any, any> {
     }
   }
 
-  public render() {
+  render() {
     // https://reacttraining.com/react-router/web/example/modal-gallery
     const { location } = this.props;
     const isModal = !!(

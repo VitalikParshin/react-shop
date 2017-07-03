@@ -17,12 +17,12 @@ interface IImagesState {
 
 class Images extends React.Component<IImagesProps, IImagesState> {
 
-  public state = {
+  state = {
     data: ["", "", ""],
     initialHeight: 200,
   };
 
-  public render() {
+  render() {
     const { images } = this.props;
     const maxImageHeight = Math.max(
       ...images.map((img) => scaleImageSize(img.width, img.height, 1.5).height),

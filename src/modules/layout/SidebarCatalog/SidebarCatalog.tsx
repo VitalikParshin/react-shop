@@ -18,12 +18,12 @@ const CatalogMenu = (props) => {
 
 class SidebarCatalog extends React.Component<IConnectedSideBarProps, any> {
 
-  public onSetSidebarOpen = () => {
+  onSetSidebarOpen = () => {
     const { dispatch } = this.props;
     dispatch({type: ACTION_TOOTLE_CATALOG});
   }
 
-  public render() {
+  render() {
     const { layout } = this.props;
     return (
       <Sidebar

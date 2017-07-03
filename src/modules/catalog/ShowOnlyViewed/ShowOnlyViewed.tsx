@@ -14,12 +14,12 @@ interface IConnectedShowOnlyViewedProps {
 
 class ShowOnlyViewed extends React.Component<IConnectedShowOnlyViewedProps, any> {
 
-  public toggleViewed = (e) => {
+  toggleViewed = (e) => {
     const { dispatch } = this.props;
     dispatch({type: ACTION_TOGGLE_SHOW_ONLY_VIEWED});
   }
 
-  public render() {
+  render() {
     const { catalog: { showOnlyViewed, viewedProductIds } } = this.props;
     return (
       <div

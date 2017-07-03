@@ -21,7 +21,7 @@ interface ImageProps {
 }
 
 class Image extends React.Component<ImageProps, null> {
-  public render() {
+  render() {
     const { divHeight, width, height, src, isTitle } = this.props;
     return (
       <Flex

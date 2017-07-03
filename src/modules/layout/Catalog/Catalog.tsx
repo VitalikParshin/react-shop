@@ -39,7 +39,7 @@ interface ICatalogProps {
 
 class Catalog extends React.Component<IConnectedCatalogProps & ICatalogProps, any> {
 
-  public render() {
+  render() {
     const { isDrawer, data} = this.props;
     if (!data || data.loading) {
       return <div />;

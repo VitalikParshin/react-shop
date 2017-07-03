@@ -19,12 +19,12 @@ interface ICatalogTriggerProps {
 
 class CatalogTrigger extends React.Component<IConnectedCatalogTriggerProps & ICatalogTriggerProps, any> {
 
-  public onClick = (e) => {
+  onClick = (e) => {
     e.preventDefault();
     this.props.dispatch({type: ACTION_TOOTLE_CATALOG});
   }
 
-  public render() {
+  render() {
     const { layout, height } = this.props;
 
     return (

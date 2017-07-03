@@ -46,7 +46,7 @@ const options = {
 
 class Category extends React.Component<IConnectedCategoryProps & ICategoryProps, any> {
 
-  public render() {
+  render() {
     const {
       id,
       dispatch,

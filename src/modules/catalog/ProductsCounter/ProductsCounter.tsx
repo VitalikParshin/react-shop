@@ -10,7 +10,7 @@ interface IProductsCounterProps {
 }
 
 class ProductsCounter extends React.Component<IProductsCounterProps, any> {
-  public render() {
+  render() {
     const { scrolled, total } = this.props;
     return (
       <div>

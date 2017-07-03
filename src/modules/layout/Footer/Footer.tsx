@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 const styles = require("./styles.css");
 
 class Footer extends React.Component<any, any> {
-    public render() {
+    render() {
         return (
             <div className={styles.footer}>
               ReactShop

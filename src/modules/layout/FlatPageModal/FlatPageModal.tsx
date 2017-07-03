@@ -15,11 +15,11 @@ function createMarkup(html) {
 }
 
 class FlatPageModal extends React.Component<any, any> {
-  public state = {
+  state = {
     showModal: true,
   };
 
-  public back = (e) => {
+  back = (e) => {
     e.stopPropagation();
     this.props.history.goBack();
     this.setState({
@@ -27,7 +27,7 @@ class FlatPageModal extends React.Component<any, any> {
     });
   }
 
-  public render() {
+  render() {
     const { match, history, location: {state: { pages }}} = this.props;
     const id = match.params.id;
     const page = pages.filter((el) => el.id === id );

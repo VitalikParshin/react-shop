@@ -17,12 +17,12 @@ interface IConnectedSidebarMenu {
 
 class SidebarMenu extends React.Component<IConnectedSidebarMenu & any, any> {
 
-  public onSetSidebarOpen = () => {
+  onSetSidebarOpen = () => {
     const { dispatch } = this.props;
     dispatch({type: ACTION_TOOTLE_MENU});
   }
 
-  public render() {
+  render() {
     const { layout } = this.props;
 
     return (

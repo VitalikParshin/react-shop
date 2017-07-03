@@ -32,7 +32,7 @@ interface IProductProps extends IProduct {
 
 class Product extends React.Component<IConnectedProductProps & IProductProps, any> {
 
-  public state = {
+  state = {
     titleImage: {},
   };
 
@@ -44,16 +44,16 @@ class Product extends React.Component<IConnectedProductProps & IProductProps, an
     };
   }
 
-  public isViewed() {
+  isViewed() {
     const {catalog, id} = this.props;
     return catalog.viewedProductIds.indexOf(id) !== -1;
   }
 
-  public changeTitleImage = (e, image) => {
+  changeTitleImage = (e, image) => {
     this.setState({titleImage: image});
   }
 
-  public render() {
+  render() {
     const { id, name, subProducts, brand, imagesWithColor, catalog } = this.props;
     const { titleImage } = this.state as any;
     const subProduct = subProducts[0];

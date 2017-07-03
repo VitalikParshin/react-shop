@@ -19,7 +19,7 @@ const styles = require("./styles.css");
 export const HEIGHT = 80;
 
 class Header extends React.Component<any, any> {
-  public render() {
+  render() {
     return (
       <Flex
         className={styles.root}

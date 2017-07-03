@@ -40,7 +40,7 @@ function createMarkup(html) {
 // class FlatPages extends React.Component<IConnectedFlatPagesProps, any> {
 class FlatPages extends React.Component<any, any> {
 
-  public state = {
+  state = {
     page: {
       content: "",
       id: "",
@@ -49,7 +49,7 @@ class FlatPages extends React.Component<any, any> {
     showModal: false,
   };
 
-  public getIcon = (id) => {
+  getIcon = (id) => {
     // tslint:disable-next-line:variable-name
     const _id = parseInt(id, 10);
     switch (_id) {
@@ -103,7 +103,7 @@ class FlatPages extends React.Component<any, any> {
     }
   }
 
-  public render() {
+  render() {
     const { data }  = this.props;
     if (!data) {
       return <div/>;

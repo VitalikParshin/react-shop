@@ -19,12 +19,12 @@ interface IMenuTriggerProps {
 
 class MenuTrigger extends React.Component<IConnectedMenuTriggerProps & IMenuTriggerProps, any> {
 
-  public onClick = (e) => {
+  onClick = (e) => {
     e.preventDefault();
     this.props.dispatch({type: ACTION_TOOTLE_MENU});
   }
 
-  public render() {
+  render() {
     const { layout, height } = this.props;
     return (
       <Ripples>

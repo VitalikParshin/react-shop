@@ -29,7 +29,7 @@ interface ISubProductsProps {
 
 class SubProducts extends React.Component <IConnectedSubProductsProps & ISubProductsProps, any > {
 
-  public onChangePrice = (elId) => {
+  onChangePrice = (elId) => {
     this.props.dispatch(
       {
         colorId: this.props.product.colorId,
@@ -39,7 +39,7 @@ class SubProducts extends React.Component <IConnectedSubProductsProps & ISubProd
     );
   }
 
-  public render() {
+  render() {
 
     const { subProducts } = this.props;
 

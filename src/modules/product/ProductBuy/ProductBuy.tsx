@@ -19,7 +19,7 @@ interface IProductBuyProps {
 
 class ProductBuy extends React.Component<IConnectedProductBuyProps & IProductBuyProps, any> {
 
-  public render() {
+  render() {
     const { price, oldPrice } = this.props;
 
     return (

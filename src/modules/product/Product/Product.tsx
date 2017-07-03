@@ -51,7 +51,7 @@ class Product extends React.Component<IConnectedProductProps & IProductProps, an
     dispatch({type: ACTION_ADD_VIEWED_PRODUCT, productId: id });
   }
 
-  public componentWillReceiveProps = (nextProps) => {
+  componentWillReceiveProps = (nextProps) => {
     const { data } = nextProps;
     const { loading, product } = data;
     if (loading === false) {
@@ -69,7 +69,7 @@ class Product extends React.Component<IConnectedProductProps & IProductProps, an
     }
   }
 
-  public render() {
+  render() {
     const { data } = this.props;
     const { loading, product } = data;
     const {subProductId, colorId} = this.props.product;

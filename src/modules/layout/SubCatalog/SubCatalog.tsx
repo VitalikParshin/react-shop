@@ -39,7 +39,7 @@ function chunk(arr, len = 1) {
 
 class SubCatalog extends React.Component<IConnectedSubCatalogProps & ISubCatalogProps, any> {
 
-  public onClick = (event, cat) => {
+  onClick = (event, cat) => {
     const {dispatch} = this.props;
     dispatch({type: ACTION_ADD_VIEWED_CATEGORY, categoryId: cat.id});
     Promise.resolve(
@@ -52,17 +52,17 @@ class SubCatalog extends React.Component<IConnectedSubCatalogProps & ISubCatalog
     });
   }
 
-  public isViewed(id) {
+  isViewed(id) {
     const {catalog, categories} = this.props;
     return catalog.viewedCategoryIds.indexOf(id) !== -1;
   }
 
-  public isCurrentCategory = (id) => {
+  isCurrentCategory = (id) => {
     const { router: {location: {pathname }}} = this.props;
     return pathname.search(`/category/${id}`) !== -1;
   }
 
-  public render() {
+  render() {
     const { dispatch, categories, isDrawer } = this.props;
 
     return (

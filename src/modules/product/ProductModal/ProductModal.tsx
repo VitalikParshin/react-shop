@@ -12,11 +12,11 @@ import { Product } from '../index';
 const styles = require("./styles.css");
 
 class ProductModal extends React.Component<any, any> {
-  public state = {
+  state = {
     showModal: true,
   };
 
-  public back = (e) => {
+  back = (e) => {
     e.stopPropagation();
     this.props.history.goBack();
     this.setState({
@@ -24,7 +24,7 @@ class ProductModal extends React.Component<any, any> {
     });
   }
 
-  public render() {
+  render() {
     const { match, history } = this.props;
     return (
       <Modal>

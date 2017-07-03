@@ -92,16 +92,16 @@ const options = {
 
 class Products extends React.Component<IConnectedProductsProps & IProductsProps, any> {
 
-  public ref;
+  ref;
 
-  public bottomHeight: number;
+  bottomHeight: number;
 
-  public state = {
+  state = {
     haveMoreProducts: true,
     scrolledProducts: 0,
   };
 
-  public refineScrolledProducts = (scrolledProducts) => {
+  refineScrolledProducts = (scrolledProducts) => {
     const { data } = this.props;
     const { fetchMore, allProducts: {products, total} } = data;
 
@@ -113,7 +113,7 @@ class Products extends React.Component<IConnectedProductsProps & IProductsProps,
     return scrolledProducts;
   }
 
-  public handleScroll = (event) => {
+  handleScroll = (event) => {
     const { data } = this.props;
     const { fetchMore, allProducts: {products, total} } = data;
 
@@ -142,7 +142,7 @@ class Products extends React.Component<IConnectedProductsProps & IProductsProps,
     );
   }
 
-  public componentDidUpdate = (prevProps, prevState) => {
+  componentDidUpdate = (prevProps, prevState) => {
     const { loading, allProducts } = this.props.data;
     if (loading === false) {
       this.bottomHeight = (
@@ -152,7 +152,7 @@ class Products extends React.Component<IConnectedProductsProps & IProductsProps,
     }
   }
 
-  public componentWillReceiveProps = (nextProps) => {
+  componentWillReceiveProps = (nextProps) => {
     const { loading, allProducts } = nextProps.data;
     if (loading === false ) {
       const { products, total } = allProducts;
@@ -164,7 +164,7 @@ class Products extends React.Component<IConnectedProductsProps & IProductsProps,
     }
   }
 
-  public render() {
+  render() {
     const {
       data,
       catalog: {showOnlyViewed, viewedProductIds},

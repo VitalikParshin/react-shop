@@ -29,7 +29,7 @@ const Logo = (props) => {
 };
 
 class Menu extends React.Component<any, any> {
-  public render() {
+  render() {
     const width = window.innerWidth * 0.9;
     return (
       <div

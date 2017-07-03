@@ -51,11 +51,11 @@ function createMarkup(html) {
 
 class ProductInfo extends React.Component<IConnectedProductInfoProps & IProductInfoProps,  any> {
 
-  public changeColor = (colorId) => {
+  changeColor = (colorId) => {
     this.props.dispatch({type: ACTION_SELECT_COLOR, colorId });
   }
 
-  public render() {
+  render() {
     const {dataProduct, product, activeSubProduct, dispatch} = this.props;
     const { brand, images, subProducts,  attributes } = dataProduct;
     const {subProductId, colorId} = this.props.product;

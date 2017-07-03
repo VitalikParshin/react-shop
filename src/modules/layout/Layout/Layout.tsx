@@ -8,7 +8,7 @@ import {HEIGHT} from "../Header/Header";
 import {Footer, Header, SidebarCatalog, SidebarMenu} from "../index";
 
 class Layout extends React.Component<any, any> {
-  public render() {
+  render() {
     // return (
     //   <div>
     //     <Header/>

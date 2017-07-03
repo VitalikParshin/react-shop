@@ -46,7 +46,7 @@ const Logo = ({height, isActive}) => {
 
 class HomeTrigger extends React.Component<IConnectedHomeTriggerProps & IHomeTriggerProps, any> {
 
-  public render() {
+  render() {
     const { router, height } = this.props;
     const isActive = router.location.pathname === "/";
     if (isActive) {
