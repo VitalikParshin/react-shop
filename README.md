@@ -9,7 +9,7 @@
 * [Apollo Client](http://dev.apollodata.com/) to manage GraphQL
 * [Webpack 3](https://webpack.js.org/) with [React Hot Loader](http://gaearon.github.io/react-hot-loader/)
 * [CSS-Modules](https://github.com/css-modules/css-modules) to forget about BEM
-* [TypeScript](https://www.typescriptlang.org/) to add powerfull tools to IDE, document and cover you code with type definitions
+* [TypeScript](https://www.typescriptlang.org/) to documenting, cover you code with type definitions and add powerfull tools to IDE
 
 ### Back-end
 
@@ -29,7 +29,7 @@
 
 ### GraphiQL
 
-* An in-browser IDE for exploring GraphQL. Try [this query](http://buybag.com.ua/graphiql?query=query%20%7B%0A%20%20allProducts(categoryId%3A62%2C%20first%3A2%2C%20offset%3A0)%20%7B%0A%20%20%20%20total%0A%20%20%20%20products%20%7B%0A%20%20%20%20%20%20category%20%7B%0A%20%20%20%20%20%20%20%20id%0A%20%20%20%20%20%20%20%20name%0A%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20brand%20%7B%0A%20%20%20%20%20%20%20%20id%0A%20%20%20%20%20%20%20%20name%0A%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20images%20%7B%0A%20%20%20%20%20%20%20%20id%0A%20%20%20%20%20%20%20%20src%0A%20%20%20%20%20%20%20%20isTitle%0A%20%20%20%20%20%20%7D%0A%20%20%20%20%09attributes%20%7B%0A%20%20%20%20%20%20%20%20name%0A%20%20%20%20%20%20%20%20values%20%7B%0A%20%20%20%20%20%20%20%20%20%20id%0A%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20%7D%20%20%20%20%20%20%0A%20%20%20%20%20%20subProducts%20%7B%0A%20%20%20%20%20%20%20%20id%0A%20%20%20%20%20%20%20%20article%0A%20%20%20%20%20%20%20%20attributes%20%7B%0A%20%20%20%20%20%20%20%20%20%20name%0A%20%20%20%20%20%20%20%20%20%20values%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20id%0A%20%20%20%20%20%20%20%20%20%20%20%20name%0A%20%20%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20%7D%0A%20%20%20%20%7D%0A%20%20%7D%0A%7D&variables=).
+* An in-browser IDE for exploring GraphQL API. Try [this query](http://buybag.com.ua/graphiql?query=query%20%7B%0A%20%20allProducts(categoryId%3A62%2C%20first%3A2%2C%20offset%3A0)%20%7B%0A%20%20%20%20total%0A%20%20%20%20products%20%7B%0A%20%20%20%20%20%20category%20%7B%0A%20%20%20%20%20%20%20%20id%0A%20%20%20%20%20%20%20%20name%0A%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20brand%20%7B%0A%20%20%20%20%20%20%20%20id%0A%20%20%20%20%20%20%20%20name%0A%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20images%20%7B%0A%20%20%20%20%20%20%20%20id%0A%20%20%20%20%20%20%20%20src%0A%20%20%20%20%20%20%20%20isTitle%0A%20%20%20%20%20%20%7D%0A%20%20%20%20%09attributes%20%7B%0A%20%20%20%20%20%20%20%20name%0A%20%20%20%20%20%20%20%20values%20%7B%0A%20%20%20%20%20%20%20%20%20%20id%0A%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20%7D%20%20%20%20%20%20%0A%20%20%20%20%20%20subProducts%20%7B%0A%20%20%20%20%20%20%20%20id%0A%20%20%20%20%20%20%20%20article%0A%20%20%20%20%20%20%20%20attributes%20%7B%0A%20%20%20%20%20%20%20%20%20%20name%0A%20%20%20%20%20%20%20%20%20%20values%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20id%0A%20%20%20%20%20%20%20%20%20%20%20%20name%0A%20%20%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20%7D%0A%20%20%20%20%7D%0A%20%20%7D%0A%7D&variables=).
 
 ### React DevTools
 
@@ -58,7 +58,7 @@
     * press `cmd`+`P` and run action `Sync : Download Settings`.
     * past you "Personal acess token" value and then use Gist public ID: `968c3e5d7bb21f44ac9c8f7638bc4618`
 
-## UI with [Ant Design Mobile](https://mobile.ant.design/) lib
+## UI with [Ant Design Mobile](https://mobile.ant.design/)
 
 ### Work with icons
 
