@@ -13,10 +13,10 @@ import Layout from "./Layout/Layout";
 import Loading from "./Loading/Loading";
 import Menu from "./Menu/Menu";
 import MenuTrigger from "./MenuTrigger/MenuTrigger";
+import Modal from "./Modal/Modal";
 import SidebarCatalog from "./SidebarCatalog/SidebarCatalog";
 import SidebarMenu from "./SidebarMenu/SidebarMenu";
 import SubCatalog from "./SubCatalog/SubCatalog";
-import Modal from "./Modal/Modal";
 import {swipeEnabled} from "./utils";
 
 export {

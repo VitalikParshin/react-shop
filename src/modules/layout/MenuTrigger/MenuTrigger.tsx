@@ -1,12 +1,11 @@
-import { Button, Icon } from "antd-mobile";
+import { Icon } from "antd-mobile";
 import * as React from "react";
 import { compose } from "react-apollo";
 import { connect } from "react-redux";
 import Ripples from "react-ripples";
-import {
-  ACTION_TOOTLE_MENU,
-} from "../../layout/constants";
-import {ILayout} from "../model";
+
+import { ACTION_TOOTLE_MENU } from "../../layout/constants";
+import { ILayout } from "../model";
 
 interface IConnectedMenuTriggerProps {
   layout: ILayout;

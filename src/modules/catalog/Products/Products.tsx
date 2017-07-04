@@ -1,25 +1,14 @@
+import { Flex, Icon } from "antd-mobile";
+import update from "immutability-helper";
 import { throttle } from "lodash";
 import * as React from "react";
-import { compose, gql, graphql } from "react-apollo";
+import { compose, graphql } from "react-apollo";
 import { connect } from "react-redux";
-import {
-  Button,
-  Card,
-  Carousel,
-  Flex,
-  Icon,
-  List,
-  NavBar,
-  WingBlank,
-} from "antd-mobile";
 
-import update from "immutability-helper";
-import MasonryInfiniteScroller from "react-masonry-infinite";
-import { Link } from "react-router-dom";
 import { IData } from "../../../model";
-import {Loading} from "../../layout/index";
-import {Product, ProductsCounter, ShowOnlyViewed} from "../index";
-import {ALL_PRODUCTS_QUERY, IAllProduct, ICatalog} from "../model";
+import { Loading } from "../../layout/index";
+import { Product, ProductsCounter } from '../index';
+import { ALL_PRODUCTS_QUERY, IAllProduct, ICatalog } from "../model";
 
 // tslint:disable-next-line:no-var-requires
 const styles = require("./styles.css");

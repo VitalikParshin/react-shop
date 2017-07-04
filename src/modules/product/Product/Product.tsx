@@ -1,14 +1,13 @@
 import * as React from "react";
-import { connect } from "react-redux";
-import { ACTION_SELECT_SUBPRODUCT } from "../constants";
-
 import { compose, graphql } from "react-apollo";
+import { connect } from "react-redux";
 
-import {ACTION_ADD_VIEWED_PRODUCT} from "../../catalog/constants";
-import {Loading} from "../../layout/index";
-import {Images, ProductInfo, ProductBuy } from "../index";
-import {ICurrentDataProduct, IProduct, PRODUCT_QUERY} from "../model";
-import {IData} from "../../../model";
+import { IData } from "../../../model";
+import { ACTION_ADD_VIEWED_PRODUCT } from "../../catalog/constants";
+import { Loading } from "../../layout/index";
+import { ACTION_SELECT_SUBPRODUCT } from "../constants";
+import { Images, ProductBuy, ProductInfo } from "../index";
+import { ICurrentDataProduct, IProduct, PRODUCT_QUERY } from "../model";
 
 // tslint:disable-next-line:no-var-requires
 const styles = require("./styles.css");

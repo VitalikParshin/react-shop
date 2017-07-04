@@ -1,19 +1,12 @@
-import {
-  Button,
-  Card,
-  Flex,
-  Icon,
-  WhiteSpace,
-  WingBlank,
-} from "antd-mobile";
+import { Flex, Icon, WhiteSpace } from "antd-mobile";
 import * as React from "react";
-import { connect } from "react-redux";
-import Ripples from "react-ripples";
-import { Link } from "react-router-dom";
-import { Image, Images, scaleImageSize } from "../../product/index";
-import {IBrand, IImageWithColor, IProduct, ISubProduct} from "../../product/model";
 import LazyLoad from "react-lazy-load";
-import {ICatalog} from "../model";
+import { connect } from "react-redux";
+import { Link } from "react-router-dom";
+
+import { scaleImageSize } from "../../product/index";
+import { IProduct } from "../../product/model";
+import { ICatalog } from "../model";
 
 // tslint:disable-next-line:no-var-requires
 const styles = require("./styles.css");

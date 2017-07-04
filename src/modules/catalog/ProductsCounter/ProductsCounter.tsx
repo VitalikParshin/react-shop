@@ -19,11 +19,11 @@ class ProductsCounter extends React.Component<IProductsCounterProps, any> {
         </div>
 
         <Progress
+          appearTransition={true}
           className={styles.progress}
           percent={Math.round(scrolled / total * 100)}
           position="normal"
           unfilled="hide"
-          appearTransition
           style={{
             borderColor: scrolled === total ? "#468847" : "orange",
           }}

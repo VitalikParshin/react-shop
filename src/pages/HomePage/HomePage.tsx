@@ -1,9 +1,10 @@
+import { WhiteSpace } from "antd-mobile";
 import WingBlank from "antd-mobile/lib/wing-blank/index.web";
 import * as React from "react";
 import { connect } from "react-redux";
-import {Button, Flex, WhiteSpace} from "antd-mobile";
-import {Catalog, FlatPages} from "../../modules/layout/index";
-import {ACTION_RESET} from "../../modules/layout/constants";
+
+import { ACTION_RESET } from '../../modules/layout/constants';
+import { Catalog, FlatPages } from "../../modules/layout/index";
 
 class HomePage extends React.Component<any, any> {
 

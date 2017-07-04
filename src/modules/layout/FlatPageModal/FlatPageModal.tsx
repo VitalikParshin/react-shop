@@ -1,12 +1,10 @@
-// https://reacttraining.com/react-router/web/example/modal-gallery
-
+import { Flex, Icon } from "antd-mobile";
 import * as React from "react";
 import Ripples from "react-ripples";
 
-import {Flex, Icon } from "antd-mobile";
-import {HEIGHT} from "../../layout/Header/Header";
-import { utils, Modal } from "../../layout/index";
-import {Product} from "../../product/index";
+import { Modal, utils } from "../../layout/index";
+import { HEIGHT } from "../Header/Header";
+
 // tslint:disable-next-line:no-var-requires
 const styles = require("./styles.css");
 

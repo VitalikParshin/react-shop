@@ -50,12 +50,12 @@ class HomeTrigger extends React.Component<IConnectedHomeTriggerProps & IHomeTrig
     const { router, height } = this.props;
     const isActive = router.location.pathname === "/";
     if (isActive) {
-      return <Logo height isActive={true} />;
+      return <Logo height={height} isActive={true} />;
     } else {
       return (
         <Ripples>
           <Link to="/" style={{height}}>
-            <Logo height isActive={false} />
+            <Logo height={height} isActive={false} />
           </Link>
         </Ripples>
       );

@@ -1,23 +1,12 @@
+import { Icon, List } from "antd-mobile";
 import * as React from "react";
+import { compose, graphql } from "react-apollo";
 import { connect } from "react-redux";
-
-import { compose, gql, graphql } from "react-apollo";
-import Ripples from "react-ripples";
-import {FLATPAGES_QUERY, IFlatPage, ILayout} from "../model";
-
-import {
-  Button,
-  Flex,
-  Icon,
-  List,
-  Modal,
-  WhiteSpace,
-  WingBlank,
-} from "antd-mobile";
 import { Link } from "react-router-dom";
-import {IData} from "../../../model";
-import {HEIGHT} from "../Header/Header";
-import {FlatPageModal, Loading} from "../index";
+
+import { IData } from "../../../model";
+import { Loading } from "../index";
+import { FLATPAGES_QUERY, IFlatPage, ILayout } from "../model";
 
 // tslint:disable-next-line:no-var-requires
 const styles = require("./styles.css");
@@ -126,7 +115,7 @@ class FlatPages extends React.Component<any, any> {
               }}
             >
               <List.Item
-                wrap
+                wrap={true}
                 arrow="horizontal"
                 thumb={<Icon className={styles.icon} type={this.getIcon(page.id)} size="md"/>}
               >

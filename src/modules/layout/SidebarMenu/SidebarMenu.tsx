@@ -1,11 +1,11 @@
 import * as React from "react";
-import { compose, gql, graphql } from "react-apollo";
+import { compose } from "react-apollo";
 import { connect } from "react-redux";
 import Sidebar from "react-sidebar";
-import {ACTION_TOOTLE_CATALOG, ACTION_TOOTLE_MENU} from "../constants";
-import {Menu, utils} from "../index";
-import {ILayout} from "../model";
-import {HEIGHT} from "../Header/Header";
+
+import { ACTION_TOOTLE_MENU } from "../constants";
+import { Menu } from "../index";
+import { ILayout } from "../model";
 
 // tslint:disable-next-line:no-var-requires
 const styles = require("./styles.css");

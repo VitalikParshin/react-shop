@@ -7,6 +7,9 @@
       "parameters",
       "statements"
     ],
+    "ordered-imports": [
+      true
+    ],
     "class-name": true,
     "comment-format": [
       true,
@@ -60,11 +63,7 @@
     "no-switch-case-fall-through": false,
     "no-trailing-whitespace": true,
     "no-unused-expression": true,
-    "no-unused-variable": [
-      true,
-      { "ignore-pattern": "^React$" }
-    ],
-    "no-use-before-declare": false,
+    "no-use-before-declare": true,
     "no-var-keyword": true,
     "no-var-requires": false,
     "object-literal-sort-keys": false,
@@ -135,9 +134,9 @@
       "check-type",
       "check-typecast"
     ],
-    "jsx-boolean-value": false,
+    "jsx-boolean-value": true,
     "jsx-no-lambda": false,
-    "jsx-no-string-ref": false,
+    "jsx-no-string-ref": true,
     "jsx-no-multiline-js": false
   }
 }

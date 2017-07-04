@@ -1,10 +1,5 @@
+import { Flex } from "antd-mobile";
 import * as React from "react";
-import {
-  Flex,
-Button,
-List,
-} from "antd-mobile";
-import Item from "antd-mobile/lib/list/ListItem";
 
 // tslint:disable-next-line:no-var-requires
 const styles = require("./styles.css");
@@ -36,7 +31,6 @@ class ProductBuy extends React.Component<IConnectedProductBuyProps & IProductBuy
               : <div className={styles.price}>{parseInt(price as any, 10)} грн</div>
             }
           </div>
-          {/*<Button className={styles.buyButton}>*/}
           <div className={styles.buyButton}>
             Купить
           </div>
