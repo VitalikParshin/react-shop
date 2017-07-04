@@ -44,15 +44,7 @@ export const FLATPAGES_QUERY = gql`
     flatPages{
       id
       name
-      url
       content
-      templateName
-      metaTitle
-      metaDescription
-      metaKeywords
-      dateUpdated
-      isActive
-      image
     }
   }
 `;
