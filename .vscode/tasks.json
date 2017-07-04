@@ -17,9 +17,9 @@
             "args": ["run", "lint"],
             "problemMatcher": {
                 "base": "$tslint5",
-                "fileLocation": "absolute"
+                "fileLocation": "relative"
             },
-            "isBackground": true,
+            "showOutput": "silent",
             "isBuildCommand": false
         }
     ]

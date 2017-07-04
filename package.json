@@ -11,7 +11,7 @@
     "build-dev-bundle": "cross-env NODE_ENV=development node webpack/webpack.dll.config.js",
     "build-pro-bundle": "cross-env NODE_ENV=production node webpack/webpack.dll.config.js",
     "tsc": "./node_modules/typescript/bin/tsc",
-    "lint": "./node_modules/tslint/bin/tslint ./src"
+    "lint": "./node_modules/tslint/bin/tslint './src/**/*.ts*'"
   },
   "license": "ISC",
   "dependencies": {
