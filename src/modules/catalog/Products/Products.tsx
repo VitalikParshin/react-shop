@@ -7,7 +7,7 @@ import { connect } from "react-redux";
 
 import { IData } from "../../../model";
 import { Loading } from "../../layout/index";
-import { Product, ProductsCounter } from '../index';
+import { Product, ProductsCounter } from "../index";
 import { ALL_PRODUCTS_QUERY, IAllProduct, ICatalog } from "../model";
 
 // tslint:disable-next-line:no-var-requires

@@ -16,7 +16,7 @@ interface IConnectedSidebarMenu {
 }
 
 const sidebarStyles = {
-  content: {overflowY: 'scroll', WebkitOverflowScrolling: 'touch'},
+  content: {overflowY: "scroll", WebkitOverflowScrolling: "touch"},
 };
 
 class SidebarMenu extends React.Component<IConnectedSidebarMenu & any, any> {

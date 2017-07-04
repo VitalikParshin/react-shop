@@ -1,11 +1,11 @@
-import * as React from 'react';
-import { compose } from 'react-apollo';
-import { connect } from 'react-redux';
-import Sidebar from 'react-sidebar';
+import * as React from "react";
+import { compose } from "react-apollo";
+import { connect } from "react-redux";
+import Sidebar from "react-sidebar";
 
-import { ACTION_TOOTLE_CATALOG } from '../constants';
-import { Catalog, utils } from '../index';
-import { ILayout } from '../model';
+import { ACTION_TOOTLE_CATALOG } from "../constants";
+import { Catalog, utils } from "../index";
+import { ILayout } from "../model";
 
 interface IConnectedSideBarProps {
   layout: ILayout;
@@ -17,7 +17,7 @@ const CatalogMenu = (props) => {
 };
 
 const sidebarStyles = {
-  content: {overflowY: 'scroll', WebkitOverflowScrolling: 'touch'},
+  content: {overflowY: "scroll", WebkitOverflowScrolling: "touch"},
 };
 
 class SidebarCatalog extends React.Component<IConnectedSideBarProps, any> {

@@ -11,7 +11,7 @@
     "build-dev-bundle": "cross-env NODE_ENV=development node webpack/webpack.dll.config.js",
     "build-pro-bundle": "cross-env NODE_ENV=production node webpack/webpack.dll.config.js",
     "tsc": "./node_modules/typescript/bin/tsc",
-    "lint": "./node_modules/tslint/bin/tslint  --project ."
+    "lint": "./node_modules/tslint/bin/tslint ./src"
   },
   "license": "ISC",
   "dependencies": {
@@ -74,8 +74,6 @@
     "css-loader": "~0.26.1",
     "extract-text-webpack-plugin": "^2.1.2",
     "file-loader": "^0.11.2",
-    "gulp": "^3.9.1",
-    "gulp-tslint": "^8.1.1",
     "html-webpack-plugin": "^2.22.0",
     "json-loader": "~0.5.4",
     "less": "^2.7.2",
