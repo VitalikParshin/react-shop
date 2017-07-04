@@ -71,7 +71,7 @@ _WARNING! It's experimental project just for fun!_
     * Press `cmd` + `P` and pass `ext install code-settings-sync`
 1. Generate your GitHub "Personal acess token" with gist scope using this [manual](https://marketplace.visualstudio.com/items?itemName=Shan.code-settings-sync#steps-to-get-the-github-key)
 1. Download settings, keybindings and extensions
-    * press `cmd`+`P` and run action `Sync : Download Settings`.
+    * press `cmd`+`Символ клавиши Shift`+`P` and run action `Sync : Download Settings`.
     * past you "Personal acess token" value and then use Gist ID: `968c3e5d7bb21f44ac9c8f7638bc4618`
 
 ## UI with [Ant Mobile](https://ant.design/) and [Ant Design Mobile](https://mobile.ant.design/)
