@@ -1,5 +1,5 @@
 .flex {
-  background-color: #2474CC;
+  background-color: #2474cc;
   color: white;
   left: 0;
   position: fixed;
@@ -15,7 +15,7 @@
 }
 
 .productName {
-  margin: 0px;
+  margin: 0;
   text-align: center;
   width: 80%;
 }

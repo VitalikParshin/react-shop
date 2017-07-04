@@ -76,7 +76,7 @@ _WARNING! It's experimental project just for fun!_
 
 ## UI with [Ant Mobile](https://ant.design/) and [Ant Design Mobile](https://mobile.ant.design/)
 
-### Why ant-design and antd-mobile
+### Why this UI lib
 
 * Based on React, written in TypeScript
 * Dozens of features

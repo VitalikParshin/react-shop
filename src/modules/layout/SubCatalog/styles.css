@@ -5,11 +5,11 @@
 }
 
 .name {
-  max-width: 80%;
   margin: auto;
+  max-width: 80%;
 }
 
 .flexItem {
-  text-align: center;
   margin: 5px !important;
+  text-align: center;
 }
