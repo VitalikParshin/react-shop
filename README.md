@@ -68,11 +68,23 @@ _WARNING! It's experimental project just for fun!_
 
 1. Install [VSCode](https://code.visualstudio.com/)
 1. Open it and install extension [Visual Studio Code Settings Sync](https://marketplace.visualstudio.com/items?itemName=Shan.code-settings-sync)
-    * Press `cmd` + `P` and pass `ext install code-settings-sync`
+    * Press `cmd`+`shift`+`P` and pass `ext install code-settings-sync`
 1. Generate your GitHub "Personal acess token" with gist scope using this [manual](https://marketplace.visualstudio.com/items?itemName=Shan.code-settings-sync#steps-to-get-the-github-key)
 1. Download settings, keybindings and extensions
-    * press `cmd`+`P` and run action `Sync : Download Settings`.
+    * press `cmd`+`shift`+`P` and run action `Sync : Download Settings`.
     * past you "Personal acess token" value and then use Gist ID: `968c3e5d7bb21f44ac9c8f7638bc4618`
+
+## Linters
+
+### [Tslint](https://palantir.github.io/tslint/)
+
+* `yarn run tslint`
+* or `cmd`+`F9` in VSCode to constantly check all project TS files
+
+### [Stylelint](https://stylelint.io/)
+
+* `yarn run tslint`
+* or run task `tslint` in VSCode to check all project CSS files
 
 ## UI with [Ant Mobile](https://ant.design/) and [Ant Design Mobile](https://mobile.ant.design/)
 
