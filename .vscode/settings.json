@@ -21,7 +21,7 @@
         "**/.idea": true
     },
     "scss.validate": false,
-    "css.validate": false,
+    "css.validate": true,
     "html.format.wrapLineLength": 100,
     "editor.tabSize": 2,
     "files.trimTrailingWhitespace": true,

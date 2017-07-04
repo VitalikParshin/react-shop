@@ -12,13 +12,21 @@
             "isBuildCommand": true
         },
         {
-            "taskName": "lint",
+            "taskName": "tslint",
             "suppressTaskName": true,
-            "args": ["run", "lint"],
+            "args": ["run", "tslint"],
             "problemMatcher": {
                 "base": "$tslint5",
                 "fileLocation": "relative"
             },
+            "showOutput": "silent",
+            "isBuildCommand": false
+        },
+        {
+            "taskName": "stylelint",
+            "suppressTaskName": true,
+            "args": ["run", "stylelint"],
+            "problemMatcher": "$lessCompile",
             "showOutput": "silent",
             "isBuildCommand": false
         }

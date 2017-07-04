@@ -29,17 +29,17 @@
   color: #1296db;
 }
 
-.nameStyle{
-  font-size: 0.35rem;
+.nameStyle {
   color: #1296db;
+  font-size: 0.35rem;
   padding-left: 0.3rem;
   padding-right: 0.3rem;
 }
 
 .oneColor {
-  margin-left: 0.3rem;
   color: #1296db;
   font-size: 0.35rem;
+  margin-left: 0.3rem;
 }
 
 .characteristicName {
@@ -47,13 +47,13 @@
 }
 
 .characteristicValue {
-  font-size: 0.33rem;
   color: #8a8282;
+  font-size: 0.33rem;
 }
 
 .aboutProduct {
-  padding-left: 0.3rem;
   font-size: 0.35rem;
+  padding-left: 0.3rem;
 }
 
 .dangerouslySetInnerHTML {
@@ -62,9 +62,9 @@
 }
 
 .colorName {
-  text-transform: lowercase;
   color: gray;
-  width: 200px;
-  text-align: right;
   padding-right: 0.35rem;
+  text-align: right;
+  text-transform: lowercase;
+  width: 200px;
 }
