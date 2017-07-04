@@ -1,13 +1,22 @@
-# Shop starter kit for mobile
+# Shop starter kit for mobile devices. [Online demo](http://shop.serga.name/)
 
-## Pages and features
+_WARNING! It's experimental project just for fun!_
 
-* start page
-* category page
-* product page
-* info pages and catalog sidebar
+## Big future goal
 
-## Technology stack
+1. Single crossplatform front-end (i.e. monorepo using [Lerna](https://github.com/lerna/lerna) to share code beetween platforms):
+    * Mobile web (react + antd-mobile)
+    * Web (react + ant-mobile)
+    * Android and iOS native apps (react-native + antd-mobile)
+1. Single crossplatform back-end (GraphQL server)
+
+## Principle
+
+* rapid crossplatform prototyping
+* share code as much as posible (DRY)
+* get from tooling (IDE, DevTools, linters) as much as posible
+
+## Current technology stack (mobile web)
 
 ### Front-end
 
@@ -15,8 +24,8 @@
 * [Redux](http://redux.js.org/) to manage app's state
 * [Apollo Client](http://dev.apollodata.com/) to manage GraphQL
 * [Webpack 3](https://webpack.js.org/) with [React Hot Loader](http://gaearon.github.io/react-hot-loader/)
-* [CSS-Modules](https://github.com/css-modules/css-modules) to forget about BEM
-* [TypeScript](https://www.typescriptlang.org/) to documenting, cover you code with type definitions and add powerfull tools to IDE
+* [CSS-Modules](https://github.com/css-modules/css-modules)
+* [TypeScript](https://www.typescriptlang.org/)
 
 ### Back-end
 
@@ -65,26 +74,14 @@
     * press `cmd`+`P` and run action `Sync : Download Settings`.
     * past you "Personal acess token" value and then use Gist ID: `968c3e5d7bb21f44ac9c8f7638bc4618`
 
-## UI with [Ant Design Mobile](https://mobile.ant.design/)
+## UI with [Ant Mobile](https://ant.design/) and [Ant Design Mobile](https://mobile.ant.design/)
 
-### Work with icons
+### Why ant-design and antd-mobile
 
-1. You can find 1M+ icons here `http://iconfont.cn/`
-1. Put the icon to you component folder
-1. Use JSX syntax like this
-
-```JSX
-import { Icon, List } from "antd-mobile";
-
-// Example 1
-<Icon type={require("!svg-sprite-loader!./icon.svg")} />
-
-// Example 2
-<List.Item thumb={require("!svg-sprite-loader!./icon.svg")} />
-
-```
-
-### Translate docs from Chinesse to English
-
-1. Open in Chrome [https://mobile.ant.design/](https://mobile.ant.design/)
-1. Right click "Translate to English". And don't panic, tranlation in progress!
+* Based on React, written in TypeScript
+* Dozens of features
+* Subjectively one of the most mature UI library
+* Intensively developed and powered by Alibaba
+* Crossplatform support:
+  * [Ant Design](https://ant.design/) for web + desktop native
+  * [Ant Design Mobile](https://mobile.ant.design/) for mobile web + mobile native

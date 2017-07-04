@@ -3,6 +3,7 @@ import update from "immutability-helper";
 import { throttle } from "lodash";
 import * as React from "react";
 import { compose, graphql } from "react-apollo";
+import MasonryInfiniteScroller from "react-masonry-infinite";
 import { connect } from "react-redux";
 
 import { IData } from "../../../model";
@@ -189,15 +190,14 @@ class Products extends React.Component<IConnectedProductsProps & IProductsProps,
 
     return (
       <div style={{padding}} ref={(element) => this.ref = element}>
-        <Flex
-          wrap="wrap"
+        <MasonryInfiniteScroller
           className={styles.masonryInfiniteScroller}
-          // sizes={[{ columns: 2, gutter }]}
+          sizes={[{ columns: 2, gutter }]}
         >
           {filteredProducts.map((product, i) => {
             return <Product key={i} {...product}/>;
           })}
-        </Flex>
+        </MasonryInfiniteScroller>
 
         <div
           className={styles.icon}
